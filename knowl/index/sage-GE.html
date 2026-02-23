@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<!--******************************************-->
+<!--*  Authored with PreTeXt                 *-->
+<!--*  pretextbook.org                       *-->
+<!--*  Theme: default-modern                 *-->
+<!--*  Palette: blue-green                   *-->
+<!--******************************************-->
+
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<script>// Make *any* div with class 'sagecell-sage' an executable Sage cell
+// Their results will be linked, only within language type
+sagecell.makeSagecell({
+  "inputLocation": "div.sagecell-sage",
+  "linked": true,
+  "linkKey": "linked-sage",
+  "autoeval": false,
+  "languages": [
+    "sage"
+  ],
+  "evalButtonText": "Evaluate (Sage)"
+});
+</script>
+</head>
+<body class="ignore-math">
+<article class="computation computation-like"><h4 class="heading">
+<span class="type">Computation</span><span class="space"> </span><span class="codenumber">1.3.13</span><span class="period">.</span><span class="space"> </span><span class="title">Implementasi proses menggunakan Sage.</span>
+</h4>
+<div class="para">Sage memiliki metode matriks, <code class="code-inline tex2jax_ignore">.augment()</code>, yang akan menggabungkan dua matriks, berdampingan asalkan keduanya memiliki jumlah baris yang sama. Metode yang sama akan memungkinkan Anda untuk mengaugmentasi matriks dengan vektor kolom, seperti yang dijelaskan dalam <a href="s_systems.html#definition-AM" class="xref" data-knowl="./knowl/xref/definition-AM.html" data-reveal-label="Reveal" data-close-label="Close" title="Definition 1.2.9: Matriks Augmentasi">Definition 1.2.9</a>, asalkan jumlah entri dalam vektor sesuai dengan jumlah baris untuk matriks. Di sini kita mengulang konstruksi dalam <a href="s_systems.html#example-AMAA" class="xref" data-knowl="./knowl/xref/example-AMAA.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.2.10: Matriks augmentasi">Example 1.2.10</a>. Kita sekarang akan memformat matriks kita sebagai input di beberapa baris, suatu praktik yang dapat Anda gunakan dalam lembar kerja Anda sendiri, atau tidak.</div>
+<div id="sagecell-AM-b" class="ptx-sagecell sagecell-sage"><script type="text/x-sage">            B = matrix(QQ, [[0, 0, -2, 0, 7, 12],[2, 4, -10, 6, 12, 28],[2, 4, -5, 6, -5, -1]])
+M0 = matrix(B)
+M1 = B.with_swapped_rows(0, 1)
+M2 = M1.with_rescaled_row(0, 1/2)
+M3 = M2.with_added_multiple_of_row(2, 0, -2)
+M4 = M3.with_rescaled_row(1, -1/2)
+M5 = M4.with_added_multiple_of_row(2, 1, -5)
+M6 = M5.with_rescaled_row(2, 2)
+print("awal")
+print(M0)
+print("M1")
+print(M1)
+print("M2")
+print(M2)
+print("M3")
+print(M3)
+print("M4")
+print(M4)
+print("M5")
+print(M5)
+print("M6")
+print(M6)
+</script></div></article><span class="incontext"><a class="internal" href="s_systemsb.html#sage-GE">in-context</a></span>
+</body>
+</html>

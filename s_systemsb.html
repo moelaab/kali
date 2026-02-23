@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="en-US" dir="ltr">
+<!--******************************************-->
+<!--*  Authored with PreTeXt                 *-->
+<!--*  pretextbook.org                       *-->
+<!--*  Theme: default-modern                 *-->
+<!--*  Palette: blue-green                   *-->
+<!--******************************************-->
+<head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Eliminasi Gaussian</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+<link href="_static/pretext/css/theme.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/ol-markers.css" rel="stylesheet" type="text/css">
+<script>
+var runestoneMathReady = new Promise((resolve) => window.rsMathReady = resolve);
+window.MathJax = {
+  "tex": {
+    "inlineMath": [
+      [
+        "\\(",
+        "\\)"
+      ]
+    ],
+    "tags": "none",
+    "tagSide": "right",
+    "tagIndent": ".8em",
+    "packages": {
+      "[+]": [
+        "base",
+        "extpfeil",
+        "ams",
+        "amscd",
+        "color",
+        "newcommand",
+        "knowl"
+      ]
+    }
+  },
+  "options": {
+    "ignoreHtmlClass": "tex2jax_ignore|ignore-math",
+    "processHtmlClass": "process-math",
+    "renderActions": {
+      "findScript": [
+        10,
+        function (doc) {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(function(node) {
+                var display = !!node.type.match(/; *mode=display/);
+                var math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                var text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = {node: text, delim: '', n: 0};
+                math.end = {node: text, delim: '', n: 0};
+                doc.math.push(math);
+            });
+        },
+        ""
+      ]
+    }
+  },
+  "chtml": {
+    "scale": 0.98,
+    "mtextInheritFont": true
+  },
+  "loader": {
+    "load": [
+      "input/asciimath",
+      "[tex]/extpfeil",
+      "[tex]/amscd",
+      "[tex]/color",
+      "[tex]/newcommand",
+      "[pretext]/mathjaxknowl3.js"
+    ],
+    "paths": {
+      "pretext": "_static/pretext/js/lib"
+    }
+  },
+  "startup": {
+    pageReady() {
+      return MathJax.startup.defaultPageReady().then(function () {
+      console.log("in ready function");
+      rsMathReady();
+      }
+    )}
+  }
+};
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="book">
+<meta property="book:title" content="Komputasi Aljabar Linear">
+<meta property="book:author" content=" Mulaab M ">
+<script src="_static/pretext/js/lib/jquery.min.js"></script><script src="_static/pretext/js/lib/jquery.sticky.js"></script><script src="_static/pretext/js/lib/jquery.espy.min.js"></script><script src="_static/pretext/js/pretext.js"></script><script src="_static/pretext/js/pretext_add_on.js?x=1"></script><script src="_static/pretext/js/user_preferences.js"></script><!--** eBookCongig is necessary to configure interactive       **-->
+<!--** Runestone components to run locally in reader's browser **-->
+<!--** No external communication:                              **-->
+<!--**     log level is 0, Runestone Services are disabled     **-->
+<script type="text/javascript">
+eBookConfig = {};
+eBookConfig.useRunestoneServices = false;
+eBookConfig.host = 'http://127.0.0.1:8000';
+eBookConfig.course = 'PTX_Course_Title_Here';
+eBookConfig.basecourse = 'PTX_Base_Course';
+eBookConfig.isLoggedIn = false;
+eBookConfig.email = '';
+eBookConfig.isInstructor = false;
+eBookConfig.logLevel = 0;
+eBookConfig.username = '';
+eBookConfig.readings = null;
+eBookConfig.activities = null;
+eBookConfig.downloadsEnabled = false;
+eBookConfig.allow_pairs = false;
+eBookConfig.enableScratchAC = false;
+eBookConfig.build_info = "";
+eBookConfig.python3 = null;
+eBookConfig.runestone_version = '7.11.15';
+eBookConfig.jobehost = '';
+eBookConfig.proxyuri_runs = '';
+eBookConfig.proxyuri_files = '';
+eBookConfig.enable_chatcodes =  false;
+</script>
+<!--*** Runestone Services ***-->
+<script src="_static/prefix-runtime.529fd9398bfbd03e.bundle.js"></script><script src="_static/prefix-723.3e6434f80549315a.bundle.js"></script><script src="_static/prefix-runestone.1d6e4aba17c2c7f2.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-723.3bccd435914aa0ff.css">
+<link rel="stylesheet" type="text/css" href="_static/prefix-runestone.6ec5960970d8b364.css">
+<script src="https://sagecell.sagemath.org/static/embedded_sagecell.js"></script><script src="_static/pretext/js/lti_iframe_resizer.js"></script><script async="" src="https://cse.google.com/cse.js?cx=015103900096539427448:ngwuia10qci"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js" integrity="sha512-4xUl/d6D6THrAnXAwGajXkoWaeMNwEKK4iNfq5DotEbLPAfk6FSxSP3ydNxqDgCw1c/0Z1Jg6L8h2j+++9BZmg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="lunr-pretext-search-index.js" async=""></script><script src="_static/pretext/js/pretext_search.js"></script><script src="_static/pretext/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
+</script><script>// Make *any* div with class 'sagecell-sage' an executable Sage cell
+// Their results will be linked, only within language type
+sagecell.makeSagecell({
+  "inputLocation": "div.sagecell-sage",
+  "linked": true,
+  "linkKey": "linked-sage",
+  "autoeval": false,
+  "languages": [
+    "sage"
+  ],
+  "evalButtonText": "Evaluate (Sage)"
+});
+</script>
+</head>
+<body id="ula" class="pretext book ignore-math">
+<a class="assistive" href="#ptx-content">Skip to main content</a><header id="ptx-masthead" class="ptx-masthead"><div class="ptx-banner">
+<a id="logo-link" class="logo-link" target="_blank" href="https://understandinglinearalgebra.org"><img src="external/images/ula-logo.png" alt="Logo image"></a><div class="title-container">
+<h1 class="heading"><a href="ula.html"><span class="title">Komputasi Aljabar Linear</span></a></h1>
+<p class="byline">Mulaab M</p>
+</div>
+</div></header><nav id="ptx-navbar" class="ptx-navbar navbar"><div class="ptx-navbar-contents">
+<button class="toc-toggle button" title="Contents"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5d2;</span><span class="name">Contents</span></button><a class="index-button button" href="backmatter-3.html" title="Index"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe88e;</span><span class="name">Index</span></a><div class="searchwrapper" role="search"><div class="gcse-search"></div></div>
+<div class="searchbox">
+<div class="searchwidget"><button id="searchbutton" class="searchbutton button" type="button" title="Search book"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe8b6;</span><span class="name">Search Book</span></button></div>
+<div id="searchresultsplaceholder" class="searchresultsplaceholder" style="display: none">
+<div class="search-results-controls">
+<input aria-label="Search term" id="ptxsearch" class="ptxsearch" type="text" name="terms" placeholder="Search term"><button title="Close search" id="closesearchresults" class="closesearchresults"><span class="material-symbols-outlined">close</span></button>
+</div>
+<h2 class="search-results-heading">Search Results: </h2>
+<div id="searchempty" class="searchempty"><span>No results.</span></div>
+<ol id="searchresults" class="searchresults"></ol>
+</div>
+</div>
+<span class="nav-other-controls"><button id="light-dark-button" class="light-dark-button button" title="Dark Mode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span class="name">Dark Mode</span></button></span><span class="treebuttons"><a class="previous-button button" href="s_systems.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="up-button button" href="chap1.html" title="Up"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Up</span></a><a class="next-button button" href="backmatter.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span>
+</div></nav><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\(   \newcommand{\avec}{{\mathbf a}}
+   \newcommand{\bvec}{{\mathbf b}}
+   \newcommand{\cvec}{{\mathbf c}}
+   \newcommand{\dvec}{{\mathbf d}}
+   \newcommand{\dtil}{\widetilde{\mathbf d}}
+   \newcommand{\evec}{{\mathbf e}}
+   \newcommand{\fvec}{{\mathbf f}}
+   \newcommand{\nvec}{{\mathbf n}}
+   \newcommand{\pvec}{{\mathbf p}}
+   \newcommand{\qvec}{{\mathbf q}}
+   \newcommand{\svec}{{\mathbf s}}
+   \newcommand{\tvec}{{\mathbf t}}
+   \newcommand{\uvec}{{\mathbf u}}
+   \newcommand{\vvec}{{\mathbf v}}
+   \newcommand{\wvec}{{\mathbf w}}
+   \newcommand{\xvec}{{\mathbf x}}
+   \newcommand{\yvec}{{\mathbf y}}
+   \newcommand{\zvec}{{\mathbf z}}
+   \newcommand{\rvec}{{\mathbf r}}
+   \newcommand{\mvec}{{\mathbf m}}
+   \newcommand{\zerovec}{{\mathbf 0}}
+   \newcommand{\onevec}{{\mathbf 1}}
+   \newcommand{\real}{{\mathbb R}}
+   \newcommand{\twovec}[2]{\left[\begin{array}{r}#1 \\ #2
+   \end{array}\right]}
+   \newcommand{\ctwovec}[2]{\left[\begin{array}{c}#1 \\ #2
+   \end{array}\right]}
+   \newcommand{\threevec}[3]{\left[\begin{array}{r}#1 \\ #2 \\ #3
+   \end{array}\right]}
+   \newcommand{\cthreevec}[3]{\left[\begin{array}{c}#1 \\ #2 \\ #3
+   \end{array}\right]}
+   \newcommand{\fourvec}[4]{\left[\begin{array}{r}#1 \\ #2 \\ #3 \\ #4
+   \end{array}\right]}
+   \newcommand{\cfourvec}[4]{\left[\begin{array}{c}#1 \\ #2 \\ #3 \\ #4
+   \end{array}\right]}
+   \newcommand{\fivevec}[5]{\left[\begin{array}{r}#1 \\ #2 \\ #3 \\
+   #4 \\ #5 \\ \end{array}\right]}
+   \newcommand{\cfivevec}[5]{\left[\begin{array}{c}#1 \\ #2 \\ #3 \\
+   #4 \\ #5 \\ \end{array}\right]}
+   \newcommand{\mattwo}[4]{\left[\begin{array}{rr}#1 \amp #2 \\ #3 \amp #4 \\ \end{array}\right]}
+   \newcommand{\laspan}[1]{\text{Span}\left\{#1\right\}}
+   \newcommand{\bcal}{{\cal B}}
+   \newcommand{\ccal}{{\cal C}}
+   \newcommand{\scal}{{\cal S}}
+   \newcommand{\wcal}{{\cal W}}
+   \newcommand{\ecal}{{\cal E}}
+   \newcommand{\coords}[2]{\left\{#1\right\}_{#2}}
+   \newcommand{\gray}[1]{\color{gray}{#1}}
+   \newcommand{\lgray}[1]{\color{lightgray}{#1}}
+   \newcommand{\rank}{\operatorname{rank}}
+   \newcommand{\row}{\text{Row}}
+   \newcommand{\col}{\text{Col}}
+   \renewcommand{\row}{\text{Row}}
+   \newcommand{\nul}{\text{Nul}}
+   \newcommand{\var}{\text{Var}}
+   \newcommand{\corr}{\text{corr}}
+   \newcommand{\len}[1]{\left|#1\right|}
+   \newcommand{\bbar}{\overline{\bvec}}
+   \newcommand{\bhat}{\widehat{\bvec}}
+   \newcommand{\bperp}{\bvec^\perp}
+   \newcommand{\xhat}{\widehat{\xvec}}
+   \newcommand{\vhat}{\widehat{\vvec}}
+   \newcommand{\uhat}{\widehat{\uvec}}
+   \newcommand{\what}{\widehat{\wvec}}
+   \newcommand{\Sighat}{\widehat{\Sigma}}
+   \newcommand{\basis}[2]{#1_1,#1_2,\ldots,#1_{#2}}
+
+
+
+
+\newcommand{\eqsys}{\begin{array}{rcrcrcr}
+     a_{11}x_{1}\amp +\amp a_{12}x_{2}\amp +\cdots+\amp  a_{1n}x_{n}\amp =\amp b_1\\
+     a_{21}x_{1}\amp +\amp a_{22}x_{2}\amp +\cdots+\amp a_{2n}x_{n}\amp =\amp b_2\\
+     \amp \vdots\amp   \amp \vdots \amp  \amp \vdots \amp  \\
+     a_{m1}x_{1}\amp +\amp a_{m2}x_{2}\amp +\cdots +\amp a_{mn}x_{n}\amp =\amp b_m
+     \end{array}
+     }
+  
+\newcommand{\homsys}{\begin{array}{rcrcrcr}
+a_{11}x_{1}\amp +\amp a_{12}x_{2}\amp +\cdots+\amp  a_{1n}x_{n}\amp =\amp 0\\
+	a_{21}x_{1}\amp +\amp a_{22}x_{2}\amp +\cdots+\amp a_{2n}x_{n}\amp =\amp 0\\
+	\amp \vdots\amp   \amp \vdots \amp  \amp \vdots \amp  \vdots\\
+	a_{m1}x_{1}\amp +\amp a_{m2}x_{2}\amp +\cdots +\amp a_{mn}x_{n}\amp =\amp 0
+	\end{array}
+	}
+\newcommand{\R}{{\mathbb R}}
+\newcommand{\boldn}{{\mathbf n}}
+
+ \newenvironment{linsys}[2][m]{
+     \begin{array}[#1]{@{}*{#2}{rc}r@{}}
+     }{
+     \end{array}}
+
+\newcommand{\augmatrix}{
+     \begin{amatrix}[cccc|c]
+     a_{11} \amp  a_{12} \amp  \cdots \amp  a_{1n} \amp b_{1}\\
+     a_{21} \amp  a_{22} \amp  \cdots \amp  a_{2n} \amp b_{2}\\
+     \vdots  \amp  \vdots  \amp  \ddots \amp  \vdots  \amp \vdots\\
+     a_{m1} \amp  a_{m2} \amp  \cdots \amp  a_{mn}\amp b_{m}
+     \end{amatrix}
+     }
+  \newenvironment{amatrix}[1][ccc|c]{\left[\begin{array}{#1}}{\end{array}\right]}
+  
+  
+  
+  \newcommand{\linearsystem}[2]{\mathcal{LS}\!\left(#1,\,#2\right)}
+  \newcommand{\vect}[1]{\mathbf{#1}}
+  \newcommand{\colvector}[1]{\begin{bmatrix}#1\end{bmatrix}}
+  \newcommand{\augmented}[2]{\left[\,#1 \mid #2\,\right]}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\definecolor{fillinmathshade}{gray}{0.9}
+\newcommand{\fillinmath}[1]{\mathchoice{\colorbox{fillinmathshade}{$\displaystyle     \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\textstyle        \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptstyle      \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptscriptstyle\phantom{\,#1\,}$}}}
+\)</span></div>
+<div class="ptx-page">
+<div id="ptx-sidebar" class="ptx-sidebar"><nav id="ptx-toc" class="ptx-toc depth2 focused" data-preexpanded-levels="0" data-max-levels="2"><ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-frontmatter">
+<div class="toc-title-box"><a href="frontmatter.html" class="internal"><span class="title">Front Matter</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-colophon"><div class="toc-title-box"><a href="frontmatter-4.html" class="internal"><span class="title">Colophon</span></a></div></li>
+<li class="toc-item toc-dedication"><div class="toc-title-box"><a href="frontmatter-5.html" class="internal"><span class="title">Dedication</span></a></div></li>
+<li class="toc-item toc-acknowledgement"><div class="toc-title-box"><a href="frontmatter-6.html" class="internal"><span class="title">Acknowledgements</span></a></div></li>
+<li class="toc-item toc-preface"><div class="toc-title-box"><a href="frontmatter-7.html" class="internal"><span class="title">Tujuan Kami</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter contains-active">
+<div class="toc-title-box"><a href="chap1.html" class="internal"><span class="codenumber">1</span> <span class="title">Sistem Persamaan</span></a></div>
+<ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-expect.html" class="internal"><span class="codenumber">1.1</span> <span class="title">Apa yang dapat kita harapkan</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-expect.html#sec-expect-3" class="internal"><span class="codenumber">1.1.1</span> <span class="title">Beberapa contoh sederhana</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_systems.html" class="internal"><span class="codenumber">1.2</span> <span class="title">Sistem Persamaan Linear</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="s_systems.html#ss_linear_equations" class="internal"><span class="codenumber">1.2.1</span> <span class="title">Sistem Persamaan Linear</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_systems.html#ss_linear_equations-11" class="internal"><span class="codenumber">1.2.1.1</span> <span class="title">Representasi Matriks dari Sistem Linear</span></a></div></li></ul>
+</li></ul>
+</li>
+<li class="toc-item toc-section contains-active">
+<div class="toc-title-box"><a href="s_systemsb.html" class="internal"><span class="codenumber">1.3</span> <span class="title">Eliminasi Gaussian</span></a></div>
+<ul class="structural toc-item-list active">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_systemsb.html#ss_ge_row_echelon" class="internal"><span class="codenumber">1.3.1</span> <span class="title">Matriks bentuk eselon baris</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_systemsb.html#ss_gaussian_elimination" class="internal"><span class="codenumber">1.3.2</span> <span class="title">Eliminasi Gaussian</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-backmatter">
+<div class="toc-title-box"><a href="backmatter.html" class="internal"><span class="title">Back Matter</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-appendix"><div class="toc-title-box"><a href="app-sage-reference.html" class="internal"><span class="codenumber">A</span> <span class="title">Referensi Sage</span></a></div></li>
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="backmatter-3.html" class="internal"><span class="title">Index</span></a></div></li>
+<li class="toc-item toc-colophon"><div class="toc-title-box"><a href="backmatter-4.html" class="internal"><span class="title">Colophon</span></a></div></li>
+<li class="toc-item toc-references"><div class="toc-title-box"><a href="references-backmatter.html" class="internal"><span class="title">References</span></a></div></li>
+</ul>
+</li>
+</ul></nav></div>
+<main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="section" id="s_systemsb"><h2 class="heading hide-type">
+<span class="type">Section</span><span class="space"> </span><span class="codenumber">1.3</span><span class="space"> </span><span class="title">Eliminasi Gaussian</span>
+</h2>
+<section class="introduction" id="s_systemsb-2"><div class="para" id="s_systemsb-2-1">Pada <a href="s_systems.html" class="internal" title="Section 1.2: Sistem Persamaan Linear">Section 1.2</a> kita telah menguraikan prosedur untuk menyelesaikan sistem linear <span class="process-math">\(L\text{.}\)</span> Prosedur tersebut melibatkan penerapan serangkaian operasi baris pada <span class="process-math">\(L\)</span> untuk memperoleh sistem <span class="process-math">\(L'\)</span> yang “lebih sederhana”.</div>
+<div class="para logical" id="s_systemsb-2-2">
+<div class="para">Pada bagian ini kita akan melengkapi uraian tersebut. Secara khusus, kita akan</div>
+<ol class="decimal" id="s_systemsb-2-2-1">
+<li id="s_systemsb-2-2-1-1"><div class="para" id="s_systemsb-2-2-1-1-1">mendeskripsikan secara tepat apa yang kita maksud dengan sistem “lebih sederhana”,</div></li>
+<li id="s_systemsb-2-2-1-2"><div class="para" id="s_systemsb-2-2-1-2-1">menyediakan algoritma (atau resep) yang menentukan secara tepat urutan operasi baris apa yang harus diterapkan untuk memperoleh sistem yang lebih sederhana ini,</div></li>
+<li id="s_systemsb-2-2-1-3"><div class="para" id="s_systemsb-2-2-1-3-1">menjelaskan cara menemukan <em class="emphasis">semua</em> solusi dari sistem yang lebih sederhana yang dihasilkan.</div></li>
+</ol>
+</div>
+<div class="para" id="s_systemsb-2-3">Sebelum kita memulai langkah-langkah ini, kita memperkenalkan sedikit notasi yang berguna. Seperti yang mungkin telah Anda perhatikan, ketika melakukan operasi baris pada sistem persamaan, kita pada dasarnya memperlakukan variabel yang tidak diketahui, serta simbol plus dan sama dengan, sebagai penampung; satu-satunya hal yang benar-benar berubah dalam suatu langkah adalah koefisien dalam persamaan. <em class="emphasis">Matriks augmentasi yang terkait dengan sistem linear</em> adalah cara formal untuk mengekstrak hanya informasi koefisien dari sistem linear. Tentu saja, agar resmi, kita harus terlebih dahulu mendefinisikan apa itu matriks.</div></section><article class="definition definition-like" id="d_matrix"><h3 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.3.1</span><span class="period">.</span><span class="space"> </span><span class="title">Matriks.</span>
+</h3>
+<div class="para" id="d_matrix-2-1">Sebuah <dfn class="terminology">matriks</dfn> adalah susunan bilangan berbentuk persegi panjang.</div> <div class="para" id="d_matrix-2-2">Matriks dengan <span class="process-math">\(m\)</span> baris dan <span class="process-math">\(n\)</span> kolom dikatakan memiliki <dfn class="terminology">ukuran</dfn> (atau <dfn class="terminology">dimensi</dfn>) <span class="process-math">\(m\times n\text{.}\)</span>
+</div></article><article class="definition definition-like" id="d_augmented_matrix"><h3 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.3.2</span><span class="period">.</span><span class="space"> </span><span class="title">Matriks augmentasi.</span>
+</h3>
+<div class="para logical" id="d_augmented_matrix-2-1">
+<div class="para">Misalkan <span class="process-math">\(L\)</span> adalah sistem linear</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\eqsys\text{.}
+\end{equation*}
+</div>
+<div class="para">
+<dfn class="terminology">Matriks augmentasi yang terkait dengan</dfn> <span class="process-math">\(L\)</span> adalah matriks</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\augmatrix\text{.}
+\end{equation*}
+</div>
+</div></article><section class="subsection" id="ss_ge_row_echelon"><h3 class="heading hide-type">
+<span class="type">Subsection</span><span class="space"> </span><span class="codenumber">1.3.1</span><span class="space"> </span><span class="title">Matriks bentuk eselon baris</span>
+</h3>
+<div class="para" id="ss_ge_row_echelon-2">Berikut adalah formulasi tepat kita untuk sistem linear “sederhana”; yaitu sistem yang matriks augmentasinya berada dalam <em class="emphasis">bentuk eselon baris</em>, seperti yang dijelaskan di bawah.</div>
+<article class="definition definition-like" id="d_row_echelon"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.3.3</span><span class="period">.</span><span class="space"> </span><span class="title">Bentuk eselon baris.</span>
+</h4>
+<div class="para" id="d_row_echelon-2-1">
+<dfn class="terminology">Baris nol</dfn> dari suatu matriks adalah baris yang semua entrinya sama dengan nol; <dfn class="terminology">baris tak-nol</dfn> adalah baris yang memuat setidaknya satu entri tak-nol.</div> <div class="para logical" id="d_row_echelon-2-2">
+<div class="para">Suatu matriks berada dalam <dfn class="terminology">bentuk eselon baris</dfn> jika kondisi-kondisi berikut terpenuhi.</div>
+<dl class="description-list">
+<dt id="d_row_echelon-2-2-2-1">(i)</dt>
+<dd><div class="para" id="d_row_echelon-2-2-2-1-2">Pada sembarang baris tak-nol, entri tak-nol pertama (yaitu, paling kiri) sama dengan satu. <dfn class="terminology">Satu utama</dfn> dari suatu matriks adalah entri semacam itu: yaitu, entri dari suatu baris yang sama dengan satu, dan juga merupakan entri tak-nol pertama dari baris tersebut.</div></dd>
+<dt id="d_row_echelon-2-2-2-2">(ii)</dt>
+<dd><div class="para" id="d_row_echelon-2-2-2-2-2">Semua baris nol dikelompokkan bersama di bagian bawah matriks.</div></dd>
+<dt id="d_row_echelon-2-2-2-3">(iii)</dt>
+<dd><div class="para" id="d_row_echelon-2-2-2-3-2">Diberikan dua baris tak-nol sembarang dalam matriks, satu utama dari baris yang lebih bawah terletak secara ketat di sebelah kanan satu utama dari baris di atasnya.</div></dd>
+</dl>
+</div> <div class="para logical" id="d_row_echelon-2-3">
+<div class="para">Suatu matriks berada dalam <dfn class="terminology">bentuk eselon baris tereduksi</dfn> jika selain memenuhi kondisi (i)-(iii) juga memenuhi kondisi berikut.</div>
+<dl class="description-list">
+<dt id="d_row_echelon-2-3-2-1">(iv)</dt>
+<dd> Setiap kolom matriks yang memuat satu utama dari matriks pada salah satu barisnya hanya memiliki entri tak-nol tersebut. Dengan kata lain, jika suatu kolom memuat satu utama, maka itu adalah satu-satunya entri tak-nol dari kolom tersebut.</dd>
+</dl>
+</div> <div class="para" id="d_row_echelon-2-4">Sistem linear <span class="process-math">\(L\)</span> berada dalam <dfn class="terminology">bentuk eselon baris</dfn> (masing-masing <dfn class="terminology">bentuk eselon baris tereduksi</dfn>) jika matriks augmentasinya berada dalam bentuk eselon baris (masing-masing bentuk eselon baris tereduksi).</div></article><div class="para logical" id="ss_ge_row_echelon-4">
+<div class="para">Dalam praktik untuk memutuskan apakah suatu matriks berada dalam bentuk eselon baris (tereduksi), ikuti langkah-langkah berikut:</div>
+<ol class="decimal" id="ss_ge_row_echelon-4-1">
+<li id="ss_ge_row_echelon-4-1-1"><div class="para" id="ss_ge_row_echelon-4-1-1-1">Pertama verifikasi apakah semua baris nol berada di bagian bawah.</div></li>
+<li id="ss_ge_row_echelon-4-1-2"><div class="para" id="ss_ge_row_echelon-4-1-2-1">Untuk setiap baris tak-nol, tentukan apakah entri tak-nol pertama adalah 1, dan beri kotak di sekelilingnya.</div></li>
+<li id="ss_ge_row_echelon-4-1-3"><div class="para" id="ss_ge_row_echelon-4-1-3-1">Pastikan kotak-kotak Anda membentuk pola tangga.</div></li>
+<li id="ss_ge_row_echelon-4-1-4"><div class="para" id="ss_ge_row_echelon-4-1-4-1">(Hanya untuk bentuk eselon baris tereduksi.) Tentukan apakah setiap kolom dengan kotak memiliki 0 di semua tempat lainnya.</div></li>
+</ol>
+</div>
+<article class="example example-like" id="ss_ge_row_echelon-5"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.3.4</span><span class="period">.</span><span class="space"> </span><span class="title">Bentuk eselon baris versus bentuk eselon baris tereduksi.</span>
+</h4>
+<div class="para" id="ss_ge_row_echelon-5-2-1">Untuk setiap matriks, tentukan (a) apakah matriks tersebut berada dalam bentuk eselon baris, dan (b) apakah matriks tersebut berada dalam bentuk eselon baris tereduksi.</div> <ol class="decimal" id="ss_ge_row_echelon-5-2-2">
+<li id="ss_ge_row_echelon-5-2-2-1"><div class="para logical" id="ss_ge_row_echelon-5-2-2-1-1"><div class="displaymath process-math">
+\begin{equation*}
+\begin{bmatrix}0\amp 2\amp 1\amp 0\amp 0\\
+0\amp 0\amp 0\amp 0\amp 0\\
+0\amp 1\amp 0\amp 0\amp 1\\
+1\amp 0\amp 0\amp 0\amp 0\\
+0\amp 0\amp 0\amp 0\amp 0
+\end{bmatrix}
+\end{equation*}
+</div></div></li>
+<li id="ss_ge_row_echelon-5-2-2-2"><div class="para logical" id="ss_ge_row_echelon-5-2-2-2-1"><div class="displaymath process-math">
+\begin{equation*}
+\begin{bmatrix}1\amp 0\amp 0\amp -3\amp -7\\
+0\amp 0\amp 1\amp 2\amp 0\\
+0\amp 0\amp 0\amp 0\amp 1\\
+0\amp 0\amp 0\amp 0\amp 0\\
+0\amp 0\amp 0\amp 0\amp 0
+\end{bmatrix}
+\end{equation*}
+</div></div></li>
+</ol>
+<div class="solutions"><details id="ss_ge_row_echelon-5-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><ol class="decimal" id="ss_ge_row_echelon-5-3-1">
+<li id="ss_ge_row_echelon-5-3-1-1"><div class="para logical" id="ss_ge_row_echelon-5-3-1-1-1">
+<div class="para">Di bawah ini Anda menemukan matriks dengan satu utama yang diberi kotak. Matriks ini gagal berada dalam bentuk eselon baris (dan karenanya juga bentuk eselon baris tereduksi) karena berbagai alasan: baris nol tidak semuanya dikelompokkan di bagian bawah; baris pertama tak-nol, tetapi tidak memiliki satu utama; satu utama dari baris keempat berada di sebelah kiri satu utama dari baris di atasnya.</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\begin{bmatrix}0\amp 2\amp 1\amp 0\amp 0\\
+0\amp 0\amp 0\amp 0\amp 0\\
+0\amp \boxed{1}\amp 0\amp 0\amp 1\\
+\boxed{1}\amp 0\amp 0\amp 0\amp 0\\
+0\amp 0\amp 0\amp 0\amp 0
+\end{bmatrix}
+\end{equation*}
+</div>
+</div></li>
+<li id="ss_ge_row_echelon-5-3-1-2"><div class="para logical" id="ss_ge_row_echelon-5-3-1-2-1">
+<div class="para">Di bawah ini Anda menemukan matriks dengan satu utama yang diberi kotak. Matriks ini berada dalam bentuk eselon baris: baris nol (baris 4 dan 5) dikelompokkan di bagian bawah; setiap baris tak-nol memiliki satu utama (diberi kotak pada matriks di bawah); satu utama melangkah secara ketat ke kanan saat kita bergerak ke bawah baris.</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\begin{bmatrix}\boxed{1}\amp 0\amp 0\amp -3\amp -7\\
+0\amp 0\amp \boxed{1}\amp 2\amp 0\\
+0\amp 0\amp 0\amp 0\amp \boxed{1}\\
+0\amp 0\amp 0\amp 0\amp 0\\
+0\amp 0\amp 0\amp 0\amp 0
+\end{bmatrix}
+\end{equation*}
+</div>
+<div class="para">Matriks ini <em class="emphasis">tidak</em> berada dalam bentuk eselon baris tereduksi, karena kolom terakhir memuat satu utama pada baris ketiganya, dan entri tak-nol pada baris pertamanya.</div>
+</div></li>
+</ol></div></details></div></article></section><section class="subsection" id="ss_gaussian_elimination"><h3 class="heading hide-type">
+<span class="type">Subsection</span><span class="space"> </span><span class="codenumber">1.3.2</span><span class="space"> </span><span class="title">Eliminasi Gaussian</span>
+</h3>
+<div class="para" id="ss_gaussian_elimination-2">Kita sekarang akan mendeskripsikan prosedur sistematis, yang disebut <em class="emphasis">eliminasi Gaussian</em>, yang memungkinkan kita mereduksi sistem linear <span class="process-math">\(L\)</span> yang diberikan menjadi sistem <span class="process-math">\(L'\)</span> dalam bentuk eselon baris. Sesuai dengan pembahasan sebelumnya, kita akan mengidentifikasi sistem <span class="process-math">\(L\)</span> dengan matriks augmentasinya <span class="process-math">\(A\text{.}\)</span> Lebih lanjut, mereduksi sistem linear menggunakan operasi elementer pada persamaan sekarang diterjemahkan sebagai melakukan <em class="emphasis">operasi baris elementer</em> pada matriks. Dengan risiko redundansi, kita sekarang secara resmi menerjemahkan sejumlah konsep terdahulu kita mengenai reduksi sistem linear ke dalam konteks matriks.</div>
+<article class="definition definition-like" id="d_rowops"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.3.5</span><span class="period">.</span><span class="space"> </span><span class="title">Operasi baris elementer pada matriks.</span>
+</h4>
+<div class="para" id="d_rowops-8-1">Sebuah <dfn class="terminology">operasi baris elementer</dfn> adalah salah satu dari tiga jenis operasi matriks berikut. Misalkan <span class="process-math">\(A\)</span> adalah matriks <span class="process-math">\(m\times n\)</span> yang diberikan, dan nyatakan dengan <span class="process-math">\(r_i\)</span> baris ke-<span class="process-math">\(i\)</span> dari <span class="process-math">\(A\text{.}\)</span>
+</div> <dl class="description-list">
+<dt id="d_row_scale">Perkalian skalar</dt>
+<dd><div class="para" id="d_row_scale-2">Kalikan sebuah baris dengan bilangan <em class="emphasis">tak-nol</em> <span class="process-math">\(c\ne 0\text{:}\)</span> yaitu, ganti <span class="process-math">\(r_i\)</span> dengan <span class="process-math">\(c\,r_i\text{,}\)</span> hasil perkalian semua entri baris dengan <span class="process-math">\(c\text{.}\)</span>
+</div></dd>
+<dt id="d_row_swap">Pertukaran baris</dt>
+<dd><div class="para" id="d_row_swap-2">Tukar dua baris dari <span class="process-math">\(A\text{.}\)</span>
+</div></dd>
+<dt id="d_row_add">Penjumlahan baris</dt>
+<dd><div class="para" id="d_row_add-2">Tambahkan kelipatan satu baris ke baris lain: yaitu, ganti <span class="process-math">\(r_i\)</span> dengan <span class="process-math">\(r_i+cr_j\)</span> untuk suatu <span class="process-math">\(c\text{,}\)</span> <span class="process-math">\(i\text{,}\)</span> dan <span class="process-math">\(j\text{.}\)</span>
+</div></dd>
+</dl> <div class="para" id="d_rowops-8-3">Tindakan mengubah matriks menggunakan operasi baris elementer disebut <dfn class="terminology">reduksi baris</dfn>
+</div> <div class="para" id="d_rowops-8-4">Dua matriks <dfn class="terminology">ekuivalen baris</dfn> jika yang satu dapat diperoleh dari yang lain dengan melakukan urutan hingga operasi baris elementer.</div></article><article class="remark remark-like" id="s_ge_notation"><h4 class="heading">
+<span class="type">Remark</span><span class="space"> </span><span class="codenumber">1.3.6</span><span class="period">.</span><span class="space"> </span><span class="title">Notasi.</span>
+</h4>
+<div class="displaymath process-math" id="s_ge_notation-2">
+\begin{align*}
+A\amp \xrightarrow{c\,r_i} B \amp A\amp \xrightarrow{r_i\leftrightarrow r_j} B\amp A\amp\xrightarrow{r_i+c\,r_j} B
+\end{align*}
+</div>
+<span class="process-math">\(r_i\)</span><span class="process-math">\(A\)</span><span class="process-math">\(c\, r_i\text{,}\)</span><span class="process-math">\(r_i\)</span><span class="process-math">\(r_j\)</span><span class="process-math">\(A\text{,}\)</span><span class="process-math">\(r_i\)</span><span class="process-math">\(A\)</span><span class="process-math">\(r_i+c\, r_j\text{.}\)</span></article><div class="para" id="ss_gaussian_elimination-5">Akhirnya kita siap untuk mendefinisikan eliminasi Gaussian. Ini adalah prosedur, atau <em class="emphasis">algoritma</em>, yang menerima masukan matriks <span class="process-math">\(A\)</span> dan mereduksinya menjadi matriks <span class="process-math">\(B\)</span> dalam bentuk eselon baris.</div>
+<article class="principle theorem-like" id="pr_GE-has-many-uses"><h4 class="heading">
+<span class="type">Principle</span><span class="space"> </span><span class="codenumber">1.3.7</span><span class="period">.</span><span class="space"> </span><span class="title">Eliminasi Gaussian memiliki banyak kegunaan.</span>
+</h4>
+<div class="para" id="pr_GE-has-many-uses-2-1">Anda harus memandang eliminasi Gaussian sebagai sesuatu yang memiliki kehidupan independen dari perannya dalam menyelesaikan sistem persamaan linear. Pada hakikatnya, ini hanyalah prosedur tertentu yang dilakukan pada matriks. Seperti yang akan Anda lihat, eliminasi Gaussian adalah kuda kerja sejati aljabar linear; menyederhanakan sistem linear hanyalah salah satu dari banyak aplikasi bergunanya.</div></article><article class="definition definition-like" id="d_GE"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.3.8</span><span class="period">.</span><span class="space"> </span><span class="title">Eliminasi Gaussian.</span>
+</h4>
+<div class="para" id="d_GE-3-1">
+<dfn class="terminology">Eliminasi Gaussian</dfn> adalah algoritma yang dijelaskan di bawah. Algoritma ini menerima masukan matriks <span class="process-math">\(A\)</span> dan mengembalikan matriks <span class="process-math">\(B\)</span> yang ekuivalen baris dalam bentuk eselon baris.</div> <dl class="description-list">
+<dt id="d_GE-3-2-1">Langkah 1</dt>
+<dd><div class="para" id="d_GE-3-2-1-2">Temukan kolom tak-nol paling kiri dan lakukan pertukaran baris untuk memindahkan baris dengan entri tak-nol ini ke bagian atas matriks.</div></dd>
+<dt id="d_GE-3-2-2">Langkah 2</dt>
+<dd><div class="para" id="d_GE-3-2-2-2">Skala baris teratas yang baru untuk menghasilkan satu utama pada baris tersebut. Sebut baris baru ini <span class="process-math">\(r\text{.}\)</span>
+</div></dd>
+<dt id="d_GE-3-2-3">Langkah 3</dt>
+<dd><div class="para" id="d_GE-3-2-3-2">Untuk setiap baris <span class="process-math">\(r_i\)</span> di bawah <span class="process-math">\(r\text{,}\)</span> lakukan operasi baris berbentuk <span class="process-math">\(r_i+c\,r\)</span> untuk mengganti semua entri di bawah satu utama dari <span class="process-math">\(r\)</span> dengan nol.</div></dd>
+<dt id="d_GE-3-2-4">Langkah 4</dt>
+<dd><div class="para" id="d_GE-3-2-4-2">Mulai lagi dengan Langkah 1 yang diterapkan pada matriks yang terdiri dari semua baris di bawah <span class="process-math">\(r\text{.}\)</span> Lanjutkan hingga matriks berada dalam bentuk eselon baris.</div></dd>
+</dl></article><section class="paragraphs" id="ss_gaussian_elimination-8"><h4 class="heading"><span class="title">Contoh model.</span></h4>
+<div class="para" id="ss_gaussian_elimination-8-2">Gunakan contoh berikut sebagai model bagaimana melakukan dan memberi anotasi langkah-langkah dalam eliminasi Gaussian. Saat pertama kali mempelajari prosedur ini, pastikan untuk mengikutinya <em class="emphasis">sesuai huruf</em>. Secara khusus, sesuai dengan mandat yang dikeluarkan dalam <code class="code-inline tex2jax_ignore">[cross-reference to target(s) "s_systems_rm_oneoperation" missing or not unique]</code>, Anda hanya boleh melakukan satu operasi baris pada satu waktu, dan hanya dalam urutan yang ditentukan dalam Langkah 1-4 dari <a href="s_systemsb.html#d_GE" class="xref" data-knowl="./knowl/xref/d_GE.html" data-reveal-label="Reveal" data-close-label="Close" title="Definition 1.3.8: Eliminasi Gaussian">Definition 1.3.8</a>.</div>
+<div class="displaymath process-math" data-contains-math-knowls=" ./knowl/xref/d_GE.html" id="ss_gaussian_elimination-8-3">
+\begin{align*}
+\begin{bmatrix}0\amp 0\amp -2\amp 0\amp 7\amp 12\\
+2\amp 4\amp -10\amp 6\amp 12\amp 28\\
+2\amp 4\amp -5\amp 6\amp -5\amp -1
+\end{bmatrix}
+\amp \xrightarrow[\hspace{35pt}]{r_1\leftrightarrow r_2}
+\begin{bmatrix}2\amp 4\amp -10\amp 6\amp 12\amp 28\\
+0\amp 0\amp -2\amp 0\amp 7\amp 12\\
+2\amp 4\amp -5\amp 6\amp -5\amp -1
+\end{bmatrix}\\
+\amp \xrightarrow[\hspace{35pt}]{\frac{1}{2}r_1}
+\begin{bmatrix}1\amp 2\amp -5\amp 3\amp 6\amp 14\\
+0\amp 0\amp -2\amp 0\amp 7\amp 12\\
+2\amp 4\amp -5\amp 6\amp -5\amp -1
+\end{bmatrix}\\
+\amp \xrightarrow[\hspace{35pt}]{r_3-2r_1}
+\begin{bmatrix}1\amp 2\amp -5\amp 3\amp 6\amp 14\\
+0\amp 0\amp -2\amp 0\amp 7\amp 12\\
+0\amp 0\amp 5\amp 0\amp -17\amp -29
+\end{bmatrix}\amp
+\text{ (sekarang selesai dengan baris pertama) }\\
+\amp \xrightarrow[\hspace{35pt}]{-\frac{1}{2}r_2}
+\begin{bmatrix}1\amp 2\amp -5\amp 3\amp 6\amp 14\\
+0\amp 0\amp 1\amp 0\amp -7/2\amp -6\\
+0\amp 0\amp 5\amp 0\amp -17\amp -29
+\end{bmatrix}\\
+\amp \xrightarrow[\hspace{35pt}]{r_3+(-5)r_2}
+\begin{bmatrix}1\amp 2\amp -5\amp 3\amp 6\amp 14\\
+0\amp 0\amp 1\amp 0\amp -7/2\amp -6\\
+0\amp 0\amp 0\amp 0\amp 1/2\amp 1
+\end{bmatrix}\amp
+\text{ (sekarang selesai dengan baris ke-2)}\\
+\amp \xrightarrow[\hspace{35pt}]{2r_3}
+\begin{bmatrix}1\amp 2\amp -5\amp 3\amp 6\amp 14\\
+0\amp 0\amp 1\amp 0\amp -7/2\amp -6\\
+0\amp 0\amp 0\amp 0\amp 1\amp 2
+\end{bmatrix}
+\end{align*}
+</div>
+<div class="para" id="ss_gaussian_elimination-8-4">Matriks yang dihasilkan oleh eliminasi Gaussian dijamin berada dalam bentuk eselon baris, tetapi mungkin tidak berada dalam bentuk eselon baris <em class="emphasis">tereduksi</em>. <em class="emphasis">Eliminasi Gauss-Jordan</em> mendeskripsikan cara sistematis untuk melanjutkan reduksi ke keadaan yang bahkan lebih sederhana ini.</div></section><article class="definition definition-like" id="d_GaussJordan"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">1.3.9</span><span class="period">.</span><span class="space"> </span><span class="title">Eliminasi Gauss-Jordan.</span>
+</h4>
+<div class="para" id="d_GaussJordan-2-1">
+<dfn class="terminology">Eliminasi Gauss-Jordan</dfn> adalah algoritma yang dijelaskan di bawah. Algoritma ini menerima masukan matriks <span class="process-math">\(A\)</span> dan mengembalikan matriks <span class="process-math">\(B\)</span> yang ekuivalen baris dalam bentuk eselon baris tereduksi.</div> <dl class="description-list">
+<dt id="d_GaussJordan-2-2-1">Langkah 1-4</dt>
+<dd><div class="para" id="d_GaussJordan-2-2-1-2">Terapkan eliminasi Gaussian untuk mengubah <span class="process-math">\(A\)</span> menjadi matriks dalam bentuk eselon baris.</div></dd>
+<dt id="d_GaussJordan-2-2-2">Langkah 5</dt>
+<dd><div class="para" id="d_GaussJordan-2-2-2-2">Temukan kolom paling kanan dari matriks yang memuat satu utama. Misalkan <span class="process-math">\(r_i\)</span> adalah baris yang memuat satu utama ini. Untuk setiap baris <span class="process-math">\(r_j\)</span> di atas <span class="process-math">\(r_i\text{,}\)</span> lakukan operasi baris berbentuk <span class="process-math">\(r_i+c\,r_j\)</span> untuk mengganti semua entri di atas satu utama dengan nol.</div></dd>
+<dt id="d_GaussJordan-2-2-3">Langkah 6</dt>
+<dd><div class="para" id="d_GaussJordan-2-2-3-2">Mulai lagi dengan Langkah 5 yang diterapkan pada kolom berikutnya di sebelah kiri yang memuat satu utama. Lanjutkan hingga matriks berada dalam bentuk eselon baris tereduksi.</div></dd>
+</dl></article><div class="para logical" id="ss_gaussian_elimination-10">
+<div class="para">Melanjutkan contoh sebelumnya:</div>
+<div class="displaymath process-math" id="ss_gaussian_elimination-10-1">
+\begin{align*}
+\begin{bmatrix}1\amp 2\amp -5\amp 3\amp 6\amp 14\\ 0\amp 0\amp 1\amp 0\amp -7/2\amp -6\\ 0\amp 0\amp 0\amp 0\amp 1\amp 2 \end{bmatrix} .  \amp \xrightarrow[\hspace{35pt}]{r_2+7/2r_3}\amp \begin{bmatrix}1\amp 2\amp -5\amp 3\amp 6\amp 14\\ 0\amp 0\amp 1\amp 0\amp 0\amp 1\\ 0\amp 0\amp 0\amp 0\amp 1\amp 2 \end{bmatrix} .\\
+\amp \xrightarrow[\hspace{35pt}]{r_1-6r_3}\amp \begin{bmatrix}1\amp 2\amp -5\amp 3\amp 0\amp 2\\ 0\amp 0\amp 1\amp 0\amp 0\amp 1\\ 0\amp 0\amp 0\amp 0\amp 1\amp 2 \end{bmatrix} .\\
+\amp \xrightarrow[\hspace{35pt}]{r_1+5r_2}\amp \begin{bmatrix}1\amp 2\amp 0\amp 3\amp 0\amp 7\\ 0\amp 0\amp 1\amp 0\amp 0\amp 1\\ 0\amp 0\amp 0\amp 0\amp 1\amp 2 \end{bmatrix} \text{.}
+\end{align*}
+</div>
+</div>
+<div class="para logical" id="ss_gaussian_elimination-11">
+<ul class="disc" id="ss_gaussian_elimination-11-2">
+<li id="ss_gaussian_elimination-11-2-1"><div class="para" id="ss_gaussian_elimination-11-2-1-1">Indeks baris dimulai dari <span class="process-math">\(0\)</span> (bukan <span class="process-math">\(1\)</span>). Jadi baris pertama adalah baris ke-<span class="process-math">\(0\text{,}\)</span> baris kedua adalah baris ke-<span class="process-math">\(1\text{,}\)</span> dst.</div></li>
+<li id="ss_gaussian_elimination-11-2-2"><div class="para" id="ss_gaussian_elimination-11-2-2-1">Operasi ini mengubah matriks secara langsung (in place).</div></li>
+</ul>
+<div class="para">
+<section class="paragraphs" id="ss_gaussian_elimination-11-3"><h4 class="heading"><span class="title">Tiga Operasi Dasar Baris.</span></h4></section> <div class="para" id="ss_gaussian_elimination-11-4">1. <code class="code-inline tex2jax_ignore">A.rescale_row(i, a)</code> Fungsi: Mengalikan baris ke-<span class="process-math">\(i\)</span> dengan skalar <span class="process-math">\(a\text{.}\)</span>
+</div> <article class="example example-like" id="ss_gaussian_elimination-11-5"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.3.10</span><span class="period">.</span><span class="space"> </span><span class="title">Contoh.</span>
+</h4>
+<pre class="code-block tex2jax_ignore">A = matrix([[1, 2, 3], [4, 5, 6]])
+A.rescale_row(1, 2)  # Kalikan baris ke-1 dengan 2
+# Hasil: A = [[1, 2, 3], [8, 10, 12]]
+</pre></article> <div class="para" id="ss_gaussian_elimination-11-6">2. <code class="code-inline tex2jax_ignore">A.add_multiple_of_row(i, j, a)</code> Fungsi: Menambahkan <span class="process-math">\(a \times\)</span> (baris ke-<span class="process-math">\(j\)</span>) ke baris ke-<span class="process-math">\(i\text{.}\)</span>
+</div> <div class="para" id="ss_gaussian_elimination-11-7">Rumus: <span class="process-math">\(\text{baris}_i = a \cdot \text{baris}_j + \text{baris}_i\)</span>
+</div> <article class="example example-like" id="ss_gaussian_elimination-11-8"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.3.11</span><span class="period">.</span><span class="space"> </span><span class="title">Contoh.</span>
+</h4>
+<pre class="code-block tex2jax_ignore">A = matrix([[1, 2, 3], [4, 5, 6]])
+A.add_multiple_of_row(1, 0, -4)  # Tambahkan -4*(baris 0) ke baris 1
+# Hasil: A = [[1, 2, 3], [0, -3, -6]]
+</pre></article> <div class="para" id="ss_gaussian_elimination-11-9">3. <code class="code-inline tex2jax_ignore">A.swap_rows(i, j)</code> Fungsi: Menukar baris ke-<span class="process-math">\(i\)</span> dengan baris ke-<span class="process-math">\(j\text{.}\)</span>
+</div> <article class="example example-like" id="ss_gaussian_elimination-11-10"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.3.12</span><span class="period">.</span><span class="space"> </span><span class="title">Contoh.</span>
+</h4>
+<pre class="code-block tex2jax_ignore">A = matrix([[1, 2, 3], [4, 5, 6]])
+A.swap_rows(0, 1)  # Tukar baris 0 dan 1
+# Hasil: A = [[4, 5, 6], [1, 2, 3]]
+</pre></article> <article class="computation computation-like" id="sage-GE"><h4 class="heading">
+<span class="type">Computation</span><span class="space"> </span><span class="codenumber">1.3.13</span><span class="period">.</span><span class="space"> </span><span class="title">Implementasi proses menggunakan Sage.</span>
+</h4>
+<div class="para" id="sage-GE-3">Sage memiliki metode matriks, <code class="code-inline tex2jax_ignore">.augment()</code>, yang akan menggabungkan dua matriks, berdampingan asalkan keduanya memiliki jumlah baris yang sama. Metode yang sama akan memungkinkan Anda untuk mengaugmentasi matriks dengan vektor kolom, seperti yang dijelaskan dalam <a href="s_systems.html#definition-AM" class="xref" data-knowl="./knowl/xref/definition-AM.html" data-reveal-label="Reveal" data-close-label="Close" title="Definition 1.2.9: Matriks Augmentasi">Definition 1.2.9</a>, asalkan jumlah entri dalam vektor sesuai dengan jumlah baris untuk matriks. Di sini kita mengulang konstruksi dalam <a href="s_systems.html#example-AMAA" class="xref" data-knowl="./knowl/xref/example-AMAA.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.2.10: Matriks augmentasi">Example 1.2.10</a>. Kita sekarang akan memformat matriks kita sebagai input di beberapa baris, suatu praktik yang dapat Anda gunakan dalam lembar kerja Anda sendiri, atau tidak.</div>
+<div id="sagecell-AM-b" class="ptx-sagecell sagecell-sage"><script type="text/x-sage">            B = matrix(QQ, [[0, 0, -2, 0, 7, 12],[2, 4, -10, 6, 12, 28],[2, 4, -5, 6, -5, -1]])
+M0 = matrix(B)
+M1 = B.with_swapped_rows(0, 1)
+M2 = M1.with_rescaled_row(0, 1/2)
+M3 = M2.with_added_multiple_of_row(2, 0, -2)
+M4 = M3.with_rescaled_row(1, -1/2)
+M5 = M4.with_added_multiple_of_row(2, 1, -5)
+M6 = M5.with_rescaled_row(2, 2)
+print("awal")
+print(M0)
+print("M1")
+print(M1)
+print("M2")
+print(M2)
+print("M3")
+print(M3)
+print("M4")
+print(M4)
+print("M5")
+print(M5)
+print("M6")
+print(M6)
+</script></div></article> <a href="s_systemsb.html#d_GE" class="xref" data-knowl="./knowl/xref/d_GE.html" data-reveal-label="Reveal" data-close-label="Close" title="Definition 1.3.8: Eliminasi Gaussian">Definition 1.3.8</a> dan <a href="s_systemsb.html#d_GaussJordan" class="xref" data-knowl="./knowl/xref/d_GaussJordan.html" data-reveal-label="Reveal" data-close-label="Close" title="Definition 1.3.9: Eliminasi Gauss-Jordan">Definition 1.3.9</a> sebenarnya adalah teorema yang tersamar, dan kita meresmikannya dalam <a href="s_systemsb.html#s_ge_th_matrixforms" class="xref" data-knowl="./knowl/xref/s_ge_th_matrixforms.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.3.14: Bentuk matriks ekuivalen baris">Theorem 1.3.14</a>.</div>
+</div>
+<article class="project project-like" id="sage_ge"><h4 class="heading">
+<span class="type">Project</span><span class="space"> </span><span class="codenumber">1.3.1</span><span class="period">.</span><span class="space"> </span><span class="title">Eliminasi Gaussian.</span>
+</h4>
+<div class="para" id="sage_ge-2">Pada sel Sage pertama di bawah ini, Anda menemukan implementasi rekursif eliminasi Gaussian di Sage yang mencakup komentar penjelasan. Evaluasi sel ini untuk memuat fungsi <code class="code-inline tex2jax_ignore">row_echelon_form</code>. Sel kedua memungkinkan Anda menerapkan algoritma eliminasi Gaussian pada matriks pilihan Anda. Seperti yang dapat Anda lihat, fungsi <code class="code-inline tex2jax_ignore">show</code> menyediakan versi <span class="latex-logo">L<span class="A">a</span>T<span class="E">e</span>X</span> yang bagus untuk keluaran.</div>
+<div id="sage_ge-3" class="ptx-sagecell sagecell-sage"><script type="text/x-sage">def row_echelon_form(A):
+  m,n=A.dimensions()
+  R=A.base_ring()
+  K=R.fraction_field()
+  A=A.change_ring(K)
+  if A.is_zero() or m==0 or n==0: return A
+  else:
+      j=0 #column number
+      while A.column(j).is_zero(): #Find first nonzero column of A
+          j+=1
+      i=0
+      while A[i,j]==0: #Find first nonzero entry in nonzero column
+          i+=1
+      c=A[i,j]
+      A.swap_rows(0,i) #Bring nonzero entry to top
+      A.rescale_row(0,1/c) #Make nonzero entry a leading one
+      for k in range(i+1,m): #Clear entries below leading one
+          A.add_multiple_of_row(k,0,-A[k,j])
+      B=A[1:,:] #Concentrate on matrix below first row
+      A[1:,:]=row_echelon_form(B) #Apply recursion
+      return A
+</script></div>
+<div id="sage_ge-4" class="ptx-sagecell sagecell-sage"><script type="text/x-sage">A=matrix([[0,0,3],[0,2,5],[0,3,3]])
+B=row_echelon_form(A)
+show(B)
+B
+</script></div>
+<div class="para" id="sage_ge-5">Sage memiliki metode reduksi barisnya sendiri, <code class="code-inline tex2jax_ignore">rref</code>, yang mengubah matriks menjadi bentuk eselon baris <em class="emphasis">tereduksi</em>. Mari kita bandingkan keluaran dari kedua algoritma ini.</div>
+<div id="sage_ge-6" class="ptx-sagecell sagecell-sage"><script type="text/x-sage">A=matrix([[0,0,3],[0,2,5],[0,3,3]])
+B=row_echelon_form(A)
+C=A.rref()
+show(B)
+show(C)
+B is C
+</script></div>
+<div class="para logical" id="sage_ge-7">
+<div class="para">Aktivitas berikut dapat berguna untuk mengimplementasikan eliminasi Gaussian dengan cara yang menampilkan semua langkah antara. Gunakan sel Sage kosong di bawah ini untuk bereksperimen.</div>
+<ul class="disc" id="sage_ge-7-1">
+<li id="sage_ge-7-1-1"><div class="para" id="sage_ge-7-1-1-1">Modifikasi kode <code class="code-inline tex2jax_ignore">row_echelon_form</code> untuk membuat algoritma non-rekursif.</div></li>
+<li id="sage_ge-7-1-2"><div class="para" id="sage_ge-7-1-2-1">Tambahkan perintah <code class="code-inline tex2jax_ignore">show</code> ke versi non-rekursif Anda dari <code class="code-inline tex2jax_ignore">row_echelon_form</code> untuk menampilkan langkah-langkah dalam reduksi baris.</div></li>
+</ul>
+</div>
+<div id="sage_ge-8" class="ptx-sagecell sagecell-sage"><script type="text/x-sage">
+</script></div></article><article class="theorem theorem-like" id="s_ge_th_matrixforms"><h4 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">1.3.14</span><span class="period">.</span><span class="space"> </span><span class="title">Bentuk matriks ekuivalen baris.</span>
+</h4>
+<dl class="description-list">
+<dt id="th_REexistence">Bentuk eselon baris ada</dt>
+<dd><div class="para" id="th_REexistence-2">Sembarang matriks <span class="process-math">\(A\)</span> ekuivalen baris dengan matriks <span class="process-math">\(B\)</span> dalam bentuk eselon baris. Memang, eliminasi Gaussian mereduksi baris <span class="process-math">\(A\)</span> menjadi matriks dalam bentuk eselon baris.</div></dd>
+<dt id="th_RREexistence">Bentuk eselon baris tereduksi ada</dt>
+<dd><div class="para" id="th_RREexistence-2">Sembarang matriks <span class="process-math">\(A\)</span> ekuivalen baris dengan matriks <span class="process-math">\(B\)</span> dalam bentuk eselon baris tereduksi. Memang, eliminasi Gauss-Jordan mereduksi baris <span class="process-math">\(A\)</span> menjadi matriks dalam bentuk eselon baris tereduksi.</div></dd>
+<dt id="th_RREuniqueness">Bentuk eselon baris tereduksi adalah unik</dt>
+<dd><div class="para" id="th_RREuniqueness-2">Diberikan sembarang matriks <span class="process-math">\(A\text{,}\)</span> terdapat matriks <span class="process-math">\(B\)</span> yang <em class="emphasis">unik</em> dalam bentuk eselon baris tereduksi yang ekuivalen baris dengan <span class="process-math">\(A\text{.}\)</span>
+</div></dd>
+</dl></article><div class="para" id="ss_gaussian_elimination-14">Kita akan banyak menggunakan dua hasil pertama dari <a href="s_systemsb.html#s_ge_th_matrixforms" class="xref" data-knowl="./knowl/xref/s_ge_th_matrixforms.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.3.14: Bentuk matriks ekuivalen baris">Theorem 1.3.14</a>. Bukti pernyataan-pernyataan ini tidak sulit, tetapi tidak terlalu mencerahkan. Oleh karena itu kami menghilangkannya di sini, dan mengarahkan pembaca yang tertarik ke <a class="external" href="http://linear.ups.edu/fcla" target="_blank"><em class="emphasis">A First Course in Linear Algebra</em></a><details class="ptx-footnote" aria-live="polite" id="ss_gaussian_elimination-14-3"><summary class="ptx-footnote__number" title="Footnote 1.3.1"><sup> 1 </sup></summary><div class="ptx-footnote__contents" id="ss_gaussian_elimination-14-3"><code class="code-inline tex2jax_ignore">linear.ups.edu/fcla</code></div></details> karya Robert Beezer (<a class="external" href="http://linear.ups.edu/fcla/section-RREF.html#theorem-REMEF" target="_blank">Teorema REMEF</a><details class="ptx-footnote" aria-live="polite" id="ss_gaussian_elimination-14-5"><summary class="ptx-footnote__number" title="Footnote 1.3.2"><sup> 2 </sup></summary><div class="ptx-footnote__contents" id="ss_gaussian_elimination-14-5"><code class="code-inline tex2jax_ignore">linear.ups.edu/fcla/section-RREF.html#theorem-REMEF</code></div></details>).</div>
+<div class="para" id="ss_gaussian_elimination-15">Pernyataan ketiga dari <a href="s_systemsb.html#s_ge_th_matrixforms" class="xref" data-knowl="./knowl/xref/s_ge_th_matrixforms.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.3.14: Bentuk matriks ekuivalen baris">Theorem 1.3.14</a>, bahwa setiap matriks ekuivalen baris dengan matriks dalam bentuk eselon baris tereduksi yang <em class="emphasis">unik</em>, memang memiliki bukti yang mencerahkan. Namun, kami akan menunda bukti ini hingga kami memiliki sedikit lebih banyak teori yang tersedia. (Lihat <code class="code-inline tex2jax_ignore">[provisional cross-reference: RREFuniqueness]</code>.) Sampai saat itu, kami akan dengan sadar <em class="emphasis">tidak</em> menggunakan hasil ini dalam mengembangkan teori lebih lanjut kami.</div>
+<article class="example example-like" id="s_ge_ex_REFnotunique"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">1.3.15</span><span class="period">.</span><span class="space"> </span><span class="title">Bentuk eselon baris tidak unik.</span>
+</h4>
+<div class="para" id="s_ge_ex_REFnotunique-2-1">Tunjukkan bahwa matriks <span class="process-math">\(A\)</span> dapat ekuivalen baris dengan dua atau lebih matriks dalam bentuk eselon baris.</div>
+<div class="solutions"><details id="s_ge_ex_REFnotunique-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para" id="s_ge_ex_REFnotunique-3-1">Ambil <span class="process-math">\(A=\begin{bmatrix} 1 \amp 1 \\
+1 \amp 2  \end{bmatrix}\text{.}\)</span> Matriks ini direduksi menjadi <span class="process-math">\(B=\begin{bmatrix} 1 \amp 1  \\
+0 \amp 1  \end{bmatrix}\)</span> menggunakan eliminasi Gaussian; dan direduksi lebih lanjut menjadi <span class="process-math">\(C=\begin{bmatrix}1\amp 0\\ 0\amp 1\end{bmatrix}\)</span> menggunakan eliminasi Gauss-Jordan. Dengan demikian kita melihat bahwa <span class="process-math">\(A\)</span> ekuivalen baris dengan dua matriks berbeda dalam bentuk eselon baris. (Menurut <a href="s_systemsb.html#s_ge_th_matrixforms" class="xref" data-knowl="./knowl/xref/s_ge_th_matrixforms.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.3.14: Bentuk matriks ekuivalen baris">Theorem 1.3.14</a>, matriks <span class="process-math">\(C\)</span> adalah satu-satunya matriks dalam bentuk eselon baris <em class="emphasis">tereduksi</em> yang ekuivalen baris dengan <span class="process-math">\(A\text{.}\)</span>)</div></div></details></div></article></section></section></div>
+<div id="ptx-content-footer" class="ptx-content-footer">
+<a class="previous-button button" href="s_systems.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="backmatter.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
+</div></main>
+</div>
+<div id="ptx-page-footer" class="ptx-page-footer">
+<a class="pretext-link" href="https://pretextbook.org" title="PreTeXt"><div class="logo"><svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="338 3000 8772 6866" role="img"><title>PreTeXt logo</title><g style="stroke-width:.025in; stroke:currentColor; fill:none"><polyline points="472,3590 472,9732 " style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round; "></polyline><path style="stroke-width:126;stroke-linecap:butt;" d="M 4724,9448 A 4660 4660  0  0  1  8598  9259"></path><path style="stroke-width:174;stroke-linecap:butt;" d="M 4488,9685 A 4228 4228  0  0  0   472  9732"></path><path style="stroke-width:126;stroke-linecap:butt;" d="M 4724,3590 A 4241 4241  0  0  1  8598  3496"></path><path style="stroke-width:126;stroke-linecap:round;" d="M 850,3496  A 4241 4241  0  0  1  4724  3590"></path><path style="stroke-width:126;stroke-linecap:round;" d="M 850,9259  A 4507 4507  0  0  1  4724  9448"></path><polyline points="5385,4299 4062,8125" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8598,3496 8598,9259" style="stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="850,3496 850,9259" style="stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="4960,9685 4488,9685" style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="3070,4582 1889,6141 3070,7700" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="6418,4582 7600,6141 6418,7700" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8976,3590 8976,9732" style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><path style="stroke-width:174;stroke-linecap:butt;" d="M 4960,9685 A 4228 4228  0  0  1  8976  9732"></path></g></svg></div></a><a class="runestone-link" href="https://runestone.academy" title="Runestone Academy"><img class="logo" src="https://runestone.academy/runestone/static/images/RAIcon_cropped.png" alt="Runstone Academy logo"></a><a class="mathjax-link" href="https://www.mathjax.org" title="MathJax"><img class="logo" src="https://www.mathjax.org/badge/badge-square-2.png" alt="MathJax logo"></a>
+</div>
+</body>
+</html>
