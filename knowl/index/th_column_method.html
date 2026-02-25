@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<!--******************************************-->
+<!--*  Authored with PreTeXt                 *-->
+<!--*  pretextbook.org                       *-->
+<!--*  Theme: default-modern                 *-->
+<!--*  Palette: blue-green                   *-->
+<!--******************************************-->
+
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="theorem theorem-like"><h4 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">2.1.24</span><span class="period">.</span><span class="space"> </span><span class="title">Metode kolom dari perkalian matriks.</span>
+</h4>
+<div class="para logical">
+<div class="para">Misalkan <span class="process-math">\(A=[a_{i}]_{m\times n}\)</span> dan <span class="process-math">\(B=[b_{ij}]_{n\times r}\text{.}\)</span> Metode kolom dari perkalian matriks menghitung <span class="process-math">\(AB\)</span> menggunakan dua langkah di bawah ini.</div>
+<dl class="description-list">
+<dt>Langkah 1</dt>
+<dd><div class="para logical">
+<div class="para">Misalkan <span class="process-math">\(\boldb_j\)</span> adalah kolom ke-<span class="process-math">\(j\)</span> dari <span class="process-math">\(B\text{,}\)</span> dianggap sebagai vektor kolom. Maka</div>
+<div class="displaymath process-math">
+\begin{align*}
+AB \amp =A\begin{bmatrix}\vert \amp \vert \amp  \amp \vert \\ \boldb_1\amp \boldb_2\amp \cdots\amp \boldb_r\\ \vert \amp \vert \amp  \amp \vert \end{bmatrix}\\
+\amp=\begin{bmatrix}\vert \amp \vert \amp  \amp \vert \\ A\boldb_1\amp A\boldb_2\amp \cdots\amp A\boldb_r\\ \vert \amp  \vert \amp  \amp  \vert \end{bmatrix}\text{.}
+\end{align*}
+</div>
+</div></dd>
+<dt>Langkah 2</dt>
+<dd><div class="para logical">
+<div class="para">Misalkan <span class="process-math">\(\bolda_j\)</span> adalah kolom ke-<span class="process-math">\(j\)</span> dari <span class="process-math">\(A\text{,}\)</span> dianggap sebagai vektor kolom. Diberikan <em class="emphasis">sembarang</em> vektor kolom <span class="process-math">\(\boldb=[b_{i}]_{n\times 1}\)</span> kita memiliki</div>
+<div class="displaymath process-math">
+\begin{equation*}
+A\,\boldb=A\,\begin{bmatrix}b_1\\b_2\\ \vdots \\b_n \end{bmatrix} = b_1\bolda_1+b_2\bolda_2+\cdots +b_n\bolda_n\text{.}
+\end{equation*}
+</div>
+</div></dd>
+</dl>
+</div></article><details class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4></summary><article class="hiddenproof knowl__content"><div class="para">Kita membuktikan kesamaan di kedua langkah secara terpisah.</div>
+<article class="case"><h5 class="heading">Bukti Langkah 1.</h5>
+<div class="para logical">
+<div class="para">Kita harus menunjukkan <span class="process-math">\(AB=C\text{,}\)</span> dimana</div>
+<div class="displaymath process-math">
+\begin{equation*}
+C=\begin{bmatrix}\vert \amp \vert \amp  \amp \vert \\ A\boldb_1\amp A\boldb_2\amp \cdots\amp A\boldb_r\\ \vert \amp  \vert \amp  \amp  \vert \end{bmatrix}\text{.}
+\end{equation*}
+</div>
+<div class="para">Pertama kita menunjukkan <span class="process-math">\(AB\)</span> dan <span class="process-math">\(C\)</span> memiliki ukuran yang sama. Berdasarkan definisi perkalian matriks, <span class="process-math">\(AB\)</span> adalah <span class="process-math">\(m\times r\text{.}\)</span> Berdasarkan konstruksi <span class="process-math">\(C\)</span> memiliki <span class="process-math">\(r\)</span> kolom dan kolom ke-<span class="process-math">\(j\)</span>-nya adalah <span class="process-math">\(A\boldb_j\text{.}\)</span> Karena <span class="process-math">\(A\)</span> dan <span class="process-math">\(\boldb_j\)</span> memiliki ukuran <span class="process-math">\(m\times n\)</span> dan <span class="process-math">\(n\times 1\text{,}\)</span> masing-masing, <span class="process-math">\(A\boldb_j\)</span> memiliki ukuran <span class="process-math">\(m\times 1\text{.}\)</span> Jadi setiap dari <span class="process-math">\(r\)</span> kolom dari <span class="process-math">\(C\)</span> adalah vektor kolom <span class="process-math">\(m\times 1\text{.}\)</span> Mengikuti bahwa <span class="process-math">\(C\)</span> adalah <span class="process-math">\(m\times r\text{,}\)</span> seperti yang diinginkan.</div>
+</div>
+<div class="para logical">
+<div class="para">Selanjutnya kita menunjukkan bahwa <span class="process-math">\([AB]_{ij}=[C]_{ij}\)</span> untuk semua <span class="process-math">\(1\leq i\leq m\text{,}\)</span> <span class="process-math">\(1\leq j\leq r\text{.}\)</span> Karena entri <span class="process-math">\(ij\)</span>-th dari <span class="process-math">\(C\)</span> adalah entri ke-<span class="process-math">\(i\)</span> dari kolom ke-<span class="process-math">\(j\)</span> dari <span class="process-math">\(C\text{,}\)</span> kita memiliki</div>
+<div class="displaymath process-math">
+\begin{align*}
+[C]_{ij} \amp= [A\boldb_j]_{i}  \\
+\amp=\sum_{k=1}^n a_{ik}b_{kj} \\
+\amp =[AB]_{ij}\text{.}
+\end{align*}
+</div>
+</div></article><article class="case"><h5 class="heading">Bukti Langkah 2.</h5>
+<div class="para logical">
+<div class="para">Kita harus menunjukkan bahwa <span class="process-math">\(A\boldb=\boldc\text{,}\)</span> dimana</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/rm_entry_lin_comb.html ./knowl/xref/d_matrix_mult.html">
+\begin{equation*}
+\boldc=b_1\bolda_1+b_2\bolda_2+\cdots +b_n\bolda_n\text{.}
+\end{equation*}
+</div>
+<div class="para">Argumen biasa menunjukkan bahwa kedua <span class="process-math">\(A\boldb\)</span> dan <span class="process-math">\(\boldc\)</span> adalah vektor kolom <span class="process-math">\(m\times 1\text{.}\)</span> Tinggal hanya untuk menunjukkan bahwa entri ke-<span class="process-math">\(i\)</span> <span class="process-math">\([A\boldb]_i\)</span> dari kolom <span class="process-math">\(A\boldb\)</span> sama dengan entri ke-<span class="process-math">\(i\)</span> <span class="process-math">\([\boldc]_i\)</span> dari <span class="process-math">\(\boldc\)</span> untuk semua <span class="process-math">\(1\leq i\leq m\text{.}\)</span> Untuk sembarang <span class="process-math">\(i\)</span> demikian kita memiliki</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/rm_entry_lin_comb.html ./knowl/xref/d_matrix_mult.html">
+\begin{align*}
+[\boldc]_i \amp = [b_1\bolda_1+b_2\bolda_2+\cdots +b_n\bolda_n]_i\\
+\amp= b_1[\bolda_1]_i+b_2[\bolda_2]_i+\cdots +b_n[\bolda_n]_i \amp (\knowl{./knowl/xref/rm_entry_lin_comb.html}{\text{Remark 2.1.16}})\\
+\amp= b_1a_{i1}+b_2a_{i2}+\cdots +b_n\bolda_{in}\amp (\text{def. dari } \bolda_j) \\
+\amp= a_{i1}b_1+a_{i2}b_2+\cdots+a_{in}b_n \\
+\amp =[A\boldb]_i \amp (\knowl{./knowl/xref/d_matrix_mult.html}{\text{Definition 2.1.17}})\text{.}
+\end{align*}
+</div>
+</div></article></article></details><span class="incontext"><a class="internal" href="s_matrix.html#th_column_method">in-context</a></span>
+</body>
+</html>

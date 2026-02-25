@@ -388,6 +388,330 @@ var ptx_lunr_docs = [
   "body": " Bentuk eselon baris tidak unik   Tunjukkan bahwa matriks dapat ekuivalen baris dengan dua atau lebih matriks dalam bentuk eselon baris.    Ambil . Matriks ini direduksi menjadi menggunakan eliminasi Gaussian; dan direduksi lebih lanjut menjadi menggunakan eliminasi Gauss-Jordan. Dengan demikian kita melihat bahwa ekuivalen baris dengan dua matriks berbeda dalam bentuk eselon baris. (Menurut , matriks adalah satu-satunya matriks dalam bentuk eselon baris tereduksi yang ekuivalen baris dengan .)   "
 },
 {
+  "id": "s_matrix",
+  "level": "1",
+  "url": "s_matrix.html",
+  "type": "Section",
+  "number": "2.1",
+  "title": "Aritmetika Matriks",
+  "body": " Aritmetika Matriks   Matriks memainkan peran pendukung kecil dalam diskusi kita tentang sistem linear di . Dalam bab ini kita membawanya ke panggung utama dan memberikan treatment lengkap sebagai objek matematika independen tersendiri.  Seperti entitas matematika lainnya yang layak, matriks dapat digunakan dalam banyak sekali cara. Dengan demikian, penting untuk memungkinkan matriks melampaui awal yang sederhana dalam kursus ini sebagai sistem persamaan linear yang direbus. Kami mencatat observasi ini sebagai prinsip lain.   Mantra Matriks   Sebuah matriks adalah sebuah matriks adalah sebuah matriks.  Tidak setiap matriks harus dianggap sebagai matriks augmented yang terkait dengan sistem linear.      Dasar-dasar  Kita mulai dengan beberapa definisi elementer tentang matriks, kesamaan matriks, dan jenis-jenis khusus matriks. Seperti yang diperjelas oleh definisi berikutnya, matriks hanyalah urutan bilangan yang diatur dengan cara yang sangat khusus.   Matriks  matriks   Sebuah matriks (real) adalah array persegi panjang dari bilangan real . Bilangan yang terletak pada baris ke- dan kolom ke- dari disebut -entri (atau -entri ) dari .  Sebuah matriks dengan baris dan kolom dikatakan memiliki ukuran (atau dimensi ) .  Kami biasanya akan menggunakan huruf kapital dekat awal alfabet (  , ) untuk menunjukkan matriks.    Matriks yang ditampilkan dalam mahal baik dalam ruang yang dibutuhkan untuk menampilkannya, maupun waktu yang dibutuhkan untuk menulis atau mengetiknya. Oleh karena itu kami memperkenalkan dua bentuk notasi yang agak saling melengkapi untuk membantu mendeskripsikan matriks.   Notasi Matriks    Matriks yang entri -nya adalah     Entri ke- dari matriks       Notasi pembangun matriks  matriks notasi pembangun matriks  Notasi menunjukkan matriks yang entri -nya (baris ke- , kolom ke- ) adalah . Ketika tidak ada bahaya kebingungan, notasi ini sering disingkat menjadi .    Notasi entri matriks  matriks notasi entri matriks  Diberikan sebuah matriks , notasi menunjukkan entri ke- dari .   Jadi jika , maka untuk semua dan .     Notasi pembangun matriks sering digunakan hanya untuk memberikan nama pada entri-entri dari suatu matriks arbitrer. Namun, ini juga dapat digunakan untuk mendeskripsikan matriks yang entri -nya diberikan oleh aturan atau formula tertentu.  Sebagai contoh, misalkan , dimana . Ini adalah matriks yang entri -nya adalah . Jadi . Dalam contoh ini kita memiliki dan untuk .   Dalam bahasa sehari-hari, notions kesamaan dianggap jelas dengan sendirinya. Dua hal adalah sama jika mereka identik. Apa lagi yang perlu dikatakan? Dalam matematika, setiap kali kita memperkenalkan jenis objek matematika baru (mis. himpunan, fungsi, -tupel, dll.) kita perlu menjelaskan secara persis apa yang kita maksud agar dua hal dianggap sama. Kita lakukan sekarang dengan matriks.   Kesamaan Matriks   Misalkan dan adalah matriks dengan dimensi dan , masing-masing. Dua matriks tersebut sama jika    dan ;     untuk semua dan .     Dengan kata lain, kita memiliki jika dan hanya jika dan memiliki bentuk yang sama, dan setiap entri dari sama dengan entri yang bersesuaian dari .     Kesamaan Matriks   Matriks tidak sama satu sama lain, meskipun mereka memiliki entri yang sama yang muncul kira-kira dalam urutan yang sama. Dalam kasus ini kesamaan tidak berlaku karena dan memiliki bentuk yang berbeda: adalah , dan adalah .  Matriks dan memiliki dimensi yang sama, tetapi tidak sama karena .     Matriks persegi, vektor baris, vektor kolom, matriks nol  matriks persegi  matriks vektor baris  matriks vektor kolom  matriks diagonal dari matriks persegi  matriks matriks nol    matriks nol    Sebuah matriks adalah persegi jika dimensinya adalah . Diagonal dari sebuah matriks persegi terdiri dari entri-entri untuk .  Sebuah matriks  disebut vektor baris . Entri ke- dari sebuah vektor baris dilambangkan   Sebuah matriks  , disebut vektor kolom . Entri ke- dari sebuah vektor kolom dilambangkan .   matriks nol , dilambangkan , adalah matriks dengan dimensi tersebut, yang semua entrinya adalah nol: yaitu, untuk semua dan .  Ketika dimensi sebenarnya tidak signifikan, kita sering akan menghapus subskrip dan menulis cukup untuk sebuah matriks nol dengan dimensi yang sesuai.     Matriks sebagai kumpulan kolom\/baris  Misalkan adalah sebuah matriks . Kita akan sering memikirkan sebagai kumpulan kolom, dalam hal ini kita menulis , dimana adalah vektor kolom yang terdiri dari entri-entri dari kolom ke- dari : , . Demikian pula, ketika kita memikirkan sebagai kumpulan baris, kita menulis , dimana adalah vektor baris yang terdiri dari entri-entri dari baris ke- dari : , . Garis vertikal dan horizontal digunakan untuk menekankan bahwa adalah vektor kolom dan adalah vektor baris.    Entri, Baris, dan Kolom Matriks  Sintaks Sage untuk mengakses entri spesifik dari sebuah matriks mirip dalam semangat dengan notasi entri matriks kami. Namun, seperti semua hal Python, kita selalu menghitung dari 0. Jadi jika A ditugaskan ke sebuah matriks di Sage, A[i,j] adalah entri ke- -nya.   Subset entri matriks yang ditentukan diperoleh melalui metode slicing : misalnya, A[a:b, c:d] mengembalikan kumpulan entri dengan dan , disusun sebagai matriks.   Membiarkan sisi kiri atau kanan dari : kosong dalam notasi ini menghapus batas restriksi indeks yang bersesuaian (kiri atau kanan). Jadi A[2, :] mengembalikan baris ketiga dari , dan A[1:, 3] mengembalikan bagian dari kolom keempat dari dimulai dengan entri keduanya.   Sebagai alternatif, kita dapat memperoleh daftar semua baris atau kolom dari menggunakan metode rows() dan columns() .   Gunakan sel kosong di bawah ini untuk mencoba beberapa perintah ini.      Penjumlahan, pengurangan dan perkalian skalar  Kita sekarang menguraikan berbagai operasi aljabar yang akan kita gunakan untuk menggabungkan dan mengubah matriks; kita merujuk pada penggunaan operasi ini secara longgar sebagai aritmetika matriks . Beberapa operasi ini menyerupai operasi familiar dari aritmetika real dalam hal notasi dan definisi mereka. Jangan tertipu menjadi puas! Ini adalah operasi baru yang didefinisikan untuk kelas objek matematika baru, dan harus diperlakukan dengan hati-hati. Secara khusus, perhatikan dengan seksama (a) tepat jenis objek matematika apa yang berfungsi sebagai input untuk setiap operasi (bahan operasi), dan (b) jenis objek matematika apa yang dikeluarkan.   Penjumlahan dan pengurangan matriks  penjumlahan matriks  pengurangan matriks    Penjumlahan Matriks adalah operasi yang didefinisikan sebagai berikut: diberikan dua matriks  dan , kita mendefinisikan jumlah mereka menjadi matriks . Dengan kata lain adalah matriks yang memenuhi untuk semua dan .   Pengurangan Matriks adalah operasi yang didefinisikan sebagai berikut: diberikan dua matriks  dan , kita mendefinisikan selisih mereka menjadi matriks . Dengan kata lain adalah matriks yang memenuhi untuk semua dan .     Perhatikan bahwa penjumlahan\/pengurangan matriks tidak didefinisikan untuk sembarang pasangan matriks. Bahan dari penjumlahan matriks (atau pengurangan) adalah dua matriks dengan dimensi yang sama ; dan outputnya adalah matriks ketiga dengan dimensi umum ini.    Perkalian skalar matriks  perkalian skalar matriks   Diberikan sembarang matriks dan sembarang konstanta , kita mendefinisikan . Dengan kata lain, adalah matriks yang diperoleh dengan \"menskalakan\" setiap entri dari dengan konstanta .  Kita menyebut sebuah kelipatan skalar dari . Selanjutnya, untuk membantu membedakan antara matriks dan bilangan real, kita akan merujuk elemen-elemen dari sebagai skalar .     Sedangkan penjumlahan dan pengurangan matriks sangat menyerupai operasi yang bersesuaian yang melibatkan bilangan real, tidak ada analog aritmetika real yang jelas untuk perkalian skalar matriks. Secara khusus, perhatikan bagaimana perkalian skalar matriks adalah sejenis operasi hibrida yang menggabungkan objek matematika dari dua sifat yang sangat berbeda: sebuah bilangan real (atau skalar) di satu sisi, dan sebuah matriks di sisi lain.   Kita menyebut hasil dari penerapan urutan penjumlahan matriks dan perkalian skalar sebagai kombinasi linear dari matriks .   Kombinasi linear dari matriks  kombinasi linear dari matriks   Diberikan matriks dengan dimensi yang sama, dan skalar , ekspresi disebut kombinasi linear dari matriks . Skalar disebut koefisien dari kombinasi linear tersebut.     Kombinasi linear matriks   Misalkan dan . Hitung .     .     Menyatakan matriks sebagai kombinasi linear   Tunjukkan bahwa dapat dinyatakan sebagai kombinasi linear dari matriks .    Kita harus menyelesaikan persamaan matriks (atau vektor baris) untuk skalar . Menghitung kombinasi linear di sebelah kiri menghasilkan persamaan matriks . Menggunakan definisi kesamaan matriks ( ), kita mendapatkan sistem persamaan . Menggunakan eliminasi Gaussian kita menemukan bahwa ada solusi unik untuk sistem ini: yaitu, . Kita menyimpulkan bahwa .     Misalkan adalah matriks . Sebuah argumen induksi mudah pada menunjukkan bahwa untuk sembarang skalar kita memiliki untuk semua , . (Lihat . )     Perkalian matriks  Jadi bagaimana kita mendefinisikan produk dari dua matriks? Melihat operasi sebelumnya, Anda mungkin telah menebak bahwa kita harus mendefinisikan produk dari dua matriks dengan mengambil produk dari entri-entri yang bersesuaian. Tidak demikian!   Perkalian matriks  perkalian matriks    Perkalian Matriks adalah operasi yang didefinisikan sebagai berikut: diberikan sebuah matriks  dan sebuah matriks  , kita mendefinisikan produk mereka menjadi matriks  yang entri -nya diberikan oleh formula untuk semua dan .     Memvisualisasikan perkalian matriks  Dalam , entri -th dihitung dengan bergerak melintasi baris ke- dari dan menuruni kolom ke- dari .       Ukuran dan perkalian matriks  Perhatikan bagaimana, seperti penjumlahan, perkalian matriks tidak didefinisikan untuk sembarang pasangan matriks: harus ada kesepakatan tertentu dalam dimensi mereka.  Secara lebih rinci, agar produk dari dan terdefinisi, kita membutuhkan . Dengan kata lain kita membutuhkan dimensi \"dalam\" dari dan untuk menjadi sama: . Jika kondisi ini terpenuhi, dimensi dari matriks hasil ditentukan oleh dimensi \"luar\" dari dan . Secara skematis, Anda dapat memikirkan dimensi dalam sebagai \"dibatalkan\":     Perkalian matriks  Pertimbangkan matriks . Karena dimensi \"dalam\" dari dan setuju, kita dapat membentuk matriks produk , yang memiliki dimensi . Misalkan untuk semua . Menggunakan , kita hitung . Kita menyimpulkan bahwa .   Formula untuk entri -th dari sebuah produk matriks dapat dideskripsikan secara ringkas sebagai produk dot dari baris ke- dari dengan kolom ke- dari . Anda mungkin sudah bertemu produk dot dalam kasus khusus dari - dan -tupel; definisi tersebut menggeneralisasi dengan mudah ke -tupel untuk sembarang bilangan bulat positif . Kita akan memiliki banyak lagi untuk dikatakan tentang produk dot dan operasi terkait di . Untuk saat ini kita akan memberikan definisi resmi sehingga kita dapat mendeskripsikan perkalian matriks dengan nyaman dalam hal produk dot.   Produk Dot  produk dot    produk dot    Diberikan -tupel dan , produk dot mereka, dilambangkan , didefinisikan sebagai .     Produk dot dan perkalian matriks   Misalkan adalah sebuah matriks , dan misalkan adalah sebuah matriks . Untuk semua , misalkan adalah baris ke- dari ; dan untuk semua misalkan adalah kolom ke- dari . Untuk semua , kita memiliki , dimana dan diperlakukan sebagai -tupel. Dengan kata lain, entri -th dari adalah produk dot dari baris ke- dari dan kolom ke- dari .    Tetapkan sebuah pasangan dengan dan . Dipertimbangkan sebagai -tupel, baris ke- dari dan kolom ke- dari diberikan sebagai . Kita memiliki , seperti yang diklaim.     Perkalian matriks via produk dot  Pertimbangkan matriks . Dua baris dari (dalam bentuk tupel) adalah . Dua kolom dari (dalam bentuk tupel) adalah . Menggunakan deskripsi produk dot dari perkalian matriks, kita hitung .   Definisi dari sebuah produk matriks tidak diragukan lagi lebih rumit daripada yang Anda harapkan, dan tampaknya datang sepenuhnya tiba-tiba. Semua ini akan masuk akal sekali kita mulai memikirkan matriks sebagai mendefinisikan fungsi-fungsi tertentu . Formula kita untuk entri-entri dari dipilih secara presisi sehingga matriks baru ini bersesuaian dengan komposisi dari fungsi-fungsi dan : sehingga . (Lihat .) Di bawah interpretasi ini, restriksi berat pada dimensi matriks bahan memastikan bahwa dua fungsi dan dapat dikomposisikan.   Aritmetika Matriks  Kita menggunakan + dan * untuk penjumlahan dan perkalian matriks.   Sebagai bukti fleksibilitas Sage, simbol yang sama * juga digunakan untuk perkalian skalar.   Edit sel di bawah ini untuk melatih operasi ini.      Metode alternatif perkalian  Selain definisi perkalian matriks yang diberikan, kita akan membuat penggunaan berat dari dua cara further untuk menghitung produk matriks, disebut metode kolom dan baris dari perkalian matriks.   Metode kolom dari perkalian matriks  perkalian matriks metode kolom   Misalkan dan . Metode kolom dari perkalian matriks menghitung menggunakan dua langkah di bawah ini.   Langkah 1  Misalkan adalah kolom ke- dari , dianggap sebagai vektor kolom. Maka .    Langkah 2  Misalkan adalah kolom ke- dari , dianggap sebagai vektor kolom. Diberikan sembarang vektor kolom kita memiliki .       Kita membuktikan kesamaan di kedua langkah secara terpisah.   Bukti Langkah 1  Kita harus menunjukkan , dimana . Pertama kita menunjukkan dan memiliki ukuran yang sama. Berdasarkan definisi perkalian matriks, adalah . Berdasarkan konstruksi memiliki kolom dan kolom ke- -nya adalah . Karena dan memiliki ukuran dan , masing-masing, memiliki ukuran . Jadi setiap dari kolom dari adalah vektor kolom . Mengikuti bahwa adalah , seperti yang diinginkan.  Selanjutnya kita menunjukkan bahwa untuk semua , . Karena entri -th dari adalah entri ke- dari kolom ke- dari , kita memiliki .    Bukti Langkah 2  Kita harus menunjukkan bahwa , dimana . Argumen biasa menunjukkan bahwa kedua dan adalah vektor kolom . Tinggal hanya untuk menunjukkan bahwa entri ke-  dari kolom sama dengan entri ke-  dari untuk semua . Untuk sembarang demikian kita memiliki .       berjumlah pada proses dua langkah untuk menghitung sembarang produk matriks .  Pernyataan pertama (Langkah 1) memberitahu kita bahwa kolom ke- dari matriks dapat diperoleh dengan menghitung produk dari dengan kolom ke- dari .  Pernyataan kedua (Langkah 2) memberitahu kita bahwa setiap produk dapat sendiri dihitung sebagai kombinasi linear tertentu dari kolom-kolom dari dengan koefisien yang diambil dari .  Catatan serupa berlaku untuk menghitung produk matriks menggunakan metode baris, seperti yang dideskripsikan di bawah ini dalam .    Metode baris dari perkalian matriks  perkalian matriks metode baris   Misalkan dan . Metode baris dari perkalian matriks menghitung menggunakan dua langkah di bawah ini.   Langkah 1  Misalkan adalah baris ke- dari . Maka .    Langkah 2  Misalkan adalah baris ke- dari . Diberikan sembarang vektor baris kita memiliki .       Buktinya sangat mirip dengan itu dari dan dibiarkan kepada pembaca.     Metode kolom dan baris   Misalkan dan   Hitung menggunakan (a) definisi perkalian matriks, (b) metode kolom, (c) metode baris.       Menggunakan definisi, kita lihat dengan mudah bahwa     Misalkan adalah kolom-kolom dari , dan misalkan adalah kolom-kolom dari . Kita memiliki     Sekarang misalkan adalah baris-baris dari , dan misalkan adalah baris-baris dari . Kita memiliki         Metode kolom dan baris  Mari kita verifikasi validitas metode kolom dan baris menggunakan Sage dalam beberapa contoh spesifik. Di bawah ini kita menghasilkan matriks bilangan bulat acak dan dengan dimensi dan , masing-masing, dan menghitung produk mereka .   Mari kita periksa bahwa kolom ke- dari sama dengan produk dari dengan kolom ke- dari .   Sebagai alternatif, kita dapat mengonfirmasi kesamaan ini secara visual menggunakan tampilan dari di sel pertama di atas. Perhatikan bahwa hasil dari A*colsB[i] ditampilkan oleh Sage sebagai tupel, meskipun secara teknis bagi kita ini adalah vektor kolom.   Selanjutnya, mari kita verifikasi bahwa hasil dari mengalikan dan kolom ke- dari adalah kombinasi linear yang bersesuaian dari kolom-kolom dari yang diberikan oleh koefisien dari kolom ini.   Sekarang gunakan sel Sage di bawah ini untuk mendemonstrasikan validitas metode baris untuk produk . Cukup modifikasi kode dalam dua sel di atas untuk mencerminkan metode baris, sebagai lawan dari metode kolom.      Contoh Video perkalian matriks   Video: tiga metode perkalian matriks  Video: tiga metode perkalian matriks       Transpos dari sebuah matriks  Kita mengakhiri bagian ini dengan satu operasi terakhir, transposisi matriks . Kita tidak akan banyak menggunakan operasi ini sampai nanti, tetapi ini adalah tempat yang baik seperti halnya untuk memperkenalkannya.   Transposisi matriks  matrix transposition  transpose   Diberikan sebuah matriks  transposnya adalah matriks yang entri -nya adalah entri -th dari . Dengan kata lain, adalah matriks yang memenuhi untuk semua dan .     Diberikan sebuah matriks kita dapat memberikan deskripsi berbasis kolom- atau baris dari sebagai berikut:    adalah matriks yang baris ke- -nya adalah kolom ke- dari .     adalah matriks yang kolom ke- -nya adalah baris ke- dari .       Transpos   Misalkan ; maka .  Misalkan , maka .     Transposisi matriks  Transposisi matriks diimplementasikan dalam Sage sebagai metode transpose() . Dalam sel di bawah ini kita (a) memilih bilangan bulat acak , (b) memilih sebuah matriks acak  dengan entri bilangan bulat, dan (c) menghitung transpos dari .   Seperti biasa, bereksperimen dengan sel Sage di bawah ini.      "
+},
+{
+  "id": "princ_matrix_mantra",
+  "level": "2",
+  "url": "s_matrix.html#princ_matrix_mantra",
+  "type": "Principle",
+  "number": "2.1.1",
+  "title": "Mantra Matriks.",
+  "body": " Mantra Matriks   Sebuah matriks adalah sebuah matriks adalah sebuah matriks.  Tidak setiap matriks harus dianggap sebagai matriks augmented yang terkait dengan sistem linear.   "
+},
+{
+  "id": "d_matrix",
+  "level": "2",
+  "url": "s_matrix.html#d_matrix",
+  "type": "Definition",
+  "number": "2.1.2",
+  "title": "Matriks.",
+  "body": " Matriks  matriks   Sebuah matriks (real) adalah array persegi panjang dari bilangan real . Bilangan yang terletak pada baris ke- dan kolom ke- dari disebut -entri (atau -entri ) dari .  Sebuah matriks dengan baris dan kolom dikatakan memiliki ukuran (atau dimensi ) .  Kami biasanya akan menggunakan huruf kapital dekat awal alfabet (  , ) untuk menunjukkan matriks.   "
+},
+{
+  "id": "d_matrix_notation",
+  "level": "2",
+  "url": "s_matrix.html#d_matrix_notation",
+  "type": "Definition",
+  "number": "2.1.3",
+  "title": "Notasi Matriks.",
+  "body": " Notasi Matriks    Matriks yang entri -nya adalah     Entri ke- dari matriks       Notasi pembangun matriks  matriks notasi pembangun matriks  Notasi menunjukkan matriks yang entri -nya (baris ke- , kolom ke- ) adalah . Ketika tidak ada bahaya kebingungan, notasi ini sering disingkat menjadi .    Notasi entri matriks  matriks notasi entri matriks  Diberikan sebuah matriks , notasi menunjukkan entri ke- dari .   Jadi jika , maka untuk semua dan .   "
+},
+{
+  "id": "ss_matrix_attributes-6",
+  "level": "2",
+  "url": "s_matrix.html#ss_matrix_attributes-6",
+  "type": "Remark",
+  "number": "2.1.4",
+  "title": "",
+  "body": " Notasi pembangun matriks sering digunakan hanya untuk memberikan nama pada entri-entri dari suatu matriks arbitrer. Namun, ini juga dapat digunakan untuk mendeskripsikan matriks yang entri -nya diberikan oleh aturan atau formula tertentu.  Sebagai contoh, misalkan , dimana . Ini adalah matriks yang entri -nya adalah . Jadi . Dalam contoh ini kita memiliki dan untuk .  "
+},
+{
+  "id": "d_matrix_equality",
+  "level": "2",
+  "url": "s_matrix.html#d_matrix_equality",
+  "type": "Definition",
+  "number": "2.1.5",
+  "title": "Kesamaan Matriks.",
+  "body": " Kesamaan Matriks   Misalkan dan adalah matriks dengan dimensi dan , masing-masing. Dua matriks tersebut sama jika    dan ;     untuk semua dan .     Dengan kata lain, kita memiliki jika dan hanya jika dan memiliki bentuk yang sama, dan setiap entri dari sama dengan entri yang bersesuaian dari .   "
+},
+{
+  "id": "eg_inequality",
+  "level": "2",
+  "url": "s_matrix.html#eg_inequality",
+  "type": "Example",
+  "number": "2.1.6",
+  "title": "Kesamaan Matriks.",
+  "body": " Kesamaan Matriks   Matriks tidak sama satu sama lain, meskipun mereka memiliki entri yang sama yang muncul kira-kira dalam urutan yang sama. Dalam kasus ini kesamaan tidak berlaku karena dan memiliki bentuk yang berbeda: adalah , dan adalah .  Matriks dan memiliki dimensi yang sama, tetapi tidak sama karena .   "
+},
+{
+  "id": "d_square_matrices",
+  "level": "2",
+  "url": "s_matrix.html#d_square_matrices",
+  "type": "Definition",
+  "number": "2.1.7",
+  "title": "Matriks persegi, vektor baris, vektor kolom, matriks nol.",
+  "body": " Matriks persegi, vektor baris, vektor kolom, matriks nol  matriks persegi  matriks vektor baris  matriks vektor kolom  matriks diagonal dari matriks persegi  matriks matriks nol    matriks nol    Sebuah matriks adalah persegi jika dimensinya adalah . Diagonal dari sebuah matriks persegi terdiri dari entri-entri untuk .  Sebuah matriks  disebut vektor baris . Entri ke- dari sebuah vektor baris dilambangkan   Sebuah matriks  , disebut vektor kolom . Entri ke- dari sebuah vektor kolom dilambangkan .   matriks nol , dilambangkan , adalah matriks dengan dimensi tersebut, yang semua entrinya adalah nol: yaitu, untuk semua dan .  Ketika dimensi sebenarnya tidak signifikan, kita sering akan menghapus subskrip dan menulis cukup untuk sebuah matriks nol dengan dimensi yang sesuai.   "
+},
+{
+  "id": "rm_matrices_as_row_columns",
+  "level": "2",
+  "url": "s_matrix.html#rm_matrices_as_row_columns",
+  "type": "Remark",
+  "number": "2.1.8",
+  "title": "Matriks sebagai kumpulan kolom\/baris.",
+  "body": " Matriks sebagai kumpulan kolom\/baris  Misalkan adalah sebuah matriks . Kita akan sering memikirkan sebagai kumpulan kolom, dalam hal ini kita menulis , dimana adalah vektor kolom yang terdiri dari entri-entri dari kolom ke- dari : , . Demikian pula, ketika kita memikirkan sebagai kumpulan baris, kita menulis , dimana adalah vektor baris yang terdiri dari entri-entri dari baris ke- dari : , . Garis vertikal dan horizontal digunakan untuk menekankan bahwa adalah vektor kolom dan adalah vektor baris.  "
+},
+{
+  "id": "sage_matrix_entries_rows_cols",
+  "level": "2",
+  "url": "s_matrix.html#sage_matrix_entries_rows_cols",
+  "type": "Project",
+  "number": "2.1.1",
+  "title": "Entri, Baris, dan Kolom Matriks.",
+  "body": " Entri, Baris, dan Kolom Matriks  Sintaks Sage untuk mengakses entri spesifik dari sebuah matriks mirip dalam semangat dengan notasi entri matriks kami. Namun, seperti semua hal Python, kita selalu menghitung dari 0. Jadi jika A ditugaskan ke sebuah matriks di Sage, A[i,j] adalah entri ke- -nya.   Subset entri matriks yang ditentukan diperoleh melalui metode slicing : misalnya, A[a:b, c:d] mengembalikan kumpulan entri dengan dan , disusun sebagai matriks.   Membiarkan sisi kiri atau kanan dari : kosong dalam notasi ini menghapus batas restriksi indeks yang bersesuaian (kiri atau kanan). Jadi A[2, :] mengembalikan baris ketiga dari , dan A[1:, 3] mengembalikan bagian dari kolom keempat dari dimulai dengan entri keduanya.   Sebagai alternatif, kita dapat memperoleh daftar semua baris atau kolom dari menggunakan metode rows() dan columns() .   Gunakan sel kosong di bawah ini untuk mencoba beberapa perintah ini.   "
+},
+{
+  "id": "d_matrix_add_subtract",
+  "level": "2",
+  "url": "s_matrix.html#d_matrix_add_subtract",
+  "type": "Definition",
+  "number": "2.1.9",
+  "title": "Penjumlahan dan pengurangan matriks.",
+  "body": " Penjumlahan dan pengurangan matriks  penjumlahan matriks  pengurangan matriks    Penjumlahan Matriks adalah operasi yang didefinisikan sebagai berikut: diberikan dua matriks  dan , kita mendefinisikan jumlah mereka menjadi matriks . Dengan kata lain adalah matriks yang memenuhi untuk semua dan .   Pengurangan Matriks adalah operasi yang didefinisikan sebagai berikut: diberikan dua matriks  dan , kita mendefinisikan selisih mereka menjadi matriks . Dengan kata lain adalah matriks yang memenuhi untuk semua dan .   "
+},
+{
+  "id": "ss_matrix_arithmetic-4",
+  "level": "2",
+  "url": "s_matrix.html#ss_matrix_arithmetic-4",
+  "type": "Remark",
+  "number": "2.1.10",
+  "title": "",
+  "body": " Perhatikan bahwa penjumlahan\/pengurangan matriks tidak didefinisikan untuk sembarang pasangan matriks. Bahan dari penjumlahan matriks (atau pengurangan) adalah dua matriks dengan dimensi yang sama ; dan outputnya adalah matriks ketiga dengan dimensi umum ini.  "
+},
+{
+  "id": "d_matrix_scalar_mult",
+  "level": "2",
+  "url": "s_matrix.html#d_matrix_scalar_mult",
+  "type": "Definition",
+  "number": "2.1.11",
+  "title": "Perkalian skalar matriks.",
+  "body": " Perkalian skalar matriks  perkalian skalar matriks   Diberikan sembarang matriks dan sembarang konstanta , kita mendefinisikan . Dengan kata lain, adalah matriks yang diperoleh dengan \"menskalakan\" setiap entri dari dengan konstanta .  Kita menyebut sebuah kelipatan skalar dari . Selanjutnya, untuk membantu membedakan antara matriks dan bilangan real, kita akan merujuk elemen-elemen dari sebagai skalar .   "
+},
+{
+  "id": "ss_matrix_arithmetic-6",
+  "level": "2",
+  "url": "s_matrix.html#ss_matrix_arithmetic-6",
+  "type": "Remark",
+  "number": "2.1.12",
+  "title": "",
+  "body": " Sedangkan penjumlahan dan pengurangan matriks sangat menyerupai operasi yang bersesuaian yang melibatkan bilangan real, tidak ada analog aritmetika real yang jelas untuk perkalian skalar matriks. Secara khusus, perhatikan bagaimana perkalian skalar matriks adalah sejenis operasi hibrida yang menggabungkan objek matematika dari dua sifat yang sangat berbeda: sebuah bilangan real (atau skalar) di satu sisi, dan sebuah matriks di sisi lain.  "
+},
+{
+  "id": "d_matrix_lin_comb",
+  "level": "2",
+  "url": "s_matrix.html#d_matrix_lin_comb",
+  "type": "Definition",
+  "number": "2.1.13",
+  "title": "Kombinasi linear dari matriks.",
+  "body": " Kombinasi linear dari matriks  kombinasi linear dari matriks   Diberikan matriks dengan dimensi yang sama, dan skalar , ekspresi disebut kombinasi linear dari matriks . Skalar disebut koefisien dari kombinasi linear tersebut.   "
+},
+{
+  "id": "eg_matrix_lin_comb",
+  "level": "2",
+  "url": "s_matrix.html#eg_matrix_lin_comb",
+  "type": "Example",
+  "number": "2.1.14",
+  "title": "Kombinasi linear matriks.",
+  "body": " Kombinasi linear matriks   Misalkan dan . Hitung .     .   "
+},
+{
+  "id": "eg_matrix_lin_comb_solve",
+  "level": "2",
+  "url": "s_matrix.html#eg_matrix_lin_comb_solve",
+  "type": "Example",
+  "number": "2.1.15",
+  "title": "Menyatakan matriks sebagai kombinasi linear.",
+  "body": " Menyatakan matriks sebagai kombinasi linear   Tunjukkan bahwa dapat dinyatakan sebagai kombinasi linear dari matriks .    Kita harus menyelesaikan persamaan matriks (atau vektor baris) untuk skalar . Menghitung kombinasi linear di sebelah kiri menghasilkan persamaan matriks . Menggunakan definisi kesamaan matriks ( ), kita mendapatkan sistem persamaan . Menggunakan eliminasi Gaussian kita menemukan bahwa ada solusi unik untuk sistem ini: yaitu, . Kita menyimpulkan bahwa .   "
+},
+{
+  "id": "rm_entry_lin_comb",
+  "level": "2",
+  "url": "s_matrix.html#rm_entry_lin_comb",
+  "type": "Remark",
+  "number": "2.1.16",
+  "title": "",
+  "body": " Misalkan adalah matriks . Sebuah argumen induksi mudah pada menunjukkan bahwa untuk sembarang skalar kita memiliki untuk semua , . (Lihat . )  "
+},
+{
+  "id": "d_matrix_mult",
+  "level": "2",
+  "url": "s_matrix.html#d_matrix_mult",
+  "type": "Definition",
+  "number": "2.1.17",
+  "title": "Perkalian matriks.",
+  "body": " Perkalian matriks  perkalian matriks    Perkalian Matriks adalah operasi yang didefinisikan sebagai berikut: diberikan sebuah matriks  dan sebuah matriks  , kita mendefinisikan produk mereka menjadi matriks  yang entri -nya diberikan oleh formula untuk semua dan .   "
+},
+{
+  "id": "fig_matrix_mult",
+  "level": "2",
+  "url": "s_matrix.html#fig_matrix_mult",
+  "type": "Figure",
+  "number": "2.1.18",
+  "title": "Memvisualisasikan perkalian matriks",
+  "body": " Memvisualisasikan perkalian matriks  Dalam , entri -th dihitung dengan bergerak melintasi baris ke- dari dan menuruni kolom ke- dari .     "
+},
+{
+  "id": "ss_matrix_mult-5",
+  "level": "2",
+  "url": "s_matrix.html#ss_matrix_mult-5",
+  "type": "Remark",
+  "number": "2.1.19",
+  "title": "Ukuran dan perkalian matriks.",
+  "body": " Ukuran dan perkalian matriks  Perhatikan bagaimana, seperti penjumlahan, perkalian matriks tidak didefinisikan untuk sembarang pasangan matriks: harus ada kesepakatan tertentu dalam dimensi mereka.  Secara lebih rinci, agar produk dari dan terdefinisi, kita membutuhkan . Dengan kata lain kita membutuhkan dimensi \"dalam\" dari dan untuk menjadi sama: . Jika kondisi ini terpenuhi, dimensi dari matriks hasil ditentukan oleh dimensi \"luar\" dari dan . Secara skematis, Anda dapat memikirkan dimensi dalam sebagai \"dibatalkan\":   "
+},
+{
+  "id": "eg_matrix_mult",
+  "level": "2",
+  "url": "s_matrix.html#eg_matrix_mult",
+  "type": "Example",
+  "number": "2.1.20",
+  "title": "Perkalian matriks.",
+  "body": " Perkalian matriks  Pertimbangkan matriks . Karena dimensi \"dalam\" dari dan setuju, kita dapat membentuk matriks produk , yang memiliki dimensi . Misalkan untuk semua . Menggunakan , kita hitung . Kita menyimpulkan bahwa .  "
+},
+{
+  "id": "d_dot_product",
+  "level": "2",
+  "url": "s_matrix.html#d_dot_product",
+  "type": "Definition",
+  "number": "2.1.21",
+  "title": "Produk Dot.",
+  "body": " Produk Dot  produk dot    produk dot    Diberikan -tupel dan , produk dot mereka, dilambangkan , didefinisikan sebagai .   "
+},
+{
+  "id": "th_matrix_mult_dot_product",
+  "level": "2",
+  "url": "s_matrix.html#th_matrix_mult_dot_product",
+  "type": "Theorem",
+  "number": "2.1.22",
+  "title": "Produk dot dan perkalian matriks.",
+  "body": " Produk dot dan perkalian matriks   Misalkan adalah sebuah matriks , dan misalkan adalah sebuah matriks . Untuk semua , misalkan adalah baris ke- dari ; dan untuk semua misalkan adalah kolom ke- dari . Untuk semua , kita memiliki , dimana dan diperlakukan sebagai -tupel. Dengan kata lain, entri -th dari adalah produk dot dari baris ke- dari dan kolom ke- dari .    Tetapkan sebuah pasangan dengan dan . Dipertimbangkan sebagai -tupel, baris ke- dari dan kolom ke- dari diberikan sebagai . Kita memiliki , seperti yang diklaim.   "
+},
+{
+  "id": "eg_matrix_mult_dot_prod",
+  "level": "2",
+  "url": "s_matrix.html#eg_matrix_mult_dot_prod",
+  "type": "Example",
+  "number": "2.1.23",
+  "title": "Perkalian matriks via produk dot.",
+  "body": " Perkalian matriks via produk dot  Pertimbangkan matriks . Dua baris dari (dalam bentuk tupel) adalah . Dua kolom dari (dalam bentuk tupel) adalah . Menggunakan deskripsi produk dot dari perkalian matriks, kita hitung .  "
+},
+{
+  "id": "ss_matrix_mult-12",
+  "level": "2",
+  "url": "s_matrix.html#ss_matrix_mult-12",
+  "type": "Project",
+  "number": "2.1.2",
+  "title": "Aritmetika Matriks.",
+  "body": " Aritmetika Matriks  Kita menggunakan + dan * untuk penjumlahan dan perkalian matriks.   Sebagai bukti fleksibilitas Sage, simbol yang sama * juga digunakan untuk perkalian skalar.   Edit sel di bawah ini untuk melatih operasi ini.   "
+},
+{
+  "id": "th_column_method",
+  "level": "2",
+  "url": "s_matrix.html#th_column_method",
+  "type": "Theorem",
+  "number": "2.1.24",
+  "title": "Metode kolom dari perkalian matriks.",
+  "body": " Metode kolom dari perkalian matriks  perkalian matriks metode kolom   Misalkan dan . Metode kolom dari perkalian matriks menghitung menggunakan dua langkah di bawah ini.   Langkah 1  Misalkan adalah kolom ke- dari , dianggap sebagai vektor kolom. Maka .    Langkah 2  Misalkan adalah kolom ke- dari , dianggap sebagai vektor kolom. Diberikan sembarang vektor kolom kita memiliki .       Kita membuktikan kesamaan di kedua langkah secara terpisah.   Bukti Langkah 1  Kita harus menunjukkan , dimana . Pertama kita menunjukkan dan memiliki ukuran yang sama. Berdasarkan definisi perkalian matriks, adalah . Berdasarkan konstruksi memiliki kolom dan kolom ke- -nya adalah . Karena dan memiliki ukuran dan , masing-masing, memiliki ukuran . Jadi setiap dari kolom dari adalah vektor kolom . Mengikuti bahwa adalah , seperti yang diinginkan.  Selanjutnya kita menunjukkan bahwa untuk semua , . Karena entri -th dari adalah entri ke- dari kolom ke- dari , kita memiliki .    Bukti Langkah 2  Kita harus menunjukkan bahwa , dimana . Argumen biasa menunjukkan bahwa kedua dan adalah vektor kolom . Tinggal hanya untuk menunjukkan bahwa entri ke-  dari kolom sama dengan entri ke-  dari untuk semua . Untuk sembarang demikian kita memiliki .    "
+},
+{
+  "id": "s_column_row_method-4",
+  "level": "2",
+  "url": "s_matrix.html#s_column_row_method-4",
+  "type": "Remark",
+  "number": "2.1.25",
+  "title": "",
+  "body": "  berjumlah pada proses dua langkah untuk menghitung sembarang produk matriks .  Pernyataan pertama (Langkah 1) memberitahu kita bahwa kolom ke- dari matriks dapat diperoleh dengan menghitung produk dari dengan kolom ke- dari .  Pernyataan kedua (Langkah 2) memberitahu kita bahwa setiap produk dapat sendiri dihitung sebagai kombinasi linear tertentu dari kolom-kolom dari dengan koefisien yang diambil dari .  Catatan serupa berlaku untuk menghitung produk matriks menggunakan metode baris, seperti yang dideskripsikan di bawah ini dalam .  "
+},
+{
+  "id": "th_row_method",
+  "level": "2",
+  "url": "s_matrix.html#th_row_method",
+  "type": "Theorem",
+  "number": "2.1.26",
+  "title": "Metode baris dari perkalian matriks.",
+  "body": " Metode baris dari perkalian matriks  perkalian matriks metode baris   Misalkan dan . Metode baris dari perkalian matriks menghitung menggunakan dua langkah di bawah ini.   Langkah 1  Misalkan adalah baris ke- dari . Maka .    Langkah 2  Misalkan adalah baris ke- dari . Diberikan sembarang vektor baris kita memiliki .       Buktinya sangat mirip dengan itu dari dan dibiarkan kepada pembaca.   "
+},
+{
+  "id": "s_matrix_ex_product",
+  "level": "2",
+  "url": "s_matrix.html#s_matrix_ex_product",
+  "type": "Example",
+  "number": "2.1.27",
+  "title": "Metode kolom dan baris.",
+  "body": " Metode kolom dan baris   Misalkan dan   Hitung menggunakan (a) definisi perkalian matriks, (b) metode kolom, (c) metode baris.       Menggunakan definisi, kita lihat dengan mudah bahwa     Misalkan adalah kolom-kolom dari , dan misalkan adalah kolom-kolom dari . Kita memiliki     Sekarang misalkan adalah baris-baris dari , dan misalkan adalah baris-baris dari . Kita memiliki       "
+},
+{
+  "id": "s_column_row_method-7",
+  "level": "2",
+  "url": "s_matrix.html#s_column_row_method-7",
+  "type": "Project",
+  "number": "2.1.3",
+  "title": "Metode kolom dan baris.",
+  "body": " Metode kolom dan baris  Mari kita verifikasi validitas metode kolom dan baris menggunakan Sage dalam beberapa contoh spesifik. Di bawah ini kita menghasilkan matriks bilangan bulat acak dan dengan dimensi dan , masing-masing, dan menghitung produk mereka .   Mari kita periksa bahwa kolom ke- dari sama dengan produk dari dengan kolom ke- dari .   Sebagai alternatif, kita dapat mengonfirmasi kesamaan ini secara visual menggunakan tampilan dari di sel pertama di atas. Perhatikan bahwa hasil dari A*colsB[i] ditampilkan oleh Sage sebagai tupel, meskipun secara teknis bagi kita ini adalah vektor kolom.   Selanjutnya, mari kita verifikasi bahwa hasil dari mengalikan dan kolom ke- dari adalah kombinasi linear yang bersesuaian dari kolom-kolom dari yang diberikan oleh koefisien dari kolom ini.   Sekarang gunakan sel Sage di bawah ini untuk mendemonstrasikan validitas metode baris untuk produk . Cukup modifikasi kode dalam dua sel di atas untuk mencerminkan metode baris, sebagai lawan dari metode kolom.    "
+},
+{
+  "id": "fig_vid_matrix_mult_methods",
+  "level": "2",
+  "url": "s_matrix.html#fig_vid_matrix_mult_methods",
+  "type": "Figure",
+  "number": "2.1.28",
+  "title": "Video: tiga metode perkalian matriks",
+  "body": " Video: tiga metode perkalian matriks  Video: tiga metode perkalian matriks   "
+},
+{
+  "id": "d_transpose",
+  "level": "2",
+  "url": "s_matrix.html#d_transpose",
+  "type": "Definition",
+  "number": "2.1.29",
+  "title": "Transposisi matriks.",
+  "body": " Transposisi matriks  matrix transposition  transpose   Diberikan sebuah matriks  transposnya adalah matriks yang entri -nya adalah entri -th dari . Dengan kata lain, adalah matriks yang memenuhi untuk semua dan .   "
+},
+{
+  "id": "s_matrix-7-4",
+  "level": "2",
+  "url": "s_matrix.html#s_matrix-7-4",
+  "type": "Remark",
+  "number": "2.1.30",
+  "title": "",
+  "body": " Diberikan sebuah matriks kita dapat memberikan deskripsi berbasis kolom- atau baris dari sebagai berikut:    adalah matriks yang baris ke- -nya adalah kolom ke- dari .     adalah matriks yang kolom ke- -nya adalah baris ke- dari .     "
+},
+{
+  "id": "eg_transpose",
+  "level": "2",
+  "url": "s_matrix.html#eg_transpose",
+  "type": "Example",
+  "number": "2.1.31",
+  "title": "Transpos.",
+  "body": " Transpos   Misalkan ; maka .  Misalkan , maka .   "
+},
+{
+  "id": "s_matrix-7-6",
+  "level": "2",
+  "url": "s_matrix.html#s_matrix-7-6",
+  "type": "Project",
+  "number": "2.1.4",
+  "title": "Transposisi matriks.",
+  "body": " Transposisi matriks  Transposisi matriks diimplementasikan dalam Sage sebagai metode transpose() . Dalam sel di bawah ini kita (a) memilih bilangan bulat acak , (b) memilih sebuah matriks acak  dengan entri bilangan bulat, dan (c) menghitung transpos dari .   Seperti biasa, bereksperimen dengan sel Sage di bawah ini.   "
+},
+{
   "id": "app-sage-reference",
   "level": "1",
   "url": "app-sage-reference.html",

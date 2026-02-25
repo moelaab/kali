@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="en-US" dir="ltr">
+<!--******************************************-->
+<!--*  Authored with PreTeXt                 *-->
+<!--*  pretextbook.org                       *-->
+<!--*  Theme: default-modern                 *-->
+<!--*  Palette: blue-green                   *-->
+<!--******************************************-->
+<head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Aritmetika Matriks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+<link href="_static/pretext/css/theme.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/ol-markers.css" rel="stylesheet" type="text/css">
+<script>
+var runestoneMathReady = new Promise((resolve) => window.rsMathReady = resolve);
+window.MathJax = {
+  "tex": {
+    "inlineMath": [
+      [
+        "\\(",
+        "\\)"
+      ]
+    ],
+    "tags": "none",
+    "tagSide": "right",
+    "tagIndent": ".8em",
+    "packages": {
+      "[+]": [
+        "base",
+        "extpfeil",
+        "ams",
+        "amscd",
+        "color",
+        "newcommand",
+        "knowl"
+      ]
+    }
+  },
+  "options": {
+    "ignoreHtmlClass": "tex2jax_ignore|ignore-math",
+    "processHtmlClass": "process-math",
+    "renderActions": {
+      "findScript": [
+        10,
+        function (doc) {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(function(node) {
+                var display = !!node.type.match(/; *mode=display/);
+                var math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                var text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = {node: text, delim: '', n: 0};
+                math.end = {node: text, delim: '', n: 0};
+                doc.math.push(math);
+            });
+        },
+        ""
+      ]
+    }
+  },
+  "chtml": {
+    "scale": 0.98,
+    "mtextInheritFont": true
+  },
+  "loader": {
+    "load": [
+      "input/asciimath",
+      "[tex]/extpfeil",
+      "[tex]/amscd",
+      "[tex]/color",
+      "[tex]/newcommand",
+      "[pretext]/mathjaxknowl3.js"
+    ],
+    "paths": {
+      "pretext": "_static/pretext/js/lib"
+    }
+  },
+  "startup": {
+    pageReady() {
+      return MathJax.startup.defaultPageReady().then(function () {
+      console.log("in ready function");
+      rsMathReady();
+      }
+    )}
+  }
+};
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="book">
+<meta property="book:title" content="Komputasi Aljabar Linear">
+<meta property="book:author" content=" Mulaab M ">
+<script src="_static/pretext/js/lib/jquery.min.js"></script><script src="_static/pretext/js/lib/jquery.sticky.js"></script><script src="_static/pretext/js/lib/jquery.espy.min.js"></script><script src="_static/pretext/js/pretext.js"></script><script src="_static/pretext/js/pretext_add_on.js?x=1"></script><script src="_static/pretext/js/user_preferences.js"></script><!--** eBookCongig is necessary to configure interactive       **-->
+<!--** Runestone components to run locally in reader's browser **-->
+<!--** No external communication:                              **-->
+<!--**     log level is 0, Runestone Services are disabled     **-->
+<script type="text/javascript">
+eBookConfig = {};
+eBookConfig.useRunestoneServices = false;
+eBookConfig.host = 'http://127.0.0.1:8000';
+eBookConfig.course = 'PTX_Course_Title_Here';
+eBookConfig.basecourse = 'PTX_Base_Course';
+eBookConfig.isLoggedIn = false;
+eBookConfig.email = '';
+eBookConfig.isInstructor = false;
+eBookConfig.logLevel = 0;
+eBookConfig.username = '';
+eBookConfig.readings = null;
+eBookConfig.activities = null;
+eBookConfig.downloadsEnabled = false;
+eBookConfig.allow_pairs = false;
+eBookConfig.enableScratchAC = false;
+eBookConfig.build_info = "";
+eBookConfig.python3 = null;
+eBookConfig.runestone_version = '7.11.15';
+eBookConfig.jobehost = '';
+eBookConfig.proxyuri_runs = '';
+eBookConfig.proxyuri_files = '';
+eBookConfig.enable_chatcodes =  false;
+</script>
+<!--*** Runestone Services ***-->
+<script src="_static/prefix-runtime.529fd9398bfbd03e.bundle.js"></script><script src="_static/prefix-723.3e6434f80549315a.bundle.js"></script><script src="_static/prefix-runestone.1d6e4aba17c2c7f2.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-723.3bccd435914aa0ff.css">
+<link rel="stylesheet" type="text/css" href="_static/prefix-runestone.6ec5960970d8b364.css">
+<script src="https://sagecell.sagemath.org/static/embedded_sagecell.js"></script><script src="_static/pretext/js/lti_iframe_resizer.js"></script><script async="" src="https://cse.google.com/cse.js?cx=015103900096539427448:ngwuia10qci"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js" integrity="sha512-4xUl/d6D6THrAnXAwGajXkoWaeMNwEKK4iNfq5DotEbLPAfk6FSxSP3ydNxqDgCw1c/0Z1Jg6L8h2j+++9BZmg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="lunr-pretext-search-index.js" async=""></script><script src="_static/pretext/js/pretext_search.js"></script><script src="_static/pretext/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
+</script><script>// Make *any* div with class 'sagecell-sage' an executable Sage cell
+// Their results will be linked, only within language type
+sagecell.makeSagecell({
+  "inputLocation": "div.sagecell-sage",
+  "linked": true,
+  "linkKey": "linked-sage",
+  "autoeval": false,
+  "languages": [
+    "sage"
+  ],
+  "evalButtonText": "Evaluate (Sage)"
+});
+</script>
+</head>
+<body id="ula" class="pretext book ignore-math">
+<a class="assistive" href="#ptx-content">Skip to main content</a><header id="ptx-masthead" class="ptx-masthead"><div class="ptx-banner">
+<a id="logo-link" class="logo-link" target="_blank" href="https://understandinglinearalgebra.org"><img src="external/images/ula-logo.png" alt="Logo image"></a><div class="title-container">
+<h1 class="heading"><a href="ula.html"><span class="title">Komputasi Aljabar Linear</span></a></h1>
+<p class="byline">Mulaab M</p>
+</div>
+</div></header><nav id="ptx-navbar" class="ptx-navbar navbar"><div class="ptx-navbar-contents">
+<button class="toc-toggle button" title="Contents"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5d2;</span><span class="name">Contents</span></button><a class="index-button button" href="backmatter-3.html" title="Index"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe88e;</span><span class="name">Index</span></a><div class="searchwrapper" role="search"><div class="gcse-search"></div></div>
+<div class="searchbox">
+<div class="searchwidget"><button id="searchbutton" class="searchbutton button" type="button" title="Search book"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe8b6;</span><span class="name">Search Book</span></button></div>
+<div id="searchresultsplaceholder" class="searchresultsplaceholder" style="display: none">
+<div class="search-results-controls">
+<input aria-label="Search term" id="ptxsearch" class="ptxsearch" type="text" name="terms" placeholder="Search term"><button title="Close search" id="closesearchresults" class="closesearchresults"><span class="material-symbols-outlined">close</span></button>
+</div>
+<h2 class="search-results-heading">Search Results: </h2>
+<div id="searchempty" class="searchempty"><span>No results.</span></div>
+<ol id="searchresults" class="searchresults"></ol>
+</div>
+</div>
+<span class="nav-other-controls"><button id="light-dark-button" class="light-dark-button button" title="Dark Mode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span class="name">Dark Mode</span></button></span><span class="treebuttons"><a class="previous-button button" href="chap2.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="up-button button" href="chap2.html" title="Up"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Up</span></a><a class="next-button button" href="backmatter.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span>
+</div></nav><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\(   \newcommand{\avec}{{\mathbf a}}
+   \newcommand{\bvec}{{\mathbf b}}
+   \newcommand{\cvec}{{\mathbf c}}
+   \newcommand{\dvec}{{\mathbf d}}
+   \newcommand{\dtil}{\widetilde{\mathbf d}}
+   \newcommand{\evec}{{\mathbf e}}
+   \newcommand{\fvec}{{\mathbf f}}
+   \newcommand{\nvec}{{\mathbf n}}
+   \newcommand{\pvec}{{\mathbf p}}
+   \newcommand{\qvec}{{\mathbf q}}
+   \newcommand{\svec}{{\mathbf s}}
+   \newcommand{\tvec}{{\mathbf t}}
+   \newcommand{\uvec}{{\mathbf u}}
+   \newcommand{\vvec}{{\mathbf v}}
+   \newcommand{\wvec}{{\mathbf w}}
+   \newcommand{\xvec}{{\mathbf x}}
+   \newcommand{\yvec}{{\mathbf y}}
+   \newcommand{\zvec}{{\mathbf z}}
+   \newcommand{\rvec}{{\mathbf r}}
+   \newcommand{\mvec}{{\mathbf m}}
+   \newcommand{\zerovec}{{\mathbf 0}}
+   \newcommand{\onevec}{{\mathbf 1}}
+   \newcommand{\real}{{\mathbb R}}
+   \newcommand{\twovec}[2]{\left[\begin{array}{r}#1 \\ #2
+   \end{array}\right]}
+   \newcommand{\ctwovec}[2]{\left[\begin{array}{c}#1 \\ #2
+   \end{array}\right]}
+   \newcommand{\threevec}[3]{\left[\begin{array}{r}#1 \\ #2 \\ #3
+   \end{array}\right]}
+   \newcommand{\cthreevec}[3]{\left[\begin{array}{c}#1 \\ #2 \\ #3
+   \end{array}\right]}
+   \newcommand{\fourvec}[4]{\left[\begin{array}{r}#1 \\ #2 \\ #3 \\ #4
+   \end{array}\right]}
+   \newcommand{\cfourvec}[4]{\left[\begin{array}{c}#1 \\ #2 \\ #3 \\ #4
+   \end{array}\right]}
+   \newcommand{\fivevec}[5]{\left[\begin{array}{r}#1 \\ #2 \\ #3 \\
+   #4 \\ #5 \\ \end{array}\right]}
+   \newcommand{\cfivevec}[5]{\left[\begin{array}{c}#1 \\ #2 \\ #3 \\
+   #4 \\ #5 \\ \end{array}\right]}
+   \newcommand{\mattwo}[4]{\left[\begin{array}{rr}#1 \amp #2 \\ #3 \amp #4 \\ \end{array}\right]}
+   \newcommand{\laspan}[1]{\text{Span}\left\{#1\right\}}
+   \newcommand{\bcal}{{\cal B}}
+   \newcommand{\ccal}{{\cal C}}
+   \newcommand{\scal}{{\cal S}}
+   \newcommand{\wcal}{{\cal W}}
+   \newcommand{\ecal}{{\cal E}}
+   \newcommand{\coords}[2]{\left\{#1\right\}_{#2}}
+   \newcommand{\gray}[1]{\color{gray}{#1}}
+   \newcommand{\lgray}[1]{\color{lightgray}{#1}}
+   \newcommand{\rank}{\operatorname{rank}}
+   \newcommand{\row}{\text{Row}}
+   \newcommand{\col}{\text{Col}}
+   \renewcommand{\row}{\text{Row}}
+   \newcommand{\nul}{\text{Nul}}
+   \newcommand{\var}{\text{Var}}
+   \newcommand{\corr}{\text{corr}}
+   \newcommand{\len}[1]{\left|#1\right|}
+   \newcommand{\bbar}{\overline{\bvec}}
+   \newcommand{\bhat}{\widehat{\bvec}}
+   \newcommand{\bperp}{\bvec^\perp}
+   \newcommand{\xhat}{\widehat{\xvec}}
+   \newcommand{\vhat}{\widehat{\vvec}}
+   \newcommand{\uhat}{\widehat{\uvec}}
+   \newcommand{\what}{\widehat{\wvec}}
+   \newcommand{\Sighat}{\widehat{\Sigma}}
+   \newcommand{\basis}[2]{#1_1,#1_2,\ldots,#1_{#2}}
+
+
+
+
+\newcommand{\eqsys}{\begin{array}{rcrcrcr}
+     a_{11}x_{1}\amp +\amp a_{12}x_{2}\amp +\cdots+\amp  a_{1n}x_{n}\amp =\amp b_1\\
+     a_{21}x_{1}\amp +\amp a_{22}x_{2}\amp +\cdots+\amp a_{2n}x_{n}\amp =\amp b_2\\
+     \amp \vdots\amp   \amp \vdots \amp  \amp \vdots \amp  \\
+     a_{m1}x_{1}\amp +\amp a_{m2}x_{2}\amp +\cdots +\amp a_{mn}x_{n}\amp =\amp b_m
+     \end{array}
+     }
+  
+\newcommand{\homsys}{\begin{array}{rcrcrcr}
+a_{11}x_{1}\amp +\amp a_{12}x_{2}\amp +\cdots+\amp  a_{1n}x_{n}\amp =\amp 0\\
+	a_{21}x_{1}\amp +\amp a_{22}x_{2}\amp +\cdots+\amp a_{2n}x_{n}\amp =\amp 0\\
+	\amp \vdots\amp   \amp \vdots \amp  \amp \vdots \amp  \vdots\\
+	a_{m1}x_{1}\amp +\amp a_{m2}x_{2}\amp +\cdots +\amp a_{mn}x_{n}\amp =\amp 0
+	\end{array}
+	}
+\newcommand{\R}{{\mathbb R}}
+\newcommand{\boldn}{{\mathbf n}}
+
+ \newenvironment{linsys}[2][m]{
+     \begin{array}[#1]{@{}*{#2}{rc}r@{}}
+     }{
+     \end{array}}
+
+\newcommand{\augmatrix}{
+     \begin{amatrix}[cccc|c]
+     a_{11} \amp  a_{12} \amp  \cdots \amp  a_{1n} \amp b_{1}\\
+     a_{21} \amp  a_{22} \amp  \cdots \amp  a_{2n} \amp b_{2}\\
+     \vdots  \amp  \vdots  \amp  \ddots \amp  \vdots  \amp \vdots\\
+     a_{m1} \amp  a_{m2} \amp  \cdots \amp  a_{mn}\amp b_{m}
+     \end{amatrix}
+     }
+  \newenvironment{amatrix}[1][ccc|c]{\left[\begin{array}{#1}}{\end{array}\right]}
+  
+  
+  
+  \newcommand{\linearsystem}[2]{\mathcal{LS}\!\left(#1,\,#2\right)}
+  \newcommand{\vect}[1]{\mathbf{#1}}
+  \newcommand{\colvector}[1]{\begin{bmatrix}#1\end{bmatrix}}
+  \newcommand{\augmented}[2]{\left[\,#1 \mid #2\,\right]}
+  
+  \newcommand{\Z}{{\mathbb Z}}
+     \newcommand{\Q}{{\mathbb Q}}
+     \newcommand{\R}{{\mathbb R}}
+     \newcommand{\C}{{\mathbb C}}
+     \newcommand{\T}{{\mathbb T}}
+     \newcommand{\F}{{\mathbb F}}
+     \newcommand{\HH}{{\mathbb H}}
+     \newcommand{\compose}{\circ}
+     \newcommand{\bolda}{{\mathbf a}}
+     \newcommand{\boldb}{{\mathbf b}}
+     \newcommand{\boldc}{{\mathbf c}}
+     \newcommand{\boldd}{{\mathbf d}}
+     \newcommand{\bolde}{{\mathbf e}}
+     \newcommand{\boldi}{{\mathbf i}}
+     \newcommand{\boldj}{{\mathbf j}}
+     \newcommand{\boldk}{{\mathbf k}}
+     \newcommand{\boldn}{{\mathbf n}}
+     \newcommand{\boldp}{{\mathbf p}}
+     \newcommand{\boldq}{{\mathbf q}}
+     \newcommand{\boldr}{{\mathbf r}}
+     \newcommand{\bolds}{{\mathbf s}}
+     \newcommand{\boldt}{{\mathbf t}}
+     \newcommand{\boldu}{{\mathbf u}}
+     \newcommand{\boldv}{{\mathbf v}}
+     \newcommand{\boldw}{{\mathbf w}}
+     \newcommand{\boldx}{{\mathbf x}}
+     \newcommand{\boldy}{{\mathbf y}}
+     \newcommand{\boldz}{{\mathbf z}}
+     \newcommand{\boldzero}{{\mathbf 0}}
+     \newcommand{\boldmod}{\boldsymbol{ \bmod }}
+     \newcommand{\boldT}{{\mathbf T}}
+     \newcommand{\boldN}{{\mathbf N}}
+     \newcommand{\boldB}{{\mathbf B}}
+     \newcommand{\boldF}{{\mathbf F}}
+     \newcommand{\boldS}{{\mathbf S}}
+     \newcommand{\boldG}{{\mathbf G}}
+     \newcommand{\boldK}{{\mathbf K}}
+     \newcommand{\boldL}{{\mathbf L}}
+     \DeclareMathOperator{\lcm}{lcm}
+     \DeclareMathOperator{\Span}{span}
+     \DeclareMathOperator{\tr}{tr}
+     \DeclareMathOperator{\NS}{null}
+     \DeclareMathOperator{\RS}{row}
+     \DeclareMathOperator{\CS}{col}
+     \DeclareMathOperator{\im}{im}
+     \DeclareMathOperator{\range}{range}
+     \DeclareMathOperator{\rank}{rank}
+     \DeclareMathOperator{\nullity}{nullity}
+     \DeclareMathOperator{\sign}{sign}
+     \DeclareMathOperator{\Fix}{Fix}
+     \DeclareMathOperator{\Aff}{Aff}
+     \DeclareMathOperator{\Frac}{Frac}
+     \DeclareMathOperator{\Ann}{Ann}
+     \DeclareMathOperator{\Tor}{Tor}
+     \DeclareMathOperator{\id}{id}
+     \DeclareMathOperator{\mdeg}{mdeg}
+     \DeclareMathOperator{\Lt}{Lt}
+     \DeclareMathOperator{\Lc}{Lc}
+     \DeclareMathOperator{\disc}{disc}
+     \DeclareMathOperator{\Frob}{Frob}
+     \DeclareMathOperator{\adj}{adj}
+     \DeclareMathOperator{\curl}{curl}
+     \DeclareMathOperator{\grad}{grad}
+     \DeclareMathOperator{\diver}{div}
+     \DeclareMathOperator{\flux}{flux}
+     \def\Gal{\operatorname{Gal}}
+     \def\ord{\operatorname{ord}}
+     \def\ML{\operatorname{M}}
+     \def\GL{\operatorname{GL}}
+     \def\PGL{\operatorname{PGL}}
+     \def\SL{\operatorname{SL}}
+     \def\PSL{\operatorname{PSL}}
+     \def\GSp{\operatorname{GSp}}
+     \def\PGSp{\operatorname{PGSp}}
+     \def\Sp{\operatorname{Sp}}
+     \def\PSp{\operatorname{PSp}}
+     \def\Aut{\operatorname{Aut}}
+     \def\Inn{\operatorname{Inn}}
+     \def\Hom{\operatorname{Hom}}
+     \def\End{\operatorname{End}}
+     \def\ch{\operatorname{char}}
+     \def\Zp{\Z/p\Z}
+     \def\Zm{\Z/m\Z}
+     \def\Zn{\Z/n\Z}
+     \def\Fp{\F_p}
+     \newcommand{\surjects}{\twoheadrightarrow}
+     \newcommand{\injects}{\hookrightarrow}
+     \newcommand{\bijects}{\leftrightarrow}
+     \newcommand{\isomto}{\overset{\sim}{\rightarrow}}
+     \newcommand{\floor}[1]{\lfloor#1\rfloor}
+     \newcommand{\ceiling}[1]{\left\lceil#1\right\rceil}
+     \newcommand{\mclass}[2][m]{[#2]_{#1}}
+     \newcommand{\val}[2][]{\left\lvert #2\right\rvert_{#1}}
+     \newcommand{\abs}[2][]{\left\lvert #2\right\rvert_{#1}}
+     \newcommand{\valuation}[2][]{\left\lvert #2\right\rvert_{#1}}
+     \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+     \newcommand{\anpoly}{a_nx^n+a_{n-1}x^{n-1}\cdots +a_1x+a_0}
+     \newcommand{\anmonic}{x^n+a_{n-1}x^{n-1}\cdots +a_1x+a_0}
+     \newcommand{\bmpoly}{b_mx^m+b_{m-1}x^{m-1}\cdots +b_1x+b_0}
+     \newcommand{\bnpoly}{b_nx^n+b_{n-1}x^{n-1}\cdots +b_1x+b_0}
+     \newcommand{\pder}[2]{\frac{\partial#1}{\partial#2}}
+     \newcommand{\normalin}{\trianglelefteq}
+     \newcommand{\angvec}[1]{\langle #1\rangle}
+     \newcommand{\varpoly}[2]{#1_{#2}x^{#2}+#1_{#2-1}x^{#2-1}\cdots +#1_1x+#1_0}
+     \newcommand{\varpower}[1][a]{#1_0+#1_1x+#1_1x^2+\cdots}
+     \newcommand{\limasto}[2][x]{\lim_{#1\rightarrow #2}}
+     \def\ntoinfty{\lim_{n\rightarrow\infty}}
+     \def\xtoinfty{\lim_{x\rightarrow\infty}}
+     \def\ii{\item}
+     \def\bb{\begin{enumerate}}
+     \def\ee{\end{enumerate}}
+     \def\ds{\displaystyle}
+     \def\p{\partial}
+     \newcommand{\abcdmatrix}[4]{\begin{bmatrix}#1\amp #2\\ #3\amp #4 \end{bmatrix}
+     }
+     \newenvironment{amatrix}[1][ccc|c]{\left[\begin{array}{#1}}{\end{array}\right]}
+     \newenvironment{linsys}[2][m]{
+     \begin{array}[#1]{@{}*{#2}{rc}r@{}}
+     }{
+     \end{array}}
+     \newcommand{\eqsys}{\begin{array}{rcrcrcr}
+     a_{11}x_{1}\amp +\amp a_{12}x_{2}\amp +\cdots+\amp  a_{1n}x_{n}\amp =\amp b_1\\
+     a_{21}x_{1}\amp +\amp a_{22}x_{2}\amp +\cdots+\amp a_{2n}x_{n}\amp =\amp b_2\\
+     \amp \vdots\amp   \amp \vdots \amp  \amp \vdots \amp  \\
+     a_{m1}x_{1}\amp +\amp a_{m2}x_{2}\amp +\cdots +\amp a_{mn}x_{n}\amp =\amp b_m
+     \end{array}
+     }
+     \newcommand{\numeqsys}{\begin{array}{rrcrcrcr}
+     e_1:\amp  a_{11}x_{1}\amp +\amp a_{12}x_{2}\amp +\cdots+\amp  a_{1n}x_{n}\amp =\amp b_1\\
+     e_2: \amp a_{21}x_{1}\amp +\amp a_{22}x_{2}\amp +\cdots+\amp a_{2n}x_{n}\amp =\amp b_2\\
+     \amp \vdots\amp   \amp \vdots \amp  \amp \vdots \amp  \\
+     e_m: \amp a_{m1}x_{1}\amp +\amp a_{m2}x_{2}\amp +\cdots +\amp a_{mn}x_{n}\amp =\amp b_m
+     \end{array}
+     }
+     \newcommand{\homsys}{\begin{array}{rcrcrcr}
+     a_{11}x_{1}\amp +\amp a_{12}x_{2}\amp +\cdots+\amp  a_{1n}x_{n}\amp =\amp 0\\
+     a_{21}x_{1}\amp +\amp a_{22}x_{2}\amp +\cdots+\amp a_{2n}x_{n}\amp =\amp 0\\
+     \amp \vdots\amp   \amp \vdots \amp  \amp \vdots \amp \\
+     a_{m1}x_{1}\amp +\amp a_{m2}x_{2}\amp +\cdots +\amp a_{mn}x_{n}\amp =\amp 0
+     \end{array}
+     }
+     \newcommand{\vareqsys}[4]{
+     \begin{array}{ccccccc}
+     #3_{11}x_{1}\amp +\amp #3_{12}x_{2}\amp +\cdots+\amp  #3_{1#2}x_{#2}\amp =\amp #4_1\\
+     #3_{21}x_{1}\amp +\amp #3_{22}x_{2}\amp +\cdots+\amp #3_{2#2}x_{#2}\amp =\amp #4_2\\
+     \vdots \amp \amp \vdots \amp  \amp \vdots \amp =\amp  \\
+     #3_{#1 1}x_{1}\amp +\amp #3_{#1 2}x_{2}\amp +\cdots +\amp #3_{#1 #2}x_{#2}\amp =\amp #4_{#1}
+     \end{array}
+     }
+     \newcommand{\genmatrix}[1][a]{
+     \begin{bmatrix}
+     #1_{11} \amp  #1_{12} \amp  \cdots \amp  #1_{1n} \\
+     #1_{21} \amp  #1_{22} \amp  \cdots \amp  #1_{2n} \\
+     \vdots  \amp  \vdots  \amp  \ddots \amp  \vdots  \\
+     #1_{m1} \amp  #1_{m2} \amp  \cdots \amp  #1_{mn}
+     \end{bmatrix}
+     }
+     \newcommand{\varmatrix}[3]{
+     \begin{bmatrix}
+     #3_{11} \amp  #3_{12} \amp  \cdots \amp  #3_{1#2} \\
+     #3_{21} \amp  #3_{22} \amp  \cdots \amp  #3_{2#2} \\
+     \vdots  \amp  \vdots  \amp  \ddots \amp  \vdots  \\
+     #3_{#1 1} \amp  #3_{#1 2} \amp  \cdots \amp  #3_{#1 #2}
+     \end{bmatrix}
+     }
+     \newcommand{\augmatrix}{
+     \begin{amatrix}[cccc|c]
+     a_{11} \amp  a_{12} \amp  \cdots \amp  a_{1n} \amp b_{1}\\
+     a_{21} \amp  a_{22} \amp  \cdots \amp  a_{2n} \amp b_{2}\\
+     \vdots  \amp  \vdots  \amp  \ddots \amp  \vdots  \amp \vdots\\
+     a_{m1} \amp  a_{m2} \amp  \cdots \amp  a_{mn}\amp b_{m}
+     \end{amatrix}
+     }
+     \newcommand{\varaugmatrix}[4]{
+     \begin{amatrix}[cccc|c]
+     #3_{11} \amp  #3_{12} \amp  \cdots \amp  #3_{1#2} \amp #4_{1}\\
+     #3_{21} \amp  #3_{22} \amp  \cdots \amp  #3_{2#2} \amp #4_{2}\\
+     \vdots  \amp  \vdots  \amp  \ddots \amp  \vdots  \amp \vdots\\
+     #3_{#1 1} \amp  #3_{#1 2} \amp  \cdots \amp  #3_{#1 #2}\amp #4_{#1}
+     \end{amatrix}
+     }
+     \newcommand{\spaceforemptycolumn}{\makebox[\wd\boxofmathplus]{\ }}
+
+     \newcommand{\generalmatrix}[3]{
+     \left(
+     \begin{array}{cccc}
+     #1_{1,1}  \amp #1_{1,2}  \amp \ldots  \amp #1_{1,#2}  \\
+     #1_{2,1}  \amp #1_{2,2}  \amp \ldots  \amp #1_{2,#2}  \\
+     \amp \vdots                         \\
+     #1_{#3,1} \amp #1_{#3,2} \amp \ldots  \amp #1_{#3,#2}
+     \end{array}
+     \right)  }
+     \newcommand{\colvec}[2][c]{\begin{amatrix}[#1] #2 \end{amatrix}}
+     \DeclareMathOperator{\size}{size}
+     \DeclareMathOperator{\adjoint}{adj}
+     \DeclareMathOperator{\sgn}{sgn}
+     \newcommand{\restrictionmap}[2]{{#1}\mathpunct\upharpoonright\hbox{}_{#2}}
+     \renewcommand{\emptyset}{\varnothing}
+
+     \newcommand{\proj}[2]{\mbox{proj}_{#2}({#1}) }
+     \renewcommand{\Re}{\operatorname{Re}}
+      \renewcommand{\Im}{\operatorname{Im}}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\definecolor{fillinmathshade}{gray}{0.9}
+\newcommand{\fillinmath}[1]{\mathchoice{\colorbox{fillinmathshade}{$\displaystyle     \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\textstyle        \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptstyle      \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptscriptstyle\phantom{\,#1\,}$}}}
+\)</span></div>
+<div class="ptx-page">
+<div id="ptx-sidebar" class="ptx-sidebar"><nav id="ptx-toc" class="ptx-toc depth2 focused" data-preexpanded-levels="0" data-max-levels="2"><ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-frontmatter">
+<div class="toc-title-box"><a href="frontmatter.html" class="internal"><span class="title">Front Matter</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-colophon"><div class="toc-title-box"><a href="frontmatter-4.html" class="internal"><span class="title">Colophon</span></a></div></li>
+<li class="toc-item toc-dedication"><div class="toc-title-box"><a href="frontmatter-5.html" class="internal"><span class="title">Dedication</span></a></div></li>
+<li class="toc-item toc-acknowledgement"><div class="toc-title-box"><a href="frontmatter-6.html" class="internal"><span class="title">Acknowledgements</span></a></div></li>
+<li class="toc-item toc-preface"><div class="toc-title-box"><a href="frontmatter-7.html" class="internal"><span class="title">Tujuan Kami</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="chap1.html" class="internal"><span class="codenumber">1</span> <span class="title">Sistem Persamaan</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-expect.html" class="internal"><span class="codenumber">1.1</span> <span class="title">Apa yang dapat kita harapkan</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-expect.html#sec-expect-3" class="internal"><span class="codenumber">1.1.1</span> <span class="title">Beberapa contoh sederhana</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_systems.html" class="internal"><span class="codenumber">1.2</span> <span class="title">Sistem Persamaan Linear</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="s_systems.html#ss_linear_equations" class="internal"><span class="codenumber">1.2.1</span> <span class="title">Sistem Persamaan Linear</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_systems.html#ss_linear_equations-11" class="internal"><span class="codenumber">1.2.1.1</span> <span class="title">Representasi Matriks dari Sistem Linear</span></a></div></li></ul>
+</li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_systemsb.html" class="internal"><span class="codenumber">1.3</span> <span class="title">Eliminasi Gaussian</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_systemsb.html#ss_ge_row_echelon" class="internal"><span class="codenumber">1.3.1</span> <span class="title">Matriks bentuk eselon baris</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_systemsb.html#ss_gaussian_elimination" class="internal"><span class="codenumber">1.3.2</span> <span class="title">Eliminasi Gaussian</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter contains-active">
+<div class="toc-title-box"><a href="chap2.html" class="internal"><span class="codenumber">2</span> <span class="title">Matrik</span></a></div>
+<ul class="structural toc-item-list contains-active"><li class="toc-item toc-section contains-active">
+<div class="toc-title-box"><a href="s_matrix.html" class="internal"><span class="codenumber">2.1</span> <span class="title">Aritmetika Matriks</span></a></div>
+<ul class="structural toc-item-list active">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_matrix.html#ss_matrix_attributes" class="internal"><span class="codenumber">2.1.1</span> <span class="title">Dasar-dasar</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_matrix.html#ss_matrix_arithmetic" class="internal"><span class="codenumber">2.1.2</span> <span class="title">Penjumlahan, pengurangan dan perkalian skalar</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_matrix.html#ss_matrix_mult" class="internal"><span class="codenumber">2.1.3</span> <span class="title">Perkalian matriks</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_matrix.html#s_column_row_method" class="internal"><span class="codenumber">2.1.4</span> <span class="title">Metode alternatif perkalian</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_matrix.html#s_matrix-7" class="internal"><span class="codenumber">2.1.5</span> <span class="title">Transpos dari sebuah matriks</span></a></div></li>
+</ul>
+</li></ul>
+</li>
+<li class="toc-item toc-backmatter">
+<div class="toc-title-box"><a href="backmatter.html" class="internal"><span class="title">Back Matter</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-appendix"><div class="toc-title-box"><a href="app-sage-reference.html" class="internal"><span class="codenumber">A</span> <span class="title">Referensi Sage</span></a></div></li>
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="backmatter-3.html" class="internal"><span class="title">Index</span></a></div></li>
+<li class="toc-item toc-colophon"><div class="toc-title-box"><a href="backmatter-4.html" class="internal"><span class="title">Colophon</span></a></div></li>
+<li class="toc-item toc-references"><div class="toc-title-box"><a href="references-backmatter.html" class="internal"><span class="title">References</span></a></div></li>
+</ul>
+</li>
+</ul></nav></div>
+<main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="section" id="s_matrix"><h2 class="heading hide-type">
+<span class="type">Section</span><span class="space"> </span><span class="codenumber">2.1</span><span class="space"> </span><span class="title">Aritmetika Matriks</span>
+</h2>
+<section class="introduction" id="s_matrix-2"><div class="para" id="s_matrix-2-1">Matriks memainkan peran pendukung kecil dalam diskusi kita tentang sistem linear di <a href="chap1.html" class="internal" title="Chapter 1: Sistem Persamaan">Chapter 1</a>. Dalam bab ini kita membawanya ke panggung utama dan memberikan treatment lengkap sebagai objek matematika independen tersendiri.</div>
+<div class="para" id="s_matrix-2-2">Seperti entitas matematika lainnya yang layak, matriks dapat digunakan dalam banyak sekali cara. Dengan demikian, penting untuk memungkinkan matriks melampaui awal yang sederhana dalam kursus ini sebagai sistem persamaan linear yang direbus. Kami mencatat observasi ini sebagai prinsip lain.</div>
+<article class="principle theorem-like" id="princ_matrix_mantra"><h3 class="heading">
+<span class="type">Principle</span><span class="space"> </span><span class="codenumber">2.1.1</span><span class="period">.</span><span class="space"> </span><span class="title">Mantra Matriks.</span>
+</h3>
+<div class="para" id="princ_matrix_mantra-2-1">Sebuah matriks adalah sebuah matriks adalah sebuah matriks.</div> <div class="para" id="princ_matrix_mantra-2-2">Tidak setiap matriks harus dianggap sebagai matriks augmented yang terkait dengan sistem linear.</div></article></section><section class="subsection" id="ss_matrix_attributes"><h3 class="heading hide-type">
+<span class="type">Subsection</span><span class="space"> </span><span class="codenumber">2.1.1</span><span class="space"> </span><span class="title">Dasar-dasar</span>
+</h3>
+<div class="para" id="ss_matrix_attributes-2">Kita mulai dengan beberapa definisi elementer tentang matriks, kesamaan matriks, dan jenis-jenis khusus matriks. Seperti yang diperjelas oleh definisi berikutnya, matriks hanyalah urutan bilangan yang diatur dengan cara yang sangat khusus.</div>
+<article class="definition definition-like" id="d_matrix"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">2.1.2</span><span class="period">.</span><span class="space"> </span><span class="title">Matriks.</span>
+</h4>
+<div class="para logical" id="d_matrix-3-1">
+<div class="para">Sebuah <dfn class="terminology">matriks (real)</dfn> adalah array persegi panjang dari bilangan real</div>
+<div class="displaymath process-math" id="s_matrix_eq_matrix">
+\begin{equation}
+A=\genmatrix\text{.}\tag{2.1.1}
+\end{equation}
+</div>
+<div class="para">Bilangan <span class="process-math">\(a_{ij}\)</span> yang terletak pada baris ke-<span class="process-math">\(i\)</span> dan kolom ke-<span class="process-math">\(j\)</span> dari <span class="process-math">\(A\)</span> disebut <dfn class="terminology"><span class="process-math">\((i,j)\)</span>-entri</dfn> (atau <dfn class="terminology"><span class="process-math">\(ij\)</span>-entri</dfn>) dari <span class="process-math">\(A\text{.}\)</span>
+</div>
+</div> <div class="para" id="d_matrix-3-2">Sebuah matriks dengan <span class="process-math">\(m\)</span> baris dan <span class="process-math">\(n\)</span> kolom dikatakan memiliki <dfn class="terminology">ukuran</dfn> (atau <dfn class="terminology">dimensi</dfn>) <span class="process-math">\(m\times n\text{.}\)</span>
+</div> <div class="para" id="d_matrix-3-3">Kami biasanya akan menggunakan huruf kapital dekat awal alfabet (e.g. <span class="process-math">\(A, B,C, D\text{,}\)</span> etc.) untuk menunjukkan matriks.</div></article><div class="para" id="ss_matrix_attributes-4">Matriks yang ditampilkan dalam <a href="s_matrix.html#s_matrix_eq_matrix" class="xref" data-knowl="./knowl/xref/s_matrix_eq_matrix.html" data-reveal-label="Reveal" data-close-label="Close" title="Equation 2.1.1">(2.1.1)</a> mahal baik dalam ruang yang dibutuhkan untuk menampilkannya, maupun waktu yang dibutuhkan untuk menulis atau mengetiknya. Oleh karena itu kami memperkenalkan dua bentuk notasi yang agak saling melengkapi untuk membantu mendeskripsikan matriks.</div>
+<article class="definition definition-like" id="d_matrix_notation"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">2.1.3</span><span class="period">.</span><span class="space"> </span><span class="title">Notasi Matriks.</span>
+</h4>
+<div class="para logical" id="d_matrix_notation-4-1">
+<dl class="description-list">
+<dt id="d_matrix_notation-4-1-1-1">Notasi pembangun matriks</dt>
+<dd><div class="para" id="d_matrix_notation-4-1-1-1-3">Notasi <span class="process-math">\([a_{ij}]_{m\times n}\)</span> menunjukkan matriks <span class="process-math">\(m\times n\)</span> yang entri <span class="process-math">\(ij\)</span>-nya (baris ke-<span class="process-math">\(i\text{,}\)</span> kolom ke-<span class="process-math">\(j\)</span>) adalah <span class="process-math">\(a_{ij}\text{.}\)</span> Ketika tidak ada bahaya kebingungan, notasi ini sering disingkat menjadi <span class="process-math">\([a_{ij}]\text{.}\)</span>
+</div></dd>
+<dt id="d_matrix_notation-4-1-1-2">Notasi entri matriks</dt>
+<dd><div class="para" id="d_matrix_notation-4-1-1-2-3">Diberikan sebuah matriks <span class="process-math">\(A\text{,}\)</span> notasi <span class="process-math">\([A]_{ij}\)</span> menunjukkan entri ke-<span class="process-math">\(ij\)</span> dari <span class="process-math">\(A\text{.}\)</span>
+</div></dd>
+</dl>
+<div class="para">Jadi jika <span class="process-math">\(A=[a_{ij}]_{m\times n}\text{,}\)</span> maka <span class="process-math">\([A]_{ij}=a_{ij}\)</span> untuk semua <span class="process-math">\(1\leq i\leq m\)</span> dan <span class="process-math">\(1\leq j\leq n\text{.}\)</span>
+</div>
+</div></article><article class="remark remark-like" id="ss_matrix_attributes-6"><h4 class="heading">
+<span class="type">Remark</span><span class="space"> </span><span class="codenumber">2.1.4</span><span class="period">.</span>
+</h4>
+<div class="para" id="ss_matrix_attributes-6-1">Notasi pembangun matriks sering digunakan hanya untuk memberikan nama pada entri-entri dari suatu matriks arbitrer. Namun, ini juga dapat digunakan untuk mendeskripsikan matriks yang entri <span class="process-math">\(ij\)</span>-nya diberikan oleh aturan atau formula tertentu.</div>
+<div class="para logical" id="ss_matrix_attributes-6-2">
+<div class="para">Sebagai contoh, misalkan <span class="process-math">\(A=[a_{ij}]_{2\times 3}\text{,}\)</span> dimana <span class="process-math">\(a_{ij}=(i-j)j\text{.}\)</span> Ini adalah matriks <span class="process-math">\(2\times 3\)</span> yang entri <span class="process-math">\(ij\)</span>-nya adalah <span class="process-math">\((i-j)j\text{.}\)</span> Jadi</div>
+<div class="displaymath process-math">
+\begin{equation*}
+A=\begin{bmatrix}(1-1)1 \amp (1-2)2 \amp (1-3)3\\ (2-1)1 \amp (2-2)2 \amp (2-3)3
+\end{bmatrix}=\begin{bmatrix}0 \amp -2 \amp -6\\ 1 \amp 0 \amp -3 \end{bmatrix}\text{.}
+\end{equation*}
+</div>
+<div class="para">Dalam contoh ini kita memiliki <span class="process-math">\([A]_{23}=-3\)</span> dan <span class="process-math">\([A]_{ii}=0\)</span> untuk <span class="process-math">\(i=1,2\text{.}\)</span>
+</div>
+</div></article><div class="para" id="ss_matrix_attributes-7">Dalam bahasa sehari-hari, notions kesamaan dianggap jelas dengan sendirinya. Dua hal adalah sama jika mereka identik. Apa lagi yang perlu dikatakan? Dalam matematika, setiap kali kita memperkenalkan jenis objek matematika baru (mis. himpunan, fungsi, <span class="process-math">\(n\)</span>-tupel, dll.) kita perlu menjelaskan secara persis apa yang kita maksud agar dua hal dianggap sama. Kita lakukan sekarang dengan matriks.</div>
+<article class="definition definition-like" id="d_matrix_equality"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">2.1.5</span><span class="period">.</span><span class="space"> </span><span class="title">Kesamaan Matriks.</span>
+</h4>
+<div class="para logical" id="d_matrix_equality-2-1">
+<div class="para">Misalkan <span class="process-math">\(A\)</span> dan <span class="process-math">\(B\)</span> adalah matriks dengan dimensi <span class="process-math">\(m\times n\)</span> dan <span class="process-math">\(m'\times n'\text{,}\)</span> masing-masing. Dua matriks tersebut <dfn class="terminology">sama</dfn> jika</div>
+<ol class="decimal" id="d_matrix_equality-2-1-6">
+<li id="d_matrix_equality-2-1-6-1"><div class="para" id="d_matrix_equality-2-1-6-1-1">
+<span class="process-math">\(m=m'\)</span> dan <span class="process-math">\(n=n'\text{;}\)</span>
+</div></li>
+<li id="d_matrix_equality-2-1-6-2"><div class="para" id="d_matrix_equality-2-1-6-2-1">
+<span class="process-math">\([A]_{ij}=[B]_{ij}\)</span> untuk semua <span class="process-math">\(1\leq i\leq m\)</span> dan <span class="process-math">\(1\leq j\leq n\text{.}\)</span>
+</div></li>
+</ol>
+</div> <div class="para" id="d_matrix_equality-2-2">Dengan kata lain, kita memiliki <span class="process-math">\(A=B\)</span> jika dan hanya jika <span class="process-math">\(A\)</span> dan <span class="process-math">\(B\)</span> memiliki bentuk yang sama, dan setiap entri dari <span class="process-math">\(A\)</span> sama dengan entri yang bersesuaian dari <span class="process-math">\(B\text{.}\)</span>
+</div></article><article class="example example-like" id="eg_inequality"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">2.1.6</span><span class="period">.</span><span class="space"> </span><span class="title">Kesamaan Matriks.</span>
+</h4>
+<div class="para logical" id="eg_inequality-2-1">
+<div class="para">Matriks</div>
+<div class="displaymath process-math" id="eg_inequality-2-1-1">
+\begin{align*}
+A \amp =\begin{bmatrix}1\amp 2\amp 3\amp 4 \end{bmatrix}
+\amp B\amp = \begin{bmatrix} 1\\ 2\\ 3\\ 4\end{bmatrix}
+\end{align*}
+</div>
+<div class="para">tidak sama satu sama lain, meskipun mereka memiliki entri yang sama yang muncul kira-kira dalam urutan yang sama. Dalam kasus ini kesamaan tidak berlaku karena <span class="process-math">\(A\)</span> dan <span class="process-math">\(B\)</span> memiliki bentuk yang berbeda: <span class="process-math">\(A\)</span> adalah <span class="process-math">\(1\times 4\text{,}\)</span> dan <span class="process-math">\(B\)</span> adalah <span class="process-math">\(4\times 1\text{.}\)</span>
+</div>
+</div> <div class="para" id="eg_inequality-2-2">Matriks <span class="process-math">\(A=\begin{bmatrix}1\amp 2 \\3\amp 4 \end{bmatrix}\)</span> dan <span class="process-math">\(B=\begin{bmatrix}1\amp 2\\ 5\amp 4\end{bmatrix}\)</span> memiliki dimensi yang sama, tetapi tidak sama karena <span class="process-math">\([A]_{21}=3
+\neq 5=[B]_{21}\text{.}\)</span>
+</div></article><article class="definition definition-like" id="d_square_matrices"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">2.1.7</span><span class="period">.</span><span class="space"> </span><span class="title">Matriks persegi, vektor baris, vektor kolom, matriks nol.</span>
+</h4>
+<div class="para" id="d_square_matrices-8-1">Sebuah matriks <span class="process-math">\(A\)</span> adalah <dfn class="terminology">persegi</dfn> jika dimensinya adalah <span class="process-math">\(n\times n\text{.}\)</span> <dfn class="terminology">Diagonal</dfn> dari sebuah matriks persegi <span class="process-math">\(A=[a_{ij}]_{n\times n}\)</span> terdiri dari entri-entri <span class="process-math">\(a_{ii}\)</span> untuk <span class="process-math">\(1\leq i\leq n\text{.}\)</span>
+</div> <div class="para logical" id="d_square_matrices-8-2">
+<div class="para">Sebuah matriks <span class="process-math">\(1\times n\)</span>
+</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\bolda=\begin{bmatrix}a_1\amp a_2\amp \cdots \amp a_n \end{bmatrix}
+\end{equation*}
+</div>
+<div class="para">disebut <dfn class="terminology">vektor baris</dfn>. Entri ke-<span class="process-math">\(j\)</span> dari sebuah vektor baris <span class="process-math">\(\bolda\)</span> dilambangkan <span class="process-math">\([\bolda]_j\)</span>
+</div>
+</div> <div class="para logical" id="d_square_matrices-8-3">
+<div class="para">Sebuah matriks <span class="process-math">\(n\times 1\)</span>
+</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\boldb=\begin{bmatrix}b_1\\ b_2\\\vdots \\ b_m \end{bmatrix}\text{,}
+\end{equation*}
+</div>
+<div class="para">disebut <dfn class="terminology">vektor kolom</dfn>. Entri ke-<span class="process-math">\(i\)</span> dari sebuah vektor kolom <span class="process-math">\(\boldb\)</span> dilambangkan <span class="process-math">\([\boldb]_i\text{.}\)</span>
+</div>
+</div> <div class="para" id="d_square_matrices-8-4">
+<dfn class="terminology"><span class="process-math">\(m\times n\)</span> matriks nol</dfn>, dilambangkan <span class="process-math">\(\boldzero_{m\times n}\text{,}\)</span> adalah matriks dengan dimensi tersebut, yang semua entrinya adalah nol: yaitu, <span class="process-math">\((\boldzero_{m\times n})_{ij}=0\)</span> untuk semua <span class="process-math">\(1\leq i\leq m\)</span> dan <span class="process-math">\(1\leq j\leq n\text{.}\)</span>
+</div> <div class="para" id="d_square_matrices-8-5">Ketika dimensi sebenarnya tidak signifikan, kita sering akan menghapus subskrip dan menulis cukup <span class="process-math">\(\boldzero\)</span> untuk sebuah matriks nol dengan dimensi yang sesuai.</div></article><article class="remark remark-like" id="rm_matrices_as_row_columns"><h4 class="heading">
+<span class="type">Remark</span><span class="space"> </span><span class="codenumber">2.1.8</span><span class="period">.</span><span class="space"> </span><span class="title">Matriks sebagai kumpulan kolom/baris.</span>
+</h4>
+<div class="para logical" id="rm_matrices_as_row_columns-2">
+<div class="para">Misalkan <span class="process-math">\(A\)</span> adalah sebuah matriks <span class="process-math">\(m\times n\text{.}\)</span> Kita akan sering memikirkan <span class="process-math">\(A\)</span> sebagai kumpulan kolom, dalam hal ini kita menulis</div>
+<div class="displaymath process-math" id="eq_columns">
+\begin{equation}
+A=\begin{bmatrix}\vert \amp \vert \amp \amp \vert \\
+\boldc_1 \amp \boldc_2\amp \cdots \amp \boldc_n \\
+\vert \amp \vert \amp \amp \vert
+\end{bmatrix}\text{,}\tag{2.1.2}
+\end{equation}
+</div>
+<div class="para">dimana <span class="process-math">\(\boldc_j\)</span> adalah vektor kolom yang terdiri dari entri-entri dari kolom ke-<span class="process-math">\(j\)</span> dari <span class="process-math">\(A\text{:}\)</span> i.e.,</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\boldc_j=\begin{bmatrix}a_{1j}\\ a_{2j}\\ \vdots \\ a_{mj}\end{bmatrix}\text{.}
+\end{equation*}
+</div>
+<div class="para">Demikian pula, ketika kita memikirkan <span class="process-math">\(A\)</span> sebagai kumpulan baris, kita menulis</div>
+<div class="displaymath process-math" id="eq_rows">
+\begin{equation}
+A=\begin{bmatrix}\ -\boldr_{1}- \ \\
+\ -\boldr_{1}- \ \\
+\vdots \\
+\ -\boldr_{m}- \ \\
+\end{bmatrix}\text{,}\tag{2.1.3}
+\end{equation}
+</div>
+<div class="para">dimana <span class="process-math">\(\boldr_i\)</span> adalah vektor baris yang terdiri dari entri-entri dari baris ke-<span class="process-math">\(i\)</span> dari <span class="process-math">\(A\text{:}\)</span> i.e.,</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\boldr_i=
+\begin{bmatrix}a_{i1}\amp a_{i2}\amp\cdots\amp a_{in}
+\end{bmatrix}\text{.}
+\end{equation*}
+</div>
+<div class="para">Garis vertikal dan horizontal digunakan untuk menekankan bahwa <span class="process-math">\(\boldc_j\)</span> adalah vektor kolom dan <span class="process-math">\(\boldr_i\)</span> adalah vektor baris.</div>
+</div></article><article class="project project-like" id="sage_matrix_entries_rows_cols"><h4 class="heading">
+<span class="type">Project</span><span class="space"> </span><span class="codenumber">2.1.1</span><span class="period">.</span><span class="space"> </span><span class="title">Entri, Baris, dan Kolom Matriks.</span>
+</h4>
+<div class="para" id="sage_matrix_entries_rows_cols-2">Sintaks Sage untuk mengakses entri spesifik dari sebuah matriks mirip dalam semangat dengan notasi entri matriks kami. Namun, seperti semua hal Python, kita selalu menghitung dari 0. Jadi jika <code class="code-inline tex2jax_ignore">A</code> ditugaskan ke sebuah matriks di Sage, <code class="code-inline tex2jax_ignore">A[i,j]</code> adalah entri ke-<span class="process-math">\((i+1),(j+1)\)</span>-nya.</div>
+<div id="sage_matrix_entries_rows_cols-3" class="ptx-sagecell sagecell-sage"><script type="text/x-sage">A=Matrix([[1,2,3,4],[5,6,7,8],[9,10,11,12]])
+show(A[0,1])
+show(A[1,2])
+show(A[2,3])
+</script></div>
+<div class="para" id="sage_matrix_entries_rows_cols-4">Subset entri matriks yang ditentukan diperoleh melalui metode <em class="emphasis">slicing</em>: misalnya, <code class="code-inline tex2jax_ignore">A[a:b, c:d]</code> mengembalikan kumpulan entri <span class="process-math">\([A]_{ij}\)</span> dengan <span class="process-math">\(a+1\leq i\lt b+1\)</span> dan <span class="process-math">\(c+1\leq j\lt d\text{,}\)</span> disusun sebagai matriks.</div>
+<div id="sage_matrix_entries_rows_cols-5" class="ptx-sagecell sagecell-sage"><script type="text/x-sage">A[0:2,1:5]
+</script></div>
+<div class="para" id="sage_matrix_entries_rows_cols-6">Membiarkan sisi kiri atau kanan dari <code class="code-inline tex2jax_ignore">:</code> kosong dalam notasi ini menghapus batas restriksi indeks yang bersesuaian (kiri atau kanan). Jadi <code class="code-inline tex2jax_ignore">A[2, :]</code> mengembalikan baris ketiga dari <span class="process-math">\(A\text{,}\)</span> dan <code class="code-inline tex2jax_ignore">A[1:, 3]</code> mengembalikan bagian dari kolom keempat dari <span class="process-math">\(A\)</span> dimulai dengan entri keduanya.</div>
+<div id="sage_matrix_entries_rows_cols-7" class="ptx-sagecell sagecell-sage"><script type="text/x-sage">show(A[2, :])
+show(A[1:, 3])
+</script></div>
+<div class="para" id="sage_matrix_entries_rows_cols-8">Sebagai alternatif, kita dapat memperoleh daftar semua baris atau kolom dari <span class="process-math">\(A\)</span> menggunakan metode <code class="code-inline tex2jax_ignore">rows()</code> dan <code class="code-inline tex2jax_ignore">columns()</code>.</div>
+<div id="sage_matrix_entries_rows_cols-9" class="ptx-sagecell sagecell-sage"><script type="text/x-sage">show(A.columns())
+show(A.rows())
+</script></div>
+<div class="para" id="sage_matrix_entries_rows_cols-10">Gunakan sel kosong di bawah ini untuk mencoba beberapa perintah ini.</div>
+<div id="sage_matrix_entries_rows_cols-11" class="ptx-sagecell sagecell-sage"><script type="text/x-sage">
+</script></div></article></section><section class="subsection" id="ss_matrix_arithmetic"><h3 class="heading hide-type">
+<span class="type">Subsection</span><span class="space"> </span><span class="codenumber">2.1.2</span><span class="space"> </span><span class="title">Penjumlahan, pengurangan dan perkalian skalar</span>
+</h3>
+<div class="para" id="ss_matrix_arithmetic-2">Kita sekarang menguraikan berbagai operasi aljabar yang akan kita gunakan untuk menggabungkan dan mengubah matriks; kita merujuk pada penggunaan operasi ini secara longgar sebagai <em class="emphasis">aritmetika matriks</em>. Beberapa operasi ini menyerupai operasi familiar dari aritmetika real dalam hal notasi dan definisi mereka. Jangan tertipu menjadi puas! Ini adalah operasi baru yang didefinisikan untuk kelas objek matematika baru, dan harus diperlakukan dengan hati-hati. Secara khusus, perhatikan dengan seksama (a) tepat jenis objek matematika apa yang berfungsi sebagai input untuk setiap operasi (bahan operasi), dan (b) jenis objek matematika apa yang dikeluarkan.</div>
+<article class="definition definition-like" id="d_matrix_add_subtract"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">2.1.9</span><span class="period">.</span><span class="space"> </span><span class="title">Penjumlahan dan pengurangan matriks.</span>
+</h4>
+<div class="para logical" id="d_matrix_add_subtract-4-1">
+<div class="para">
+<dfn class="terminology">Penjumlahan Matriks</dfn> adalah operasi yang didefinisikan sebagai berikut: diberikan dua matriks <span class="process-math">\(m\times n\)</span> <span class="process-math">\(A=[a_{ij}]_{m\times n}\)</span> dan <span class="process-math">\(B=[b_{ij}]_{m\times n}\text{,}\)</span> kita mendefinisikan <dfn class="terminology">jumlah</dfn> mereka menjadi matriks</div>
+<div class="displaymath process-math">
+\begin{equation*}
+A+B\colon =[a_{ij}+b_{ij}]_{m\times n}\text{.}
+\end{equation*}
+</div>
+<div class="para">Dengan kata lain <span class="process-math">\(A+B\)</span> adalah matriks <span class="process-math">\(m\times n\)</span> yang memenuhi</div>
+<div class="displaymath process-math">
+\begin{equation*}
+[A+B]_{ij}=[A]_{ij}+[B]_{ij}=a_{ij}+b_{ij}
+\end{equation*}
+</div>
+<div class="para">untuk semua <span class="process-math">\(1\leq i\leq m\)</span> dan <span class="process-math">\(1\leq j\leq n\text{.}\)</span>
+</div>
+</div> <div class="para logical" id="d_matrix_add_subtract-4-2">
+<div class="para">
+<dfn class="terminology">Pengurangan Matriks</dfn> adalah operasi yang didefinisikan sebagai berikut: diberikan dua matriks <span class="process-math">\(m\times n\)</span> <span class="process-math">\(A=[a_{ij}]_{m\times n}\)</span> dan <span class="process-math">\(B=[b_{ij}]_{m\times n}\text{,}\)</span> kita mendefinisikan <dfn class="terminology">selisih</dfn> mereka menjadi matriks</div>
+<div class="displaymath process-math">
+\begin{equation*}
+A-B\colon =[a_{ij}-b_{ij}]_{m\times n}\text{.}
+\end{equation*}
+</div>
+<div class="para">Dengan kata lain <span class="process-math">\(A-B\)</span> adalah matriks <span class="process-math">\(m\times n\)</span> yang memenuhi</div>
+<div class="displaymath process-math">
+\begin{equation*}
+[A-B]_{ij}=[A]_{ij}-[B]_{ij}=a_{ij}-b_{ij}
+\end{equation*}
+</div>
+<div class="para">untuk semua <span class="process-math">\(1\leq i\leq m\)</span> dan <span class="process-math">\(1\leq j\leq n\text{.}\)</span>
+</div>
+</div></article><article class="remark remark-like" id="ss_matrix_arithmetic-4"><h4 class="heading">
+<span class="type">Remark</span><span class="space"> </span><span class="codenumber">2.1.10</span><span class="period">.</span>
+</h4>
+<div class="para" id="ss_matrix_arithmetic-4-1">Perhatikan bahwa penjumlahan/pengurangan matriks tidak didefinisikan untuk sembarang pasangan matriks. Bahan dari penjumlahan matriks (atau pengurangan) adalah dua matriks <em class="emphasis">dengan dimensi yang sama</em>; dan outputnya adalah matriks ketiga dengan dimensi umum ini.</div></article><article class="definition definition-like" id="d_matrix_scalar_mult"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">2.1.11</span><span class="period">.</span><span class="space"> </span><span class="title">Perkalian skalar matriks.</span>
+</h4>
+<div class="para logical" id="d_matrix_scalar_mult-3-1">
+<div class="para">Diberikan sembarang matriks <span class="process-math">\(A=[a_{ij}]_{m\times n}\)</span> dan sembarang konstanta <span class="process-math">\(c\in \R\text{,}\)</span> kita mendefinisikan</div>
+<div class="displaymath process-math">
+\begin{equation*}
+cA=[ca_{ij}]\text{.}
+\end{equation*}
+</div>
+<div class="para">Dengan kata lain, <span class="process-math">\(cA\)</span> adalah matriks <span class="process-math">\(m\times n\)</span> yang diperoleh dengan "menskalakan" setiap entri dari <span class="process-math">\(A\)</span> dengan konstanta <span class="process-math">\(c\text{.}\)</span>
+</div>
+</div> <div class="para" id="d_matrix_scalar_mult-3-2">Kita menyebut <span class="process-math">\(cA\)</span> sebuah <dfn class="terminology">kelipatan skalar</dfn> dari <span class="process-math">\(A\text{.}\)</span> Selanjutnya, untuk membantu membedakan antara matriks dan bilangan real, kita akan merujuk elemen-elemen dari <span class="process-math">\(\R\)</span> sebagai <dfn class="terminology">skalar</dfn>.</div></article><article class="remark remark-like" id="ss_matrix_arithmetic-6"><h4 class="heading">
+<span class="type">Remark</span><span class="space"> </span><span class="codenumber">2.1.12</span><span class="period">.</span>
+</h4>
+<div class="para" id="ss_matrix_arithmetic-6-1">Sedangkan penjumlahan dan pengurangan matriks sangat menyerupai operasi yang bersesuaian yang melibatkan bilangan real, tidak ada analog aritmetika real yang jelas untuk perkalian skalar matriks. Secara khusus, perhatikan bagaimana perkalian skalar matriks adalah sejenis operasi <em class="emphasis">hibrida</em> yang menggabungkan objek matematika dari dua sifat yang sangat berbeda: sebuah bilangan real (atau skalar) di satu sisi, dan sebuah matriks di sisi lain.</div></article><div class="para" id="ss_matrix_arithmetic-7">Kita menyebut hasil dari penerapan urutan penjumlahan matriks dan perkalian skalar sebagai <em class="emphasis">kombinasi linear dari matriks</em>.</div>
+<article class="definition definition-like" id="d_matrix_lin_comb"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">2.1.13</span><span class="period">.</span><span class="space"> </span><span class="title">Kombinasi linear dari matriks.</span>
+</h4>
+<div class="para logical" id="d_matrix_lin_comb-3-1">
+<div class="para">Diberikan matriks <span class="process-math">\(A_1,A_2,\dots, A_r\)</span> dengan dimensi yang sama, dan skalar <span class="process-math">\(c_1,c_2, \dots ,c_r\text{,}\)</span> ekspresi</div>
+<div class="displaymath process-math">
+\begin{equation*}
+c_1A_1+c_2A_2\cdots +c_rA_r
+\end{equation*}
+</div>
+<div class="para">disebut <dfn class="terminology">kombinasi linear dari matriks</dfn>. Skalar <span class="process-math">\(c_i\)</span> disebut <dfn class="terminology">koefisien</dfn> dari kombinasi linear tersebut.</div>
+</div></article><article class="example example-like" id="eg_matrix_lin_comb"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">2.1.14</span><span class="period">.</span><span class="space"> </span><span class="title">Kombinasi linear matriks.</span>
+</h4>
+<div class="para" id="eg_matrix_lin_comb-2-1">Misalkan <span class="process-math">\(A=\begin{amatrix}[rrr]1\amp -1\amp 2\\ 0\amp 0\amp 1\end{amatrix}\)</span> dan <span class="process-math">\(B=\begin{amatrix}[rrr]0\amp 1\amp 1\\ -1\amp -1\amp 1\end{amatrix}\text{.}\)</span> Hitung <span class="process-math">\(2A+(-3)B\text{.}\)</span>
+</div>
+<div class="solutions"><details id="eg_matrix_lin_comb-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical" id="eg_matrix_lin_comb-3-1"><div class="displaymath process-math" id="eg_matrix_lin_comb-3-1-1">
+\begin{align*}
+2A+(-3)B\amp= \begin{amatrix}[rrr]2\amp -2\amp 4\\ 0\amp 0\amp 2\end{amatrix}+\begin{amatrix}[rrr]0\amp -3\amp -3\\ 3\amp 3\amp -3\end{amatrix}\\
+\amp=\begin{amatrix}[rrr]-2\amp 1\amp -3\\ 3\amp 3\amp -1\end{amatrix} \text{.}
+\end{align*}
+</div></div></div></details></div></article><article class="example example-like" id="eg_matrix_lin_comb_solve"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">2.1.15</span><span class="period">.</span><span class="space"> </span><span class="title">Menyatakan matriks sebagai kombinasi linear.</span>
+</h4>
+<div class="para logical" id="eg_matrix_lin_comb_solve-2-1">
+<div class="para">Tunjukkan bahwa <span class="process-math">\(B=\begin{amatrix}3\amp -3\amp 3 \end{amatrix}\)</span> dapat dinyatakan sebagai kombinasi linear dari matriks</div>
+<div class="displaymath process-math">
+\begin{equation*}
+A_1=\begin{amatrix}[rrr]1\amp 1\amp 1\end{amatrix}, \
+A_2=\begin{amatrix}[rrr]1\amp -1\amp 0\end{amatrix}, \
+A_3=\begin{amatrix}[rrr]1\amp 1\amp -2\end{amatrix}\text{.}
+\end{equation*}
+</div>
+</div>
+<div class="solutions"><details id="eg_matrix_lin_comb_solve-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical" id="eg_matrix_lin_comb_solve-3-1">
+<div class="para">Kita harus menyelesaikan persamaan matriks (atau vektor baris)</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/d_matrix_equality.html">
+\begin{equation*}
+aA_1+bA_2+cA_3=B
+\end{equation*}
+</div>
+<div class="para">untuk skalar <span class="process-math">\(a,b,c\text{.}\)</span> Menghitung kombinasi linear di sebelah kiri menghasilkan persamaan matriks</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/d_matrix_equality.html">
+\begin{equation*}
+\begin{amatrix}[rrr]a+b+c\amp a-b+c\amp a-2c\end{amatrix}=\begin{amatrix}[rrr]3\amp -3\amp 3\end{amatrix}\text{.}
+\end{equation*}
+</div>
+<div class="para">Menggunakan definisi kesamaan matriks (<a href="s_matrix.html#d_matrix_equality" class="xref" data-knowl="./knowl/xref/d_matrix_equality.html" data-reveal-label="Reveal" data-close-label="Close" title="Definition 2.1.5: Kesamaan Matriks">Definition 2.1.5</a>), kita mendapatkan sistem persamaan</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/d_matrix_equality.html">
+\begin{equation*}
+\begin{linsys}{3} 1a \amp +\amp b \amp + \amp c \amp = \amp 3\\
+a \amp-\amp b\amp +\amp c\amp =\amp -3\\
+a \amp \amp \amp -\amp 2c\amp =\amp 3
+\end{linsys}\text{.}
+\end{equation*}
+</div>
+<div class="para">Menggunakan eliminasi Gaussian kita menemukan bahwa ada solusi unik untuk sistem ini: yaitu, <span class="process-math">\((a,b,c)=(1,3,-1)\text{.}\)</span> Kita menyimpulkan bahwa <span class="process-math">\(B=A_1+3A_2+(-1)A_3=A_1+3A_2-A_3\text{.}\)</span>
+</div>
+</div></div></details></div></article><article class="remark remark-like" id="rm_entry_lin_comb"><h4 class="heading">
+<span class="type">Remark</span><span class="space"> </span><span class="codenumber">2.1.16</span><span class="period">.</span>
+</h4>
+<div class="para logical" id="rm_entry_lin_comb-1">
+<div class="para">Misalkan <span class="process-math">\(A_1, A_2,\dots, A_r\)</span> adalah matriks <span class="process-math">\(m\times n\text{.}\)</span> Sebuah argumen induksi mudah pada <span class="process-math">\(r\)</span> menunjukkan bahwa untuk sembarang skalar <span class="process-math">\(c_1,c_2,\dots, c_r\)</span> kita memiliki</div>
+<div class="displaymath process-math" data-contains-math-knowls="">
+\begin{equation*}
+[c_1A_1+c_2A_2+\cdots +c_rA_r]_{ij} =c_1[A_1]_{ij}+c_2[A_2]_{ij}+\cdots c_r[A_r]_{ij}
+\end{equation*}
+</div>
+<div class="para">untuk semua <span class="process-math">\(1\leq i\leq m\text{,}\)</span> <span class="process-math">\(1\leq j\leq n\text{.}\)</span> (Lihat <code class="code-inline tex2jax_ignore">[cross-reference to target(s) "ex_entry_lin_comb" missing or not unique]</code>. )</div>
+</div></article></section><section class="subsection" id="ss_matrix_mult"><h3 class="heading hide-type">
+<span class="type">Subsection</span><span class="space"> </span><span class="codenumber">2.1.3</span><span class="space"> </span><span class="title">Perkalian matriks</span>
+</h3>
+<div class="para" id="ss_matrix_mult-2">Jadi bagaimana kita mendefinisikan produk dari dua matriks? Melihat operasi sebelumnya, Anda mungkin telah menebak bahwa kita harus mendefinisikan produk dari dua matriks <span class="process-math">\(m\times n\)</span> dengan mengambil produk dari entri-entri yang bersesuaian. Tidak demikian!</div>
+<article class="definition definition-like" id="d_matrix_mult"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">2.1.17</span><span class="period">.</span><span class="space"> </span><span class="title">Perkalian matriks.</span>
+</h4>
+<div class="para logical" id="d_matrix_mult-3-1">
+<div class="para">
+<dfn class="terminology">Perkalian Matriks</dfn> adalah operasi yang didefinisikan sebagai berikut: diberikan sebuah matriks <span class="process-math">\(m\times n\)</span> <span class="process-math">\(A=[a_{ij}]_{m\times n}\)</span> dan sebuah matriks <span class="process-math">\(n\times r\)</span> <span class="process-math">\(B=[b_{ij}]_{n\times r}\text{,}\)</span> kita mendefinisikan <dfn class="terminology">produk</dfn> mereka menjadi matriks <span class="process-math">\(m\times r\)</span> <span class="process-math">\(AB\)</span> yang entri <span class="process-math">\(ij\)</span>-nya diberikan oleh formula</div>
+<div class="displaymath process-math">
+\begin{equation*}
+[AB]_{ij}=a_{i1}b_{1j}+a_{i2}b_{2j}+\cdots a_{ir}b_{rj} =\sum_{\ell=1}^ra_{i\ell}b_{\ell j}
+\end{equation*}
+</div>
+<div class="para">untuk semua <span class="process-math">\(1\leq i\leq m\)</span> dan <span class="process-math">\(1\leq j\leq r\text{.}\)</span>
+</div>
+</div></article><figure class="figure figure-like" id="fig_matrix_mult"><div class="image-box" style="width: 100%; margin-left: 0%; margin-right: 0%;"><img src="generated/latex-image/im_matrix_mult.svg" role="img" class="contained"></div>
+<figcaption><span class="type">Figure</span><span class="space"> </span><span class="codenumber">2.1.18<span class="period">.</span></span><span class="space"> </span>Dalam <span class="process-math">\(C=AB\text{,}\)</span> entri <span class="process-math">\(ij\)</span>-th <span class="process-math">\(c_{ij}=\sum_{k=1}^na_{ik}b_{kj}\)</span> dihitung dengan bergerak melintasi baris ke-<span class="process-math">\(i\)</span> dari <span class="process-math">\(A\)</span> dan menuruni kolom ke-<span class="process-math">\(j\)</span> dari <span class="process-math">\(B\text{.}\)</span></figcaption></figure><article class="remark remark-like" id="ss_matrix_mult-5"><h4 class="heading">
+<span class="type">Remark</span><span class="space"> </span><span class="codenumber">2.1.19</span><span class="period">.</span><span class="space"> </span><span class="title">Ukuran dan perkalian matriks.</span>
+</h4>
+<div class="para" id="ss_matrix_mult-5-2">Perhatikan bagaimana, seperti penjumlahan, perkalian matriks tidak didefinisikan untuk sembarang pasangan matriks: harus ada kesepakatan tertentu dalam dimensi mereka.</div>
+<div class="para logical" id="ss_matrix_mult-5-3">
+<div class="para">Secara lebih rinci, agar produk dari <span class="process-math">\(A_{mn}\)</span> dan <span class="process-math">\(B_{pr}\)</span> terdefinisi, kita membutuhkan <span class="process-math">\(n=p\text{.}\)</span> Dengan kata lain kita membutuhkan dimensi "dalam" dari <span class="process-math">\(A\)</span> dan <span class="process-math">\(B\)</span> untuk menjadi sama:</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\underset{m\times \boxed{n}}{A}\hspace{5pt} \underset{\boxed{n}\times r}{B}\text{.}
+\end{equation*}
+</div>
+<div class="para">Jika kondisi ini terpenuhi, dimensi dari matriks hasil <span class="process-math">\(AB\)</span> ditentukan oleh dimensi "luar" dari <span class="process-math">\(A\)</span> dan <span class="process-math">\(B\text{.}\)</span> Secara skematis, Anda dapat memikirkan dimensi dalam sebagai "dibatalkan":</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\underset{\boxed{m}\times\cancel{n}}{A}\hspace{5pt}\underset{\cancel{n}\times\boxed{r}}{B}=\underset{m\times r}{AB}.
+\end{equation*}
+</div>
+</div></article><article class="example example-like" id="eg_matrix_mult"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">2.1.20</span><span class="period">.</span><span class="space"> </span><span class="title">Perkalian matriks.</span>
+</h4>
+<div class="para logical" id="eg_matrix_mult-2">
+<div class="para">Pertimbangkan matriks</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/d_matrix_mult.html" id="eg_matrix_mult-2-1">
+\begin{align*}
+A\amp =\begin{amatrix}[rrr]
+1\amp 0\amp -3 \\
+-2\amp 1\amp 1
+\end{amatrix}
+\amp B\amp =\begin{amatrix}[rr]
+0\amp -1 \\
+-1\amp 2 \\
+3\amp 1
+\end{amatrix}\text{.}
+\end{align*}
+</div>
+<div class="para">Karena dimensi "dalam" dari <span class="process-math">\(A\)</span> dan <span class="process-math">\(B\)</span> setuju, kita dapat membentuk matriks produk <span class="process-math">\(C=AB\text{,}\)</span> yang memiliki dimensi <span class="process-math">\(2\times 2\text{.}\)</span> Misalkan <span class="process-math">\(c_{ij}=[C]_{ij}\)</span> untuk semua <span class="process-math">\(1\leq i,j\leq 2\text{.}\)</span> Menggunakan <a href="s_matrix.html#d_matrix_mult" class="xref" data-knowl="./knowl/xref/d_matrix_mult.html" data-reveal-label="Reveal" data-close-label="Close" title="Definition 2.1.17: Perkalian matriks">Definition 2.1.17</a>, kita hitung</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/d_matrix_mult.html" id="eg_matrix_mult-2-9">
+\begin{align*}
+c_{11}\amp =1\cdot 0+0\cdot(-1)+(-3)\cdot 3=-9 \\
+c_{12}\amp =1\cdot(-1)+0\cdot 2+(-3)\cdot 1=-4  \\
+c_{21} \amp =(-2)\cdot 0+1\cdot (-1)+1\cdot 3=2 \\
+c_{22} \amp =(-2)\cdot( -1)+1\cdot 2+1\cdot 1=5\text{.}
+\end{align*}
+</div>
+<div class="para">Kita menyimpulkan bahwa</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/d_matrix_mult.html">
+\begin{equation*}
+C=\begin{bmatrix}c_{11} \amp c_{12} \\ c_{21} \amp c_{22}\end{bmatrix}=
+\begin{amatrix}[rr]-9\amp -4 \\ 2\amp 5 \end{amatrix}\text{.}
+\end{equation*}
+</div>
+</div></article><div class="para" id="ss_matrix_mult-7">Formula untuk entri <span class="process-math">\(ij\)</span>-th dari sebuah produk matriks <span class="process-math">\(AB\)</span> dapat dideskripsikan secara ringkas sebagai <em class="emphasis">produk dot</em> dari baris ke-<span class="process-math">\(i\)</span> dari <span class="process-math">\(A\)</span> dengan kolom ke-<span class="process-math">\(j\)</span> dari <span class="process-math">\(B\text{.}\)</span> Anda mungkin sudah bertemu produk dot dalam kasus khusus dari <span class="process-math">\(2\)</span>- dan <span class="process-math">\(3\)</span>-tupel; definisi tersebut menggeneralisasi dengan mudah ke <span class="process-math">\(n\)</span>-tupel untuk sembarang bilangan bulat positif <span class="process-math">\(n\text{.}\)</span> Kita akan memiliki banyak lagi untuk dikatakan tentang produk dot dan operasi terkait di <code class="code-inline tex2jax_ignore">[cross-reference to target(s) "c_innerproductspaces" missing or not unique]</code>. Untuk saat ini kita akan memberikan definisi resmi sehingga kita dapat mendeskripsikan perkalian matriks dengan nyaman dalam hal produk dot.</div>
+<article class="definition definition-like" id="d_dot_product"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">2.1.21</span><span class="period">.</span><span class="space"> </span><span class="title">Produk Dot.</span>
+</h4>
+<div class="para logical" id="d_dot_product-4-1">
+<div class="para">Diberikan <span class="process-math">\(n\)</span>-tupel <span class="process-math">\(\boldx=(x_1,x_2,\dots, x_n)\)</span> dan <span class="process-math">\(\boldy=(y_1,y_2,\dots, y_n)\text{,}\)</span> <dfn class="terminology">produk dot</dfn> mereka, dilambangkan <span class="process-math">\(\boldx\cdot \boldy\text{,}\)</span> didefinisikan sebagai</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\boldx\cdot \boldy=x_1y_1+x_2y_2+\cdots +x_ny_n=\sum_{i=1}^nx_iy_i\text{.}
+\end{equation*}
+</div>
+</div></article><article class="theorem theorem-like" id="th_matrix_mult_dot_product"><h4 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">2.1.22</span><span class="period">.</span><span class="space"> </span><span class="title">Produk dot dan perkalian matriks.</span>
+</h4>
+<div class="para logical" id="th_matrix_mult_dot_product-2-1">
+<div class="para">Misalkan <span class="process-math">\(A\)</span> adalah sebuah matriks <span class="process-math">\(m\times n\text{,}\)</span> dan misalkan <span class="process-math">\(B\)</span> adalah sebuah matriks <span class="process-math">\(n\times r\text{.}\)</span> Untuk semua <span class="process-math">\(1\leq i\leq m\text{,}\)</span> misalkan <span class="process-math">\(\boldr_i\)</span> adalah baris ke-<span class="process-math">\(i\)</span> dari <span class="process-math">\(A\text{;}\)</span> dan untuk semua <span class="process-math">\(1\leq k\leq r\)</span> misalkan <span class="process-math">\(\boldc_j\)</span> adalah kolom ke-<span class="process-math">\(j\)</span> dari <span class="process-math">\(B\text{.}\)</span> Untuk semua <span class="process-math">\(1\leq i\leq m, 1\leq j\leq n\text{,}\)</span> kita memiliki</div>
+<div class="displaymath process-math">
+\begin{equation*}
+[AB]_{ij}=\boldr_i\cdot \boldc_j\text{,}
+\end{equation*}
+</div>
+<div class="para">dimana <span class="process-math">\(\boldr_i\)</span> dan <span class="process-math">\(\boldc_j\)</span> diperlakukan sebagai <span class="process-math">\(n\)</span>-tupel. Dengan kata lain, entri <span class="process-math">\(ij\)</span>-th dari <span class="process-math">\(AB\)</span> adalah produk dot dari baris ke-<span class="process-math">\(i\)</span> dari <span class="process-math">\(A\)</span> dan kolom ke-<span class="process-math">\(j\)</span> dari <span class="process-math">\(B\text{.}\)</span>
+</div>
+</div></article><details id="th_matrix_mult_dot_product-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4></summary><article class="hiddenproof knowl__content"><div class="para logical" id="th_matrix_mult_dot_product-3-1">
+<div class="para">Tetapkan sebuah pasangan <span class="process-math">\((i,j)\)</span> dengan <span class="process-math">\(1\leq i\leq m\)</span> dan <span class="process-math">\(1\leq j\leq r\text{.}\)</span> Dipertimbangkan sebagai <span class="process-math">\(n\)</span>-tupel, baris ke-<span class="process-math">\(i\)</span> dari <span class="process-math">\(A\)</span> dan kolom ke-<span class="process-math">\(j\)</span> dari <span class="process-math">\(B\)</span> diberikan sebagai</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/d_matrix_mult.html ./knowl/xref/d_dot_product.html" id="th_matrix_mult_dot_product-3-1-9">
+\begin{align*}
+\boldr_i \amp =(a_{i1}, a_{i2},\dots, a_{in})\\
+\boldc_j \amp =(b_{1j},b_{2j},\dots, b_{nj})\text{.}
+\end{align*}
+</div>
+<div class="para">Kita memiliki</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/d_matrix_mult.html ./knowl/xref/d_dot_product.html" id="th_matrix_mult_dot_product-3-1-10">
+\begin{align*}
+[AB]_{ij} \amp = \sum_{k=1}^na_{ik}b_{kj} \amp( \knowl{./knowl/xref/d_matrix_mult.html}{\text{2.1.17}}) \\
+\amp =\boldr_i\cdot \boldc_j \amp (\knowl{./knowl/xref/d_dot_product.html}{\text{2.1.21}}) \text{,}
+\end{align*}
+</div>
+<div class="para">seperti yang diklaim.</div>
+</div></article></details><article class="example example-like" id="eg_matrix_mult_dot_prod"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">2.1.23</span><span class="period">.</span><span class="space"> </span><span class="title">Perkalian matriks via produk dot.</span>
+</h4>
+<div class="para logical" id="eg_matrix_mult_dot_prod-2">
+<div class="para">Pertimbangkan matriks</div>
+<div class="displaymath process-math" id="eg_matrix_mult_dot_prod-2-1">
+\begin{align*}
+A \amp =\begin{amatrix}[rrrr]1\amp 1\amp 1\amp 1\\ 1\amp 2\amp 1\amp 2\end{amatrix}
+\amp B\amp =\begin{amatrix}[rr] 1\amp -1 \\ 0\amp 1\\ 1\amp 0 \\ 0\amp 0 \end{amatrix}\text{.}
+\end{align*}
+</div>
+<div class="para">Dua baris dari <span class="process-math">\(A\)</span> (dalam bentuk tupel) adalah</div>
+<div class="displaymath process-math" id="eg_matrix_mult_dot_prod-2-3">
+\begin{align*}
+\boldr_1 \amp =(1,1,1,1) \amp \boldr_2=(1,2,1,2)\text{.}
+\end{align*}
+</div>
+<div class="para">Dua kolom dari <span class="process-math">\(B\)</span> (dalam bentuk tupel) adalah</div>
+<div class="displaymath process-math" id="eg_matrix_mult_dot_prod-2-5">
+\begin{align*}
+\boldc_1 \amp =(1,0,1,0) \amp \boldc_2=(-1,1,0,0)\text{.}
+\end{align*}
+</div>
+<div class="para">Menggunakan deskripsi produk dot dari perkalian matriks, kita hitung</div>
+<div class="displaymath process-math" id="eg_matrix_mult_dot_prod-2-6">
+\begin{align*}
+AB \amp =\begin{bmatrix}\boldr_1\cdot \boldc_1 \amp \boldr_1\cdot \boldc_2 \\
+\boldr_2\cdot \boldc_1 \amp \boldr_2\cdot \boldc_2 \end{bmatrix}\\
+\amp = \begin{amatrix}[rr] 2 \amp 0 \\ 2\amp 1\end{amatrix}\text{.}
+\end{align*}
+</div>
+</div></article><div class="para logical" id="ss_matrix_mult-11">
+<div class="para">Definisi dari sebuah produk matriks <span class="process-math">\(AB\)</span> tidak diragukan lagi lebih rumit daripada yang Anda harapkan, dan tampaknya datang sepenuhnya tiba-tiba. Semua ini akan masuk akal sekali kita mulai memikirkan matriks <span class="process-math">\(A\)</span> sebagai mendefinisikan fungsi-fungsi tertentu <span class="process-math">\(T_A\text{.}\)</span> Formula kita untuk entri-entri dari <span class="process-math">\(AB\)</span> dipilih secara presisi sehingga matriks baru ini bersesuaian dengan <em class="emphasis">komposisi</em> dari fungsi-fungsi <span class="process-math">\(T_A\)</span> dan <span class="process-math">\(T_B\text{:}\)</span> i.e. sehingga</div>
+<div class="displaymath process-math" data-contains-math-knowls="">
+\begin{equation*}
+T_{AB}=T_A\circ T_B\text{.}
+\end{equation*}
+</div>
+<div class="para">(Lihat <code class="code-inline tex2jax_ignore">[cross-reference to target(s) "th_transform_composition" missing or not unique]</code>.) Di bawah interpretasi ini, restriksi berat pada dimensi matriks bahan memastikan bahwa dua fungsi <span class="process-math">\(T_A\)</span> dan <span class="process-math">\(T_B\)</span> dapat dikomposisikan.</div>
+</div>
+<article class="project project-like" id="ss_matrix_mult-12"><h4 class="heading">
+<span class="type">Project</span><span class="space"> </span><span class="codenumber">2.1.2</span><span class="period">.</span><span class="space"> </span><span class="title">Aritmetika Matriks.</span>
+</h4>
+<div class="para" id="ss_matrix_mult-12-2">Kita menggunakan <code class="code-inline tex2jax_ignore">+</code> dan <code class="code-inline tex2jax_ignore">*</code> untuk penjumlahan dan perkalian matriks.</div>
+<div id="ss_matrix_mult-12-3" class="ptx-sagecell sagecell-sage"><script type="text/x-sage">A=Matrix(4,3,range(12))
+B=Matrix(4,3,range(12,24))
+C=Matrix(3,5,range(-5,10))
+show(A,B,C)
+show(A+B)
+show(A*C)
+</script></div>
+<div class="para" id="ss_matrix_mult-12-4">Sebagai bukti fleksibilitas Sage, simbol yang sama <code class="code-inline tex2jax_ignore">*</code> juga digunakan untuk perkalian skalar.</div>
+<div id="ss_matrix_mult-12-5" class="ptx-sagecell sagecell-sage"><script type="text/x-sage">show(5*A*C-2*B*C)
+</script></div>
+<div class="para" id="ss_matrix_mult-12-6">Edit sel di bawah ini untuk melatih operasi ini.</div>
+<div id="ss_matrix_mult-12-7" class="ptx-sagecell sagecell-sage"><script type="text/x-sage">A=matrix([[1,0,-1],[2,-6,6],[4,4,5]])
+B=matrix([[1,2],[2,-4],[0,1]])
+</script></div></article></section><section class="subsection" id="s_column_row_method"><h3 class="heading hide-type">
+<span class="type">Subsection</span><span class="space"> </span><span class="codenumber">2.1.4</span><span class="space"> </span><span class="title">Metode alternatif perkalian</span>
+</h3>
+<div class="para" id="s_column_row_method-2">Selain definisi perkalian matriks yang diberikan, kita akan membuat <em class="emphasis">penggunaan berat</em> dari dua cara further untuk menghitung produk matriks, disebut metode kolom dan baris dari perkalian matriks.</div>
+<article class="theorem theorem-like" id="th_column_method"><h4 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">2.1.24</span><span class="period">.</span><span class="space"> </span><span class="title">Metode kolom dari perkalian matriks.</span>
+</h4>
+<div class="para logical" id="th_column_method-3-1">
+<div class="para">Misalkan <span class="process-math">\(A=[a_{i}]_{m\times n}\)</span> dan <span class="process-math">\(B=[b_{ij}]_{n\times r}\text{.}\)</span> Metode kolom dari perkalian matriks menghitung <span class="process-math">\(AB\)</span> menggunakan dua langkah di bawah ini.</div>
+<dl class="description-list">
+<dt id="th_column_method-3-1-4-1">Langkah 1</dt>
+<dd><div class="para logical" id="th_column_method-3-1-4-1-2">
+<div class="para">Misalkan <span class="process-math">\(\boldb_j\)</span> adalah kolom ke-<span class="process-math">\(j\)</span> dari <span class="process-math">\(B\text{,}\)</span> dianggap sebagai vektor kolom. Maka</div>
+<div class="displaymath process-math" id="th_column_method-3-1-4-1-2-4">
+\begin{align*}
+AB \amp =A\begin{bmatrix}\vert \amp \vert \amp  \amp \vert \\ \boldb_1\amp \boldb_2\amp \cdots\amp \boldb_r\\ \vert \amp \vert \amp  \amp \vert \end{bmatrix}\\
+\amp=\begin{bmatrix}\vert \amp \vert \amp  \amp \vert \\ A\boldb_1\amp A\boldb_2\amp \cdots\amp A\boldb_r\\ \vert \amp  \vert \amp  \amp  \vert \end{bmatrix}\text{.}
+\end{align*}
+</div>
+</div></dd>
+<dt id="th_column_method-3-1-4-2">Langkah 2</dt>
+<dd><div class="para logical" id="th_column_method-3-1-4-2-2">
+<div class="para">Misalkan <span class="process-math">\(\bolda_j\)</span> adalah kolom ke-<span class="process-math">\(j\)</span> dari <span class="process-math">\(A\text{,}\)</span> dianggap sebagai vektor kolom. Diberikan <em class="emphasis">sembarang</em> vektor kolom <span class="process-math">\(\boldb=[b_{i}]_{n\times 1}\)</span> kita memiliki</div>
+<div class="displaymath process-math">
+\begin{equation*}
+A\,\boldb=A\,\begin{bmatrix}b_1\\b_2\\ \vdots \\b_n \end{bmatrix} = b_1\bolda_1+b_2\bolda_2+\cdots +b_n\bolda_n\text{.}
+\end{equation*}
+</div>
+</div></dd>
+</dl>
+</div></article><details id="th_column_method-4" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4></summary><article class="hiddenproof knowl__content"><div class="para" id="th_column_method-4-1">Kita membuktikan kesamaan di kedua langkah secara terpisah.</div>
+<article class="case" id="th_column_method-4-2"><h5 class="heading">Bukti Langkah 1.</h5>
+<div class="para logical" id="th_column_method-4-2-2">
+<div class="para">Kita harus menunjukkan <span class="process-math">\(AB=C\text{,}\)</span> dimana</div>
+<div class="displaymath process-math">
+\begin{equation*}
+C=\begin{bmatrix}\vert \amp \vert \amp  \amp \vert \\ A\boldb_1\amp A\boldb_2\amp \cdots\amp A\boldb_r\\ \vert \amp  \vert \amp  \amp  \vert \end{bmatrix}\text{.}
+\end{equation*}
+</div>
+<div class="para">Pertama kita menunjukkan <span class="process-math">\(AB\)</span> dan <span class="process-math">\(C\)</span> memiliki ukuran yang sama. Berdasarkan definisi perkalian matriks, <span class="process-math">\(AB\)</span> adalah <span class="process-math">\(m\times r\text{.}\)</span> Berdasarkan konstruksi <span class="process-math">\(C\)</span> memiliki <span class="process-math">\(r\)</span> kolom dan kolom ke-<span class="process-math">\(j\)</span>-nya adalah <span class="process-math">\(A\boldb_j\text{.}\)</span> Karena <span class="process-math">\(A\)</span> dan <span class="process-math">\(\boldb_j\)</span> memiliki ukuran <span class="process-math">\(m\times n\)</span> dan <span class="process-math">\(n\times 1\text{,}\)</span> masing-masing, <span class="process-math">\(A\boldb_j\)</span> memiliki ukuran <span class="process-math">\(m\times 1\text{.}\)</span> Jadi setiap dari <span class="process-math">\(r\)</span> kolom dari <span class="process-math">\(C\)</span> adalah vektor kolom <span class="process-math">\(m\times 1\text{.}\)</span> Mengikuti bahwa <span class="process-math">\(C\)</span> adalah <span class="process-math">\(m\times r\text{,}\)</span> seperti yang diinginkan.</div>
+</div>
+<div class="para logical" id="th_column_method-4-2-3">
+<div class="para">Selanjutnya kita menunjukkan bahwa <span class="process-math">\([AB]_{ij}=[C]_{ij}\)</span> untuk semua <span class="process-math">\(1\leq i\leq m\text{,}\)</span> <span class="process-math">\(1\leq j\leq r\text{.}\)</span> Karena entri <span class="process-math">\(ij\)</span>-th dari <span class="process-math">\(C\)</span> adalah entri ke-<span class="process-math">\(i\)</span> dari kolom ke-<span class="process-math">\(j\)</span> dari <span class="process-math">\(C\text{,}\)</span> kita memiliki</div>
+<div class="displaymath process-math" id="th_column_method-4-2-3-9">
+\begin{align*}
+[C]_{ij} \amp= [A\boldb_j]_{i}  \\
+\amp=\sum_{k=1}^n a_{ik}b_{kj} \\
+\amp =[AB]_{ij}\text{.}
+\end{align*}
+</div>
+</div></article><article class="case" id="th_column_method-4-3"><h5 class="heading">Bukti Langkah 2.</h5>
+<div class="para logical" id="th_column_method-4-3-2">
+<div class="para">Kita harus menunjukkan bahwa <span class="process-math">\(A\boldb=\boldc\text{,}\)</span> dimana</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/rm_entry_lin_comb.html ./knowl/xref/d_matrix_mult.html">
+\begin{equation*}
+\boldc=b_1\bolda_1+b_2\bolda_2+\cdots +b_n\bolda_n\text{.}
+\end{equation*}
+</div>
+<div class="para">Argumen biasa menunjukkan bahwa kedua <span class="process-math">\(A\boldb\)</span> dan <span class="process-math">\(\boldc\)</span> adalah vektor kolom <span class="process-math">\(m\times 1\text{.}\)</span> Tinggal hanya untuk menunjukkan bahwa entri ke-<span class="process-math">\(i\)</span> <span class="process-math">\([A\boldb]_i\)</span> dari kolom <span class="process-math">\(A\boldb\)</span> sama dengan entri ke-<span class="process-math">\(i\)</span> <span class="process-math">\([\boldc]_i\)</span> dari <span class="process-math">\(\boldc\)</span> untuk semua <span class="process-math">\(1\leq i\leq m\text{.}\)</span> Untuk sembarang <span class="process-math">\(i\)</span> demikian kita memiliki</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/rm_entry_lin_comb.html ./knowl/xref/d_matrix_mult.html" id="th_column_method-4-3-2-14">
+\begin{align*}
+[\boldc]_i \amp = [b_1\bolda_1+b_2\bolda_2+\cdots +b_n\bolda_n]_i\\
+\amp= b_1[\bolda_1]_i+b_2[\bolda_2]_i+\cdots +b_n[\bolda_n]_i \amp (\knowl{./knowl/xref/rm_entry_lin_comb.html}{\text{Remark 2.1.16}})\\
+\amp= b_1a_{i1}+b_2a_{i2}+\cdots +b_n\bolda_{in}\amp (\text{def. dari } \bolda_j) \\
+\amp= a_{i1}b_1+a_{i2}b_2+\cdots+a_{in}b_n \\
+\amp =[A\boldb]_i \amp (\knowl{./knowl/xref/d_matrix_mult.html}{\text{Definition 2.1.17}})\text{.}
+\end{align*}
+</div>
+</div></article></article></details><article class="remark remark-like" id="s_column_row_method-4"><h4 class="heading">
+<span class="type">Remark</span><span class="space"> </span><span class="codenumber">2.1.25</span><span class="period">.</span>
+</h4>
+<div class="para" id="s_column_row_method-4-1">
+<a href="s_matrix.html#th_column_method" class="xref" data-knowl="./knowl/xref/th_column_method.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 2.1.24: Metode kolom dari perkalian matriks">Theorem 2.1.24</a> berjumlah pada proses dua langkah untuk menghitung sembarang produk matriks <span class="process-math">\(AB\text{.}\)</span>
+</div>
+<div class="para" id="s_column_row_method-4-2">Pernyataan pertama (Langkah 1) memberitahu kita bahwa kolom ke-<span class="process-math">\(j\)</span> dari matriks <span class="process-math">\(AB\)</span> dapat diperoleh dengan menghitung produk <span class="process-math">\(A\,\boldb_j\)</span> dari <span class="process-math">\(A\)</span> dengan kolom ke-<span class="process-math">\(j\)</span> dari <span class="process-math">\(B\text{.}\)</span>
+</div>
+<div class="para" id="s_column_row_method-4-3">Pernyataan kedua (Langkah 2) memberitahu kita bahwa setiap produk <span class="process-math">\(A\,\boldb_j\)</span> dapat sendiri dihitung sebagai kombinasi linear tertentu dari kolom-kolom dari <span class="process-math">\(A\)</span> dengan koefisien yang diambil dari <span class="process-math">\(\boldb_j\text{.}\)</span>
+</div>
+<div class="para" id="s_column_row_method-4-4">Catatan serupa berlaku untuk menghitung produk matriks menggunakan metode baris, seperti yang dideskripsikan di bawah ini dalam <a href="s_matrix.html#th_row_method" class="xref" data-knowl="./knowl/xref/th_row_method.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 2.1.26: Metode baris dari perkalian matriks">Theorem 2.1.26</a>.</div></article><article class="theorem theorem-like" id="th_row_method"><h4 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">2.1.26</span><span class="period">.</span><span class="space"> </span><span class="title">Metode baris dari perkalian matriks.</span>
+</h4>
+<div class="para logical" id="th_row_method-3-1">
+<div class="para">Misalkan <span class="process-math">\(A=[a_{i}]_{m\times n}\)</span> dan <span class="process-math">\(B=[b_{ij}]_{n\times r}\text{.}\)</span> Metode baris dari perkalian matriks menghitung <span class="process-math">\(AB\)</span> menggunakan dua langkah di bawah ini.</div>
+<dl class="description-list">
+<dt id="th_row_method-3-1-4-1">Langkah 1</dt>
+<dd><div class="para logical" id="th_row_method-3-1-4-1-2">
+<div class="para">Misalkan <span class="process-math">\(\bolda_i\)</span> adalah baris ke-<span class="process-math">\(i\)</span> dari <span class="process-math">\(A\text{.}\)</span> Maka</div>
+<div class="displaymath process-math" id="th_row_method-3-1-4-1-2-4">
+\begin{align*}
+AB\amp =\begin{bmatrix} \ - \bolda_1- \  \\ \ - \bolda_2- \  \\ \vdots \\ \ - \bolda_m- \  \end{bmatrix} B\\
+\amp = \begin{bmatrix}\ - \bolda_1B- \  \\ \ -\bolda_2B- \  \\ \vdots \\ \ -\bolda_mB - \ \end{bmatrix}\text{.}
+\end{align*}
+</div>
+</div></dd>
+<dt id="th_row_method-3-1-4-2">Langkah 2</dt>
+<dd><div class="para logical" id="th_row_method-3-1-4-2-2">
+<div class="para">Misalkan <span class="process-math">\(\boldb_i\)</span> adalah baris ke-<span class="process-math">\(i\)</span> dari <span class="process-math">\(B\text{.}\)</span> Diberikan <em class="emphasis">sembarang</em> vektor baris <span class="process-math">\(\bolda=[a_{j}]_{1\times n}\)</span> kita memiliki</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\bolda\, B=\begin{bmatrix}a_1\amp a_2\amp \cdots \amp a_n \end{bmatrix} B= a_1\boldb_1+a_2\boldb_2+\cdots +a_n\boldb_n\text{.}
+\end{equation*}
+</div>
+</div></dd>
+</dl>
+</div></article><details id="th_row_method-4" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4></summary><article class="hiddenproof knowl__content"><div class="para" id="th_row_method-4-1">Buktinya sangat mirip dengan itu dari <a href="s_matrix.html#th_column_method" class="xref" data-knowl="./knowl/xref/th_column_method.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 2.1.24: Metode kolom dari perkalian matriks">Theorem 2.1.24</a> dan dibiarkan kepada pembaca.</div></article></details><article class="example example-like" id="s_matrix_ex_product"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">2.1.27</span><span class="period">.</span><span class="space"> </span><span class="title">Metode kolom dan baris.</span>
+</h4>
+<div class="para" id="s_matrix_ex_product-2-1">Misalkan <span class="process-math">\(A=\begin{amatrix}[rrr] 1\amp 1 \amp -2 \\ 1\amp 3\amp 2\end{amatrix}\)</span> dan <span class="process-math">\(B=\begin{amatrix}[rc]1\amp 1\\ 0\amp 1 \\ -2\amp 1 \end{amatrix}\)</span>
+</div> <div class="para" id="s_matrix_ex_product-2-2">Hitung <span class="process-math">\(AB\)</span> menggunakan (a) definisi perkalian matriks, (b) metode kolom, (c) metode baris.</div>
+<div class="solutions"><details id="s_matrix_ex_product-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical" id="s_matrix_ex_product-3-1"><ol class="lower-alpha ol-marker-2" id="s_matrix_ex_product-3-1-1">
+<li id="s_matrix_ex_product-3-1-1-1"><div class="para logical" id="s_matrix_ex_product-3-1-1-1-1">
+<div class="para">Menggunakan definisi, kita lihat dengan mudah bahwa</div>
+<div class="displaymath process-math">
+\begin{equation*}
+AB=\begin{amatrix}[rr]5\amp 0\\ -3\amp 6 \end{amatrix}
+\end{equation*}
+</div>
+</div></li>
+<li id="s_matrix_ex_product-3-1-1-2"><div class="para logical" id="s_matrix_ex_product-3-1-1-2-1">
+<div class="para">Misalkan <span class="process-math">\(\bolda_1, \bolda_2, \bolda_3\)</span> adalah kolom-kolom dari <span class="process-math">\(A\text{,}\)</span> dan misalkan <span class="process-math">\(\boldb_1, \boldb_2\)</span> adalah kolom-kolom dari <span class="process-math">\(B\text{.}\)</span> Kita memiliki</div>
+<div class="displaymath process-math" id="s_matrix_ex_product-3-1-1-2-1-5">
+\begin{align*}
+AB \amp=
+\begin{amatrix}[cc]\vert \amp \vert \\
+A\boldb_1\amp A\boldb_2 \\
+\vert\amp \vert\end{amatrix} \amp \text{(Langkah 1)} \\
+\amp= \begin{amatrix}[cc]\vert \amp \vert \\
+(1\bolda_1+0\bolda_2-2\bolda_3)\amp (\bolda_1+\bolda_2+\bolda_3) \\
+\vert\amp \vert\end{amatrix} \amp \text{(Langkah 2)}\\
+\amp= \begin{amatrix}[rr]5\amp 0\\ -3\amp 6 \end{amatrix} \amp \text{(aritmetika)}
+\end{align*}
+</div>
+</div></li>
+<li id="s_matrix_ex_product-3-1-1-3"><div class="para logical" id="s_matrix_ex_product-3-1-1-3-1">
+<div class="para">Sekarang misalkan <span class="process-math">\(\bolda_1, \bolda_2\)</span> adalah <em class="emphasis">baris-baris</em> dari <span class="process-math">\(A\text{,}\)</span> dan misalkan <span class="process-math">\(\boldb_1, \boldb_2, \boldb_3\)</span> adalah <em class="emphasis">baris-baris</em> dari <span class="process-math">\(B\text{.}\)</span> Kita memiliki</div>
+<div class="displaymath process-math" id="s_matrix_ex_product-3-1-1-3-1-7">
+\begin{align*}
+AB \amp= \begin{amatrix}[c]--\bolda_1\, B--\\ --\bolda_2\, B-- \end{amatrix}\amp \text{(Langkah 1)}\\
+\amp= \begin{amatrix}[c]--(1\boldb_1+1\boldb_2-2\boldb_3)-- \\
+--(1\boldb_1+3\boldb_2+2\boldb_3)-- \end{amatrix} \amp \text{(Langkah 2)} \\
+\amp=\begin{amatrix}[rr]5\amp 0\\ -3\amp 6 \end{amatrix} \amp \text{(aritmetika)} 
+\end{align*}
+</div>
+</div></li>
+</ol></div></div></details></div></article><article class="project project-like" id="s_column_row_method-7"><h4 class="heading">
+<span class="type">Project</span><span class="space"> </span><span class="codenumber">2.1.3</span><span class="period">.</span><span class="space"> </span><span class="title">Metode kolom dan baris.</span>
+</h4>
+<div class="para" id="s_column_row_method-7-2">Mari kita verifikasi validitas metode kolom dan baris menggunakan Sage dalam beberapa contoh spesifik. Di bawah ini kita menghasilkan matriks bilangan bulat acak <span class="process-math">\(A\)</span> dan <span class="process-math">\(B\)</span> dengan dimensi <span class="process-math">\(3\times 5\)</span> dan <span class="process-math">\(5\times 4\text{,}\)</span> masing-masing, dan menghitung produk mereka <span class="process-math">\(C=AB\text{.}\)</span>
+</div>
+<div id="s_column_row_method-7-3" class="ptx-sagecell sagecell-sage"><script type="text/x-sage">R=MatrixSpace(ZZ,3,5)
+S=MatrixSpace(ZZ,5,4)
+A=R.random_element()
+B=S.random_element()
+C=A*B
+show(A,B)
+show(C)
+</script></div>
+<div class="para" id="s_column_row_method-7-4">Mari kita periksa bahwa kolom ke-<span class="process-math">\(j\)</span> dari <span class="process-math">\(C\)</span> sama dengan produk dari <span class="process-math">\(A\)</span> dengan kolom ke-<span class="process-math">\(j\)</span> dari <span class="process-math">\(B\text{.}\)</span>
+</div>
+<div id="s_column_row_method-7-5" class="ptx-sagecell sagecell-sage"><script type="text/x-sage">colsA=A.columns()
+rowsA=A.rows()
+colsB=B.columns()
+rowsB=B.rows()
+colsC=C.columns()
+rowsC=C.rows()
+for j in range(0,4):
+print(A*colsB[j]==colsC[j])
+</script></div>
+<div class="para" id="s_column_row_method-7-6">Sebagai alternatif, kita dapat mengonfirmasi kesamaan ini secara visual menggunakan tampilan dari <span class="process-math">\(C\)</span> di sel pertama di atas. Perhatikan bahwa hasil dari <code class="code-inline tex2jax_ignore">A*colsB[i]</code> ditampilkan oleh Sage sebagai tupel, meskipun secara teknis bagi kita ini adalah vektor kolom.</div>
+<div id="s_column_row_method-7-7" class="ptx-sagecell sagecell-sage"><script type="text/x-sage">for j in range(0,4):
+show(A*colsB[j])
+</script></div>
+<div class="para" id="s_column_row_method-7-8">Selanjutnya, mari kita verifikasi bahwa hasil dari mengalikan <span class="process-math">\(A\)</span> dan kolom ke-<span class="process-math">\(j\)</span> dari <span class="process-math">\(B\)</span> adalah kombinasi linear yang bersesuaian dari kolom-kolom dari <span class="process-math">\(A\)</span> yang diberikan oleh koefisien dari kolom ini.</div>
+<div id="s_column_row_method-7-9" class="ptx-sagecell sagecell-sage"><script type="text/x-sage">for j in range(0,4):
+c=colsB[j]
+x=c[0]
+y=c[1]
+z=c[2]
+w=c[3]
+u=c[4]
+show(x*colsA[0]+y*colsA[1]+z*colsA[2]+w*colsA[3]+u*colsA[4])
+</script></div>
+<div class="para" id="s_column_row_method-7-10">Sekarang gunakan sel Sage di bawah ini untuk mendemonstrasikan validitas metode baris untuk produk <span class="process-math">\(C=AB\text{.}\)</span> Cukup modifikasi kode dalam dua sel di atas untuk mencerminkan metode baris, sebagai lawan dari metode kolom.</div>
+<div id="s_column_row_method-7-11" class="ptx-sagecell sagecell-sage"><script type="text/x-sage">
+</script></div>
+<div id="s_column_row_method-7-12" class="ptx-sagecell sagecell-sage"><script type="text/x-sage">
+</script></div></article><section class="paragraphs" id="ss_matrix_mult_vid"><h4 class="heading"><span class="title">Contoh Video perkalian matriks.</span></h4>
+<figure class="figure figure-like" id="fig_vid_matrix_mult_methods"><div class="video-box" style="width: 100%;padding-top: 56.25%; margin-left: 0%; margin-right: 0%;"><iframe class="video" allowfullscreen="" src="https://www.youtube-nocookie.com/embed/Kx4K8TTbl98?&amp;modestbranding=1&amp;rel=0" id="vid_matrix_mult_methods"></iframe></div>
+<figcaption><span class="type">Figure</span><span class="space"> </span><span class="codenumber">2.1.28<span class="period">.</span></span><span class="space"> </span>Video: tiga metode perkalian matriks</figcaption></figure></section></section><section class="subsection" id="s_matrix-7"><h3 class="heading hide-type">
+<span class="type">Subsection</span><span class="space"> </span><span class="codenumber">2.1.5</span><span class="space"> </span><span class="title">Transpos dari sebuah matriks</span>
+</h3>
+<div class="para" id="s_matrix-7-2">Kita mengakhiri bagian ini dengan satu operasi terakhir, <em class="emphasis">transposisi matriks</em>. Kita tidak akan banyak menggunakan operasi ini sampai nanti, tetapi ini adalah tempat yang baik seperti halnya untuk memperkenalkannya.</div>
+<article class="definition definition-like" id="d_transpose"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">2.1.29</span><span class="period">.</span><span class="space"> </span><span class="title">Transposisi matriks.</span>
+</h4>
+<div class="para" id="d_transpose-4-1">Diberikan sebuah matriks <span class="process-math">\(m\times n\)</span> <span class="process-math">\(A=[a_{ij}]\)</span> transposnya <span class="process-math">\(A^T\)</span> adalah matriks yang entri <span class="process-math">\(ij\)</span>-nya adalah entri <span class="process-math">\(ji\)</span>-th dari <span class="process-math">\(A\text{.}\)</span> Dengan kata lain, <span class="process-math">\(A^T\)</span> adalah matriks <span class="process-math">\(n\times m\)</span> yang memenuhi <span class="process-math">\([A^T]_{ij}=[A]_{ji}\)</span> untuk semua <span class="process-math">\(1\leq i\leq n\)</span> dan <span class="process-math">\(1\leq j\leq m\text{.}\)</span>
+</div></article><article class="remark remark-like" id="s_matrix-7-4"><h4 class="heading">
+<span class="type">Remark</span><span class="space"> </span><span class="codenumber">2.1.30</span><span class="period">.</span>
+</h4>
+<div class="para logical" id="s_matrix-7-4-1">
+<div class="para">Diberikan sebuah matriks <span class="process-math">\(A\)</span> kita dapat memberikan deskripsi berbasis kolom- atau baris dari <span class="process-math">\(A^T\)</span> sebagai berikut:</div>
+<ul class="disc" id="s_matrix-7-4-1-3">
+<li id="s_matrix-7-4-1-3-1"><div class="para" id="s_matrix-7-4-1-3-1-1">
+<span class="process-math">\(A^T\)</span> adalah matriks yang baris ke-<span class="process-math">\(i\)</span>-nya adalah kolom ke-<span class="process-math">\(i\)</span> dari <span class="process-math">\(A\text{.}\)</span>
+</div></li>
+<li id="s_matrix-7-4-1-3-2"><div class="para" id="s_matrix-7-4-1-3-2-1">
+<span class="process-math">\(A^T\)</span> adalah matriks yang kolom ke-<span class="process-math">\(j\)</span>-nya adalah baris ke-<span class="process-math">\(j\)</span> dari <span class="process-math">\(A\text{.}\)</span>
+</div></li>
+</ul>
+</div></article><article class="example example-like" id="eg_transpose"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">2.1.31</span><span class="period">.</span><span class="space"> </span><span class="title">Transpos.</span>
+</h4>
+<div class="para" id="eg_transpose-2-1">Misalkan <span class="process-math">\(A=\begin{bmatrix}1\amp 2\amp 3\\4\amp 5\amp 6 \end{bmatrix}\text{;}\)</span> maka <span class="process-math">\(A^T=\begin{bmatrix}1\amp 4\\2\amp 5\\3\amp 6 \end{bmatrix}\text{.}\)</span>
+</div> <div class="para" id="eg_transpose-2-2">Misalkan <span class="process-math">\(B=\begin{bmatrix}1\\0\\3 \end{bmatrix}\text{,}\)</span> maka <span class="process-math">\(B^T=\begin{bmatrix}1\amp 0\amp 3 \end{bmatrix}\text{.}\)</span>
+</div></article><article class="project project-like" id="s_matrix-7-6"><h4 class="heading">
+<span class="type">Project</span><span class="space"> </span><span class="codenumber">2.1.4</span><span class="period">.</span><span class="space"> </span><span class="title">Transposisi matriks.</span>
+</h4>
+<div class="para" id="s_matrix-7-6-2">Transposisi matriks diimplementasikan dalam Sage sebagai metode <code class="code-inline tex2jax_ignore">transpose()</code>. Dalam sel di bawah ini kita (a) memilih bilangan bulat acak <span class="process-math">\(1\leq m,n\leq 6\text{,}\)</span> (b) memilih sebuah matriks acak <span class="process-math">\(m\times n\)</span> <span class="process-math">\(A\)</span> dengan entri bilangan bulat, dan (c) menghitung transpos dari <span class="process-math">\(A\text{.}\)</span>
+</div>
+<div id="s_matrix-7-6-3" class="ptx-sagecell sagecell-sage"><script type="text/x-sage">m=ZZ.random_element(1,7)
+n=ZZ.random_element(1,7)
+R=MatrixSpace(ZZ,m,n)
+A=R.random_element()
+B=A.transpose()
+show(A)
+show(B)
+</script></div>
+<div class="para" id="s_matrix-7-6-4">Seperti biasa, bereksperimen dengan sel Sage di bawah ini.</div>
+<div id="s_matrix-7-6-5" class="ptx-sagecell sagecell-sage"><script type="text/x-sage">
+</script></div></article></section></section></div>
+<div id="ptx-content-footer" class="ptx-content-footer">
+<a class="previous-button button" href="chap2.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="backmatter.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
+</div></main>
+</div>
+<div id="ptx-page-footer" class="ptx-page-footer">
+<a class="pretext-link" href="https://pretextbook.org" title="PreTeXt"><div class="logo"><svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="338 3000 8772 6866" role="img"><title>PreTeXt logo</title><g style="stroke-width:.025in; stroke:currentColor; fill:none"><polyline points="472,3590 472,9732 " style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round; "></polyline><path style="stroke-width:126;stroke-linecap:butt;" d="M 4724,9448 A 4660 4660  0  0  1  8598  9259"></path><path style="stroke-width:174;stroke-linecap:butt;" d="M 4488,9685 A 4228 4228  0  0  0   472  9732"></path><path style="stroke-width:126;stroke-linecap:butt;" d="M 4724,3590 A 4241 4241  0  0  1  8598  3496"></path><path style="stroke-width:126;stroke-linecap:round;" d="M 850,3496  A 4241 4241  0  0  1  4724  3590"></path><path style="stroke-width:126;stroke-linecap:round;" d="M 850,9259  A 4507 4507  0  0  1  4724  9448"></path><polyline points="5385,4299 4062,8125" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8598,3496 8598,9259" style="stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="850,3496 850,9259" style="stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="4960,9685 4488,9685" style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="3070,4582 1889,6141 3070,7700" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="6418,4582 7600,6141 6418,7700" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8976,3590 8976,9732" style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><path style="stroke-width:174;stroke-linecap:butt;" d="M 4960,9685 A 4228 4228  0  0  1  8976  9732"></path></g></svg></div></a><a class="runestone-link" href="https://runestone.academy" title="Runestone Academy"><img class="logo" src="https://runestone.academy/runestone/static/images/RAIcon_cropped.png" alt="Runstone Academy logo"></a><a class="mathjax-link" href="https://www.mathjax.org" title="MathJax"><img class="logo" src="https://www.mathjax.org/badge/badge-square-2.png" alt="MathJax logo"></a>
+</div>
+</body>
+</html>
