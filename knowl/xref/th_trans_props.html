@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<!--******************************************-->
+<!--*  Authored with PreTeXt                 *-->
+<!--*  pretextbook.org                       *-->
+<!--*  Theme: default-modern                 *-->
+<!--*  Palette: blue-green                   *-->
+<!--******************************************-->
+
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="theorem theorem-like"><h3 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">2.2.11</span><span class="period">.</span><span class="space"> </span><span class="title">Sifat-sifat Transposisi Matriks.</span>
+</h3>
+<div class="para">Sifat-sifat berikut berlaku untuk semua matriks <span class="process-math">\(A, B, C\)</span> dan skalar <span class="process-math">\(c\in \R\)</span> yang membuat ekspresi yang diberikan masuk akal.</div>
+<ol class="lower-roman ol-marker-3" id="th_trans_props-3-1">
+<li><div class="para"><span class="process-math">\(\displaystyle (A+B)^T=A^T+B^T\)</span></div></li>
+<li><div class="para"><span class="process-math">\(\displaystyle (cA)^T=cA^T\)</span></div></li>
+<li><div class="para"><span class="process-math">\(\displaystyle (AB)^T=B^TA^T\)</span></div></li>
+<li><div class="para"><span class="process-math">\(\displaystyle \left(A^T\right)^T=A\)</span></div></li>
+</ol></article><details class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">Proof<span class="period">.</span></span></h3></summary><article class="hiddenproof knowl__content"><div class="para">Kita hanya membuktikan pernyataan pertama. Pertama perhatikan bahwa jika <span class="process-math">\(A\)</span> adalah <span class="process-math">\(m\times n\text{,}\)</span> maka demikian pula <span class="process-math">\(B\)</span> dan <span class="process-math">\(A+B\text{.}\)</span> Maka <span class="process-math">\((A+B)^T\)</span> adalah <span class="process-math">\(n\times m\)</span> menurut <a href="s_matrix.html#d_transpose" class="xref" data-knowl="./knowl/xref/d_transpose.html" data-reveal-label="Reveal" data-close-label="Close" title="Definition 2.1.29: Transposisi matriks">Definition 2.1.29</a>. Demikian pula, kita melihat bahwa <span class="process-math">\(A^T+B^T\)</span> adalah <span class="process-math">\(n\times m\text{.}\)</span>
+</div>
+<div class="para logical">
+<div class="para">Selanjutnya, diberikan sembarang <span class="process-math">\((i,j)\)</span> dengan <span class="process-math">\(1\leq i\leq n\text{,}\)</span> <span class="process-math">\(1\leq j\leq m\text{,}\)</span> kita memiliki</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/d_transpose.html ./knowl/xref/d_matrix_add_subtract.html ./knowl/xref/d_transpose.html ./knowl/xref/d_matrix_add_subtract.html">
+\begin{align*}
+\left((A+B)^T\right)_{ij}\amp =(A+B)_{ji} \amp (\knowl{./knowl/xref/d_transpose.html}{\text{Definition 2.1.29}})\\
+\amp = A_{ji}+B_{ji} \amp (\knowl{./knowl/xref/d_matrix_add_subtract.html}{\text{Definition 2.1.9}})\\
+\amp =(A^T)_{ij}+(B^T)_{ij} \amp (\knowl{./knowl/xref/d_transpose.html}{\text{Definition 2.1.29}} \\
+\amp =(A^T+B^T)_{ij} \amp (\knowl{./knowl/xref/d_matrix_add_subtract.html}{\text{Definition 2.1.9}})\text{.}
+\end{align*}
+</div>
+<div class="para">Karena entri <span class="process-math">\(ij\)</span> dari kedua matriks adalah sama untuk setiap <span class="process-math">\((i,j)\text{,}\)</span> maka <span class="process-math">\((A+B)^T=A^T+B^T\text{.}\)</span>
+</div>
+</div></article></details><span class="incontext"><a class="internal" href="s_algebraic.html#th_trans_props">in-context</a></span>
+</body>
+</html>

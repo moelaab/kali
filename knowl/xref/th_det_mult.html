@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<!--******************************************-->
+<!--*  Authored with PreTeXt                 *-->
+<!--*  pretextbook.org                       *-->
+<!--*  Theme: default-modern                 *-->
+<!--*  Palette: blue-green                   *-->
+<!--******************************************-->
+
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="theorem theorem-like"><h4 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">2.4.26</span><span class="period">.</span><span class="space"> </span><span class="title">Determinan Bersifat Multiplikatif.</span>
+</h4>
+<div class="para logical">
+<div class="para">Misalkan <span class="process-math">\(A\)</span> dan <span class="process-math">\(B\)</span> adalah matriks <span class="process-math">\(n\times n\text{.}\)</span> Maka</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\det AB=\det A\, \det B\text{.}
+\end{equation*}
+</div>
+</div></article><details class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4></summary><article class="hiddenproof knowl__content"><div class="para">Kita pertimbangkan dua kasus berdasarkan invertibilitas dari <span class="process-math">\(A\)</span> dan/atau <span class="process-math">\(B\text{.}\)</span>
+</div>
+<article class="case"><h5 class="heading">
+<span class="process-math">\(A\)</span> atau <span class="process-math">\(B\)</span> tidak invertibel.</h5>
+<div class="para logical">
+<div class="para">Dalam kasus ini <span class="process-math">\(AB\)</span> tidak invertibel (<code class="code-inline tex2jax_ignore">[cross-reference to target(s) "cor_inv_prod_eq" missing or not unique]</code>), dan dengan demikian <span class="process-math">\(\det AB=0\)</span> menurut <a href="s_det.html#th_inv_iff_det" class="xref" data-knowl="./knowl/xref/th_inv_iff_det.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 2.4.25: Determinan dan Invertibilitas">Theorem 2.4.25</a>. Dengan penalaran yang sama kita harus memiliki <span class="process-math">\(\det A=0\)</span> atau <span class="process-math">\(\det B=0\text{.}\)</span> Dengan demikian</div>
+<div class="displaymath process-math" data-contains-math-knowls=" ./knowl/xref/th_inv_iff_det.html">
+\begin{equation*}
+\det AB=\det A\, \det B=0
+\end{equation*}
+</div>
+<div class="para">dalam kasus ini.</div>
+</div></article><article class="case"><h5 class="heading">
+<span class="process-math">\(A\)</span> dan <span class="process-math">\(B\)</span> keduanya invertibel.</h5>
+<div class="para logical">
+<div class="para">Dalam kasus ini kita dapat menulis</div>
+<div class="displaymath process-math" data-contains-math-knowls=" ./knowl/xref/cor_det_prod_elem.html ./knowl/xref/cor_det_prod_elem.html">
+\begin{align*}
+A \amp E_1E_2\cdots E_r \amp B\amp=E'_1E'_2\cdots E'_s 
+\end{align*}
+</div>
+<div class="para">untuk sembarang matriks elementer <span class="process-math">\(E_i\)</span> dan <span class="process-math">\(E'_j\)</span> (<code class="code-inline tex2jax_ignore">[cross-reference to target(s) "th_invertibility" missing or not unique]</code>). Maka</div>
+<div class="displaymath process-math" data-contains-math-knowls=" ./knowl/xref/cor_det_prod_elem.html ./knowl/xref/cor_det_prod_elem.html">
+\begin{align*}
+\det AB \amp= \det(E_1E_2\cdots E_rE'_1E'_2\cdots E'_s) \\
+\amp= \det E_1\det E_2\cdots \det E_r\det E'_1\det E'_2\cdots \det E'_s \amp (\knowl{./knowl/xref/cor_det_prod_elem.html}{\text{Corollary 2.4.23}})\\
+\amp=\det A\, \det B \amp (\knowl{./knowl/xref/cor_det_prod_elem.html}{\text{Corollary 2.4.23}}) \text{.}
+\end{align*}
+</div>
+</div></article></article></details><span class="incontext"><a class="internal" href="s_det.html#th_det_mult">in-context</a></span>
+</body>
+</html>

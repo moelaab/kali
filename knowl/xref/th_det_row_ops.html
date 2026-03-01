@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<!--******************************************-->
+<!--*  Authored with PreTeXt                 *-->
+<!--*  pretextbook.org                       *-->
+<!--*  Theme: default-modern                 *-->
+<!--*  Palette: blue-green                   *-->
+<!--******************************************-->
+
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="theorem theorem-like"><h4 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">2.4.20</span><span class="period">.</span><span class="space"> </span><span class="title">Operasi Baris dan Determinan.</span>
+</h4>
+<div class="para logical">
+<div class="para">Misalkan <span class="process-math">\(A\)</span> adalah matriks <span class="process-math">\(n\times n\text{.}\)</span> Menggunakan notasi dari <code class="code-inline tex2jax_ignore">[cross-reference to target(s) "d_elementary_matrix" missing or not unique]</code> kita memiliki:</div>
+<ol class="decimal" id="th_det_row_ops-2-1-4">
+<li><div class="para"><span class="process-math">\(\displaystyle \det(\underset{c\cdot r_i}{E}\, A)=c\det(A)\)</span></div></li>
+<li><div class="para"><span class="process-math">\(\displaystyle \det(\underset{r_i\leftrightarrow r_j}{E}\, A)=-\det(A)\)</span></div></li>
+<li><div class="para"><span class="process-math">\(\det(\underset{r_i+cr_j}{E}\, A)=\det(A)\text{.}\)</span></div></li>
+</ol>
+<div class="para">Secara khusus, mengambil <span class="process-math">\(A=I\text{,}\)</span> kita memiliki</div>
+<div class="displaymath process-math" data-contains-math-knowls="">
+\begin{align*}
+\det\underset{c\cdot r_i}{E}\amp =c \amp \det\underset{r_i\leftrightarrow r_j}{E}\amp =-1 \amp \det \underset{r_i+cr_j}{E}\amp =1  \text{.}
+\end{align*}
+</div>
+</div></article><details class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4></summary><article class="hiddenproof knowl__content"><div class="para">Pernyataan pertama mengikuti dengan mudah dengan menghitung <span class="process-math">\(\det (\underset{cr_i}{E}\, A)\)</span> dengan mengekspansi sepanjang baris ke-<span class="process-math">\(i\text{.}\)</span> Pernyataan kedua sebenarnya adalah penyataan ulang dari pernyataan kedua <a href="s_det.html#th_det_zero_repeated_row" class="xref" data-knowl="./knowl/xref/th_det_zero_repeated_row.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 2.4.14: Baris/Kolom Nol, Penukaran Baris/Kolom, Baris/Kolom Identik">Theorem 2.4.14</a>. Tinggal membuktikan pernyataan ketiga.</div>
+<div class="para logical">
+<div class="para">Misalkan <span class="process-math">\(A=[a_{ij}]_{n\times n}\text{,}\)</span> dan tetapkan <span class="process-math">\(B=\underset{r_i+cr_j}{E}\cdot A\text{.}\)</span> Maka <span class="process-math">\(B\)</span> identik dengan <span class="process-math">\(A\)</span> dengan pengecualian baris ke-<span class="process-math">\(i\text{,}\)</span> yang entri ke-<span class="process-math">\(k\)</span>-nya adalah</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/th_det_zero_repeated_row.html">
+\begin{equation*}
+(B)_{ik}=a_{ik}+ca_{jk}\text{.}
+\end{equation*}
+</div>
+<div class="para">Dengan demikian</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/th_det_zero_repeated_row.html">
+\begin{align*}
+\det B \amp=\sum_{k=1}^n(-1)^{i+k}(a_{ik}+ca_{jk})M_{ik} \\
+\amp = \sum_{k=1}^n(-1)^{i+k}a_{ik}M_{ik}+c\sum_{k=1}^n(-1)^{i+k}a_{jk}M_{ik}\\
+\amp =\det A+\det C \text{,}
+\end{align*}
+</div>
+<div class="para">dimana <span class="process-math">\(C\)</span> adalah matriks yang diperoleh dengan mengganti baris ke-<span class="process-math">\(i\)</span> dari <span class="process-math">\(A\)</span> dengan baris yang identik dengan baris ke-<span class="process-math">\(j\)</span>-nya. Menurut <a href="s_det.html#th_det_zero_repeated_row" class="xref" data-knowl="./knowl/xref/th_det_zero_repeated_row.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 2.4.14: Baris/Kolom Nol, Penukaran Baris/Kolom, Baris/Kolom Identik">Theorem 2.4.14</a> kita menyimpulkan <span class="process-math">\(\det C=0\text{,}\)</span> dan dengan demikian</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/th_det_zero_repeated_row.html">
+\begin{equation*}
+\det(\underset{r_i+cr_j}{E}\cdot A)=\det B=\det A+\det C=\det A\text{,}
+\end{equation*}
+</div>
+<div class="para">sebagaimana diinginkan.</div>
+</div></article></details><span class="incontext"><a class="internal" href="s_det.html#th_det_row_ops">in-context</a></span>
+</body>
+</html>

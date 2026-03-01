@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<!--******************************************-->
+<!--*  Authored with PreTeXt                 *-->
+<!--*  pretextbook.org                       *-->
+<!--*  Theme: default-modern                 *-->
+<!--*  Palette: blue-green                   *-->
+<!--******************************************-->
+
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="theorem theorem-like"><h4 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">2.4.14</span><span class="period">.</span><span class="space"> </span><span class="title">Baris/Kolom Nol, Penukaran Baris/Kolom, Baris/Kolom Identik.</span>
+</h4>
+<div class="para logical">
+<div class="para">Misalkan <span class="process-math">\(A\)</span> adalah matriks <span class="process-math">\(n\times n\text{.}\)</span>
+</div>
+<ol class="decimal" id="th_det_zero_repeated_row-2-1-3">
+<li><div class="para">Jika <span class="process-math">\(A\)</span> memiliki baris nol atau kolom nol, maka <span class="process-math">\(\det A=0\)</span>
+</div></li>
+<li><div class="para logical">
+<div class="para">Asumsikan <span class="process-math">\(n\geq 2\text{.}\)</span> Misalkan <span class="process-math">\(A'\)</span> adalah matriks yang diperoleh dengan menukar dua baris (atau dua kolom) dari <span class="process-math">\(A\text{.}\)</span> Maka</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\det A'=-\det A\text{.}
+\end{equation*}
+</div>
+</div></li>
+<li><div class="para">Asumsikan <span class="process-math">\(n\geq 2\text{.}\)</span> Jika <span class="process-math">\(A\)</span> memiliki dua baris identik atau dua kolom identik, maka <span class="process-math">\(\det A=0\text{.}\)</span>
+</div></li>
+</ol>
+</div></article><details class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4></summary><article class="hiddenproof knowl__content"><div class="para">Pernyataan pertama jelas karena menurut <a href="s_det.html#th_expansion_row" class="xref" data-knowl="./knowl/xref/th_expansion_row.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 2.4.8: Ekspansi Sepanjang Baris">Theorem 2.4.8</a> dan <a href="s_det.html#cor_expansion_columns" class="xref" data-knowl="./knowl/xref/cor_expansion_columns.html" data-reveal-label="Reveal" data-close-label="Close" title="Corollary 2.4.10: Ekspansi Sepanjang Kolom">Corollary 2.4.10</a> kita dapat menghitung determinan dengan mengekspansi sepanjang baris nol atau kolom nol yang dimaksud.</div>
+<div class="para">Pernyataan ketiga mengikuti dari yang kedua. Memang, jika <span class="process-math">\(A\)</span> memiliki dua baris atau kolom identik, maka matriks <span class="process-math">\(A'\)</span> yang diperoleh dari <span class="process-math">\(A\)</span> dengan menukar baris (atau kolom) yang dimaksud adalah <span class="process-math">\(A\)</span> itu sendiri. Dengan demikian <span class="process-math">\(\det A=-\det A\)</span> menurut pernyataan kedua, dan kita menyimpulkan bahwa <span class="process-math">\(\det A=0\text{.}\)</span>
+</div>
+<div class="para">Tinggal hanya menunjukkan pernyataan kedua. Kita hanya membuktikan pernyataan mengenai penukaran baris; pernyataan yang sesuai tentang kolom mengikuti dari <a href="s_det.html#th_det_transpose" class="xref" data-knowl="./knowl/xref/th_det_transpose.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 2.4.9: Determinan dan Transposisi">Theorem 2.4.9</a>. Pembuktian dilakukan dengan induksi.</div>
+<article class="case"><h5 class="heading">Langkah dasar: <span class="process-math">\(n=2\)</span>.</h5>
+<div class="para">Misalkan <span class="process-math">\(A=\begin{bmatrix}a\amp b\\c\amp d \end{bmatrix}\text{.}\)</span> Maka <span class="process-math">\(A'=\abcdmatrix{c}{d}A{b}\text{,}\)</span> dan <span class="process-math">\(\det(A')=cb-ad=-(ad-bc)=-\det A\text{.}\)</span>
+</div></article><article class="case"><h5 class="heading">Langkah induksi.</h5>
+<div class="para">Kita mengasumsikan dengan induksi bahwa hasil berlaku untuk sembarang matriks <span class="process-math">\(n\times n\text{,}\)</span> <span class="process-math">\(n\geq 2\text{,}\)</span> dan menunjukkan hal yang sama benar untuk sembarang matriks <span class="process-math">\((n+1)\times (n+1)\text{.}\)</span>
+</div>
+<div class="para">Misalkan <span class="process-math">\(A\)</span> adalah matriks <span class="process-math">\((n+1)\times (n+1)\text{,}\)</span> dan misalkan <span class="process-math">\(A'\)</span>  adalah hasil dari menukar baris ke-<span class="process-math">\(i\)</span> dan ke-<span class="process-math">\(k\)</span> dari <span class="process-math">\(A\text{.}\)</span> Kita menghitung determinan dari <span class="process-math">\(A\)</span> dan <span class="process-math">\(A'\)</span> dengan mengekspansi sepanjang baris ke-<span class="process-math">\(\ell\text{,}\)</span> dimana <span class="process-math">\(\ell\ne i\)</span> dan <span class="process-math">\(\ell\ne k\text{.}\)</span> Ini dimungkinkan karena <span class="process-math">\((n+1)\geq 3\text{.}\)</span>
+</div>
+<div class="para logical">
+<div class="para">Bergerak sepanjang baris ke-<span class="process-math">\(\ell\text{,}\)</span> perhatikan bahwa setiap submatriks <span class="process-math">\({A'}_{\ell j}\)</span> adalah hasil dari menukar dua baris dari <span class="process-math">\(A_{\ell j}\)</span> yang semula berkorespondensi dengan baris ke-<span class="process-math">\(i\)</span> dan ke-<span class="process-math">\(k\)</span> dari <span class="process-math">\(A\text{.}\)</span> Karena submatriks ini berdimensi <span class="process-math">\(n\times n\text{,}\)</span> kita memiliki <span class="process-math">\(\det  {A'}_{\ell j}=-\det  A_{\ell j}\)</span> menurut induksi. Terakhir, karena baris ke-<span class="process-math">\(\ell\)</span> dari <span class="process-math">\(A\)</span> dan <span class="process-math">\(A'\)</span> sama kita memiliki</div>
+<div class="displaymath process-math">
+\begin{align*}
+\det A \amp=\sum_{j=1}^{n+1}(-1)^{\ell+j}a_{\ell j}\det  A_{\ell j} \\
+\amp = \sum_{j=1}^{n+1}(-1)^{\ell+j}a_{\ell j}(-\det  {A'}_{\ell j})\\
+\amp =-\sum_{j=1}^{n+1}(-1)^{\ell+j}a_{\ell j}\det  {A'}_{\ell j} \\
+\amp=-\det A' \text{.}
+\end{align*}
+</div>
+</div></article></article></details><span class="incontext"><a class="internal" href="s_det.html#th_det_zero_repeated_row">in-context</a></span>
+</body>
+</html>

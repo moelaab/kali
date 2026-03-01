@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<!--******************************************-->
+<!--*  Authored with PreTeXt                 *-->
+<!--*  pretextbook.org                       *-->
+<!--*  Theme: default-modern                 *-->
+<!--*  Palette: blue-green                   *-->
+<!--******************************************-->
+
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="theorem theorem-like"><h4 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">2.4.17</span><span class="period">.</span><span class="space"> </span><span class="title">Rumus Matriks Adjoin.</span>
+</h4>
+<div class="para logical">
+<div class="para">Diberikan matriks <span class="process-math">\(n\times n\)</span> <span class="process-math">\(A\text{,}\)</span> kita memiliki</div>
+<div class="displaymath process-math">
+\begin{equation}
+A\,(\adj A)=(\adj A)\, A=(\det A)I\text{.}\tag{2.4.7}
+\end{equation}
+</div>
+<div class="para">Sebagai konsekuensi, jika <span class="process-math">\(\det A\ne 0\text{,}\)</span> maka <span class="process-math">\(A\)</span> invertibel dan</div>
+<div class="displaymath process-math">
+\begin{equation}
+A^{-1}=\frac{1}{\det A}\, \adj A\text{.}\tag{2.4.8}
+\end{equation}
+</div>
+</div></article><details class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4></summary><article class="hiddenproof knowl__content"><div class="para logical">
+<div class="para">Pertama perhatikan bahwa pernyataan kedua mengenai invertibilitas mengikuti langsung dari <a href="s_det.html#eq_adj_form" class="xref" data-knowl="./knowl/xref/eq_adj_form.html" data-reveal-label="Reveal" data-close-label="Close" title="Equation 2.4.7">(2.4.7)</a>, karena dalam kasus ini menetapkan <span class="process-math">\(B=\frac{1}{\det A}\, \adj A\)</span> kita memiliki</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/eq_adj_form.html">
+\begin{equation*}
+AB=BA=\frac{1}{\det A}(A\adj A)=\frac{1}{\det A}((\det A)\, I)=I\text{.}
+\end{equation*}
+</div>
+</div>
+<div class="para logical">
+<div class="para">Dengan demikian cukup membuktikan <a href="s_det.html#eq_adj_form" class="xref" data-knowl="./knowl/xref/eq_adj_form.html" data-reveal-label="Reveal" data-close-label="Close" title="Equation 2.4.7">(2.4.7)</a>. Untuk melakukannya, kita harus menunjukkan bahwa</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/eq_adj_form.html">
+\begin{equation*}
+[A\, \adj A]_{ij}=[\adj A\, A]_{ij}=
+\begin{cases} \det A\amp \text{jika } i=j\\
+0 \amp \text{jika } i\ne j
+\end{cases}\text{.}
+\end{equation*}
+</div>
+</div>
+<article class="case"><h5 class="heading">Kasus: <span class="process-math">\(i=j\)</span>.</h5>
+<div class="para logical">
+<div class="para">Dalam kasus ini kita memiliki</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/d_adjoint.html">
+\begin{align*}
+[A\, \adj A]_{ii} \amp =\sum_{k=1}^na_{ik}[\adj A]_{ki}  \\
+\amp =\sum_{k=1}^n a_{ik}((-1)^{i+k}M_{ik}) \amp (\knowl{./knowl/xref/d_adjoint.html}{\text{Definition 2.4.15}} )\\
+\amp =\sum_{k=1}^n(-1)^{i+k}a_{ik}M_{ik} \\
+\amp =\det A \text{.}
+\end{align*}
+</div>
+<div class="para">Argumen serupa menunjukkan bahwa <span class="process-math">\((\adj A\, A)_{ii}=\det A\text{,}\)</span> meskipun dalam kasus ini kita menggunakan ekspansi sepanjang kolom.</div>
+</div></article><article class="case"><h5 class="heading">Kasus: <span class="process-math">\(i\ne j\)</span>.</h5>
+<div class="para logical">
+<div class="para">Ketika <span class="process-math">\(i\ne j\)</span> kita memiliki</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/d_adjoint.html ./knowl/xref/th_det_zero_repeated_row.html">
+\begin{align*}
+[A\, \adj A]_{ij} \amp =\sum_{k=1}^na_{ik}[\adj A]_{kj}  \\
+\amp =\sum_{k=1}^n a_{ik}((-1)^{k+j}M_{jk}) \amp (\knowl{./knowl/xref/d_adjoint.html}{\text{Definition 2.4.15}} )\\
+\amp =\sum_{k=1}^n(-1)^{k+j}a_{ik}M_{jk} \\
+\amp =\det C \text{,}
+\end{align*}
+</div>
+<div class="para">dimana <span class="process-math">\(C\)</span> adalah matriks yang diperoleh dengan mengganti baris ke-<span class="process-math">\(j\)</span> dari <span class="process-math">\(A\)</span> dengan salinan baris ke-<span class="process-math">\(i\)</span>-nya. Karena <span class="process-math">\(C\)</span> memiliki dua baris identik <a href="s_det.html#th_det_zero_repeated_row" class="xref" data-knowl="./knowl/xref/th_det_zero_repeated_row.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 2.4.14: Baris/Kolom Nol, Penukaran Baris/Kolom, Baris/Kolom Identik">Theorem 2.4.14</a> mengimplikasikan</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/d_adjoint.html ./knowl/xref/th_det_zero_repeated_row.html">
+\begin{equation*}
+[A\, \adj A]_{ij}=\det C=0\text{,}
+\end{equation*}
+</div>
+<div class="para">sebagaimana diinginkan. Sekali lagi, argumen serupa menggunakan ekspansi sepanjang kolom menunjukkan bahwa <span class="process-math">\([\adj A\, A]_{ij}=0\text{.}\)</span>
+</div>
+</div></article></article></details><span class="incontext"><a class="internal" href="s_det.html#th_adjoint">in-context</a></span>
+</body>
+</html>

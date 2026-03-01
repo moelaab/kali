@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<!--******************************************-->
+<!--*  Authored with PreTeXt                 *-->
+<!--*  pretextbook.org                       *-->
+<!--*  Theme: default-modern                 *-->
+<!--*  Palette: blue-green                   *-->
+<!--******************************************-->
+
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="theorem theorem-like"><h4 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">2.4.8</span><span class="period">.</span><span class="space"> </span><span class="title">Ekspansi Sepanjang Baris.</span>
+</h4>
+<div class="para logical">
+<div class="para">Misalkan <span class="process-math">\(A=[a_{ij}]_{n\times n}\text{.}\)</span> Untuk sembarang <span class="process-math">\(1\leq i\leq n\)</span> kita memiliki</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\det A=  \sum_{k=1}^n(-1)^{i+k}a_{ik}M_{ik}\text{.}
+\end{equation*}
+</div>
+<div class="para">Dengan kata lain, kita dapat menghitung <span class="process-math">\(\det A\)</span> dengan mengekspansi sepanjang sembarang baris dari <span class="process-math">\(A\text{.}\)</span>
+</div>
+</div></article><details class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4></summary><article class="hiddenproof knowl__content"><div class="para">Pembuktian dilakukan dengan induksi pada ukuran <span class="process-math">\(n\)</span> matriks.</div>
+<article class="case"><h5 class="heading">Langkah dasar: <span class="process-math">\(n=1, 2\)</span>.</h5>
+<div class="para logical">
+<div class="para">Untuk <span class="process-math">\(n=1\)</span> tidak ada yang perlu dibuktikan. Diberikan</div>
+<div class="displaymath process-math">
+\begin{equation*}
+A=\begin{bmatrix}a\amp b\\ c\amp d\end{bmatrix}
+\end{equation*}
+</div>
+<div class="para">mengekspansi sepanjang sembarang baris menghasilkan <span class="process-math">\(ad-bc\text{,}\)</span> sebagaimana dapat diverifikasi dengan mudah.</div>
+</div></article><article class="case"><h5 class="heading">Langkah induksi.</h5>
+<div class="para logical">
+<div class="para">Asumsikan klaim benar untuk sembarang matriks <span class="process-math">\((n-1)\times (n-1)\text{.}\)</span>  Diberikan <span class="process-math">\(A=[a_{ij}]_{n\times n}\)</span> kita memiliki</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/eq_det_def.html ./knowl/xref/eq_det_submatrix.html ./knowl/xref/eq_entry_formula_1.html ./knowl/xref/eq_iterated_submatrix.html">
+\begin{equation}
+\det A=\sum_{j=1}^n (-1)^{1+j}a_{1 j}\det  A_{1j}\text{.}\tag{2.4.1}
+\end{equation}
+</div>
+<div class="para">Mengekspansi sepanjang baris ke-<span class="process-math">\(i\)</span> dari <span class="process-math">\(A\)</span> untuk sembarang <span class="process-math">\(2\leq i\leq n\text{,}\)</span> di sisi lain, kita mendapatkan</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/eq_det_def.html ./knowl/xref/eq_det_submatrix.html ./knowl/xref/eq_entry_formula_1.html ./knowl/xref/eq_iterated_submatrix.html">
+\begin{equation}
+\sum_{k=1}^n (-1)^{i+k}a_{ik}\det A_{i  k}\text{.}\tag{2.4.2}
+\end{equation}
+</div>
+<div class="para">Untuk menunjukkan kedua ekspresi ini sama kita menggunakan hipotesis induksi untuk menghitung setiap <span class="process-math">\(\det  A_{1  j}\)</span> dengan mengekspansi sepanjang baris ke-<span class="process-math">\((i-1)\)</span>-nya:</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/eq_det_def.html ./knowl/xref/eq_det_submatrix.html ./knowl/xref/eq_entry_formula_1.html ./knowl/xref/eq_iterated_submatrix.html">
+\begin{equation}
+\det  A_{1j}=\sum_{k=1}^{n-1}(-1)^{i-1+k}[ A_{1j}]_{(i-1) k}\det {( A_{1j})}_{(i-1) k}\text{.}\tag{2.4.3}
+\end{equation}
+</div>
+<div class="para">Matriks <span class="process-math">\((A_{1j})_{(i-1) k}\)</span> adalah hasil dari pertama-tama menghapus baris 1 dan kolom <span class="process-math">\(j\)</span> dari <span class="process-math">\(A\text{,}\)</span> dan kemudian menghapus baris <span class="process-math">\((i-1)\)</span> dan kolom <span class="process-math">\(k\)</span> dari matriks yang dihasilkan.  Untuk menangani submatriks iteratif seperti ini, kita membuat beberapa observasi sederhana yang menghubungkan baris dan kolom dari <span class="process-math">\(A_{1 j}\)</span> dan <span class="process-math">\(A_{i  k}\)</span> dengan yang dari <span class="process-math">\(A\text{.}\)</span>
+</div>
+<ul class="disc" id="th_expansion_row-3-3-2-19">
+<li><div class="para">Baris ke-<span class="process-math">\((i-1)\)</span> dari <span class="process-math">\(A_{1  j}\)</span> berkorespondensi dengan baris ke-<span class="process-math">\(i\)</span> dari <span class="process-math">\(A\text{,}\)</span> dan baris pertama dari <span class="process-math">\(A_{i  k}\)</span> berkorespondensi dengan baris pertama dari <span class="process-math">\(A\text{.}\)</span>
+</div></li>
+<li><div class="para">Jika <span class="process-math">\(k\lt j\text{,}\)</span> maka kolom ke-<span class="process-math">\(k\)</span> dari <span class="process-math">\(A_{1  j}\)</span> berkorespondensi dengan kolom ke-<span class="process-math">\(k\)</span> dari <span class="process-math">\(A\text{;}\)</span> jika <span class="process-math">\(k\geq j\text{,}\)</span> maka kolom ke-<span class="process-math">\(k\)</span> dari <span class="process-math">\(A_{1  j}\)</span> berkorespondensi dengan kolom ke-<span class="process-math">\((k+1)\)</span> dari <span class="process-math">\(A\text{.}\)</span>
+</div></li>
+<li><div class="para">Jika <span class="process-math">\(j\lt k\text{,}\)</span> maka kolom ke-<span class="process-math">\(j\)</span> dari <span class="process-math">\(A_{ik}\)</span> berkorespondensi dengan kolom ke-<span class="process-math">\(j\)</span> dari <span class="process-math">\(A\text{;}\)</span> jika <span class="process-math">\(j\geq k\text{,}\)</span> maka kolom ke-<span class="process-math">\(j\)</span> dari <span class="process-math">\(A_{ik}\)</span> berkorespondensi dengan kolom ke-<span class="process-math">\((j+1)\)</span> dari <span class="process-math">\(A\text{.}\)</span>
+</div></li>
+</ul>
+<div class="para">Dari observasi ini kita menurunkan tabel rumus berikut:</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/eq_det_def.html ./knowl/xref/eq_det_submatrix.html ./knowl/xref/eq_entry_formula_1.html ./knowl/xref/eq_iterated_submatrix.html">
+\begin{align}
+[ A_{1j}]_{(i-1)  k} \amp =\begin{cases}
+a_{i  k} \amp \text{jika } k\lt j\\
+a_{i  (k+1)}  \amp \text{jika } k\geq j
+\end{cases} \tag{2.4.4}\\
+[ A_{i  k}]_{1  j} \amp =\begin{cases}
+a_{1  j}  \amp \text{jika } j\lt k\\
+a_{1  (j+1)} \amp \text{jika } k\leq j
+\end{cases} \tag{2.4.5}\\
+{( A_{1j})}_{i-1  k}\amp=\begin{cases}
+{( A_{i  k})}_{1  (j-1)} \amp\text{jika } k\lt j \\
+{( A_{i  (k+1)})}_{1  j} \amp \text{jika } k\geq j
+\end{cases}\text{.}\tag{2.4.6}
+\end{align}
+</div>
+<div class="para">Kita sekarang mulai menguraikan <a href="s_det.html#eq_det_def" class="xref" data-knowl="./knowl/xref/eq_det_def.html" data-reveal-label="Reveal" data-close-label="Close" title="Equation 2.4.1">(2.4.1)</a>:</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/eq_det_def.html ./knowl/xref/eq_det_submatrix.html ./knowl/xref/eq_entry_formula_1.html ./knowl/xref/eq_iterated_submatrix.html">
+\begin{align*}
+\det A \amp= \sum_{j=1}^n (-1)^{1+j}a_{1 j}\det  A_{1j}\\
+\amp = \sum_{j=1}^n (-1)^{1+j}a_{1 j}\sum_{k=1}^{n-1}(-1)^{i-1+k}[ A_{1j}]_{(i-1)k}\det {( A_{1j})}_{(i-1)k} \amp \knowl{./knowl/xref/eq_det_submatrix.html}{\text{(2.4.3)}}\\
+\amp
+= \underset{\text{istilah } k\lt j}{\underbrace{\sum_{j=2}^n \sum_{k=1}^{j-1}(-1)^{i+j+k}a_{1 j}a_{i  k}\det (A_{i  k})_{1  (j-1)}}}+\underset{\text{istilah } k\geq j}{\underbrace{\sum_{j=1}^{n-1} \sum_{k=j}^{n-1}(-1)^{i+j+k}a_{1 j}a_{i  (k+1)}\det (A_{i  (k+1)})_{1  j}}}
+\amp \knowl{./knowl/xref/eq_entry_formula_1.html}{\text{(2.4.4)}}, \knowl{./knowl/xref/eq_iterated_submatrix.html}{\text{(2.4.6)}}\\
+\amp = \underset{\text{istilah } j\geq k}{\underbrace{\sum_{j=1}^{n-1} \sum_{k=1}^{j}(-1)^{i+j+k+1}a_{i  k}[A_{ik}]_{1j}\det (A_{i  k})_{1  j}}}+\underset{\text{istilah } j\lt k}{\underbrace{\sum_{j=1}^{n-1} \sum_{k=j+1}^{n}(-1)^{i+j+k-1}a_{ik}[A_{ik}]_{1 j}\det (A_{ik})_{1  j}}}
+\amp (\text{label ulang } j=j-1, k=k+1)\\
+\amp = \underset{\text{istilah } j\geq k}{\underbrace{\sum_{j=1}^{n-1} \sum_{k=1}^{j}(-1)^{i+j+k+1}a_{i  k}[A_{ik}]_{1j}\det (A_{i  k})_{1  j}}}+\underset{\text{istilah } j\lt k}{\underbrace{\sum_{j=1}^{n-1} \sum_{k=j+1}^{n}(-1)^{i+j+k+1}a_{ik}[A_{ik}]_{1 j}\det (A_{ik})_{1  j}}}
+\amp ((-1)^{c+2}=(-1)^c)\\
+\amp =\sum_{k=1}^{n}(-1)^{i+k}a_{ik}\sum_{j=1}^{n-1}(-1)^{j+1}[A_{ik}]_{1j}\det (A_{ik})_{1j}
+\amp (\text{urut ulang istilah})\\
+\amp =\sum_{k=1}^{n}(-1)^{i+k}a_{ik}\det A_{ik} \text{.}
+\end{align*}
+</div>
+<div class="para">Ini melengkapi langkah induksi, dan dengan demikian pembuktian selesai.</div>
+</div></article></article></details><span class="incontext"><a class="internal" href="s_det.html#th_expansion_row">in-context</a></span>
+</body>
+</html>

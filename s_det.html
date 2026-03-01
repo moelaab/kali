@@ -1,0 +1,1560 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="en-US" dir="ltr">
+<!--******************************************-->
+<!--*  Authored with PreTeXt                 *-->
+<!--*  pretextbook.org                       *-->
+<!--*  Theme: default-modern                 *-->
+<!--*  Palette: blue-green                   *-->
+<!--******************************************-->
+<head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Determinan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+<link href="_static/pretext/css/theme.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/ol-markers.css" rel="stylesheet" type="text/css">
+<script>
+var runestoneMathReady = new Promise((resolve) => window.rsMathReady = resolve);
+window.MathJax = {
+  "tex": {
+    "inlineMath": [
+      [
+        "\\(",
+        "\\)"
+      ]
+    ],
+    "tags": "none",
+    "tagSide": "right",
+    "tagIndent": ".8em",
+    "packages": {
+      "[+]": [
+        "base",
+        "extpfeil",
+        "ams",
+        "amscd",
+        "color",
+        "newcommand",
+        "knowl"
+      ]
+    }
+  },
+  "options": {
+    "ignoreHtmlClass": "tex2jax_ignore|ignore-math",
+    "processHtmlClass": "process-math",
+    "renderActions": {
+      "findScript": [
+        10,
+        function (doc) {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(function(node) {
+                var display = !!node.type.match(/; *mode=display/);
+                var math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                var text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = {node: text, delim: '', n: 0};
+                math.end = {node: text, delim: '', n: 0};
+                doc.math.push(math);
+            });
+        },
+        ""
+      ]
+    }
+  },
+  "chtml": {
+    "scale": 0.98,
+    "mtextInheritFont": true
+  },
+  "loader": {
+    "load": [
+      "input/asciimath",
+      "[tex]/extpfeil",
+      "[tex]/amscd",
+      "[tex]/color",
+      "[tex]/newcommand",
+      "[pretext]/mathjaxknowl3.js"
+    ],
+    "paths": {
+      "pretext": "_static/pretext/js/lib"
+    }
+  },
+  "startup": {
+    pageReady() {
+      return MathJax.startup.defaultPageReady().then(function () {
+      console.log("in ready function");
+      rsMathReady();
+      }
+    )}
+  }
+};
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="book">
+<meta property="book:title" content="Komputasi Aljabar Linear">
+<meta property="book:author" content=" Mulaab M ">
+<script src="_static/pretext/js/lib/jquery.min.js"></script><script src="_static/pretext/js/lib/jquery.sticky.js"></script><script src="_static/pretext/js/lib/jquery.espy.min.js"></script><script src="_static/pretext/js/pretext.js"></script><script src="_static/pretext/js/pretext_add_on.js?x=1"></script><script src="_static/pretext/js/user_preferences.js"></script><!--** eBookCongig is necessary to configure interactive       **-->
+<!--** Runestone components to run locally in reader's browser **-->
+<!--** No external communication:                              **-->
+<!--**     log level is 0, Runestone Services are disabled     **-->
+<script type="text/javascript">
+eBookConfig = {};
+eBookConfig.useRunestoneServices = false;
+eBookConfig.host = 'http://127.0.0.1:8000';
+eBookConfig.course = 'PTX_Course_Title_Here';
+eBookConfig.basecourse = 'PTX_Base_Course';
+eBookConfig.isLoggedIn = false;
+eBookConfig.email = '';
+eBookConfig.isInstructor = false;
+eBookConfig.logLevel = 0;
+eBookConfig.username = '';
+eBookConfig.readings = null;
+eBookConfig.activities = null;
+eBookConfig.downloadsEnabled = false;
+eBookConfig.allow_pairs = false;
+eBookConfig.enableScratchAC = false;
+eBookConfig.build_info = "";
+eBookConfig.python3 = null;
+eBookConfig.runestone_version = '7.11.16';
+eBookConfig.jobehost = '';
+eBookConfig.proxyuri_runs = '';
+eBookConfig.proxyuri_files = '';
+eBookConfig.enable_chatcodes =  false;
+</script>
+<!--*** Runestone Services ***-->
+<script src="_static/prefix-runtime.0f480e95eedd3cd4.bundle.js"></script><script src="_static/prefix-723.3e6434f80549315a.bundle.js"></script><script src="_static/prefix-runestone.1d6e4aba17c2c7f2.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-723.3bccd435914aa0ff.css">
+<link rel="stylesheet" type="text/css" href="_static/prefix-runestone.75d8d8257df1449f.css">
+<script src="https://sagecell.sagemath.org/static/embedded_sagecell.js"></script><script src="_static/pretext/js/pretext-webwork/2.20/pretext-webwork.js"></script><script src="https://webwork-ptx.aimath.org/webwork2_files/node_modules/iframe-resizer/js/iframeResizer.min.js"></script><script src="_static/pretext/js/lti_iframe_resizer.js"></script><script async="" src="https://cse.google.com/cse.js?cx=015103900096539427448:ngwuia10qci"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js" integrity="sha512-4xUl/d6D6THrAnXAwGajXkoWaeMNwEKK4iNfq5DotEbLPAfk6FSxSP3ydNxqDgCw1c/0Z1Jg6L8h2j+++9BZmg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="lunr-pretext-search-index.js" async=""></script><script src="_static/pretext/js/pretext_search.js"></script><script src="_static/pretext/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
+</script>
+</head>
+<body id="ula" class="pretext book ignore-math">
+<a class="assistive" href="#ptx-content">Skip to main content</a><header id="ptx-masthead" class="ptx-masthead"><div class="ptx-banner">
+<a id="logo-link" class="logo-link" target="_blank" href="https://understandinglinearalgebra.org"><img src="external/images/ula-logo.png" alt="Logo image"></a><div class="title-container">
+<h1 class="heading"><a href="ula.html"><span class="title">Komputasi Aljabar Linear</span></a></h1>
+<p class="byline">Mulaab M</p>
+</div>
+</div></header><nav id="ptx-navbar" class="ptx-navbar navbar"><div class="ptx-navbar-contents">
+<button class="toc-toggle button" title="Contents"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5d2;</span><span class="name">Contents</span></button><a class="index-button button" href="backmatter-3.html" title="Index"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe88e;</span><span class="name">Index</span></a><div class="searchwrapper" role="search"><div class="gcse-search"></div></div>
+<div class="searchbox">
+<div class="searchwidget"><button id="searchbutton" class="searchbutton button" type="button" title="Search book"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe8b6;</span><span class="name">Search Book</span></button></div>
+<div id="searchresultsplaceholder" class="searchresultsplaceholder" style="display: none">
+<div class="search-results-controls">
+<input aria-label="Search term" id="ptxsearch" class="ptxsearch" type="text" name="terms" placeholder="Search term"><button title="Close search" id="closesearchresults" class="closesearchresults"><span class="material-symbols-outlined">close</span></button>
+</div>
+<h2 class="search-results-heading">Search Results: </h2>
+<div id="searchempty" class="searchempty"><span>No results.</span></div>
+<ol id="searchresults" class="searchresults"></ol>
+</div>
+</div>
+<span class="nav-other-controls"><button id="light-dark-button" class="light-dark-button button" title="Dark Mode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span class="name">Dark Mode</span></button></span><span class="treebuttons"><a class="previous-button button" href="s_invertible_matrices.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="up-button button" href="chap2.html" title="Up"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Up</span></a><a class="next-button button" href="backmatter.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span>
+</div></nav><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\(   \newcommand{\avec}{{\mathbf a}}
+   \newcommand{\bvec}{{\mathbf b}}
+   \newcommand{\cvec}{{\mathbf c}}
+   \newcommand{\dvec}{{\mathbf d}}
+   \newcommand{\dtil}{\widetilde{\mathbf d}}
+   \newcommand{\evec}{{\mathbf e}}
+   \newcommand{\fvec}{{\mathbf f}}
+   \newcommand{\nvec}{{\mathbf n}}
+   \newcommand{\pvec}{{\mathbf p}}
+   \newcommand{\qvec}{{\mathbf q}}
+   \newcommand{\svec}{{\mathbf s}}
+   \newcommand{\tvec}{{\mathbf t}}
+   \newcommand{\uvec}{{\mathbf u}}
+   \newcommand{\vvec}{{\mathbf v}}
+   \newcommand{\wvec}{{\mathbf w}}
+   \newcommand{\xvec}{{\mathbf x}}
+   \newcommand{\yvec}{{\mathbf y}}
+   \newcommand{\zvec}{{\mathbf z}}
+   \newcommand{\rvec}{{\mathbf r}}
+   \newcommand{\mvec}{{\mathbf m}}
+   \newcommand{\zerovec}{{\mathbf 0}}
+   \newcommand{\onevec}{{\mathbf 1}}
+   \newcommand{\real}{{\mathbb R}}
+   \newcommand{\twovec}[2]{\left[\begin{array}{r}#1 \\ #2
+   \end{array}\right]}
+   \newcommand{\ctwovec}[2]{\left[\begin{array}{c}#1 \\ #2
+   \end{array}\right]}
+   \newcommand{\threevec}[3]{\left[\begin{array}{r}#1 \\ #2 \\ #3
+   \end{array}\right]}
+   \newcommand{\cthreevec}[3]{\left[\begin{array}{c}#1 \\ #2 \\ #3
+   \end{array}\right]}
+   \newcommand{\fourvec}[4]{\left[\begin{array}{r}#1 \\ #2 \\ #3 \\ #4
+   \end{array}\right]}
+   \newcommand{\cfourvec}[4]{\left[\begin{array}{c}#1 \\ #2 \\ #3 \\ #4
+   \end{array}\right]}
+   \newcommand{\fivevec}[5]{\left[\begin{array}{r}#1 \\ #2 \\ #3 \\
+   #4 \\ #5 \\ \end{array}\right]}
+   \newcommand{\cfivevec}[5]{\left[\begin{array}{c}#1 \\ #2 \\ #3 \\
+   #4 \\ #5 \\ \end{array}\right]}
+   \newcommand{\mattwo}[4]{\left[\begin{array}{rr}#1 \amp #2 \\ #3 \amp #4 \\ \end{array}\right]}
+   \newcommand{\laspan}[1]{\text{Span}\left\{#1\right\}}
+   \newcommand{\bcal}{{\cal B}}
+   \newcommand{\ccal}{{\cal C}}
+   \newcommand{\scal}{{\cal S}}
+   \newcommand{\wcal}{{\cal W}}
+   \newcommand{\ecal}{{\cal E}}
+   \newcommand{\coords}[2]{\left\{#1\right\}_{#2}}
+   \newcommand{\gray}[1]{\color{gray}{#1}}
+   \newcommand{\lgray}[1]{\color{lightgray}{#1}}
+   \newcommand{\rank}{\operatorname{rank}}
+   \newcommand{\row}{\text{Row}}
+   \newcommand{\col}{\text{Col}}
+   \renewcommand{\row}{\text{Row}}
+   \newcommand{\nul}{\text{Nul}}
+   \newcommand{\var}{\text{Var}}
+   \newcommand{\corr}{\text{corr}}
+   \newcommand{\len}[1]{\left|#1\right|}
+   \newcommand{\bbar}{\overline{\bvec}}
+   \newcommand{\bhat}{\widehat{\bvec}}
+   \newcommand{\bperp}{\bvec^\perp}
+   \newcommand{\xhat}{\widehat{\xvec}}
+   \newcommand{\vhat}{\widehat{\vvec}}
+   \newcommand{\uhat}{\widehat{\uvec}}
+   \newcommand{\what}{\widehat{\wvec}}
+   \newcommand{\Sighat}{\widehat{\Sigma}}
+   \newcommand{\basis}[2]{#1_1,#1_2,\ldots,#1_{#2}}
+
+
+
+
+\newcommand{\eqsys}{\begin{array}{rcrcrcr}
+     a_{11}x_{1}\amp +\amp a_{12}x_{2}\amp +\cdots+\amp  a_{1n}x_{n}\amp =\amp b_1\\
+     a_{21}x_{1}\amp +\amp a_{22}x_{2}\amp +\cdots+\amp a_{2n}x_{n}\amp =\amp b_2\\
+     \amp \vdots\amp   \amp \vdots \amp  \amp \vdots \amp  \\
+     a_{m1}x_{1}\amp +\amp a_{m2}x_{2}\amp +\cdots +\amp a_{mn}x_{n}\amp =\amp b_m
+     \end{array}
+     }
+  
+\newcommand{\homsys}{\begin{array}{rcrcrcr}
+a_{11}x_{1}\amp +\amp a_{12}x_{2}\amp +\cdots+\amp  a_{1n}x_{n}\amp =\amp 0\\
+	a_{21}x_{1}\amp +\amp a_{22}x_{2}\amp +\cdots+\amp a_{2n}x_{n}\amp =\amp 0\\
+	\amp \vdots\amp   \amp \vdots \amp  \amp \vdots \amp  \vdots\\
+	a_{m1}x_{1}\amp +\amp a_{m2}x_{2}\amp +\cdots +\amp a_{mn}x_{n}\amp =\amp 0
+	\end{array}
+	}
+\newcommand{\R}{{\mathbb R}}
+\newcommand{\boldn}{{\mathbf n}}
+
+ \newenvironment{linsys}[2][m]{
+     \begin{array}[#1]{@{}*{#2}{rc}r@{}}
+     }{
+     \end{array}}
+
+\newcommand{\augmatrix}{
+     \begin{amatrix}[cccc|c]
+     a_{11} \amp  a_{12} \amp  \cdots \amp  a_{1n} \amp b_{1}\\
+     a_{21} \amp  a_{22} \amp  \cdots \amp  a_{2n} \amp b_{2}\\
+     \vdots  \amp  \vdots  \amp  \ddots \amp  \vdots  \amp \vdots\\
+     a_{m1} \amp  a_{m2} \amp  \cdots \amp  a_{mn}\amp b_{m}
+     \end{amatrix}
+     }
+  \newenvironment{amatrix}[1][ccc|c]{\left[\begin{array}{#1}}{\end{array}\right]}
+  
+  
+  
+  \newcommand{\linearsystem}[2]{\mathcal{LS}\!\left(#1,\,#2\right)}
+  \newcommand{\vect}[1]{\mathbf{#1}}
+  \newcommand{\colvector}[1]{\begin{bmatrix}#1\end{bmatrix}}
+  \newcommand{\augmented}[2]{\left[\,#1 \mid #2\,\right]}
+  
+  \newcommand{\Z}{{\mathbb Z}}
+     \newcommand{\Q}{{\mathbb Q}}
+     \newcommand{\R}{{\mathbb R}}
+     \newcommand{\C}{{\mathbb C}}
+     \newcommand{\T}{{\mathbb T}}
+     \newcommand{\F}{{\mathbb F}}
+     \newcommand{\HH}{{\mathbb H}}
+     \newcommand{\compose}{\circ}
+     \newcommand{\bolda}{{\mathbf a}}
+     \newcommand{\boldb}{{\mathbf b}}
+     \newcommand{\boldc}{{\mathbf c}}
+     \newcommand{\boldd}{{\mathbf d}}
+     \newcommand{\bolde}{{\mathbf e}}
+     \newcommand{\boldi}{{\mathbf i}}
+     \newcommand{\boldj}{{\mathbf j}}
+     \newcommand{\boldk}{{\mathbf k}}
+     \newcommand{\boldn}{{\mathbf n}}
+     \newcommand{\boldp}{{\mathbf p}}
+     \newcommand{\boldq}{{\mathbf q}}
+     \newcommand{\boldr}{{\mathbf r}}
+     \newcommand{\bolds}{{\mathbf s}}
+     \newcommand{\boldt}{{\mathbf t}}
+     \newcommand{\boldu}{{\mathbf u}}
+     \newcommand{\boldv}{{\mathbf v}}
+     \newcommand{\boldw}{{\mathbf w}}
+     \newcommand{\boldx}{{\mathbf x}}
+     \newcommand{\boldy}{{\mathbf y}}
+     \newcommand{\boldz}{{\mathbf z}}
+     \newcommand{\boldzero}{{\mathbf 0}}
+     \newcommand{\boldmod}{\boldsymbol{ \bmod }}
+     \newcommand{\boldT}{{\mathbf T}}
+     \newcommand{\boldN}{{\mathbf N}}
+     \newcommand{\boldB}{{\mathbf B}}
+     \newcommand{\boldF}{{\mathbf F}}
+     \newcommand{\boldS}{{\mathbf S}}
+     \newcommand{\boldG}{{\mathbf G}}
+     \newcommand{\boldK}{{\mathbf K}}
+     \newcommand{\boldL}{{\mathbf L}}
+     \DeclareMathOperator{\lcm}{lcm}
+     \DeclareMathOperator{\Span}{span}
+     \DeclareMathOperator{\tr}{tr}
+     \DeclareMathOperator{\NS}{null}
+     \DeclareMathOperator{\RS}{row}
+     \DeclareMathOperator{\CS}{col}
+     \DeclareMathOperator{\im}{im}
+     \DeclareMathOperator{\range}{range}
+     \DeclareMathOperator{\rank}{rank}
+     \DeclareMathOperator{\nullity}{nullity}
+     \DeclareMathOperator{\sign}{sign}
+     \DeclareMathOperator{\Fix}{Fix}
+     \DeclareMathOperator{\Aff}{Aff}
+     \DeclareMathOperator{\Frac}{Frac}
+     \DeclareMathOperator{\Ann}{Ann}
+     \DeclareMathOperator{\Tor}{Tor}
+     \DeclareMathOperator{\id}{id}
+     \DeclareMathOperator{\mdeg}{mdeg}
+     \DeclareMathOperator{\Lt}{Lt}
+     \DeclareMathOperator{\Lc}{Lc}
+     \DeclareMathOperator{\disc}{disc}
+     \DeclareMathOperator{\Frob}{Frob}
+     \DeclareMathOperator{\adj}{adj}
+     \DeclareMathOperator{\curl}{curl}
+     \DeclareMathOperator{\grad}{grad}
+     \DeclareMathOperator{\diver}{div}
+     \DeclareMathOperator{\flux}{flux}
+     \def\Gal{\operatorname{Gal}}
+     \def\ord{\operatorname{ord}}
+     \def\ML{\operatorname{M}}
+     \def\GL{\operatorname{GL}}
+     \def\PGL{\operatorname{PGL}}
+     \def\SL{\operatorname{SL}}
+     \def\PSL{\operatorname{PSL}}
+     \def\GSp{\operatorname{GSp}}
+     \def\PGSp{\operatorname{PGSp}}
+     \def\Sp{\operatorname{Sp}}
+     \def\PSp{\operatorname{PSp}}
+     \def\Aut{\operatorname{Aut}}
+     \def\Inn{\operatorname{Inn}}
+     \def\Hom{\operatorname{Hom}}
+     \def\End{\operatorname{End}}
+     \def\ch{\operatorname{char}}
+     \def\Zp{\Z/p\Z}
+     \def\Zm{\Z/m\Z}
+     \def\Zn{\Z/n\Z}
+     \def\Fp{\F_p}
+     \newcommand{\surjects}{\twoheadrightarrow}
+     \newcommand{\injects}{\hookrightarrow}
+     \newcommand{\bijects}{\leftrightarrow}
+     \newcommand{\isomto}{\overset{\sim}{\rightarrow}}
+     \newcommand{\floor}[1]{\lfloor#1\rfloor}
+     \newcommand{\ceiling}[1]{\left\lceil#1\right\rceil}
+     \newcommand{\mclass}[2][m]{[#2]_{#1}}
+     \newcommand{\val}[2][]{\left\lvert #2\right\rvert_{#1}}
+     \newcommand{\abs}[2][]{\left\lvert #2\right\rvert_{#1}}
+     \newcommand{\valuation}[2][]{\left\lvert #2\right\rvert_{#1}}
+     \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+     \newcommand{\anpoly}{a_nx^n+a_{n-1}x^{n-1}\cdots +a_1x+a_0}
+     \newcommand{\anmonic}{x^n+a_{n-1}x^{n-1}\cdots +a_1x+a_0}
+     \newcommand{\bmpoly}{b_mx^m+b_{m-1}x^{m-1}\cdots +b_1x+b_0}
+     \newcommand{\bnpoly}{b_nx^n+b_{n-1}x^{n-1}\cdots +b_1x+b_0}
+     \newcommand{\pder}[2]{\frac{\partial#1}{\partial#2}}
+     \newcommand{\normalin}{\trianglelefteq}
+     \newcommand{\angvec}[1]{\langle #1\rangle}
+     \newcommand{\varpoly}[2]{#1_{#2}x^{#2}+#1_{#2-1}x^{#2-1}\cdots +#1_1x+#1_0}
+     \newcommand{\varpower}[1][a]{#1_0+#1_1x+#1_1x^2+\cdots}
+     \newcommand{\limasto}[2][x]{\lim_{#1\rightarrow #2}}
+     \def\ntoinfty{\lim_{n\rightarrow\infty}}
+     \def\xtoinfty{\lim_{x\rightarrow\infty}}
+     \def\ii{\item}
+     \def\bb{\begin{enumerate}}
+     \def\ee{\end{enumerate}}
+     \def\ds{\displaystyle}
+     \def\p{\partial}
+     \newcommand{\abcdmatrix}[4]{\begin{bmatrix}#1\amp #2\\ #3\amp #4 \end{bmatrix}
+     }
+     \newenvironment{amatrix}[1][ccc|c]{\left[\begin{array}{#1}}{\end{array}\right]}
+     \newenvironment{linsys}[2][m]{
+     \begin{array}[#1]{@{}*{#2}{rc}r@{}}
+     }{
+     \end{array}}
+     \newcommand{\eqsys}{\begin{array}{rcrcrcr}
+     a_{11}x_{1}\amp +\amp a_{12}x_{2}\amp +\cdots+\amp  a_{1n}x_{n}\amp =\amp b_1\\
+     a_{21}x_{1}\amp +\amp a_{22}x_{2}\amp +\cdots+\amp a_{2n}x_{n}\amp =\amp b_2\\
+     \amp \vdots\amp   \amp \vdots \amp  \amp \vdots \amp  \\
+     a_{m1}x_{1}\amp +\amp a_{m2}x_{2}\amp +\cdots +\amp a_{mn}x_{n}\amp =\amp b_m
+     \end{array}
+     }
+     \newcommand{\numeqsys}{\begin{array}{rrcrcrcr}
+     e_1:\amp  a_{11}x_{1}\amp +\amp a_{12}x_{2}\amp +\cdots+\amp  a_{1n}x_{n}\amp =\amp b_1\\
+     e_2: \amp a_{21}x_{1}\amp +\amp a_{22}x_{2}\amp +\cdots+\amp a_{2n}x_{n}\amp =\amp b_2\\
+     \amp \vdots\amp   \amp \vdots \amp  \amp \vdots \amp  \\
+     e_m: \amp a_{m1}x_{1}\amp +\amp a_{m2}x_{2}\amp +\cdots +\amp a_{mn}x_{n}\amp =\amp b_m
+     \end{array}
+     }
+     \newcommand{\homsys}{\begin{array}{rcrcrcr}
+     a_{11}x_{1}\amp +\amp a_{12}x_{2}\amp +\cdots+\amp  a_{1n}x_{n}\amp =\amp 0\\
+     a_{21}x_{1}\amp +\amp a_{22}x_{2}\amp +\cdots+\amp a_{2n}x_{n}\amp =\amp 0\\
+     \amp \vdots\amp   \amp \vdots \amp  \amp \vdots \amp \\
+     a_{m1}x_{1}\amp +\amp a_{m2}x_{2}\amp +\cdots +\amp a_{mn}x_{n}\amp =\amp 0
+     \end{array}
+     }
+     \newcommand{\vareqsys}[4]{
+     \begin{array}{ccccccc}
+     #3_{11}x_{1}\amp +\amp #3_{12}x_{2}\amp +\cdots+\amp  #3_{1#2}x_{#2}\amp =\amp #4_1\\
+     #3_{21}x_{1}\amp +\amp #3_{22}x_{2}\amp +\cdots+\amp #3_{2#2}x_{#2}\amp =\amp #4_2\\
+     \vdots \amp \amp \vdots \amp  \amp \vdots \amp =\amp  \\
+     #3_{#1 1}x_{1}\amp +\amp #3_{#1 2}x_{2}\amp +\cdots +\amp #3_{#1 #2}x_{#2}\amp =\amp #4_{#1}
+     \end{array}
+     }
+     \newcommand{\genmatrix}[1][a]{
+     \begin{bmatrix}
+     #1_{11} \amp  #1_{12} \amp  \cdots \amp  #1_{1n} \\
+     #1_{21} \amp  #1_{22} \amp  \cdots \amp  #1_{2n} \\
+     \vdots  \amp  \vdots  \amp  \ddots \amp  \vdots  \\
+     #1_{m1} \amp  #1_{m2} \amp  \cdots \amp  #1_{mn}
+     \end{bmatrix}
+     }
+     \newcommand{\varmatrix}[3]{
+     \begin{bmatrix}
+     #3_{11} \amp  #3_{12} \amp  \cdots \amp  #3_{1#2} \\
+     #3_{21} \amp  #3_{22} \amp  \cdots \amp  #3_{2#2} \\
+     \vdots  \amp  \vdots  \amp  \ddots \amp  \vdots  \\
+     #3_{#1 1} \amp  #3_{#1 2} \amp  \cdots \amp  #3_{#1 #2}
+     \end{bmatrix}
+     }
+     \newcommand{\augmatrix}{
+     \begin{amatrix}[cccc|c]
+     a_{11} \amp  a_{12} \amp  \cdots \amp  a_{1n} \amp b_{1}\\
+     a_{21} \amp  a_{22} \amp  \cdots \amp  a_{2n} \amp b_{2}\\
+     \vdots  \amp  \vdots  \amp  \ddots \amp  \vdots  \amp \vdots\\
+     a_{m1} \amp  a_{m2} \amp  \cdots \amp  a_{mn}\amp b_{m}
+     \end{amatrix}
+     }
+     \newcommand{\varaugmatrix}[4]{
+     \begin{amatrix}[cccc|c]
+     #3_{11} \amp  #3_{12} \amp  \cdots \amp  #3_{1#2} \amp #4_{1}\\
+     #3_{21} \amp  #3_{22} \amp  \cdots \amp  #3_{2#2} \amp #4_{2}\\
+     \vdots  \amp  \vdots  \amp  \ddots \amp  \vdots  \amp \vdots\\
+     #3_{#1 1} \amp  #3_{#1 2} \amp  \cdots \amp  #3_{#1 #2}\amp #4_{#1}
+     \end{amatrix}
+     }
+     \newcommand{\spaceforemptycolumn}{\makebox[\wd\boxofmathplus]{\ }}
+
+     \newcommand{\generalmatrix}[3]{
+     \left(
+     \begin{array}{cccc}
+     #1_{1,1}  \amp #1_{1,2}  \amp \ldots  \amp #1_{1,#2}  \\
+     #1_{2,1}  \amp #1_{2,2}  \amp \ldots  \amp #1_{2,#2}  \\
+     \amp \vdots                         \\
+     #1_{#3,1} \amp #1_{#3,2} \amp \ldots  \amp #1_{#3,#2}
+     \end{array}
+     \right)  }
+     \newcommand{\colvec}[2][c]{\begin{amatrix}[#1] #2 \end{amatrix}}
+     \DeclareMathOperator{\size}{size}
+     \DeclareMathOperator{\adjoint}{adj}
+     \DeclareMathOperator{\sgn}{sgn}
+     \newcommand{\restrictionmap}[2]{{#1}\mathpunct\upharpoonright\hbox{}_{#2}}
+     \renewcommand{\emptyset}{\varnothing}
+
+     \newcommand{\proj}[2]{\mbox{proj}_{#2}({#1}) }
+     \renewcommand{\Re}{\operatorname{Re}}
+      \renewcommand{\Im}{\operatorname{Im}}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\definecolor{fillinmathshade}{gray}{0.9}
+\newcommand{\fillinmath}[1]{\mathchoice{\colorbox{fillinmathshade}{$\displaystyle     \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\textstyle        \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptstyle      \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptscriptstyle\phantom{\,#1\,}$}}}
+\)</span></div>
+<div class="ptx-page">
+<div id="ptx-sidebar" class="ptx-sidebar"><nav id="ptx-toc" class="ptx-toc depth2 focused" data-preexpanded-levels="0" data-max-levels="2"><ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-frontmatter">
+<div class="toc-title-box"><a href="frontmatter.html" class="internal"><span class="title">Front Matter</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-colophon"><div class="toc-title-box"><a href="frontmatter-4.html" class="internal"><span class="title">Colophon</span></a></div></li>
+<li class="toc-item toc-dedication"><div class="toc-title-box"><a href="frontmatter-5.html" class="internal"><span class="title">Dedication</span></a></div></li>
+<li class="toc-item toc-acknowledgement"><div class="toc-title-box"><a href="frontmatter-6.html" class="internal"><span class="title">Acknowledgements</span></a></div></li>
+<li class="toc-item toc-preface"><div class="toc-title-box"><a href="frontmatter-7.html" class="internal"><span class="title">Tujuan Kami</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="chap1.html" class="internal"><span class="codenumber">1</span> <span class="title">Sistem Persamaan</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-expect.html" class="internal"><span class="codenumber">1.1</span> <span class="title">Apa yang dapat kita harapkan</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-expect.html#sec-expect-3" class="internal"><span class="codenumber">1.1.1</span> <span class="title">Beberapa contoh sederhana</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_systems.html" class="internal"><span class="codenumber">1.2</span> <span class="title">Sistem Persamaan Linear</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="s_systems.html#ss_linear_equations" class="internal"><span class="codenumber">1.2.1</span> <span class="title">Sistem Persamaan Linear</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_systems.html#ss_linear_equations-11" class="internal"><span class="codenumber">1.2.1.1</span> <span class="title">Representasi Matriks dari Sistem Linear</span></a></div></li></ul>
+</li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_systemsb.html" class="internal"><span class="codenumber">1.3</span> <span class="title">Eliminasi Gaussian</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_systemsb.html#ss_ge_row_echelon" class="internal"><span class="codenumber">1.3.1</span> <span class="title">Matriks bentuk eselon baris</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_systemsb.html#ss_gaussian_elimination" class="internal"><span class="codenumber">1.3.2</span> <span class="title">Eliminasi Gaussian</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter contains-active">
+<div class="toc-title-box"><a href="chap2.html" class="internal"><span class="codenumber">2</span> <span class="title">Matrik</span></a></div>
+<ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_matrix.html" class="internal"><span class="codenumber">2.1</span> <span class="title">Aritmetika Matriks</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_matrix.html#ss_matrix_attributes" class="internal"><span class="codenumber">2.1.1</span> <span class="title">Dasar-dasar</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_matrix.html#ss_matrix_arithmetic" class="internal"><span class="codenumber">2.1.2</span> <span class="title">Penjumlahan, pengurangan dan perkalian skalar</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_matrix.html#ss_matrix_mult" class="internal"><span class="codenumber">2.1.3</span> <span class="title">Perkalian matriks</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_matrix.html#s_column_row_method" class="internal"><span class="codenumber">2.1.4</span> <span class="title">Metode alternatif perkalian</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_matrix.html#s_matrix-7" class="internal"><span class="codenumber">2.1.5</span> <span class="title">Transpos dari sebuah matriks</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_algebraic.html" class="internal"><span class="codenumber">2.2</span> <span class="title">Aljabar Matriks</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-exercises"><div class="toc-title-box"><a href="s_algebraic.html#s_algebraic_ex" class="internal"><span class="codenumber">2.2</span> <span class="title">Exercises</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_invertible_matrices.html" class="internal"><span class="codenumber">2.3</span> <span class="title">Matriks Invertibel</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_invertible_matrices.html#subsec-invertible" class="internal"><span class="codenumber">2.3.1</span> <span class="title">Matriks Invertibel</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_invertible_matrices.html#s_invertible_matrices-4" class="internal"><span class="codenumber">2.3.2</span> <span class="title">Pangkat Matriks, Polinomial Matriks</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="s_invertible_matrices.html#s_invertible_matrices_ex" class="internal"><span class="codenumber">2.3.3</span> <span class="title">Exercises</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section contains-active">
+<div class="toc-title-box"><a href="s_det.html" class="internal"><span class="codenumber">2.4</span> <span class="title">Determinan</span></a></div>
+<ul class="structural toc-item-list active">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_det.html#ss_det" class="internal"><span class="codenumber">2.4.1</span> <span class="title">Definisi Determinan</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_det.html#ss_expansion_rows_columns" class="internal"><span class="codenumber">2.4.2</span> <span class="title">Ekspansi Sepanjang Baris dan Kolom</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_det.html#ss_det_row_ops" class="internal"><span class="codenumber">2.4.3</span> <span class="title">Operasi Baris dan Determinan</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="s_det.html#s_det_ex" class="internal"><span class="codenumber">2.4.4</span> <span class="title">Exercises</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-backmatter">
+<div class="toc-title-box"><a href="backmatter.html" class="internal"><span class="title">Back Matter</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-appendix"><div class="toc-title-box"><a href="app-sage-reference.html" class="internal"><span class="codenumber">A</span> <span class="title">Referensi Sage</span></a></div></li>
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="backmatter-3.html" class="internal"><span class="title">Index</span></a></div></li>
+<li class="toc-item toc-colophon"><div class="toc-title-box"><a href="backmatter-4.html" class="internal"><span class="title">Colophon</span></a></div></li>
+<li class="toc-item toc-references"><div class="toc-title-box"><a href="references-backmatter.html" class="internal"><span class="title">References</span></a></div></li>
+</ul>
+</li>
+</ul></nav></div>
+<main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="section" id="s_det"><h2 class="heading hide-type">
+<span class="type">Section</span><span class="space"> </span><span class="codenumber">2.4</span><span class="space"> </span><span class="title">Determinan</span>
+</h2>
+<section class="introduction" id="s_det-2"><div class="para logical" id="s_det-2-1">
+<div class="para">
+<em class="emphasis">Determinan</em> adalah pemetaan yang menetapkan kepada sebuah matriks persegi <span class="process-math">\(A\)</span> sebuah skalar <span class="process-math">\(\det A\in\R \text{.}\)</span> Definisi determinan yang diberikan di bawah ini jauh dari intuitif, dan kita akan melakukan sedikit untuk memotivasinya di awal. Sebaliknya, kita membiarkan berbagai sifatnya berbicara sendiri melalui motivasi retrospektif. Secara khusus, kita akan melihat bahwa</div>
+<div class="displaymath process-math">
+\begin{equation*}
+A \text{ invertibel } \iff \det A \ne 0\text{,}
+\end{equation*}
+</div>
+<div class="para">menjadikan determinan alat penting untuk menyelidiki invertibilitas.</div>
+</div></section><section class="subsection" id="ss_det"><h3 class="heading hide-type">
+<span class="type">Subsection</span><span class="space"> </span><span class="codenumber">2.4.1</span><span class="space"> </span><span class="title">Definisi Determinan</span>
+</h3>
+<div class="para" id="ss_det-2">Definisi determinan kita bersifat <em class="emphasis">rekursif</em>; diberikan sebuah matriks <span class="process-math">\(n\times n\)</span> <span class="process-math">\(A\)</span> determinannya didefinisikan dalam terms determinan dari <em class="emphasis">submatriks</em> tertentu berdimensi <span class="process-math">\((n-1)\times (n-1)\text{.}\)</span> Ini memerlukan beberapa notasi untuk membantu diskusi kita.</div>
+<article class="definition definition-like" id="d_minors"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">2.4.1</span><span class="period">.</span><span class="space"> </span><span class="title">Notasi Submatriks.</span>
+</h4>
+<div class="para" id="d_minors-4-1">Misalkan <span class="process-math">\(A\)</span> adalah matriks <span class="process-math">\(n\times n\)</span> dengan <span class="process-math">\(n\geq 2\text{.}\)</span> Diberikan <span class="process-math">\(1\leq i, j\leq n\text{,}\)</span> <dfn class="terminology">submatriks dari <span class="process-math">\(A\)</span></dfn> yang diperoleh dengan menghapus baris ke-<span class="process-math">\(i\)</span> dan kolom ke-<span class="process-math">\(j\)</span> dari <span class="process-math">\(A\)</span> dilambangkan <span class="process-math">\(A_{i  j}\text{.}\)</span>
+</div></article><article class="warning remark-like" id="rm_minors"><h4 class="heading">
+<span class="type">Warning</span><span class="space"> </span><span class="codenumber">2.4.2</span><span class="period">.</span>
+</h4>
+<div class="para" id="rm_minors-1-1">Jangan menyamakan notasi submatriks <span class="process-math">\(A_{ij}\)</span> dengan notasi entri matriks <span class="process-math">\([A]_{ij}\text{:}\)</span> yang pertama mengembalikan submatriks dari <span class="process-math">\(A\)</span> yang diperoleh dengan menghapus baris ke-<span class="process-math">\(i\)</span> dan kolom ke-<span class="process-math">\(j\text{;}\)</span> yang terakhir mengembalikan entri ke-<span class="process-math">\(ij\)</span> dari <span class="process-math">\(A\text{.}\)</span>
+</div></article><article class="definition definition-like" id="d_det"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">2.4.3</span><span class="period">.</span><span class="space"> </span><span class="title">Determinan.</span>
+</h4>
+<div class="para logical" id="d_det-4-1">
+<div class="para">Misalkan <span class="process-math">\(A=[a_{ij}]_{n\times n}\text{.}\)</span> Determinan didefinisikan sebagai berikut:</div>
+<dl class="description-list">
+<dt id="d_det-4-1-2-1">Kasus dasar: <span class="process-math">\(n=1\)</span>
+</dt>
+<dd><div class="para" id="d_det-4-1-2-1-2">Ketika <span class="process-math">\(n=1\)</span> kita memiliki <span class="process-math">\(A=[a_{11}]\)</span> dan kita mendefinisikan <span class="process-math">\(\det A=a_{11}\text{.}\)</span>
+</div></dd>
+<dt id="d_det-4-1-2-2">Kasus rekursif: <span class="process-math">\(n\geq 2 \)</span>
+</dt>
+<dd><div class="para logical" id="d_det-4-1-2-2-2">
+<div class="para">Ketika <span class="process-math">\(n\geq 2\)</span> kita mendefinisikan</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\det A=\sum_{j=1}^n(-1)^{1+j}a_{1j}\det A_{1  j}=a_{11}\det A_{11}-a_{12} A_{12}+\cdots +(-1)^{1+n}a_{1n}\det A_{1  n}\text{.}
+\end{equation*}
+</div>
+</div></dd>
+</dl>
+</div></article><article class="remark remark-like" id="rm_det_small_cases"><h4 class="heading">
+<span class="type">Remark</span><span class="space"> </span><span class="codenumber">2.4.4</span><span class="period">.</span><span class="space"> </span><span class="title">Kasus <span class="process-math">\(n\)</span> Kecil.</span>
+</h4>
+<div class="para" id="rm_det_small_cases-2-1">Mari kita lihat rumus determinan untuk kasus <span class="process-math">\(n=2,3\text{.}\)</span> Anda mungkin ingat rumus untuk matriks <span class="process-math">\(2\times 2\)</span> dari <a href="s_invertible_matrices.html#th_2by2_inverse" class="xref" data-knowl="./knowl/xref/th_2by2_inverse.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 2.3.6: Invers Matriks 2\times 2">Theorem 2.3.6</a>; kita akan membuat koneksi lebih eksplisit dalam <a href="s_det.html#th_adjoint" class="xref" data-knowl="./knowl/xref/th_adjoint.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 2.4.17: Rumus Matriks Adjoin">Theorem 2.4.17</a>.</div> <div class="para logical" id="rm_det_small_cases-2-2">
+<div class="para">Diberikan <span class="process-math">\(A=\abcdmatrix{a}{b}{c}{d}\text{,}\)</span> kita memiliki</div>
+<div class="displaymath process-math" id="rm_det_small_cases-2-2-2">
+\begin{align*}
+\det A\amp = (-1)^{1+1}a\det A_{11}+(-1)^{1+2}b\det A_{12}\amp \text{(kasus rekursif)}\\
+\amp =a\det [d]-b\det [c] \amp \text{(kasus dasar)}\\
+\amp =ad-bc \text{.}
+\end{align*}
+</div>
+<div class="para">Rumus untuk kasus <span class="process-math">\(n=2\)</span> cukup sederhana untuk berfungsi sebagai “kasus dasar kedua”, memungkinkan kita mengakhiri proses rekursif menghitung matriks <span class="process-math">\(n\times n\)</span> umum sekali kita sampai pada ekspresi yang melibatkan matriks <span class="process-math">\(2\times 2\text{.}\)</span>
+</div>
+</div> <div class="para logical" id="rm_det_small_cases-2-3">
+<div class="para">Diberikan</div>
+<div class="displaymath process-math">
+\begin{equation*}
+A=\begin{amatrix}[ccc]a\amp b\amp c\\ d\amp e\amp f\\ g\amp h\amp i  \end{amatrix}\text{,}
+\end{equation*}
+</div>
+<div class="para">kita memiliki</div>
+<div class="displaymath process-math" id="rm_det_small_cases-2-3-2">
+\begin{align*}
+\det A \amp =a\det A_{11}-b\det A _{12}+c\det A_{13} \amp \text{(kasus rekursif)}\\
+\amp =a\det \abcdmatrix{e}{f}{h}{i}-b\det\abcdmatrix{d}{f}{g}{i}+c\det\abcdmatrix{d}{e}{g}{h}\\
+\amp = a(ei-fh)-b(di-fg)+c(dh-eg) \amp \text{(kasus \(n=2\))}\text{.}
+\end{align*}
+</div>
+</div></article><div class="para" id="ss_det-7">Sifat rekursif dari definisi determinan membuat argumen induksi sangat berguna ketika membuktikan sifat-sifat determinan, sebagaimana diilustrasikan oleh teorema berikutnya.</div>
+<article class="theorem theorem-like" id="th_det_triangular"><h4 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">2.4.5</span><span class="period">.</span><span class="space"> </span><span class="title">Determinan Matriks Segitiga.</span>
+</h4>
+<div class="para logical" id="th_det_triangular-2-1">
+<div class="para">Misalkan <span class="process-math">\(A=[a_{ij}]_{n\times n}\)</span> segitiga (atas, bawah, atau diagonal). Maka</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\det A=a_{11}a_{22}\cdots a_{nn}\text{.}
+\end{equation*}
+</div>
+<div class="para">Dengan kata lain, determinan matriks segitiga adalah produk dari entri diagonalnya.</div>
+</div></article><details id="th_det_triangular-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4></summary><article class="hiddenproof knowl__content"><div class="para" id="th_det_triangular-3-1">Kita hanya memberikan pembuktian untuk matriks segitiga bawah; pembuktian dalam kasus segitiga atas hampir identik.</div>
+<div class="para" id="th_det_triangular-3-2">Untuk sembarang <span class="process-math">\(n\geq 1\)</span> misalkan <span class="process-math">\(P(n)\)</span> menyatakan proposisi: “Determinan dari sembarang matriks segitiga bawah <span class="process-math">\(n\times n\)</span> adalah produk dari entri diagonalnya”. Kita membuktikan dengan induksi bahwa <span class="process-math">\(P(n)\)</span> benar untuk semua <span class="process-math">\(n\geq 1\text{.}\)</span>
+</div>
+<article class="case" id="th_det_triangular-3-3"><h5 class="heading">Langkah dasar: tunjukkan <span class="process-math">\(P(1)\)</span> benar.</h5>
+<div class="para" id="th_det_triangular-3-3-2">Dalam kasus ini <span class="process-math">\(A=[a_{11}]\text{,}\)</span> dan <span class="process-math">\(\det A=a_{11} \)</span> memang merupakan produk dari entri diagonal <span class="process-math">\(A\text{.}\)</span>
+</div></article><article class="case" id="th_det_triangular-3-4"><h5 class="heading">Langkah induksi: tunjukkan <span class="process-math">\(P(n)\implies P(n+1)\)</span> untuk semua <span class="process-math">\(n\geq 1\)</span>.</h5>
+<div class="para logical" id="th_det_triangular-3-4-2">
+<div class="para">Misalkan <span class="process-math">\(A=[a_{ij}]_{(n+1)\times (n+1)}\)</span> adalah matriks segitiga bawah. Maka <span class="process-math">\(a_{1j}=0\)</span> untuk semua <span class="process-math">\(j\geq 2\text{,}\)</span> dan dengan demikian determinan dari <span class="process-math">\(A\)</span> diberikan oleh</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\det A=a_{11}\det  A_{11}\text{.}
+\end{equation*}
+</div>
+<div class="para">Klaim: <span class="process-math">\(A_{i  k}\)</span> segitiga bawah. Memang, pertama perhatikan bahwa kita memiliki</div>
+<div class="displaymath process-math">
+\begin{equation*}
+( A_{11})_{ij}=a_{i+1,j+1}
+\end{equation*}
+</div>
+<div class="para">untuk semua <span class="process-math">\(1\leq i,j\leq n\text{;}\)</span> dengan menghapus baris pertama dan kolom pertama kita secara efektif menaikkan setiap indeks sebesar satu. Karena <span class="process-math">\(A\)</span> segitiga bawah kita memiliki  <span class="process-math">\(a_{ij}=0\)</span> untuk semua <span class="process-math">\(1\leq i \lt; j\leq n+1\text{,}\)</span> dan dengan demikian juga</div>
+<div class="displaymath process-math">
+\begin{equation*}
+( A_{11})_{ij}=a_{i+1,j+1}=0
+\end{equation*}
+</div>
+<div class="para">untuk semua <span class="process-math">\(1\leq i &lt; j\leq n \text{,}\)</span> membuktikan klaim.</div>
+</div>
+<div class="para logical" id="th_det_triangular-3-4-3">
+<div class="para">Terakhir, dengan mengasumsikan <span class="process-math">\(P(n)\)</span> benar (hipotesis induksi) kita memiliki</div>
+<div class="displaymath process-math" id="th_det_triangular-3-4-3-2">
+\begin{align*}
+\det A \amp=a_{11}\det A_{11} \\
+\amp =a_{11}(a_{22}a_{33}\cdots a_{n+1,n+1})\amp \text{(induksi)} \\
+\amp =a_{11}a_{22}\cdots a_{n+1,n+1} \text{,}
+\end{align*}
+</div>
+<div class="para">sebagaimana diinginkan.</div>
+</div></article></article></details><article class="corollary theorem-like" id="cor_det_identity"><h4 class="heading">
+<span class="type">Corollary</span><span class="space"> </span><span class="codenumber">2.4.6</span><span class="period">.</span><span class="space"> </span><span class="title">Determinan Matriks Identitas.</span>
+</h4>
+<div class="para" id="cor_det_identity-2-1">Misalkan <span class="process-math">\(I\)</span> adalah matriks identitas <span class="process-math">\(n\times n\text{.}\)</span> Maka <span class="process-math">\(\det I=1\text{.}\)</span>
+</div></article><details id="cor_det_identity-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4></summary><article class="hiddenproof knowl__content"><div class="para" id="cor_det_identity-3-1">Ini mengikuti langsung dari <a href="s_det.html#th_det_triangular" class="xref" data-knowl="./knowl/xref/th_det_triangular.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 2.4.5: Determinan Matriks Segitiga">Theorem 2.4.5</a> karena entri diagonal dari <span class="process-math">\(I\)</span> semuanya satu.</div></article></details></section><section class="subsection" id="ss_expansion_rows_columns"><h3 class="heading hide-type">
+<span class="type">Subsection</span><span class="space"> </span><span class="codenumber">2.4.2</span><span class="space"> </span><span class="title">Ekspansi Sepanjang Baris dan Kolom</span>
+</h3>
+<section class="introduction" id="ss_expansion_rows_columns-2"><div class="para" id="ss_expansion_rows_columns-2-1">Secara moral, kita seharusnya memberikan beberapa contoh determinan berdimensi lebih tinggi, tetapi pertama-tama kita memperkenalkan beberapa teori yang memberi kita keleluasaan lebih dalam komputasi kita.</div></section><article class="definition definition-like" id="d_minors_expansions"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">2.4.7</span><span class="period">.</span><span class="space"> </span><span class="title">Minor dan Ekspansi Sepanjang Baris/Kolom.</span>
+</h4>
+<div class="para logical" id="d_minors_expansions-5-1">
+<div class="para">Diberikan matriks <span class="process-math">\(n\times n\)</span> <span class="process-math">\(A\text{,}\)</span> untuk sembarang pasangan <span class="process-math">\(1\leq i,j\leq n\)</span> <dfn class="terminology">minor ke-<span class="process-math">\(ij\)</span> dari <span class="process-math">\(A\)</span></dfn> didefinisikan sebagai</div>
+<div class="displaymath process-math">
+\begin{equation*}
+M_{ij}=\det A_{i  k}\text{.}
+\end{equation*}
+</div>
+</div> <div class="para logical" id="d_minors_expansions-5-2">
+<div class="para">Untuk sembarang <span class="process-math">\(1\leq i\leq n\)</span> ekspresi</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\sum_{k=1}^n(-1)^{i+k}a_{ik}M_{ik}
+\end{equation*}
+</div>
+<div class="para">disebut <dfn class="terminology">ekspansi sepanjang baris ke-<span class="process-math">\(i\)</span> dari <span class="process-math">\(A\)</span></dfn>.</div>
+</div> <div class="para logical" id="d_minors_expansions-5-3">
+<div class="para">Untuk sembarang <span class="process-math">\(1\leq j\leq n\text{,}\)</span> ekspresi</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\sum_{k=1}^n(-1)^{k+j}a_{kj}M_{kj}
+\end{equation*}
+</div>
+<div class="para">disebut <dfn class="terminology">ekspansi sepanjang kolom ke-<span class="process-math">\(j\)</span> dari <span class="process-math">\(A\)</span></dfn>.</div>
+</div></article><article class="theorem theorem-like" id="th_expansion_row"><h4 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">2.4.8</span><span class="period">.</span><span class="space"> </span><span class="title">Ekspansi Sepanjang Baris.</span>
+</h4>
+<div class="para logical" id="th_expansion_row-2-1">
+<div class="para">Misalkan <span class="process-math">\(A=[a_{ij}]_{n\times n}\text{.}\)</span> Untuk sembarang <span class="process-math">\(1\leq i\leq n\)</span> kita memiliki</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\det A=  \sum_{k=1}^n(-1)^{i+k}a_{ik}M_{ik}\text{.}
+\end{equation*}
+</div>
+<div class="para">Dengan kata lain, kita dapat menghitung <span class="process-math">\(\det A\)</span> dengan mengekspansi sepanjang sembarang baris dari <span class="process-math">\(A\text{.}\)</span>
+</div>
+</div></article><details id="th_expansion_row-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4></summary><article class="hiddenproof knowl__content"><div class="para" id="th_expansion_row-3-1">Pembuktian dilakukan dengan induksi pada ukuran <span class="process-math">\(n\)</span> matriks.</div>
+<article class="case" id="th_expansion_row-3-2"><h5 class="heading">Langkah dasar: <span class="process-math">\(n=1, 2\)</span>.</h5>
+<div class="para logical" id="th_expansion_row-3-2-2">
+<div class="para">Untuk <span class="process-math">\(n=1\)</span> tidak ada yang perlu dibuktikan. Diberikan</div>
+<div class="displaymath process-math">
+\begin{equation*}
+A=\begin{bmatrix}a\amp b\\ c\amp d\end{bmatrix}
+\end{equation*}
+</div>
+<div class="para">mengekspansi sepanjang sembarang baris menghasilkan <span class="process-math">\(ad-bc\text{,}\)</span> sebagaimana dapat diverifikasi dengan mudah.</div>
+</div></article><article class="case" id="th_expansion_row-3-3"><h5 class="heading">Langkah induksi.</h5>
+<div class="para logical" id="th_expansion_row-3-3-2">
+<div class="para">Asumsikan klaim benar untuk sembarang matriks <span class="process-math">\((n-1)\times (n-1)\text{.}\)</span>  Diberikan <span class="process-math">\(A=[a_{ij}]_{n\times n}\)</span> kita memiliki</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/eq_det_def.html ./knowl/xref/eq_det_submatrix.html ./knowl/xref/eq_entry_formula_1.html ./knowl/xref/eq_iterated_submatrix.html" id="eq_det_def">
+\begin{equation}
+\det A=\sum_{j=1}^n (-1)^{1+j}a_{1 j}\det  A_{1j}\text{.}\tag{2.4.1}
+\end{equation}
+</div>
+<div class="para">Mengekspansi sepanjang baris ke-<span class="process-math">\(i\)</span> dari <span class="process-math">\(A\)</span> untuk sembarang <span class="process-math">\(2\leq i\leq n\text{,}\)</span> di sisi lain, kita mendapatkan</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/eq_det_def.html ./knowl/xref/eq_det_submatrix.html ./knowl/xref/eq_entry_formula_1.html ./knowl/xref/eq_iterated_submatrix.html" id="eq_det_expansion">
+\begin{equation}
+\sum_{k=1}^n (-1)^{i+k}a_{ik}\det A_{i  k}\text{.}\tag{2.4.2}
+\end{equation}
+</div>
+<div class="para">Untuk menunjukkan kedua ekspresi ini sama kita menggunakan hipotesis induksi untuk menghitung setiap <span class="process-math">\(\det  A_{1  j}\)</span> dengan mengekspansi sepanjang baris ke-<span class="process-math">\((i-1)\)</span>-nya:</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/eq_det_def.html ./knowl/xref/eq_det_submatrix.html ./knowl/xref/eq_entry_formula_1.html ./knowl/xref/eq_iterated_submatrix.html" id="eq_det_submatrix">
+\begin{equation}
+\det  A_{1j}=\sum_{k=1}^{n-1}(-1)^{i-1+k}[ A_{1j}]_{(i-1) k}\det {( A_{1j})}_{(i-1) k}\text{.}\tag{2.4.3}
+\end{equation}
+</div>
+<div class="para">Matriks <span class="process-math">\((A_{1j})_{(i-1) k}\)</span> adalah hasil dari pertama-tama menghapus baris 1 dan kolom <span class="process-math">\(j\)</span> dari <span class="process-math">\(A\text{,}\)</span> dan kemudian menghapus baris <span class="process-math">\((i-1)\)</span> dan kolom <span class="process-math">\(k\)</span> dari matriks yang dihasilkan.  Untuk menangani submatriks iteratif seperti ini, kita membuat beberapa observasi sederhana yang menghubungkan baris dan kolom dari <span class="process-math">\(A_{1 j}\)</span> dan <span class="process-math">\(A_{i  k}\)</span> dengan yang dari <span class="process-math">\(A\text{.}\)</span>
+</div>
+<ul class="disc" id="th_expansion_row-3-3-2-19">
+<li id="th_expansion_row-3-3-2-19-1"><div class="para" id="th_expansion_row-3-3-2-19-1-1">Baris ke-<span class="process-math">\((i-1)\)</span> dari <span class="process-math">\(A_{1  j}\)</span> berkorespondensi dengan baris ke-<span class="process-math">\(i\)</span> dari <span class="process-math">\(A\text{,}\)</span> dan baris pertama dari <span class="process-math">\(A_{i  k}\)</span> berkorespondensi dengan baris pertama dari <span class="process-math">\(A\text{.}\)</span>
+</div></li>
+<li id="th_expansion_row-3-3-2-19-2"><div class="para" id="th_expansion_row-3-3-2-19-2-1">Jika <span class="process-math">\(k\lt j\text{,}\)</span> maka kolom ke-<span class="process-math">\(k\)</span> dari <span class="process-math">\(A_{1  j}\)</span> berkorespondensi dengan kolom ke-<span class="process-math">\(k\)</span> dari <span class="process-math">\(A\text{;}\)</span> jika <span class="process-math">\(k\geq j\text{,}\)</span> maka kolom ke-<span class="process-math">\(k\)</span> dari <span class="process-math">\(A_{1  j}\)</span> berkorespondensi dengan kolom ke-<span class="process-math">\((k+1)\)</span> dari <span class="process-math">\(A\text{.}\)</span>
+</div></li>
+<li id="th_expansion_row-3-3-2-19-3"><div class="para" id="th_expansion_row-3-3-2-19-3-1">Jika <span class="process-math">\(j\lt k\text{,}\)</span> maka kolom ke-<span class="process-math">\(j\)</span> dari <span class="process-math">\(A_{ik}\)</span> berkorespondensi dengan kolom ke-<span class="process-math">\(j\)</span> dari <span class="process-math">\(A\text{;}\)</span> jika <span class="process-math">\(j\geq k\text{,}\)</span> maka kolom ke-<span class="process-math">\(j\)</span> dari <span class="process-math">\(A_{ik}\)</span> berkorespondensi dengan kolom ke-<span class="process-math">\((j+1)\)</span> dari <span class="process-math">\(A\text{.}\)</span>
+</div></li>
+</ul>
+<div class="para">Dari observasi ini kita menurunkan tabel rumus berikut:</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/eq_det_def.html ./knowl/xref/eq_det_submatrix.html ./knowl/xref/eq_entry_formula_1.html ./knowl/xref/eq_iterated_submatrix.html" id="th_expansion_row-3-3-2-20">
+\begin{align}
+[ A_{1j}]_{(i-1)  k} \amp =\begin{cases}
+a_{i  k} \amp \text{jika } k\lt j\\
+a_{i  (k+1)}  \amp \text{jika } k\geq j
+\end{cases} \tag{2.4.4}\\
+[ A_{i  k}]_{1  j} \amp =\begin{cases}
+a_{1  j}  \amp \text{jika } j\lt k\\
+a_{1  (j+1)} \amp \text{jika } k\leq j
+\end{cases} \tag{2.4.5}\\
+{( A_{1j})}_{i-1  k}\amp=\begin{cases}
+{( A_{i  k})}_{1  (j-1)} \amp\text{jika } k\lt j \\
+{( A_{i  (k+1)})}_{1  j} \amp \text{jika } k\geq j
+\end{cases}\text{.}\tag{2.4.6}
+\end{align}
+</div>
+<div class="para">Kita sekarang mulai menguraikan <a href="s_det.html#eq_det_def" class="xref" data-knowl="./knowl/xref/eq_det_def.html" data-reveal-label="Reveal" data-close-label="Close" title="Equation 2.4.1">(2.4.1)</a>:</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/eq_det_def.html ./knowl/xref/eq_det_submatrix.html ./knowl/xref/eq_entry_formula_1.html ./knowl/xref/eq_iterated_submatrix.html" id="th_expansion_row-3-3-2-22">
+\begin{align*}
+\det A \amp= \sum_{j=1}^n (-1)^{1+j}a_{1 j}\det  A_{1j}\\
+\amp = \sum_{j=1}^n (-1)^{1+j}a_{1 j}\sum_{k=1}^{n-1}(-1)^{i-1+k}[ A_{1j}]_{(i-1)k}\det {( A_{1j})}_{(i-1)k} \amp \knowl{./knowl/xref/eq_det_submatrix.html}{\text{(2.4.3)}}\\
+\amp
+= \underset{\text{istilah } k\lt j}{\underbrace{\sum_{j=2}^n \sum_{k=1}^{j-1}(-1)^{i+j+k}a_{1 j}a_{i  k}\det (A_{i  k})_{1  (j-1)}}}+\underset{\text{istilah } k\geq j}{\underbrace{\sum_{j=1}^{n-1} \sum_{k=j}^{n-1}(-1)^{i+j+k}a_{1 j}a_{i  (k+1)}\det (A_{i  (k+1)})_{1  j}}}
+\amp \knowl{./knowl/xref/eq_entry_formula_1.html}{\text{(2.4.4)}}, \knowl{./knowl/xref/eq_iterated_submatrix.html}{\text{(2.4.6)}}\\
+\amp = \underset{\text{istilah } j\geq k}{\underbrace{\sum_{j=1}^{n-1} \sum_{k=1}^{j}(-1)^{i+j+k+1}a_{i  k}[A_{ik}]_{1j}\det (A_{i  k})_{1  j}}}+\underset{\text{istilah } j\lt k}{\underbrace{\sum_{j=1}^{n-1} \sum_{k=j+1}^{n}(-1)^{i+j+k-1}a_{ik}[A_{ik}]_{1 j}\det (A_{ik})_{1  j}}}
+\amp (\text{label ulang } j=j-1, k=k+1)\\
+\amp = \underset{\text{istilah } j\geq k}{\underbrace{\sum_{j=1}^{n-1} \sum_{k=1}^{j}(-1)^{i+j+k+1}a_{i  k}[A_{ik}]_{1j}\det (A_{i  k})_{1  j}}}+\underset{\text{istilah } j\lt k}{\underbrace{\sum_{j=1}^{n-1} \sum_{k=j+1}^{n}(-1)^{i+j+k+1}a_{ik}[A_{ik}]_{1 j}\det (A_{ik})_{1  j}}}
+\amp ((-1)^{c+2}=(-1)^c)\\
+\amp =\sum_{k=1}^{n}(-1)^{i+k}a_{ik}\sum_{j=1}^{n-1}(-1)^{j+1}[A_{ik}]_{1j}\det (A_{ik})_{1j}
+\amp (\text{urut ulang istilah})\\
+\amp =\sum_{k=1}^{n}(-1)^{i+k}a_{ik}\det A_{ik} \text{.}
+\end{align*}
+</div>
+<div class="para">Ini melengkapi langkah induksi, dan dengan demikian pembuktian selesai.</div>
+</div></article></article></details><div class="para" id="ss_expansion_rows_columns-5">Secara mengejutkan, ternyata kita dapat menghitung determinan sebuah matriks dengan mengekspansi sepanjang sembarang <em class="emphasis">kolom</em> (<a href="s_det.html#cor_expansion_columns" class="xref" data-knowl="./knowl/xref/cor_expansion_columns.html" data-reveal-label="Reveal" data-close-label="Close" title="Corollary 2.4.10: Ekspansi Sepanjang Kolom">Corollary 2.4.10</a>). Ini adalah konsekuensi dari teorema berikut, yang berguna dengan sendirinya. Pembuktian di bawah ini diambil dari <em class="emphasis">A First Course in Linear Algebra</em> karya Robert Beezer <a class="external" href="http://linear.ups.edu/fcla" target="_blank">.</a><details class="ptx-footnote" aria-live="polite" id="ss_expansion_rows_columns-5-5"><summary class="ptx-footnote__number" title="Footnote 2.4.1"><sup> 1 </sup></summary><div class="ptx-footnote__contents" id="ss_expansion_rows_columns-5-5"><code class="code-inline tex2jax_ignore">linear.ups.edu/fcla</code></div></details> (Lihat <a class="external" href="http://linear.ups.edu/fcla/section-DM.html#theorem-DT" target="_blank">Teorema DT</a><details class="ptx-footnote" aria-live="polite" id="ss_expansion_rows_columns-5-7"><summary class="ptx-footnote__number" title="Footnote 2.4.2"><sup> 2 </sup></summary><div class="ptx-footnote__contents" id="ss_expansion_rows_columns-5-7"><code class="code-inline tex2jax_ignore">http://linear.ups.edu/fcla/section-DM.html#theorem-DT</code></div></details>.) Ini menggunakan induksi dan trik indah yang dimulai dari observasi bahwa <span class="process-math">\(c=\frac{1}{n}\sum_{i=1}^n c\)</span> untuk sembarang <span class="process-math">\(c\in\R\text{.}\)</span>
+</div>
+<article class="theorem theorem-like" id="th_det_transpose"><h4 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">2.4.9</span><span class="period">.</span><span class="space"> </span><span class="title">Determinan dan Transposisi.</span>
+</h4>
+<div class="para logical" id="th_det_transpose-2-1">
+<div class="para">Misalkan <span class="process-math">\(A\)</span> adalah matriks <span class="process-math">\(n\times n\text{.}\)</span> Maka</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\det A^T=\det A\text{.}
+\end{equation*}
+</div>
+</div></article><details id="th_det_transpose-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4></summary><article class="hiddenproof knowl__content"><div class="para" id="th_det_transpose-3-1">Pembuktian dilakukan dengan induksi pada <span class="process-math">\(n\text{.}\)</span> Kasus dasar (<span class="process-math">\(n=1\)</span>) trivial karena <span class="process-math">\([a]^T=[a]\)</span> untuk sembarang matriks <span class="process-math">\(1\times 1\)</span> <span class="process-math">\([a]\text{.}\)</span>
+</div>
+<div class="para logical" id="th_det_transpose-3-2">
+<div class="para">Untuk induksi kita mengasumsikan bahwa untuk semua <span class="process-math">\(n\geq 2\)</span> kita memiliki <span class="process-math">\(\det B^T=\det B\)</span> untuk sembarang matriks <span class="process-math">\((n-1)\times (n-1)\text{.}\)</span> Misalkan <span class="process-math">\(A\)</span> adalah matriks <span class="process-math">\(n\times n\text{.}\)</span> Kita memiliki</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/th_expansion_row.html ./knowl/xref/th_expansion_row.html" id="th_det_transpose-3-2-6">
+\begin{align*}
+\det A^T \amp = \frac{1}{n}\sum_{i=1}^{n}\det A^T \\
+\amp =\frac{1}{n}\sum_{i=1}^n\sum_{j=1}^n(-1)^{i+j}[A^T]_{ij}\det \left((A^T)_{ij}\right) \amp (\knowl{./knowl/xref/th_expansion_row.html}{\text{Theorem 2.4.8}}) \\
+\amp = \frac{1}{n}\sum_{i=1}^n\sum_{j=1}^n(-1)^{i+j}[A]_{ji}\det (A_{ji})^T \amp ([A^T]_{ij}=A_{ji}, (A^T)_{ij}=(A_{ji})^T)\\
+\amp = \frac{1}{n}\sum_{i=1}^n\sum_{j=1}^n(-1)^{i+j}[A]_{ji}\det A_{ji} \amp (\det (A_{ji})^T=\det A_{ji}, \text{ menurut induksi})\\
+\amp= \frac{1}{n}\sum_{j=1}^n\sum_{i=1}^n(-1)^{i+j}[A]_{ji}\det A_{ji} \amp (\text{sifat penjumlahan})\\
+\amp =\frac{1}{n}\sum_{j=1}^n\det A \amp (\knowl{./knowl/xref/th_expansion_row.html}{\text{Theorem 2.4.8}})\\
+\amp = \det A\text{.}
+\end{align*}
+</div>
+<div class="para">Ini melengkapi pembuktian dengan induksi. (Perhatikan bagaimana dalam kesamaan kedua dalam rantai di atas kita menghitung <span class="process-math">\(\det A^T\)</span> dalam suku ke-<span class="process-math">\(i\)</span> dari <span class="process-math">\(\sum_{i=1}^n\det A^T\)</span> dengan mengekspansi sepanjang baris ke-<span class="process-math">\(i\)</span> dari <span class="process-math">\(\det A^T\text{.}\)</span> Observasi serupa berlaku untuk kesamaan terakhir.)</div>
+</div></article></details><article class="corollary theorem-like" id="cor_expansion_columns"><h4 class="heading">
+<span class="type">Corollary</span><span class="space"> </span><span class="codenumber">2.4.10</span><span class="period">.</span><span class="space"> </span><span class="title">Ekspansi Sepanjang Kolom.</span>
+</h4>
+<div class="para logical" id="cor_expansion_columns-2-1">
+<div class="para">Misalkan <span class="process-math">\(A=[a_{ij}]_{n\times n}\text{.}\)</span> Untuk sembarang <span class="process-math">\(1\leq j\leq n\)</span> kita memiliki</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\det A=  \sum_{k=1}^n(-1)^{k+j}a_{kj}M_{kj}\text{.}
+\end{equation*}
+</div>
+<div class="para">Dengan kata lain, kita dapat menghitung <span class="process-math">\(\det A\)</span> dengan mengekspansi sepanjang sembarang baris dari <span class="process-math">\(A\text{.}\)</span>
+</div>
+</div></article><details id="cor_expansion_columns-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4></summary><article class="hiddenproof knowl__content"><div class="para logical" id="cor_expansion_columns-3-1">
+<div class="para">Untuk sembarang <span class="process-math">\(1\leq j\leq n\text{,}\)</span> kita memiliki</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/d_transpose.html ./knowl/xref/d_det.html ./knowl/xref/th_det_transpose.html" id="cor_expansion_columns-3-1-2">
+\begin{align*}
+\sum_{k=1}^n(-1)^{k+j}a_{kj}M_{kj}\amp =\sum_{k=1}^n(-1)^{k+j}(A^T)_{jk}\det A_{kj} \amp (\knowl{./knowl/xref/d_transpose.html}{\text{Definition 2.1.29}})\\
+\amp = \sum_{k=1}^n(-1)^{k+j}(A^T)_{jk}\det (A^T)_{jk} \amp ( (A^T)_{ij}= A_{ji}) \\
+\amp= \det A^T  \amp (\knowl{./knowl/xref/d_det.html}{\text{Definition 2.4.3}})\\
+\amp=\det A \amp (\knowl{./knowl/xref/th_det_transpose.html}{\text{Theorem 2.4.9}}) \text{.}
+\end{align*}
+</div>
+</div></article></details><article class="example example-like" id="ss_expansion_rows_columns-8"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">2.4.11</span><span class="period">.</span>
+</h4>
+<div class="para logical" id="ss_expansion_rows_columns-8-1-1">
+<div class="para">Hitung <span class="process-math">\(\det A\)</span> untuk</div>
+<div class="displaymath process-math">
+\begin{equation*}
+A=\begin{bmatrix}2\amp 1\amp 0\amp 3\\ 0\amp 0\amp 0\amp 2\\ 0\amp 2\amp 0\amp 0\\ 4\amp 2\amp 1\amp 0 \end{bmatrix}\text{.}
+\end{equation*}
+</div>
+</div>
+<div class="solutions"><details id="ss_expansion_rows_columns-8-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical" id="ss_expansion_rows_columns-8-2-1">
+<div class="para">Pertama kita menghitung <span class="process-math">\(A\)</span> dengan mengekspansi sepanjang baris kedua. Satu-satunya suku tak-nol dari ekspansi ini adalah yang terakhir, menghasilkan</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\det A=(-1)^{2+4}[A]_{24}M_{24}=2\det A_{24}\text{.}
+\end{equation*}
+</div>
+<div class="para">Kita memiliki</div>
+<div class="displaymath process-math">
+\begin{equation*}
+A_{24}=\begin{bmatrix}
+2\amp 1\amp 0\\ 0\amp 2\amp 0\\ 4\amp 2\amp 1
+\end{bmatrix}\text{.}
+\end{equation*}
+</div>
+<div class="para">Untuk menghitung determinannya kita mengekspansi sepanjang kolom ketiganya:</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\det A_{24}=(-1)^{3+3}1\det \begin{bmatrix}
+2\amp 1\\ 0\amp 2
+\end{bmatrix}=4.\text{.}
+\end{equation*}
+</div>
+<div class="para">Kita menyimpulkan bahwa</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\det A=2\det A_{24}=2(4)=8\text{.}
+\end{equation*}
+</div>
+</div></div></details></div></article><article class="remark remark-like" id="rm_sign_matrix"><h4 class="heading">
+<span class="type">Remark</span><span class="space"> </span><span class="codenumber">2.4.12</span><span class="period">.</span><span class="space"> </span><span class="title">Matriks Tanda.</span>
+</h4>
+<div class="para logical" id="rm_sign_matrix-2-1">
+<div class="para">Ketika mengekspansi sepanjang baris atau kolom, mudah tersandung oleh tanda <span class="process-math">\((-1)^{i+j}\)</span> di depan koefisien ke-<span class="process-math">\(ij\text{.}\)</span> Sebuah “matriks tanda” adalah semacam alat mnemonik untuk membantu Anda dalam hal ini. Ini mudah dihasilkan dengan mengamati bahwa tanda di depan entri ke-<span class="process-math">\((1,1)\)</span> selalu <span class="process-math">\(+\)</span> (karena <span class="process-math">\(1=(-1)^{1+1}\)</span>), dan bahwa sembarang langkah horizontal atau vertikal dalam matriks disertai dengan perubahan tanda. Sebagai contoh, untuk <span class="process-math">\(n=4\)</span> kita memiliki matriks tanda berikut:</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\begin{bmatrix}
++\amp -\amp +\amp -\\
+-\amp +\amp -\amp +\\
++\amp -\amp +\amp -\\
+-\amp +\amp -\amp +
+\end{bmatrix}\text{.}
+\end{equation*}
+</div>
+</div></article><section class="paragraphs" id="ss_vid_eg_det"><h4 class="heading"><span class="title">Contoh Video: Determinan.</span></h4>
+<figure class="figure figure-like" id="fig_vid_det"><div class="video-box" style="width: 100%;padding-top: 56.25%; margin-left: 0%; margin-right: 0%;"><iframe class="video" allowfullscreen="" src="https://www.youtube-nocookie.com/embed/OoNYGwJS-M4?&amp;modestbranding=1&amp;rel=0" id="vid_det"></iframe></div>
+<figcaption><span class="type">Figure</span><span class="space"> </span><span class="codenumber">2.4.13<span class="period">.</span></span><span class="space"> </span>Video: determinan</figcaption></figure></section><div class="para" id="ss_expansion_rows_columns-11">Kebebasan menghitung determinan dengan mengekspansi sepanjang sembarang baris atau kolom memunculkan sifat intuitif berikut.</div>
+<article class="theorem theorem-like" id="th_det_zero_repeated_row"><h4 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">2.4.14</span><span class="period">.</span><span class="space"> </span><span class="title">Baris/Kolom Nol, Penukaran Baris/Kolom, Baris/Kolom Identik.</span>
+</h4>
+<div class="para logical" id="th_det_zero_repeated_row-2-1">
+<div class="para">Misalkan <span class="process-math">\(A\)</span> adalah matriks <span class="process-math">\(n\times n\text{.}\)</span>
+</div>
+<ol class="decimal" id="th_det_zero_repeated_row-2-1-3">
+<li id="th_det_zero_repeated_row-2-1-3-1"><div class="para" id="th_det_zero_repeated_row-2-1-3-1-1">Jika <span class="process-math">\(A\)</span> memiliki baris nol atau kolom nol, maka <span class="process-math">\(\det A=0\)</span>
+</div></li>
+<li id="th_det_zero_repeated_row-2-1-3-2"><div class="para logical" id="th_det_zero_repeated_row-2-1-3-2-1">
+<div class="para">Asumsikan <span class="process-math">\(n\geq 2\text{.}\)</span> Misalkan <span class="process-math">\(A'\)</span> adalah matriks yang diperoleh dengan menukar dua baris (atau dua kolom) dari <span class="process-math">\(A\text{.}\)</span> Maka</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\det A'=-\det A\text{.}
+\end{equation*}
+</div>
+</div></li>
+<li id="th_det_zero_repeated_row-2-1-3-3"><div class="para" id="th_det_zero_repeated_row-2-1-3-3-1">Asumsikan <span class="process-math">\(n\geq 2\text{.}\)</span> Jika <span class="process-math">\(A\)</span> memiliki dua baris identik atau dua kolom identik, maka <span class="process-math">\(\det A=0\text{.}\)</span>
+</div></li>
+</ol>
+</div></article><details id="th_det_zero_repeated_row-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4></summary><article class="hiddenproof knowl__content"><div class="para" id="th_det_zero_repeated_row-3-1">Pernyataan pertama jelas karena menurut <a href="s_det.html#th_expansion_row" class="xref" data-knowl="./knowl/xref/th_expansion_row.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 2.4.8: Ekspansi Sepanjang Baris">Theorem 2.4.8</a> dan <a href="s_det.html#cor_expansion_columns" class="xref" data-knowl="./knowl/xref/cor_expansion_columns.html" data-reveal-label="Reveal" data-close-label="Close" title="Corollary 2.4.10: Ekspansi Sepanjang Kolom">Corollary 2.4.10</a> kita dapat menghitung determinan dengan mengekspansi sepanjang baris nol atau kolom nol yang dimaksud.</div>
+<div class="para" id="th_det_zero_repeated_row-3-2">Pernyataan ketiga mengikuti dari yang kedua. Memang, jika <span class="process-math">\(A\)</span> memiliki dua baris atau kolom identik, maka matriks <span class="process-math">\(A'\)</span> yang diperoleh dari <span class="process-math">\(A\)</span> dengan menukar baris (atau kolom) yang dimaksud adalah <span class="process-math">\(A\)</span> itu sendiri. Dengan demikian <span class="process-math">\(\det A=-\det A\)</span> menurut pernyataan kedua, dan kita menyimpulkan bahwa <span class="process-math">\(\det A=0\text{.}\)</span>
+</div>
+<div class="para" id="th_det_zero_repeated_row-3-3">Tinggal hanya menunjukkan pernyataan kedua. Kita hanya membuktikan pernyataan mengenai penukaran baris; pernyataan yang sesuai tentang kolom mengikuti dari <a href="s_det.html#th_det_transpose" class="xref" data-knowl="./knowl/xref/th_det_transpose.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 2.4.9: Determinan dan Transposisi">Theorem 2.4.9</a>. Pembuktian dilakukan dengan induksi.</div>
+<article class="case" id="th_det_zero_repeated_row-3-4"><h5 class="heading">Langkah dasar: <span class="process-math">\(n=2\)</span>.</h5>
+<div class="para" id="th_det_zero_repeated_row-3-4-2">Misalkan <span class="process-math">\(A=\begin{bmatrix}a\amp b\\c\amp d \end{bmatrix}\text{.}\)</span> Maka <span class="process-math">\(A'=\abcdmatrix{c}{d}A{b}\text{,}\)</span> dan <span class="process-math">\(\det(A')=cb-ad=-(ad-bc)=-\det A\text{.}\)</span>
+</div></article><article class="case" id="th_det_zero_repeated_row-3-5"><h5 class="heading">Langkah induksi.</h5>
+<div class="para" id="th_det_zero_repeated_row-3-5-2">Kita mengasumsikan dengan induksi bahwa hasil berlaku untuk sembarang matriks <span class="process-math">\(n\times n\text{,}\)</span> <span class="process-math">\(n\geq 2\text{,}\)</span> dan menunjukkan hal yang sama benar untuk sembarang matriks <span class="process-math">\((n+1)\times (n+1)\text{.}\)</span>
+</div>
+<div class="para" id="th_det_zero_repeated_row-3-5-3">Misalkan <span class="process-math">\(A\)</span> adalah matriks <span class="process-math">\((n+1)\times (n+1)\text{,}\)</span> dan misalkan <span class="process-math">\(A'\)</span>  adalah hasil dari menukar baris ke-<span class="process-math">\(i\)</span> dan ke-<span class="process-math">\(k\)</span> dari <span class="process-math">\(A\text{.}\)</span> Kita menghitung determinan dari <span class="process-math">\(A\)</span> dan <span class="process-math">\(A'\)</span> dengan mengekspansi sepanjang baris ke-<span class="process-math">\(\ell\text{,}\)</span> dimana <span class="process-math">\(\ell\ne i\)</span> dan <span class="process-math">\(\ell\ne k\text{.}\)</span> Ini dimungkinkan karena <span class="process-math">\((n+1)\geq 3\text{.}\)</span>
+</div>
+<div class="para logical" id="th_det_zero_repeated_row-3-5-4">
+<div class="para">Bergerak sepanjang baris ke-<span class="process-math">\(\ell\text{,}\)</span> perhatikan bahwa setiap submatriks <span class="process-math">\({A'}_{\ell j}\)</span> adalah hasil dari menukar dua baris dari <span class="process-math">\(A_{\ell j}\)</span> yang semula berkorespondensi dengan baris ke-<span class="process-math">\(i\)</span> dan ke-<span class="process-math">\(k\)</span> dari <span class="process-math">\(A\text{.}\)</span> Karena submatriks ini berdimensi <span class="process-math">\(n\times n\text{,}\)</span> kita memiliki <span class="process-math">\(\det  {A'}_{\ell j}=-\det  A_{\ell j}\)</span> menurut induksi. Terakhir, karena baris ke-<span class="process-math">\(\ell\)</span> dari <span class="process-math">\(A\)</span> dan <span class="process-math">\(A'\)</span> sama kita memiliki</div>
+<div class="displaymath process-math" id="th_det_zero_repeated_row-3-5-4-12">
+\begin{align*}
+\det A \amp=\sum_{j=1}^{n+1}(-1)^{\ell+j}a_{\ell j}\det  A_{\ell j} \\
+\amp = \sum_{j=1}^{n+1}(-1)^{\ell+j}a_{\ell j}(-\det  {A'}_{\ell j})\\
+\amp =-\sum_{j=1}^{n+1}(-1)^{\ell+j}a_{\ell j}\det  {A'}_{\ell j} \\
+\amp=-\det A' \text{.}
+\end{align*}
+</div>
+</div></article></article></details><div class="para" id="ss_expansion_rows_columns-13">Sebagai konsekuensi lebih lanjut dari <a href="s_det.html#th_expansion_row" class="xref" data-knowl="./knowl/xref/th_expansion_row.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 2.4.8: Ekspansi Sepanjang Baris">Theorem 2.4.8</a> dan <a href="s_det.html#cor_expansion_columns" class="xref" data-knowl="./knowl/xref/cor_expansion_columns.html" data-reveal-label="Reveal" data-close-label="Close" title="Corollary 2.4.10: Ekspansi Sepanjang Kolom">Corollary 2.4.10</a>, kita dapat menurunkan <em class="emphasis">rumus matriks adjoin</em>.</div>
+<article class="definition definition-like" id="d_adjoint"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">2.4.15</span><span class="period">.</span><span class="space"> </span><span class="title">Matriks Adjoin.</span>
+</h4>
+<div class="para logical" id="d_adjoint-4-1">
+<div class="para">Misalkan <span class="process-math">\(A\)</span> adalah matriks <span class="process-math">\(n\times n\text{.}\)</span> <dfn class="terminology">Matriks adjoin</dfn> dari <span class="process-math">\(A\text{,}\)</span> dilambangkan <span class="process-math">\(\adj A\text{,}\)</span> adalah matriks <span class="process-math">\(n\times n\)</span> yang entri ke-<span class="process-math">\(ij\)</span>-nya didefinisikan sebagai berikut:</div>
+<div class="displaymath process-math">
+\begin{equation*}
+(\adj A)_{ij}=(-1)^{i+j}M_{ji}\text{.}
+\end{equation*}
+</div>
+</div></article><article class="remark remark-like" id="rm_adjoint"><h4 class="heading">
+<span class="type">Remark</span><span class="space"> </span><span class="codenumber">2.4.16</span><span class="period">.</span>
+</h4>
+<div class="para" id="rm_adjoint-1-1">Berhati-hatilah dengan pembalikan urutan dalam definisi ini. Entri ke-<span class="process-math">\(ij\)</span> dari <span class="process-math">\(\adj A\)</span> sama dengan plus atau minus minor ke-<span class="process-math">\(ji\)</span> dari <span class="process-math">\(A\text{.}\)</span> Mari kita lihat ini dalam aksi untuk beberapa matriks kecil.</div> <div class="para logical" id="rm_adjoint-1-2">
+<div class="para">Untuk</div>
+<div class="displaymath process-math">
+\begin{equation*}
+A=\abcdmatrix{a}{b}{c}{d}
+\end{equation*}
+</div>
+<div class="para">kita memiliki</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\adj A=\begin{amatrix}[rr] M_{11}\amp -M_{21}\\ -M_{12}\amp M_{22}\end{amatrix}=
+\begin{amatrix}[rr]d\amp -b\\ -c\amp a  \end{amatrix}\text{.}
+\end{equation*}
+</div>
+</div> <div class="para logical" id="rm_adjoint-1-3">
+<div class="para">Untuk</div>
+<div class="displaymath process-math">
+\begin{equation*}
+A=\begin{bmatrix}
+a\amp b\amp c\\ d\amp e\amp f\\ g\amp h\amp i
+\end{bmatrix}
+\end{equation*}
+</div>
+<div class="para">kita memiliki</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\adj A=\begin{amatrix}[rrr]
+M_{11}\amp -M_{21}\amp M_{31}\\
+-M_{12}\amp M_{22}\amp -M_{32}\\
+M_{13}\amp -M_{23}\amp M_{33}
+\end{amatrix}
+=\begin{amatrix}[rrr]
+(ei-fh)\amp -(bi-ch)\amp (bf-ce)\\
+-(di-fg)\amp (ai-cg)\amp -(af-cd)\\
+(dh-eg)\amp -(ah-bg)\amp (ae-bd)
+\end{amatrix}\text{.}
+\end{equation*}
+</div>
+</div></article><article class="theorem theorem-like" id="th_adjoint"><h4 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">2.4.17</span><span class="period">.</span><span class="space"> </span><span class="title">Rumus Matriks Adjoin.</span>
+</h4>
+<div class="para logical" id="th_adjoint-2-1">
+<div class="para">Diberikan matriks <span class="process-math">\(n\times n\)</span> <span class="process-math">\(A\text{,}\)</span> kita memiliki</div>
+<div class="displaymath process-math" id="eq_adj_form">
+\begin{equation}
+A\,(\adj A)=(\adj A)\, A=(\det A)I\text{.}\tag{2.4.7}
+\end{equation}
+</div>
+<div class="para">Sebagai konsekuensi, jika <span class="process-math">\(\det A\ne 0\text{,}\)</span> maka <span class="process-math">\(A\)</span> invertibel dan</div>
+<div class="displaymath process-math" id="eq_adj_inv_form">
+\begin{equation}
+A^{-1}=\frac{1}{\det A}\, \adj A\text{.}\tag{2.4.8}
+\end{equation}
+</div>
+</div></article><details id="th_adjoint-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4></summary><article class="hiddenproof knowl__content"><div class="para logical" id="th_adjoint-3-1">
+<div class="para">Pertama perhatikan bahwa pernyataan kedua mengenai invertibilitas mengikuti langsung dari <a href="s_det.html#eq_adj_form" class="xref" data-knowl="./knowl/xref/eq_adj_form.html" data-reveal-label="Reveal" data-close-label="Close" title="Equation 2.4.7">(2.4.7)</a>, karena dalam kasus ini menetapkan <span class="process-math">\(B=\frac{1}{\det A}\, \adj A\)</span> kita memiliki</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/eq_adj_form.html">
+\begin{equation*}
+AB=BA=\frac{1}{\det A}(A\adj A)=\frac{1}{\det A}((\det A)\, I)=I\text{.}
+\end{equation*}
+</div>
+</div>
+<div class="para logical" id="th_adjoint-3-2">
+<div class="para">Dengan demikian cukup membuktikan <a href="s_det.html#eq_adj_form" class="xref" data-knowl="./knowl/xref/eq_adj_form.html" data-reveal-label="Reveal" data-close-label="Close" title="Equation 2.4.7">(2.4.7)</a>. Untuk melakukannya, kita harus menunjukkan bahwa</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/eq_adj_form.html">
+\begin{equation*}
+[A\, \adj A]_{ij}=[\adj A\, A]_{ij}=
+\begin{cases} \det A\amp \text{jika } i=j\\
+0 \amp \text{jika } i\ne j
+\end{cases}\text{.}
+\end{equation*}
+</div>
+</div>
+<article class="case" id="th_adjoint-3-3"><h5 class="heading">Kasus: <span class="process-math">\(i=j\)</span>.</h5>
+<div class="para logical" id="th_adjoint-3-3-2">
+<div class="para">Dalam kasus ini kita memiliki</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/d_adjoint.html" id="th_adjoint-3-3-2-1">
+\begin{align*}
+[A\, \adj A]_{ii} \amp =\sum_{k=1}^na_{ik}[\adj A]_{ki}  \\
+\amp =\sum_{k=1}^n a_{ik}((-1)^{i+k}M_{ik}) \amp (\knowl{./knowl/xref/d_adjoint.html}{\text{Definition 2.4.15}} )\\
+\amp =\sum_{k=1}^n(-1)^{i+k}a_{ik}M_{ik} \\
+\amp =\det A \text{.}
+\end{align*}
+</div>
+<div class="para">Argumen serupa menunjukkan bahwa <span class="process-math">\((\adj A\, A)_{ii}=\det A\text{,}\)</span> meskipun dalam kasus ini kita menggunakan ekspansi sepanjang kolom.</div>
+</div></article><article class="case" id="th_adjoint-3-4"><h5 class="heading">Kasus: <span class="process-math">\(i\ne j\)</span>.</h5>
+<div class="para logical" id="th_adjoint-3-4-2">
+<div class="para">Ketika <span class="process-math">\(i\ne j\)</span> kita memiliki</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/d_adjoint.html ./knowl/xref/th_det_zero_repeated_row.html" id="th_adjoint-3-4-2-2">
+\begin{align*}
+[A\, \adj A]_{ij} \amp =\sum_{k=1}^na_{ik}[\adj A]_{kj}  \\
+\amp =\sum_{k=1}^n a_{ik}((-1)^{k+j}M_{jk}) \amp (\knowl{./knowl/xref/d_adjoint.html}{\text{Definition 2.4.15}} )\\
+\amp =\sum_{k=1}^n(-1)^{k+j}a_{ik}M_{jk} \\
+\amp =\det C \text{,}
+\end{align*}
+</div>
+<div class="para">dimana <span class="process-math">\(C\)</span> adalah matriks yang diperoleh dengan mengganti baris ke-<span class="process-math">\(j\)</span> dari <span class="process-math">\(A\)</span> dengan salinan baris ke-<span class="process-math">\(i\)</span>-nya. Karena <span class="process-math">\(C\)</span> memiliki dua baris identik <a href="s_det.html#th_det_zero_repeated_row" class="xref" data-knowl="./knowl/xref/th_det_zero_repeated_row.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 2.4.14: Baris/Kolom Nol, Penukaran Baris/Kolom, Baris/Kolom Identik">Theorem 2.4.14</a> mengimplikasikan</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/d_adjoint.html ./knowl/xref/th_det_zero_repeated_row.html">
+\begin{equation*}
+[A\, \adj A]_{ij}=\det C=0\text{,}
+\end{equation*}
+</div>
+<div class="para">sebagaimana diinginkan. Sekali lagi, argumen serupa menggunakan ekspansi sepanjang kolom menunjukkan bahwa <span class="process-math">\([\adj A\, A]_{ij}=0\text{.}\)</span>
+</div>
+</div></article></article></details><article class="example example-like" id="ss_expansion_rows_columns-17"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">2.4.18</span><span class="period">.</span>
+</h4>
+<div class="para logical" id="ss_expansion_rows_columns-17-1-1">
+<div class="para">Gunakan rumus matriks adjoin untuk menghitung <span class="process-math">\(A^{-1}\text{,}\)</span> dimana</div>
+<div class="displaymath process-math">
+\begin{equation*}
+A=\begin{amatrix}[rrr]1\amp 2\amp 1 \\ -1\amp 1\amp -1\\ 0\amp 2\amp 2  \end{amatrix}\text{.}
+\end{equation*}
+</div>
+</div>
+<div class="solutions"><details id="ss_expansion_rows_columns-17-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical" id="ss_expansion_rows_columns-17-2-1">
+<div class="para">Pertama hitung <span class="process-math">\(\det A=\)</span> dengan mengekspansi sepanjang baris ketiga:</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\det A=-2(-1+1)+2(2+1)=6\text{.}
+\end{equation*}
+</div>
+<div class="para">Selanjutnya, hitung</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\adj A=\begin{amatrix}[rrr] 4\amp -2 \amp -3\\ 2\amp 2\amp 0\\ -2\amp -2\amp 3  \end{amatrix}\text{.}
+\end{equation*}
+</div>
+<div class="para">Maka kita memiliki</div>
+<div class="displaymath process-math">
+\begin{equation*}
+A^{-1}=\frac{1}{6}\,\adj A=\frac{1}{6}\, \begin{amatrix}[rrr] 4\amp -2 \amp -3\\ 2\amp 2\amp 0\\ -2\amp -2\amp 3  \end{amatrix}\text{.}
+\end{equation*}
+</div>
+</div></div></details></div></article><article class="remark remark-like" id="rm_adjoint_form"><h4 class="heading">
+<span class="type">Remark</span><span class="space"> </span><span class="codenumber">2.4.19</span><span class="period">.</span>
+</h4>
+<div class="para" id="rm_adjoint_form-1-1">Sebelum Anda terlalu bersemangat tentang rumus matriks adjoin, Anda harus tahu bahwa seiring <span class="process-math">\(n\)</span> bertambah, prosedur ini menjadi jauh lebih mahal dalam terms jumlah operasi aritmetika yang terlibat dibandingkan algoritma invers kita berdasarkan eliminasi Gauss-Jordan. Anda mendapatkan gambaran tentang ini sudah dari contoh <span class="process-math">\(3\times 3\)</span> sebelumnya. Secara umum, algoritma invers Gauss-Jordan adalah cara yang tepat.</div></article></section><section class="subsection" id="ss_det_row_ops"><h3 class="heading hide-type">
+<span class="type">Subsection</span><span class="space"> </span><span class="codenumber">2.4.3</span><span class="space"> </span><span class="title">Operasi Baris dan Determinan</span>
+</h3>
+<div class="para" id="ss_det_row_ops-2">Misalkan matriks persegi <span class="process-math">\(A\)</span> dapat direduksi baris menjadi <span class="process-math">\(B\)</span> melalui urutan operasi baris. Secara umum kita tidak memiliki <span class="process-math">\(\det A=\det B\text{,}\)</span> tetapi kita dapat menghitung <span class="process-math">\(\det A\)</span> dari <span class="process-math">\(\det B\)</span> dengan melacak operasi mana yang digunakan.</div>
+<article class="theorem theorem-like" id="th_det_row_ops"><h4 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">2.4.20</span><span class="period">.</span><span class="space"> </span><span class="title">Operasi Baris dan Determinan.</span>
+</h4>
+<div class="para logical" id="th_det_row_ops-2-1">
+<div class="para">Misalkan <span class="process-math">\(A\)</span> adalah matriks <span class="process-math">\(n\times n\text{.}\)</span> Menggunakan notasi dari <code class="code-inline tex2jax_ignore">[cross-reference to target(s) "d_elementary_matrix" missing or not unique]</code> kita memiliki:</div>
+<ol class="decimal" id="th_det_row_ops-2-1-4">
+<li id="th_det_row_ops-2-1-4-1"><div class="para" id="th_det_row_ops-2-1-4-1-1"><span class="process-math">\(\displaystyle \det(\underset{c\cdot r_i}{E}\, A)=c\det(A)\)</span></div></li>
+<li id="th_det_row_ops-2-1-4-2"><div class="para" id="th_det_row_ops-2-1-4-2-1"><span class="process-math">\(\displaystyle \det(\underset{r_i\leftrightarrow r_j}{E}\, A)=-\det(A)\)</span></div></li>
+<li id="th_det_row_ops-2-1-4-3"><div class="para" id="th_det_row_ops-2-1-4-3-1"><span class="process-math">\(\det(\underset{r_i+cr_j}{E}\, A)=\det(A)\text{.}\)</span></div></li>
+</ol>
+<div class="para">Secara khusus, mengambil <span class="process-math">\(A=I\text{,}\)</span> kita memiliki</div>
+<div class="displaymath process-math" data-contains-math-knowls="" id="th_det_row_ops-2-1-6">
+\begin{align*}
+\det\underset{c\cdot r_i}{E}\amp =c \amp \det\underset{r_i\leftrightarrow r_j}{E}\amp =-1 \amp \det \underset{r_i+cr_j}{E}\amp =1  \text{.}
+\end{align*}
+</div>
+</div></article><details id="th_det_row_ops-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4></summary><article class="hiddenproof knowl__content"><div class="para" id="th_det_row_ops-3-1">Pernyataan pertama mengikuti dengan mudah dengan menghitung <span class="process-math">\(\det (\underset{cr_i}{E}\, A)\)</span> dengan mengekspansi sepanjang baris ke-<span class="process-math">\(i\text{.}\)</span> Pernyataan kedua sebenarnya adalah penyataan ulang dari pernyataan kedua <a href="s_det.html#th_det_zero_repeated_row" class="xref" data-knowl="./knowl/xref/th_det_zero_repeated_row.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 2.4.14: Baris/Kolom Nol, Penukaran Baris/Kolom, Baris/Kolom Identik">Theorem 2.4.14</a>. Tinggal membuktikan pernyataan ketiga.</div>
+<div class="para logical" id="th_det_row_ops-3-2">
+<div class="para">Misalkan <span class="process-math">\(A=[a_{ij}]_{n\times n}\text{,}\)</span> dan tetapkan <span class="process-math">\(B=\underset{r_i+cr_j}{E}\cdot A\text{.}\)</span> Maka <span class="process-math">\(B\)</span> identik dengan <span class="process-math">\(A\)</span> dengan pengecualian baris ke-<span class="process-math">\(i\text{,}\)</span> yang entri ke-<span class="process-math">\(k\)</span>-nya adalah</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/th_det_zero_repeated_row.html">
+\begin{equation*}
+(B)_{ik}=a_{ik}+ca_{jk}\text{.}
+\end{equation*}
+</div>
+<div class="para">Dengan demikian</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/th_det_zero_repeated_row.html" id="th_det_row_ops-3-2-8">
+\begin{align*}
+\det B \amp=\sum_{k=1}^n(-1)^{i+k}(a_{ik}+ca_{jk})M_{ik} \\
+\amp = \sum_{k=1}^n(-1)^{i+k}a_{ik}M_{ik}+c\sum_{k=1}^n(-1)^{i+k}a_{jk}M_{ik}\\
+\amp =\det A+\det C \text{,}
+\end{align*}
+</div>
+<div class="para">dimana <span class="process-math">\(C\)</span> adalah matriks yang diperoleh dengan mengganti baris ke-<span class="process-math">\(i\)</span> dari <span class="process-math">\(A\)</span> dengan baris yang identik dengan baris ke-<span class="process-math">\(j\)</span>-nya. Menurut <a href="s_det.html#th_det_zero_repeated_row" class="xref" data-knowl="./knowl/xref/th_det_zero_repeated_row.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 2.4.14: Baris/Kolom Nol, Penukaran Baris/Kolom, Baris/Kolom Identik">Theorem 2.4.14</a> kita menyimpulkan <span class="process-math">\(\det C=0\text{,}\)</span> dan dengan demikian</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/th_det_zero_repeated_row.html">
+\begin{equation*}
+\det(\underset{r_i+cr_j}{E}\cdot A)=\det B=\det A+\det C=\det A\text{,}
+\end{equation*}
+</div>
+<div class="para">sebagaimana diinginkan.</div>
+</div></article></details><article class="remark remark-like" id="rm_det_row_ops"><h4 class="heading">
+<span class="type">Remark</span><span class="space"> </span><span class="codenumber">2.4.21</span><span class="period">.</span>
+</h4>
+<div class="para logical" id="rm_det_row_ops-1-1">
+<div class="para">Dalam bahasa operasi baris, <a href="s_det.html#th_det_row_ops" class="xref" data-knowl="./knowl/xref/th_det_row_ops.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 2.4.20: Operasi Baris dan Determinan">Theorem 2.4.20</a> diterjemahkan sebagai berikut:</div>
+<ul class="disc" id="rm_det_row_ops-1-1-2">
+<li id="rm_det_row_ops-1-1-2-1"><div class="para" id="rm_det_row_ops-1-1-2-1-1">Menskalakan baris matriks dengan <span class="process-math">\(c\)</span> memiliki efek menskalakan determinan dengan <span class="process-math">\(c\text{.}\)</span>
+</div></li>
+<li id="rm_det_row_ops-1-1-2-2"><div class="para" id="rm_det_row_ops-1-1-2-2-1">Menukar dua baris matriks mengubah tanda determinan.</div></li>
+<li id="rm_det_row_ops-1-1-2-3"><div class="para" id="rm_det_row_ops-1-1-2-3-1">Melakukan operasi penjumlahan baris pada matriks tidak memiliki efek pada determinan.</div></li>
+</ul>
+</div></article><article class="remark remark-like" id="rm_det_col_ops"><h4 class="heading">
+<span class="type">Remark</span><span class="space"> </span><span class="codenumber">2.4.22</span><span class="period">.</span><span class="space"> </span><span class="title">Operasi Kolom dan Determinan.</span>
+</h4>
+<div class="para" id="rm_det_col_ops-2-1">Sebagaimana ditunjukkan dalam <a href="s_det.html#ex_det_col_ops" class="xref" data-knowl="./knowl/xref/ex_det_col_ops.html" data-reveal-label="Reveal" data-close-label="Close" title="Exercise 2.4.4.26">Exercise 2.4.4.26</a> determinan berperilaku dengan cara serupa terhadap <em class="emphasis">operasi kolom elementer</em>: i.e., menskalakan kolom dengan konstanta tak-nol menskalakan determinan dengan <span class="process-math">\(c\text{,}\)</span> menukar kolom mengalikan determinan dengan <span class="process-math">\(-1\text{,}\)</span> menambahkan kelipatan satu kolom ke kolom lain membiarkan determinan tidak berubah.</div></article><article class="corollary theorem-like" id="cor_det_prod_elem"><h4 class="heading">
+<span class="type">Corollary</span><span class="space"> </span><span class="codenumber">2.4.23</span><span class="period">.</span><span class="space"> </span><span class="title">Determinan dan Produk Matriks Elementer.</span>
+</h4>
+<div class="para logical" id="cor_det_prod_elem-2-1">
+<div class="para">Misalkan <span class="process-math">\(A\)</span> adalah matriks <span class="process-math">\(n\times n\text{,}\)</span> dan misalkan kita memiliki</div>
+<div class="displaymath process-math" id="eq_row_reduce_elem">
+\begin{equation}
+B=E_rE_{r-1}\cdots E_1\, A\tag{2.4.9}
+\end{equation}
+</div>
+<div class="para">untuk sembarang koleksi matriks elementer <span class="process-math">\(E_i\text{.}\)</span>  Maka</div>
+<div class="displaymath process-math" id="eq_det_row_reduce">
+\begin{equation}
+\det B=\det E_r\, \det E_{r-1}\cdots \det E_1\, \det A\text{.}\tag{2.4.10}
+\end{equation}
+</div>
+</div></article><details id="cor_det_prod_elem-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4></summary><article class="hiddenproof knowl__content"><div class="para" id="cor_det_prod_elem-3-1">Ini adalah pembuktian mudah dengan induksi pada jumlah <span class="process-math">\(r\)</span> matriks elementer yang terlibat, kasus dasar (<span class="process-math">\(r=1\)</span>) yang dibahas oleh <a href="s_det.html#th_det_row_ops" class="xref" data-knowl="./knowl/xref/th_det_row_ops.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 2.4.20: Operasi Baris dan Determinan">Theorem 2.4.20</a>.</div></article></details><div class="para" id="ss_det_row_ops-7">
+<a href="s_det.html#cor_det_prod_elem" class="xref" data-knowl="./knowl/xref/cor_det_prod_elem.html" data-reveal-label="Reveal" data-close-label="Close" title="Corollary 2.4.23: Determinan dan Produk Matriks Elementer">Corollary 2.4.23</a> memiliki aplikasi komputasional dan teoretis.</div>
+<div class="para" id="ss_det_row_ops-8">Di sisi komputasional, ini menyarankan metode alternatif menghitung <span class="process-math">\(\det A\text{:}\)</span> pertama reduksi baris <span class="process-math">\(A\)</span> menjadi matriks lebih sederhana <span class="process-math">\(B\text{,}\)</span> pastikan untuk melacak operasi yang Anda gunakan; susun persamaan seperti dalam <a href="s_det.html#eq_row_reduce_elem" class="xref" data-knowl="./knowl/xref/eq_row_reduce_elem.html" data-reveal-label="Reveal" data-close-label="Close" title="Equation 2.4.9">(2.4.9)</a> yang merepresentasikan reduksi baris; kemudian selesaikan persamaan yang bersesuaian <a href="s_det.html#eq_det_row_reduce" class="xref" data-knowl="./knowl/xref/eq_det_row_reduce.html" data-reveal-label="Reveal" data-close-label="Close" title="Equation 2.4.10">(2.4.10)</a> untuk <span class="process-math">\(\det A\)</span> dalam terms <span class="process-math">\(\det B\)</span> dan <span class="process-math">\(\det E_i\text{.}\)</span>
+</div>
+<article class="example example-like" id="ss_det_row_ops-9"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">2.4.24</span><span class="period">.</span><span class="space"> </span><span class="title">Determinan melalui Reduksi Baris.</span>
+</h4>
+<div class="para logical" id="ss_det_row_ops-9-2-1">
+<div class="para">Misalkan matriks <span class="process-math">\(A\)</span> dapat direduksi baris menjadi</div>
+<div class="displaymath process-math">
+\begin{equation*}
+B=\begin{amatrix}[rrr]2\amp -7\amp -8\\ 0\amp -3\amp 4\\ 0\amp 0\amp 2  \end{amatrix}
+\end{equation*}
+</div>
+<div class="para">dengan melakukan urutan operasi baris berikut:</div>
+<ol class="decimal" id="ss_det_row_ops-9-2-1-3">
+<li id="ss_det_row_ops-9-2-1-3-1"><div class="para" id="ss_det_row_ops-9-2-1-3-1-1">Pertama tukar baris kedua dan ketiga.</div></li>
+<li id="ss_det_row_ops-9-2-1-3-2"><div class="para" id="ss_det_row_ops-9-2-1-3-2-1">Kemudian skalakan baris pertama dengan <span class="process-math">\(3\)</span>
+</div></li>
+<li id="ss_det_row_ops-9-2-1-3-3"><div class="para" id="ss_det_row_ops-9-2-1-3-3-1">Kemudian ganti baris kedua dengan baris kedua ditambah baris pertama.</div></li>
+</ol>
+<div class="para">Hitung <span class="process-math">\(\det A\text{.}\)</span>
+</div>
+</div>
+<div class="solutions"><details id="ss_det_row_ops-9-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period">.</span></summary><div class="solution solution-like knowl__content"><div class="para logical" id="ss_det_row_ops-9-3-1">
+<div class="para">Dalam terms matriks elementer kita memiliki</div>
+<div class="displaymath process-math">
+\begin{equation*}
+B=\underset{r_2+r_1}{E}\underset{3r_1}{E}\underset{r_2\leftrightarrow r_3}{E}A,\text{,}
+\end{equation*}
+</div>
+<div class="para">dan dengan demikian</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\det B=\det \underset{r_2+r_1}{E}\, \det \underset{3r_1}{E}\, \det \underset{r_2\leftrightarrow r_3}{E}\, \det A=(1)(3)(-1)\det A=(-3)\det A.\text{.}
+\end{equation*}
+</div>
+<div class="para">Kita menyimpulkan bahwa</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\det A=-\frac{1}{3}\det B=-(1/3)(-12)=4\text{.}
+\end{equation*}
+</div>
+</div></div></details></div></article><div class="para" id="ss_det_row_ops-10">Di sisi teoretis, <a href="s_det.html#cor_det_prod_elem" class="xref" data-knowl="./knowl/xref/cor_det_prod_elem.html" data-reveal-label="Reveal" data-close-label="Close" title="Corollary 2.4.23: Determinan dan Produk Matriks Elementer">Corollary 2.4.23</a> mengimplikasikan baik <a href="s_det.html#th_inv_iff_det" class="xref" data-knowl="./knowl/xref/th_inv_iff_det.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 2.4.25: Determinan dan Invertibilitas">Theorem 2.4.25</a> maupun <a href="s_det.html#th_det_mult" class="xref" data-knowl="./knowl/xref/th_det_mult.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 2.4.26: Determinan Bersifat Multiplikatif">Theorem 2.4.26</a>.</div>
+<article class="theorem theorem-like" id="th_inv_iff_det"><h4 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">2.4.25</span><span class="period">.</span><span class="space"> </span><span class="title">Determinan dan Invertibilitas.</span>
+</h4>
+<div class="para" id="th_inv_iff_det-2-1">Misalkan <span class="process-math">\(A\)</span> adalah matriks <span class="process-math">\(n\times n\text{.}\)</span> Maka <span class="process-math">\(A\)</span> invertibel jika dan hanya jika <span class="process-math">\(\det A\ne 0\text{.}\)</span>
+</div></article><details id="th_inv_iff_det-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4></summary><article class="hiddenproof knowl__content"><div class="para" id="th_inv_iff_det-3-1">Implikasi <span class="process-math">\(\det A\ne 0\implies A \text{ invertibel}\)</span> dibuktikan dalam <a href="s_det.html#th_adjoint" class="xref" data-knowl="./knowl/xref/th_adjoint.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 2.4.17: Rumus Matriks Adjoin">Theorem 2.4.17</a>.</div>
+<div class="para logical" id="th_inv_iff_det-3-2">
+<div class="para">Untuk arah sebaliknya, asumsikan <span class="process-math">\(A\)</span> invertibel. Maka <code class="code-inline tex2jax_ignore">[cross-reference to target(s) "th_invertibility" missing or not unique]</code> mengimplikasikan <span class="process-math">\(A\)</span> adalah produk dari matriks elementer:</div>
+<div class="displaymath process-math" data-contains-math-knowls=" ./knowl/xref/cor_det_prod_elem.html ./knowl/xref/th_det_row_ops.html">
+\begin{equation*}
+A=E_1E_2\cdots E_r\text{.}
+\end{equation*}
+</div>
+<div class="para">Maka <a href="s_det.html#cor_det_prod_elem" class="xref" data-knowl="./knowl/xref/cor_det_prod_elem.html" data-reveal-label="Reveal" data-close-label="Close" title="Corollary 2.4.23: Determinan dan Produk Matriks Elementer">Corollary 2.4.23</a> mengimplikasikan</div>
+<div class="displaymath process-math" data-contains-math-knowls=" ./knowl/xref/cor_det_prod_elem.html ./knowl/xref/th_det_row_ops.html">
+\begin{equation*}
+\det A=\det E_1\, \det E_2\cdots \det E_1\text{.}
+\end{equation*}
+</div>
+<div class="para">Karena <span class="process-math">\(\det E_i\ne 0\)</span> untuk semua <span class="process-math">\(i\)</span> (<a href="s_det.html#th_det_row_ops" class="xref" data-knowl="./knowl/xref/th_det_row_ops.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 2.4.20: Operasi Baris dan Determinan">Theorem 2.4.20</a>), kita menyimpulkan <span class="process-math">\(\det A\ne 0\text{.}\)</span>
+</div>
+</div></article></details><article class="theorem theorem-like" id="th_det_mult"><h4 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">2.4.26</span><span class="period">.</span><span class="space"> </span><span class="title">Determinan Bersifat Multiplikatif.</span>
+</h4>
+<div class="para logical" id="th_det_mult-2-1">
+<div class="para">Misalkan <span class="process-math">\(A\)</span> dan <span class="process-math">\(B\)</span> adalah matriks <span class="process-math">\(n\times n\text{.}\)</span> Maka</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\det AB=\det A\, \det B\text{.}
+\end{equation*}
+</div>
+</div></article><details id="th_det_mult-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4></summary><article class="hiddenproof knowl__content"><div class="para" id="th_det_mult-3-1">Kita pertimbangkan dua kasus berdasarkan invertibilitas dari <span class="process-math">\(A\)</span> dan/atau <span class="process-math">\(B\text{.}\)</span>
+</div>
+<article class="case" id="th_det_mult-3-2"><h5 class="heading">
+<span class="process-math">\(A\)</span> atau <span class="process-math">\(B\)</span> tidak invertibel.</h5>
+<div class="para logical" id="th_det_mult-3-2-2">
+<div class="para">Dalam kasus ini <span class="process-math">\(AB\)</span> tidak invertibel (<code class="code-inline tex2jax_ignore">[cross-reference to target(s) "cor_inv_prod_eq" missing or not unique]</code>), dan dengan demikian <span class="process-math">\(\det AB=0\)</span> menurut <a href="s_det.html#th_inv_iff_det" class="xref" data-knowl="./knowl/xref/th_inv_iff_det.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 2.4.25: Determinan dan Invertibilitas">Theorem 2.4.25</a>. Dengan penalaran yang sama kita harus memiliki <span class="process-math">\(\det A=0\)</span> atau <span class="process-math">\(\det B=0\text{.}\)</span> Dengan demikian</div>
+<div class="displaymath process-math" data-contains-math-knowls=" ./knowl/xref/th_inv_iff_det.html">
+\begin{equation*}
+\det AB=\det A\, \det B=0
+\end{equation*}
+</div>
+<div class="para">dalam kasus ini.</div>
+</div></article><article class="case" id="th_det_mult-3-3"><h5 class="heading">
+<span class="process-math">\(A\)</span> dan <span class="process-math">\(B\)</span> keduanya invertibel.</h5>
+<div class="para logical" id="th_det_mult-3-3-2">
+<div class="para">Dalam kasus ini kita dapat menulis</div>
+<div class="displaymath process-math" data-contains-math-knowls=" ./knowl/xref/cor_det_prod_elem.html ./knowl/xref/cor_det_prod_elem.html" id="th_det_mult-3-3-2-1">
+\begin{align*}
+A \amp E_1E_2\cdots E_r \amp B\amp=E'_1E'_2\cdots E'_s 
+\end{align*}
+</div>
+<div class="para">untuk sembarang matriks elementer <span class="process-math">\(E_i\)</span> dan <span class="process-math">\(E'_j\)</span> (<code class="code-inline tex2jax_ignore">[cross-reference to target(s) "th_invertibility" missing or not unique]</code>). Maka</div>
+<div class="displaymath process-math" data-contains-math-knowls=" ./knowl/xref/cor_det_prod_elem.html ./knowl/xref/cor_det_prod_elem.html" id="th_det_mult-3-3-2-5">
+\begin{align*}
+\det AB \amp= \det(E_1E_2\cdots E_rE'_1E'_2\cdots E'_s) \\
+\amp= \det E_1\det E_2\cdots \det E_r\det E'_1\det E'_2\cdots \det E'_s \amp (\knowl{./knowl/xref/cor_det_prod_elem.html}{\text{Corollary 2.4.23}})\\
+\amp=\det A\, \det B \amp (\knowl{./knowl/xref/cor_det_prod_elem.html}{\text{Corollary 2.4.23}}) \text{.}
+\end{align*}
+</div>
+</div></article></article></details><div class="para" id="ss_det_row_ops-13">Kita mengakhiri bagian ini (dan bab) dengan menambahkan hasil dari <a href="s_det.html#th_inv_iff_det" class="xref" data-knowl="./knowl/xref/th_inv_iff_det.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 2.4.25: Determinan dan Invertibilitas">Theorem 2.4.25</a> dan salah satu latihan tugas rumah kita ke teorema invertibilitas kita.</div>
+<article class="theorem theorem-like" id="th_invertibility_expanded"><h4 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">2.4.27</span><span class="period">.</span><span class="space"> </span><span class="title">Teorema Invertibilitas (Edisi Diperluas).</span>
+</h4>
+<div class="para" id="th_invertibility_expanded-2-1">Misalkan <span class="process-math">\(A=\)</span> adalah matriks <span class="process-math">\(n\times n\text{.}\)</span> Pernyataan-pernyataan berikut ekuivalen.</div> <ol class="decimal" id="th_invertibility_expanded-2-2">
+<li id="th_invertibility_expanded-2-2-1"><div class="para" id="th_invertibility_expanded-2-2-1-1">
+<span class="process-math">\(A\)</span> invertibel.</div></li>
+<li id="th_invertibility_expanded-2-2-2"><div class="para logical" id="th_invertibility_expanded-2-2-2-1">
+<div class="para">Persamaan matriks</div>
+<div class="displaymath process-math">
+\begin{equation*}
+A\underset{n\times 1}{\boldx}=\underset{n\times 1}{\boldb}
+\end{equation*}
+</div>
+<div class="para">memiliki <em class="emphasis">solusi tunggal</em> untuk <em class="emphasis">sembarang</em> vektor kolom  <span class="process-math">\(\boldb\text{.}\)</span>
+</div>
+</div></li>
+<li id="th_invertibility_expanded-2-2-3"><div class="para logical" id="th_invertibility_expanded-2-2-3-1">
+<div class="para">Persamaan matriks</div>
+<div class="displaymath process-math">
+\begin{equation*}
+A\underset{n\times 1}{\boldx}=\underset{n\times 1}{\boldb}
+\end{equation*}
+</div>
+<div class="para">memiliki solusi untuk <em class="emphasis">sembarang</em> vektor kolom  <span class="process-math">\(\boldb\text{.}\)</span>
+</div>
+</div></li>
+<li id="th_invertibility_expanded-2-2-4"><div class="para logical" id="th_invertibility_expanded-2-2-4-1">
+<div class="para">Persamaan matriks</div>
+<div class="displaymath process-math">
+\begin{equation*}
+A\underset{n\times 1}{\boldx}=\underset{n\times 1}{\boldzero}
+\end{equation*}
+</div>
+<div class="para">memiliki <em class="emphasis">solusi tunggal</em>: yaitu, <span class="process-math">\(\boldx=\boldzero_{n\times 1}\text{.}\)</span>
+</div>
+</div></li>
+<li id="th_invertibility_expanded-2-2-5"><div class="para" id="th_invertibility_expanded-2-2-5-1">
+<span class="process-math">\(A\)</span> ekuivalen baris dengan <span class="process-math">\(I_n\text{,}\)</span> matriks identitas <span class="process-math">\(n\times n\text{.}\)</span>
+</div></li>
+<li id="th_invertibility_expanded-2-2-6"><div class="para" id="th_invertibility_expanded-2-2-6-1">
+<span class="process-math">\(A\)</span> adalah produk dari matriks elementer.</div></li>
+<li id="th_invertibility_expanded-2-2-7"><div class="para" id="th_invertibility_expanded-2-2-7-1"><span class="process-math">\(\det A\ne 0\text{.}\)</span></div></li>
+</ol></article></section><section class="exercises" id="s_det_ex"><h3 class="heading hide-type">
+<span class="type">Exercises</span><span class="space"> </span><span class="codenumber">2.4.4</span><span class="space"> </span><span class="title">Exercises</span>
+</h3>
+<article class="subexercises" id="s_det_ex-1"><h4 class="heading"><span class="title">Latihan WeBWork</span></h4>
+<article class="exercise exercise-like" id="s_det_ex-1-2"><h5 class="heading"><span class="codenumber">1<span class="period">.</span></span></h5>
+<div class="para logical" id="extracted-webwork-1-1-1-1">
+<div class="para">Use the appropriate property of determinants to find <span class="process-math">\(a.\)</span>  <em class="emphasis">Do not</em> evaluate the determinants.</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\begin{vmatrix}
+12 \amp  23 \amp  -7 \\ 
+-43 \amp  -31 \amp  -17 \\ 
+2 \amp  -4 \amp  5 \\
+\end{vmatrix}
+=
+a \cdot
+\begin{vmatrix}
+-12 \amp  -23 \amp  7 \\ 
+43 \amp  31 \amp  17 \\ 
+-2 \amp  4 \amp  -5\\
+\end{vmatrix}
+\end{equation*}
+</div>
+<div class="para">Answer: <span class="process-math">\(a =\)</span> <span class="fillin underline" role="img" aria-label="20-character blank" style="width: 9.090909090909092em;"></span>
+</div>
+</div></article><article class="exercise exercise-like" id="s_det_ex-1-3"><h5 class="heading"><span class="codenumber">2<span class="period">.</span></span></h5>
+<div class="para" id="extracted-webwork-2-1-1-1">Consider the following Gauss elimination:</div> <div class="para logical" id="extracted-webwork-2-1-1-2"><div class="displaymath process-math">
+\begin{equation*}
+A \to \underbrace{\left[\begin{array}{ccc}
+1 \amp 0 \amp 0\cr
+0 \amp 1 \amp 0\cr
+0 \amp 0 \amp 2
+\end{array}\right]}_{E_1} A \to \underbrace{\left[\begin{array}{ccc}
+1 \amp 0 \amp -2\cr
+0 \amp 1 \amp 0\cr
+0 \amp 0 \amp 1
+\end{array}\right]}_{E_2} E_1 A \to \underbrace{\left[\begin{array}{ccc}
+0 \amp 1 \amp 0\cr
+1 \amp 0 \amp 0\cr
+0 \amp 0 \amp 1
+\end{array}\right]}_{E_3} E_2E_1 A \to \underbrace{\left[\begin{array}{ccc}
+1 \amp 0 \amp 0\cr
+0 \amp -5 \amp 0\cr
+0 \amp 0 \amp 1
+\end{array}\right]}_{E_4} E_3E_2E_1 A=\left[\begin{array}{ccc}
+-8 \amp 8 \amp -5\cr
+0 \amp -9 \amp -5\cr
+0 \amp 0 \amp -2
+\end{array}\right]
+\end{equation*}
+</div></div> <div class="para" id="extracted-webwork-2-1-1-3">What is the determinant of <span class="process-math">\(A\text{?}\)</span>
+</div> <div class="para" id="extracted-webwork-2-1-1-4">
+<span class="process-math">\(\det(A) =\)</span> <span class="fillin underline" role="img" aria-label="10-character blank" style="width: 4.545454545454546em;"></span>
+</div></article><article class="exercise exercise-like" id="s_det_ex-1-4"><h5 class="heading"><span class="codenumber">3<span class="period">.</span></span></h5>
+<div class="para logical" id="extracted-webwork-3-1-1-1">
+<div class="para">Find <span class="process-math">\(k\)</span> such that the following matrix <span class="process-math">\(M\)</span> is singular.</div>
+<div class="displaymath process-math">
+\begin{equation*}
+M = \left[\begin{array}{ccc}
+-2 \amp -5 \amp -4\cr
+2 \amp 8 \amp 3\cr
+-9+k \amp 3 \amp -1\cr
+\end{array}\right]
+\end{equation*}
+</div>
+</div> <div class="para" id="extracted-webwork-3-1-1-2">
+<span class="process-math">\(k=\)</span> <span class="fillin underline" role="img" aria-label="10-character blank" style="width: 4.545454545454546em;"></span>
+</div></article><article class="exercise exercise-like" id="s_det_ex-1-5"><h5 class="heading"><span class="codenumber">4<span class="period">.</span></span></h5>
+<div class="para" id="extracted-webwork-4-1-1-1">If <span class="process-math">\(A\)</span> and <span class="process-math">\(B\)</span> are <span class="process-math">\(3 \times 3\)</span> matrices, <span class="process-math">\(\det (A)=2\text{,}\)</span> <span class="process-math">\(\det (B)=-2\text{,}\)</span> then</div> <div class="para" id="extracted-webwork-4-1-1-2">
+<span class="process-math">\(\det  (AB) =\)</span> <span class="fillin underline" role="img" aria-label="10-character blank" style="width: 4.545454545454546em;"></span>,</div> <div class="para" id="extracted-webwork-4-1-1-3">
+<span class="process-math">\(\det  (3 A) =\)</span> <span class="fillin underline" role="img" aria-label="10-character blank" style="width: 4.545454545454546em;"></span>,</div> <div class="para" id="extracted-webwork-4-1-1-4">
+<span class="process-math">\(\det  (A^{T}) =\)</span> <span class="fillin underline" role="img" aria-label="10-character blank" style="width: 4.545454545454546em;"></span>,</div> <div class="para" id="extracted-webwork-4-1-1-5">
+<span class="process-math">\(\det  (B^{-1}) =\)</span> <span class="fillin underline" role="img" aria-label="10-character blank" style="width: 4.545454545454546em;"></span>,</div> <div class="para" id="extracted-webwork-4-1-1-6">
+<span class="process-math">\(\det  (B^4) =\)</span> <span class="fillin underline" role="img" aria-label="10-character blank" style="width: 4.545454545454546em;"></span>.</div></article></article><article class="subexercises" id="s_det_ex-2"><h4 class="heading"><span class="title">Latihan Tertulis</span></h4>
+<article class="exercise exercise-like" id="s_det_ex-2-2"><h5 class="heading"><span class="codenumber">5<span class="period">.</span></span></h5>
+<div class="para logical" id="s_det_ex-2-2-1-1">
+<div class="para">Misalkan</div>
+<div class="displaymath process-math">
+\begin{equation*}
+A = \begin{bmatrix}-1\amp 1\amp 2\\ 3\amp 0\amp -5\\ 1\amp 7\amp 2 \end{bmatrix}
+\end{equation*}
+</div>
+<ol class="lower-alpha lower-alpha-level-1" id="s_det_ex-2-2-1-1-2">
+<li id="s_det_ex-2-2-1-1-2-1"><div class="para" id="s_det_ex-2-2-1-1-2-1-1">Hitung <span class="process-math">\(\det(A)\)</span> dengan mengekspansi sepanjang baris kedua.</div></li>
+<li id="s_det_ex-2-2-1-1-2-2"><div class="para" id="s_det_ex-2-2-1-1-2-2-1">Hitung <span class="process-math">\(\det(A)\)</span> dengan mengekspansi sepanjang kolom ketiga.</div></li>
+</ol>
+</div></article><div class="exercisegroup" id="s_det_ex-2-3">
+<h5 class="heading"><span class="title">Ekspansi Baris/Kolom.</span></h5>
+<div class="introduction" id="s_det_ex-2-3-2"><div class="para" id="s_det_ex-2-3-2-1">Hitung determinan dari matriks yang diberikan. Tunjukkan baris atau kolom mana yang Anda ekspansikan.</div></div>
+<div class="exercisegroup-exercises">
+<article class="exercise exercise-like" id="s_det_ex-2-3-3"><h6 class="heading"><span class="codenumber">6<span class="period">.</span></span></h6>
+<div class="para logical" id="s_det_ex-2-3-3-1-1"><div class="displaymath process-math">
+\begin{equation*}
+A=\begin{amatrix}[rrr]2\amp 0\amp 3\\ 0\amp 3\amp 2\\ -2\amp 0\amp -4 \end{amatrix}
+\end{equation*}
+</div></div></article><article class="exercise exercise-like" id="s_det_ex-2-3-4"><h6 class="heading"><span class="codenumber">7<span class="period">.</span></span></h6>
+<div class="para logical" id="s_det_ex-2-3-4-1-1"><div class="displaymath process-math">
+\begin{equation*}
+A=\begin{amatrix}[rrrr] 2\amp 1\amp 0\amp 5\\ 1\amp 2\amp 0\amp -1\\ 1\amp 4\amp -3\amp 0\\ 2\amp 6\amp 3\amp 2 \end{amatrix}
+\end{equation*}
+</div></div></article><article class="exercise exercise-like" id="s_det_ex-2-3-5"><h6 class="heading"><span class="codenumber">8<span class="period">.</span></span></h6>
+<div class="para logical" id="s_det_ex-2-3-5-1-1"><div class="displaymath process-math">
+\begin{equation*}
+A=\begin{amatrix}[rrrrr]4\amp 0\amp 0\amp 1\amp 0\\ 3\amp 3\amp 3\amp -1\amp 0\\ 1\amp 2\amp 4\amp 2\amp 3\\ 9\amp 4\amp 6\amp 2\amp 3\\ 2\amp 2\amp 4\amp 2\amp 3 \end{amatrix}
+\end{equation*}
+</div></div></article>
+</div>
+</div>
+<div class="exercisegroup" id="s_det_ex-2-4">
+<h5 class="heading"><span class="title">Determinan dan Invertibilitas.</span></h5>
+<div class="introduction" id="s_det_ex-2-4-2"><div class="para" id="s_det_ex-2-4-2-1">Untuk setiap matriks, temukan semua nilai <span class="process-math">\(c\)</span> (jika ada) yang membuat matriks tersebut invertibel. Gunakan determinan.</div></div>
+<div class="exercisegroup-exercises">
+<article class="exercise exercise-like" id="s_det_ex-2-4-3"><h6 class="heading"><span class="codenumber">9<span class="period">.</span></span></h6>
+<div class="para logical" id="s_det_ex-2-4-3-1-1"><div class="displaymath process-math">
+\begin{equation*}
+A=\begin{amatrix}[ccc] c \amp 1 \amp 1 \\ 1 \amp 1 \amp c \\ 1 \amp 1 \amp 1 \\  \end{amatrix}
+\end{equation*}
+</div></div></article><article class="exercise exercise-like" id="s_det_ex-2-4-4"><h6 class="heading"><span class="codenumber">10<span class="period">.</span></span></h6>
+<div class="para logical" id="s_det_ex-2-4-4-1-1"><div class="displaymath process-math">
+\begin{equation*}
+A=\begin{amatrix}[ccc] c \amp 1 \amp 1 \\ 1 \amp 1 \amp c \\ 1 \amp 3 \amp 1 \\  \end{amatrix}
+\end{equation*}
+</div></div></article><article class="exercise exercise-like" id="s_det_ex-2-4-5"><h6 class="heading"><span class="codenumber">11<span class="period">.</span></span></h6>
+<div class="para logical" id="s_det_ex-2-4-5-1-1"><div class="displaymath process-math">
+\begin{equation*}
+A=\begin{amatrix}[ccc] c \amp 1 \amp 1 \\ 1 \amp c \amp 1 \\ c+1 \amp c+1 \amp 2 \end{amatrix}
+\end{equation*}
+</div></div></article><article class="exercise exercise-like" id="s_det_ex-2-4-6"><h6 class="heading"><span class="codenumber">12<span class="period">.</span></span></h6>
+<div class="para logical" id="s_det_ex-2-4-6-1-1"><div class="displaymath process-math">
+\begin{equation*}
+A=\begin{amatrix}[ccc] c \amp 1 \amp 1 \\ 1 \amp c \amp 1 \\ 1 \amp 1 \amp c \\  \end{amatrix}
+\end{equation*}
+</div></div></article>
+</div>
+</div>
+<div class="exercisegroup" id="s_det_ex-2-5">
+<h5 class="heading"><span class="title">Rumus Matriks Adjoin.</span></h5>
+<div class="introduction" id="s_det_ex-2-5-2"><div class="para" id="s_det_ex-2-5-2-1">Gunakan rumus matriks adjoin untuk menghitung invers dari setiap matriks.</div></div>
+<div class="exercisegroup-exercises">
+<article class="exercise exercise-like" id="s_det_ex-2-5-3"><h6 class="heading"><span class="codenumber">13<span class="period">.</span></span></h6>
+<div class="para logical" id="s_det_ex-2-5-3-1-1"><div class="displaymath process-math">
+\begin{equation*}
+A=\begin{amatrix}[rr]-7\amp -5\\ 1\amp 4  \end{amatrix}
+\end{equation*}
+</div></div></article><article class="exercise exercise-like" id="s_det_ex-2-5-4"><h6 class="heading"><span class="codenumber">14<span class="period">.</span></span></h6>
+<div class="para logical" id="s_det_ex-2-5-4-1-1"><div class="displaymath process-math">
+\begin{equation*}
+A=\begin{amatrix}[rrr] 0\amp 2\amp -3\\ 1\amp -2\amp -1 \\ 0\amp 0\amp 1 \end{amatrix}
+\end{equation*}
+</div></div></article>
+</div>
+</div>
+<article class="exercise exercise-like" id="s_det_ex-2-6"><h5 class="heading"><span class="codenumber">15<span class="period">.</span></span></h5>
+<div class="para logical" id="s_det_ex-2-6-1-1">
+<div class="para">Misalkan</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/th_invertibility_expanded.html">
+\begin{equation*}
+A=\begin{amatrix}[rrrr]1\amp -3\amp 1\amp 1\\ -3\amp 1\amp 1\amp 1\\ 1\amp 1\amp -3\amp 1\\ 1\amp 1\amp 1\amp -3 \end{amatrix}\text{.}
+\end{equation*}
+</div>
+<div class="para">Tunjukkan <span class="process-math">\(\det A=0\)</span> tanpa menghitung determinan secara langsung. Dengan kata lain, gunakan teknik reduksi baris atau <a href="s_det.html#th_invertibility_expanded" class="xref" data-knowl="./knowl/xref/th_invertibility_expanded.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 2.4.27: Teorema Invertibilitas (Edisi Diperluas)">Theorem 2.4.27</a>.</div>
+</div></article><article class="exercise exercise-like" id="s_det_ex-2-7"><h5 class="heading"><span class="codenumber">16<span class="period">.</span></span></h5>
+<div class="para" id="s_det_ex-2-7-1-1">Misalkan <span class="process-math">\(A\)</span> adalah matriks <span class="process-math">\(n\times n\text{,}\)</span> dan misalkan <span class="process-math">\(c\)</span> adalah skalar. Nyatakan dan buktikan rumus yang menghubungkan <span class="process-math">\(\det(cA)\)</span> dengan <span class="process-math">\(\det(A)\text{.}\)</span>
+</div></article><article class="exercise exercise-like" id="s_det_ex-2-8"><h5 class="heading"><span class="codenumber">17<span class="period">.</span></span></h5>
+<div class="para logical" id="s_det_ex-2-8-1-1">
+<div class="para">Asumsikan <span class="process-math">\(A\)</span> adalah matriks <span class="process-math">\(5\times 5\)</span> yang memenuhi <span class="process-math">\(\det A=2\text{.}\)</span> Hitung determinan dari matriks yang diberikan.</div>
+<ol class="lower-alpha lower-alpha-level-1" id="s_det_ex-2-8-1-1-4">
+<li id="s_det_ex-2-8-1-1-4-1"><div class="para" id="s_det_ex-2-8-1-1-4-1-1"><span class="process-math">\(\displaystyle \det(-A)\)</span></div></li>
+<li id="s_det_ex-2-8-1-1-4-2"><div class="para" id="s_det_ex-2-8-1-1-4-2-1"><span class="process-math">\(\displaystyle \det(A^{-1})\)</span></div></li>
+<li id="s_det_ex-2-8-1-1-4-3"><div class="para" id="s_det_ex-2-8-1-1-4-3-1"><span class="process-math">\(\displaystyle \det(2A^T)\)</span></div></li>
+<li id="s_det_ex-2-8-1-1-4-4"><div class="para" id="s_det_ex-2-8-1-1-4-4-1"><span class="process-math">\(\displaystyle \det(A^3)\)</span></div></li>
+</ol>
+</div></article><article class="exercise exercise-like" id="s_det_ex-2-9"><h5 class="heading"><span class="codenumber">18<span class="period">.</span></span></h5>
+<div class="para" id="s_det_ex-2-9-1-1">Misalkan <span class="process-math">\(A\)</span> dan <span class="process-math">\(B\)</span> adalah matriks <span class="process-math">\(n\times n\text{,}\)</span> dan misalkan <span class="process-math">\(B\)</span> invertibel. Buktikan pernyataan berikut:</div> <ol class="lower-alpha lower-alpha-level-1" id="s_det_ex-2-9-1-2">
+<li id="s_det_ex-2-9-1-2-1"><div class="para" id="s_det_ex-2-9-1-2-1-1"><span class="process-math">\(\ds \det(B^{-1})=\frac{1}{\det(B)}\text{.}\)</span></div></li>
+<li id="s_det_ex-2-9-1-2-2"><div class="para" id="s_det_ex-2-9-1-2-2-1"><span class="process-math">\(\ds \det(B^{-1}AB)=\det(A)\text{.}\)</span></div></li>
+</ol></article><article class="exercise exercise-like" id="s_det_ex-2-10"><h5 class="heading"><span class="codenumber">19<span class="period">.</span></span></h5>
+<div class="para" id="s_det_ex-2-10-1-1">Asumsikan matriks persegi <span class="process-math">\(A\)</span> memenuhi <span class="process-math">\(A^TA=I\text{.}\)</span> Tunjukkan bahwa <span class="process-math">\(\det A=\pm 1\text{.}\)</span>
+</div></article><article class="exercise exercise-like" id="s_det_ex-2-11"><h5 class="heading"><span class="codenumber">20<span class="period">.</span></span></h5>
+<div class="para" id="s_det_ex-2-11-1-1">Buktikan bahwa matriks persegi <span class="process-math">\(A\)</span> invertibel jika dan hanya jika <span class="process-math">\(A^TA\)</span> invertibel.</div></article><div class="exercisegroup" id="s_det_ex-2-12">
+<h5 class="heading"><span class="title">Matriks Adjoin.</span></h5>
+<div class="introduction" id="s_det_ex-2-12-2"><div class="para" id="s_det_ex-2-12-2-1">Latihan-latihan berikut mengeksplorasi hubungan antara matriks persegi <span class="process-math">\(A\)</span> dan adjoinnya <span class="process-math">\(\adj A\text{.}\)</span>
+</div></div>
+<div class="exercisegroup-exercises">
+<article class="exercise exercise-like" id="s_det_ex-2-12-3"><h6 class="heading"><span class="codenumber">21<span class="period">.</span></span></h6>
+<div class="para" id="s_det_ex-2-12-3-1-1">Berikan contoh eksplisit matriks persegi <span class="process-math">\(A\)</span> yang memenuhi <span class="process-math">\(A\ne \boldzero_{n\times n}\)</span> dan <span class="process-math">\(\adj A=\boldzero_{n\times n}\text{.}\)</span>
+</div> <div class="para" id="s_det_ex-2-12-3-1-2">Dengan kata lain, tunjukkan bahwa dimungkinkan bagi matriks tak-nol untuk memiliki matriks adjoin nol.</div></article><article class="exercise exercise-like" id="s_det_ex-2-12-4"><h6 class="heading"><span class="codenumber">22<span class="period">.</span></span></h6>
+<div class="para logical" id="s_det_ex-2-12-4-1-1">
+<div class="para">Misalkan <span class="process-math">\(A\)</span> adalah matriks <span class="process-math">\(n\times n\text{.}\)</span> Buktikan:</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\det \adj A=(\det A)^{n-1}\text{.}
+\end{equation*}
+</div>
+</div></article><article class="exercise exercise-like" id="s_det_ex-2-12-5"><h6 class="heading"><span class="codenumber">23<span class="period">.</span></span></h6>
+<div class="para" id="s_det_ex-2-12-5-1-1">Buktikan: <span class="process-math">\(A\)</span> invertibel jika dan hanya jika <span class="process-math">\(\adj A\)</span> invertibel.</div></article><article class="exercise exercise-like" id="s_det_ex-2-12-6"><h6 class="heading"><span class="codenumber">24<span class="period">.</span></span></h6>
+<div class="para logical" id="s_det_ex-2-12-6-1-1">
+<div class="para">Asumsikan <span class="process-math">\(A\)</span> invertibel. Buktikan:</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\adj(\adj A)=\frac{1}{(\det A)^{n-2}}\, A\text{.}
+\end{equation*}
+</div>
+</div></article>
+</div>
+</div>
+<article class="exercise exercise-like" id="s_det_ex-2-13"><h5 class="heading"><span class="codenumber">25<span class="period">.</span></span></h5>
+<div class="para" id="s_det_ex-2-13-1-1">Dalam pembuktian pernyataan (2) dari <a href="s_det.html#th_det_zero_repeated_row" class="xref" data-knowl="./knowl/xref/th_det_zero_repeated_row.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 2.4.14: Baris/Kolom Nol, Penukaran Baris/Kolom, Baris/Kolom Identik">Theorem 2.4.14</a> kita hanya menunjukkan bahwa jika <span class="process-math">\(A\)</span> adalah matriks persegi dengan dua baris identik, maka <span class="process-math">\(\det A=0\text{.}\)</span> Dengan mengasumsikan ini, tunjukkan bahwa hal yang sama berlaku jika <span class="process-math">\(A\)</span> memiliki dua kolom identik.</div></article><article class="exercise exercise-like" id="ex_det_col_ops"><h5 class="heading"><span class="codenumber">26<span class="period">.</span></span></h5>
+<div class="para" id="ex_det_col_ops-1-1">Nyatakan dan buktikan analogi dari <a href="s_det.html#th_det_row_ops" class="xref" data-knowl="./knowl/xref/th_det_row_ops.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 2.4.20: Operasi Baris dan Determinan">Theorem 2.4.20</a> yang mendeskripsikan bagaimana <em class="emphasis">operasi kolom</em> yang bersesuaian (yaitu, skalakan kolom dengan <span class="process-math">\(c\text{,}\)</span> tukar dua kolom, penjumlahan kolom) memengaruhi determinan sebuah matriks. (Lihat <a href="s_det.html#rm_det_col_ops" class="xref" data-knowl="./knowl/xref/rm_det_col_ops.html" data-reveal-label="Reveal" data-close-label="Close" title="Remark 2.4.22: Operasi Kolom dan Determinan">Remark 2.4.22</a>).</div></article><article class="exercise exercise-like" id="s_det_ex-2-15"><h5 class="heading"><span class="codenumber">27<span class="period">.</span></span></h5>
+<div class="para logical" id="s_det_ex-2-15-1-1">
+<div class="para">Misalkan <span class="process-math">\(A\)</span> adalah matriks <span class="process-math">\(n\times n\)</span> dengan <span class="process-math">\(a\)</span> sepanjang diagonal dan <span class="process-math">\(b\)</span> di tempat lainnya: yaitu,</div>
+<div class="displaymath process-math">
+\begin{equation*}
+A=\begin{bmatrix}a\amp b\amp b\dots \\ b\amp a\amp b\amp \dots\\ \vdots \amp  \amp \vdots \\ b\amp b\amp \dots \amp a \end{bmatrix}\text{.}
+\end{equation*}
+</div>
+<div class="para">Nyatakan dan buktikan rumus untuk <span class="process-math">\(\det A\text{.}\)</span> (Rumus Anda akan melibatkan <span class="process-math">\(a\text{,}\)</span> <span class="process-math">\(b\text{,}\)</span> dan <span class="process-math">\(n\text{.}\)</span>)</div>
+</div> <div class="para" id="s_det_ex-2-15-1-2">Lihat kasus <span class="process-math">\(n=2\)</span> dan <span class="process-math">\(n=3\)</span> terlebih dahulu. Untuk membuktikan rumus dalam kasus umum Anda mungkin ingin menggunakan reduksi baris dan <a href="s_det.html#th_det_row_ops" class="xref" data-knowl="./knowl/xref/th_det_row_ops.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 2.4.20: Operasi Baris dan Determinan">Theorem 2.4.20</a>.</div></article><article class="exercise exercise-like" id="s_det_ex-2-16"><h5 class="heading"><span class="codenumber">28<span class="period">.</span></span></h5>
+<div class="para logical" id="s_det_ex-2-16-1-1">
+<div class="para">Diberikan skalar <span class="process-math">\(r_1, r_2, \dots, r_n\in \R\)</span> matriks <em class="emphasis">Vandermonde</em> didefinisikan sebagai</div>
+<div class="displaymath process-math">
+\begin{equation*}
+A_{r_1,r_2,\dots, r_n}=\begin{amatrix}[llcl]1\amp 1\amp \cdots \amp 1\\ r_1\amp r_2\amp \cdots \amp  r_n\\ r_1^2\amp r_2^2\amp \cdots \amp r_n^2\\ \vdots \amp  \vdots \amp  \amp \vdots\\ r_1^{n-1}\amp r_2^{n-1}\amp \cdots \amp r_n^{n-1} \end{amatrix}\text{.}
+\end{equation*}
+</div>
+<div class="para">Dengan kata lain, kita memiliki</div>
+<div class="displaymath process-math">
+\begin{equation*}
+(A_{r_1,r_2,\dots, r_n})_{ij}=r_j^{i-1}
+\end{equation*}
+</div>
+<div class="para">Buktikan:</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\ds\det (A_{r_1,r_2,\dots, r_n})=\prod_{1\leq i\lt j\leq n}(r_j-r_i)\text{.}
+\end{equation*}
+</div>
+</div></article></article></section></section></div>
+<div id="ptx-content-footer" class="ptx-content-footer">
+<a class="previous-button button" href="s_invertible_matrices.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="backmatter.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
+</div></main>
+</div>
+<div id="ptx-page-footer" class="ptx-page-footer">
+<a class="pretext-link" href="https://pretextbook.org" title="PreTeXt"><div class="logo"><svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="338 3000 8772 6866" role="img"><title>PreTeXt logo</title><g style="stroke-width:.025in; stroke:currentColor; fill:none"><polyline points="472,3590 472,9732 " style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round; "></polyline><path style="stroke-width:126;stroke-linecap:butt;" d="M 4724,9448 A 4660 4660  0  0  1  8598  9259"></path><path style="stroke-width:174;stroke-linecap:butt;" d="M 4488,9685 A 4228 4228  0  0  0   472  9732"></path><path style="stroke-width:126;stroke-linecap:butt;" d="M 4724,3590 A 4241 4241  0  0  1  8598  3496"></path><path style="stroke-width:126;stroke-linecap:round;" d="M 850,3496  A 4241 4241  0  0  1  4724  3590"></path><path style="stroke-width:126;stroke-linecap:round;" d="M 850,9259  A 4507 4507  0  0  1  4724  9448"></path><polyline points="5385,4299 4062,8125" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8598,3496 8598,9259" style="stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="850,3496 850,9259" style="stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="4960,9685 4488,9685" style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="3070,4582 1889,6141 3070,7700" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="6418,4582 7600,6141 6418,7700" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8976,3590 8976,9732" style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><path style="stroke-width:174;stroke-linecap:butt;" d="M 4960,9685 A 4228 4228  0  0  1  8976  9732"></path></g></svg></div></a><a class="runestone-link" href="https://runestone.academy" title="Runestone Academy"><img class="logo" src="https://runestone.academy/runestone/static/images/RAIcon_cropped.png" alt="Runstone Academy logo"></a><a class="mathjax-link" href="https://www.mathjax.org" title="MathJax"><img class="logo" src="https://www.mathjax.org/badge/badge-square-2.png" alt="MathJax logo"></a>
+</div>
+</body>
+</html>

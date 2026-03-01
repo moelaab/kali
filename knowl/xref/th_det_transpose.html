@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<!--******************************************-->
+<!--*  Authored with PreTeXt                 *-->
+<!--*  pretextbook.org                       *-->
+<!--*  Theme: default-modern                 *-->
+<!--*  Palette: blue-green                   *-->
+<!--******************************************-->
+
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="theorem theorem-like"><h4 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">2.4.9</span><span class="period">.</span><span class="space"> </span><span class="title">Determinan dan Transposisi.</span>
+</h4>
+<div class="para logical">
+<div class="para">Misalkan <span class="process-math">\(A\)</span> adalah matriks <span class="process-math">\(n\times n\text{.}\)</span> Maka</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\det A^T=\det A\text{.}
+\end{equation*}
+</div>
+</div></article><details class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4></summary><article class="hiddenproof knowl__content"><div class="para">Pembuktian dilakukan dengan induksi pada <span class="process-math">\(n\text{.}\)</span> Kasus dasar (<span class="process-math">\(n=1\)</span>) trivial karena <span class="process-math">\([a]^T=[a]\)</span> untuk sembarang matriks <span class="process-math">\(1\times 1\)</span> <span class="process-math">\([a]\text{.}\)</span>
+</div>
+<div class="para logical">
+<div class="para">Untuk induksi kita mengasumsikan bahwa untuk semua <span class="process-math">\(n\geq 2\)</span> kita memiliki <span class="process-math">\(\det B^T=\det B\)</span> untuk sembarang matriks <span class="process-math">\((n-1)\times (n-1)\text{.}\)</span> Misalkan <span class="process-math">\(A\)</span> adalah matriks <span class="process-math">\(n\times n\text{.}\)</span> Kita memiliki</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/th_expansion_row.html ./knowl/xref/th_expansion_row.html">
+\begin{align*}
+\det A^T \amp = \frac{1}{n}\sum_{i=1}^{n}\det A^T \\
+\amp =\frac{1}{n}\sum_{i=1}^n\sum_{j=1}^n(-1)^{i+j}[A^T]_{ij}\det \left((A^T)_{ij}\right) \amp (\knowl{./knowl/xref/th_expansion_row.html}{\text{Theorem 2.4.8}}) \\
+\amp = \frac{1}{n}\sum_{i=1}^n\sum_{j=1}^n(-1)^{i+j}[A]_{ji}\det (A_{ji})^T \amp ([A^T]_{ij}=A_{ji}, (A^T)_{ij}=(A_{ji})^T)\\
+\amp = \frac{1}{n}\sum_{i=1}^n\sum_{j=1}^n(-1)^{i+j}[A]_{ji}\det A_{ji} \amp (\det (A_{ji})^T=\det A_{ji}, \text{ menurut induksi})\\
+\amp= \frac{1}{n}\sum_{j=1}^n\sum_{i=1}^n(-1)^{i+j}[A]_{ji}\det A_{ji} \amp (\text{sifat penjumlahan})\\
+\amp =\frac{1}{n}\sum_{j=1}^n\det A \amp (\knowl{./knowl/xref/th_expansion_row.html}{\text{Theorem 2.4.8}})\\
+\amp = \det A\text{.}
+\end{align*}
+</div>
+<div class="para">Ini melengkapi pembuktian dengan induksi. (Perhatikan bagaimana dalam kesamaan kedua dalam rantai di atas kita menghitung <span class="process-math">\(\det A^T\)</span> dalam suku ke-<span class="process-math">\(i\)</span> dari <span class="process-math">\(\sum_{i=1}^n\det A^T\)</span> dengan mengekspansi sepanjang baris ke-<span class="process-math">\(i\)</span> dari <span class="process-math">\(\det A^T\text{.}\)</span> Observasi serupa berlaku untuk kesamaan terakhir.)</div>
+</div></article></details><span class="incontext"><a class="internal" href="s_det.html#th_det_transpose">in-context</a></span>
+</body>
+</html>
