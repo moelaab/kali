@@ -19,7 +19,7 @@
 </head>
 <body class="ignore-math">
 <article class="theorem theorem-like"><h4 class="heading">
-<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">2.1.24</span><span class="period">.</span><span class="space"> </span><span class="title">Metode kolom dari perkalian matriks.</span>
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">2.1.22</span><span class="period">.</span><span class="space"> </span><span class="title">Metode kolom dari perkalian matriks.</span>
 </h4>
 <div class="para logical">
 <div class="para">Misalkan <span class="process-math">\(A=[a_{i}]_{m\times n}\)</span> dan <span class="process-math">\(B=[b_{ij}]_{n\times r}\text{.}\)</span> Metode kolom dari perkalian matriks menghitung <span class="process-math">\(AB\)</span> menggunakan dua langkah di bawah ini.</div>
@@ -67,19 +67,19 @@ C=\begin{bmatrix}\vert \amp \vert \amp  \amp \vert \\ A\boldb_1\amp A\boldb_2\am
 </div></article><article class="case"><h5 class="heading">Bukti Langkah 2.</h5>
 <div class="para logical">
 <div class="para">Kita harus menunjukkan bahwa <span class="process-math">\(A\boldb=\boldc\text{,}\)</span> dimana</div>
-<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/rm_entry_lin_comb.html ./knowl/xref/d_matrix_mult.html">
+<div class="displaymath process-math" data-contains-math-knowls=" ./knowl/xref/d_matrix_mult.html">
 \begin{equation*}
 \boldc=b_1\bolda_1+b_2\bolda_2+\cdots +b_n\bolda_n\text{.}
 \end{equation*}
 </div>
 <div class="para">Argumen biasa menunjukkan bahwa kedua <span class="process-math">\(A\boldb\)</span> dan <span class="process-math">\(\boldc\)</span> adalah vektor kolom <span class="process-math">\(m\times 1\text{.}\)</span> Tinggal hanya untuk menunjukkan bahwa entri ke-<span class="process-math">\(i\)</span> <span class="process-math">\([A\boldb]_i\)</span> dari kolom <span class="process-math">\(A\boldb\)</span> sama dengan entri ke-<span class="process-math">\(i\)</span> <span class="process-math">\([\boldc]_i\)</span> dari <span class="process-math">\(\boldc\)</span> untuk semua <span class="process-math">\(1\leq i\leq m\text{.}\)</span> Untuk sembarang <span class="process-math">\(i\)</span> demikian kita memiliki</div>
-<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/rm_entry_lin_comb.html ./knowl/xref/d_matrix_mult.html">
+<div class="displaymath process-math" data-contains-math-knowls=" ./knowl/xref/d_matrix_mult.html">
 \begin{align*}
 [\boldc]_i \amp = [b_1\bolda_1+b_2\bolda_2+\cdots +b_n\bolda_n]_i\\
-\amp= b_1[\bolda_1]_i+b_2[\bolda_2]_i+\cdots +b_n[\bolda_n]_i \amp (\knowl{./knowl/xref/rm_entry_lin_comb.html}{\text{Remark 2.1.16}})\\
+\amp= b_1[\bolda_1]_i+b_2[\bolda_2]_i+\cdots +b_n[\bolda_n]_i \amp ([cross-reference to target(s) "rm_entry_lin_comb" missing or not unique])\\
 \amp= b_1a_{i1}+b_2a_{i2}+\cdots +b_n\bolda_{in}\amp (\text{def. dari } \bolda_j) \\
 \amp= a_{i1}b_1+a_{i2}b_2+\cdots+a_{in}b_n \\
-\amp =[A\boldb]_i \amp (\knowl{./knowl/xref/d_matrix_mult.html}{\text{Definition 2.1.17}})\text{.}
+\amp =[A\boldb]_i \amp (\knowl{./knowl/xref/d_matrix_mult.html}{\text{Definition 2.1.15}})\text{.}
 \end{align*}
 </div>
 </div></article></article></details><span class="incontext"><a class="internal" href="s_matrix.html#th_column_method">in-context</a></span>

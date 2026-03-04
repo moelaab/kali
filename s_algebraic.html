@@ -509,10 +509,10 @@ a_{11}x_{1}\amp +\amp a_{12}x_{2}\amp +\cdots+\amp  a_{1n}x_{n}\amp =\amp 0\\
 <li class="toc-item toc-section">
 <div class="toc-title-box"><a href="s_matrix.html" class="internal"><span class="codenumber">2.1</span> <span class="title">Aritmetika Matriks</span></a></div>
 <ul class="structural toc-item-list">
-<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_matrix.html#ss_matrix_attributes" class="internal"><span class="codenumber">2.1.1</span> <span class="title">Dasar-dasar</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_matrix.html#ss_matrix_attributes" class="internal"><span class="codenumber">2.1.1</span> <span class="title">Dasar-dasar matrik</span></a></div></li>
 <li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_matrix.html#ss_matrix_arithmetic" class="internal"><span class="codenumber">2.1.2</span> <span class="title">Penjumlahan, pengurangan dan perkalian skalar</span></a></div></li>
 <li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_matrix.html#ss_matrix_mult" class="internal"><span class="codenumber">2.1.3</span> <span class="title">Perkalian matriks</span></a></div></li>
-<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_matrix.html#s_column_row_method" class="internal"><span class="codenumber">2.1.4</span> <span class="title">Metode alternatif perkalian</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_matrix.html#s_column_row_method" class="internal"><span class="codenumber">2.1.4</span> <span class="title">Metode alternatif perkalian matrik</span></a></div></li>
 <li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_matrix.html#s_matrix-7" class="internal"><span class="codenumber">2.1.5</span> <span class="title">Transpos dari sebuah matriks</span></a></div></li>
 </ul>
 </li>
@@ -605,12 +605,12 @@ A(BC)=(AB)C\text{,}
 </div>
 <div class="para" id="s_algebraic-5-3">(1) Pengamatan biasa tentang dimensi “dalam” dan “luar” menunjukkan bahwa baik <span class="process-math">\(A(BC)\)</span> maupun <span class="process-math">\((AB)C\)</span> memiliki dimensi <span class="process-math">\(m\times n\text{.}\)</span>
 </div>
-<a href="s_matrix.html#d_matrix_mult" class="xref" data-knowl="./knowl/xref/d_matrix_mult.html" data-reveal-label="Reveal" data-close-label="Close" title="Definition 2.1.17: Perkalian matriks">Definition 2.1.17</a><div class="para logical" id="s_algebraic-5-5">
+<a href="s_matrix.html#d_matrix_mult" class="xref" data-knowl="./knowl/xref/d_matrix_mult.html" data-reveal-label="Reveal" data-close-label="Close" title="Definition 2.1.15: Perkalian matriks">Definition 2.1.15</a><div class="para logical" id="s_algebraic-5-5">
 <div class="para">(2) Diberikan sembarang <span class="process-math">\((i,j)\)</span> dengan <span class="process-math">\(1\leq i\leq m\)</span> dan <span class="process-math">\(1\leq j\leq n\text{,}\)</span> kita memiliki:</div>
 <div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/d_matrix_mult.html ./knowl/xref/d_matrix_mult.html" id="s_algebraic-5-5-4">
 \begin{align*}
-[A(BC)]_{ij}\amp=\sum_{\ell=1}^ra_{i\ell}[BC]_{\ell j}  \amp (\knowl{./knowl/xref/d_matrix_mult.html}{\text{Definition 2.1.17}})\\
-\amp=\sum_{\ell=1}^ra_{i\ell}\left(\sum_{k=1}^sb_{\ell k}c_{kj}\right) \amp (\knowl{./knowl/xref/d_matrix_mult.html}{\text{Definition 2.1.17}})\\
+[A(BC)]_{ij}\amp=\sum_{\ell=1}^ra_{i\ell}[BC]_{\ell j}  \amp (\knowl{./knowl/xref/d_matrix_mult.html}{\text{Definition 2.1.15}})\\
+\amp=\sum_{\ell=1}^ra_{i\ell}\left(\sum_{k=1}^sb_{\ell k}c_{kj}\right) \amp (\knowl{./knowl/xref/d_matrix_mult.html}{\text{Definition 2.1.15}})\\
 =\amp \sum_{\ell=1}^r\sum_{k=1}^sa_{i\ell}(b_{\ell k}c_{kj}) \amp \text{ (dist. real) }\\
 =\amp \sum_{k=1}^s\sum_{\ell=1}^r(a_{i\ell}b_{\ell k})c_{kj} \amp \text{ (kom. real, asos. real) }\\
 =\amp \sum_{k=1}^s\left(\sum_{\ell=1}^ra_{i\ell}b_{\ell k}\right)c_{kj} \amp \text{ (dist. real) }\\
@@ -844,15 +844,15 @@ BD=CD \;\not\!\!\!\!\implies B=C\tag{2.2.3}
 <li id="th_trans_scale"><div class="para" id="th_trans_scale-1"><span class="process-math">\(\displaystyle (cA)^T=cA^T\)</span></div></li>
 <li id="th_trans_prod"><div class="para" id="th_trans_prod-1"><span class="process-math">\(\displaystyle (AB)^T=B^TA^T\)</span></div></li>
 <li id="th_trans_owninverse"><div class="para" id="th_trans_owninverse-1"><span class="process-math">\(\displaystyle \left(A^T\right)^T=A\)</span></div></li>
-</ol></article><details id="th_trans_props-4" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">Proof<span class="period">.</span></span></h3></summary><article class="hiddenproof knowl__content"><div class="para" id="th_trans_props-4-1">Kita hanya membuktikan pernyataan pertama. Pertama perhatikan bahwa jika <span class="process-math">\(A\)</span> adalah <span class="process-math">\(m\times n\text{,}\)</span> maka demikian pula <span class="process-math">\(B\)</span> dan <span class="process-math">\(A+B\text{.}\)</span> Maka <span class="process-math">\((A+B)^T\)</span> adalah <span class="process-math">\(n\times m\)</span> menurut <a href="s_matrix.html#d_transpose" class="xref" data-knowl="./knowl/xref/d_transpose.html" data-reveal-label="Reveal" data-close-label="Close" title="Definition 2.1.29: Transposisi matriks">Definition 2.1.29</a>. Demikian pula, kita melihat bahwa <span class="process-math">\(A^T+B^T\)</span> adalah <span class="process-math">\(n\times m\text{.}\)</span>
+</ol></article><details id="th_trans_props-4" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">Proof<span class="period">.</span></span></h3></summary><article class="hiddenproof knowl__content"><div class="para" id="th_trans_props-4-1">Kita hanya membuktikan pernyataan pertama. Pertama perhatikan bahwa jika <span class="process-math">\(A\)</span> adalah <span class="process-math">\(m\times n\text{,}\)</span> maka demikian pula <span class="process-math">\(B\)</span> dan <span class="process-math">\(A+B\text{.}\)</span> Maka <span class="process-math">\((A+B)^T\)</span> adalah <span class="process-math">\(n\times m\)</span> menurut <a href="s_matrix.html#d_transpose" class="xref" data-knowl="./knowl/xref/d_transpose.html" data-reveal-label="Reveal" data-close-label="Close" title="Definition 2.1.25: Transposisi matriks">Definition 2.1.25</a>. Demikian pula, kita melihat bahwa <span class="process-math">\(A^T+B^T\)</span> adalah <span class="process-math">\(n\times m\text{.}\)</span>
 </div>
 <div class="para logical" id="th_trans_props-4-2">
 <div class="para">Selanjutnya, diberikan sembarang <span class="process-math">\((i,j)\)</span> dengan <span class="process-math">\(1\leq i\leq n\text{,}\)</span> <span class="process-math">\(1\leq j\leq m\text{,}\)</span> kita memiliki</div>
 <div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/d_transpose.html ./knowl/xref/d_matrix_add_subtract.html ./knowl/xref/d_transpose.html ./knowl/xref/d_matrix_add_subtract.html" id="th_trans_props-4-2-4">
 \begin{align*}
-\left((A+B)^T\right)_{ij}\amp =(A+B)_{ji} \amp (\knowl{./knowl/xref/d_transpose.html}{\text{Definition 2.1.29}})\\
+\left((A+B)^T\right)_{ij}\amp =(A+B)_{ji} \amp (\knowl{./knowl/xref/d_transpose.html}{\text{Definition 2.1.25}})\\
 \amp = A_{ji}+B_{ji} \amp (\knowl{./knowl/xref/d_matrix_add_subtract.html}{\text{Definition 2.1.9}})\\
-\amp =(A^T)_{ij}+(B^T)_{ij} \amp (\knowl{./knowl/xref/d_transpose.html}{\text{Definition 2.1.29}} \\
+\amp =(A^T)_{ij}+(B^T)_{ij} \amp (\knowl{./knowl/xref/d_transpose.html}{\text{Definition 2.1.25}} \\
 \amp =(A^T+B^T)_{ij} \amp (\knowl{./knowl/xref/d_matrix_add_subtract.html}{\text{Definition 2.1.9}})\text{.}
 \end{align*}
 </div>
