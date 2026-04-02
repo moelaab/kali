@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulasi Penjumlahan Matriks</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .controls {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .matrix-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .matrix-box {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .matrix-grid {
+            display: grid;
+            gap: 5px;
+            margin-top: 10px;
+            justify-content: center;
+        }
+        input[type="number"] {
+            width: 50px;
+            padding: 5px;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .result-box {
+            border: 2px solid #4CAF50;
+        }
+        .operator {
+            font-size: 2em;
+            align-self: center;
+            font-weight: bold;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .error {
+            color: red;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Simulasi Penjumlahan Matriks</h1>
+
+    <div class="controls">
+        <label for="rows">Baris (m):</label>
+        <input type="number" id="rows" min="1" max="5" value="2">
+        <label for="cols">Kolom (n):</label>
+        <input type="number" id="cols" min="1" max="5" value="2">
+        <br><br>
+        <button onclick="generateInputs()">Buat Input Matriks</button>
+    </div>
+
+    <div id="error-msg" class="error"></div>
+
+    <div class="matrix-container" id="matrix-area" style="display:none;">
+        <!-- Matriks A -->
+        <div class="matrix-box">
+            <h3>Matriks A</h3>
+            <div id="matrix-a" class="matrix-grid"></div>
+        </div>
+
+        <div class="operator">+</div>
+
+        <!-- Matriks B -->
+        <div class="matrix-box">
+            <h3>Matriks B</h3>
+            <div id="matrix-b" class="matrix-grid"></div>
+        </div>
+
+        <div class="operator">=</div>
+
+        <!-- Hasil -->
+        <div class="matrix-box result-box">
+            <h3>Hasil (C)</h3>
+            <div id="matrix-c" class="matrix-grid"></div>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 20px;">
+        <button onclick="calculateSum()" id="calc-btn" style="display:none;">Hitung Penjumlahan</button>
+    </div>
+
+    <script>
+        function generateInputs() {
+            const rows = parseInt(document.getElementById('rows').value);
+            const cols = parseInt(document.getElementById('cols').value);
+            const matrixArea = document.getElementById('matrix-area');
+            const calcBtn = document.getElementById('calc-btn');
+            const errorMsg = document.getElementById('error-msg');
+
+            if (rows < 1 || cols < 1 || rows > 5 || cols > 5) {
+                errorMsg.textContent = "Mohon masukkan ukuran antara 1 hingga 5.";
+                return;
+            }
+
+            errorMsg.textContent = "";
+            matrixArea.style.display = 'flex';
+            calcBtn.style.display = 'inline-block';
+
+            createMatrixGrid('matrix-a', rows, cols, true);
+            createMatrixGrid('matrix-b', rows, cols, true);
+            createMatrixGrid('matrix-c', rows, cols, false);
+        }
+
+        function createMatrixGrid(elementId, rows, cols, isInput) {
+            const container = document.getElementById(elementId);
+            container.innerHTML = '';
+            container.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
+
+            for (let i = 0; i < rows; i++) {
+                for (let j = 0; j < cols; j++) {
+                    if (isInput) {
+                        const input = document.createElement('input');
+                        input.type = 'number';
+                        input.className = 'matrix-input';
+                        input.dataset.row = i;
+                        input.dataset.col = j;
+                        input.value = 0;
+                        container.appendChild(input);
+                    } else {
+                        const span = document.createElement('span');
+                        span.className = 'matrix-result';
+                        span.style.display = 'flex';
+                        span.style.alignItems = 'center';
+                        span.style.justifyContent = 'center';
+                        span.style.height = '31px'; // Match input height roughly
+                        span.textContent = '0';
+                        container.appendChild(span);
+                    }
+                }
+            }
+        }
+
+        function calculateSum() {
+            const rows = parseInt(document.getElementById('rows').value);
+            const cols = parseInt(document.getElementById('cols').value);
+            const inputsA = document.querySelectorAll('#matrix-a input');
+            const inputsB = document.querySelectorAll('#matrix-b input');
+            const results = document.querySelectorAll('#matrix-c .matrix-result');
+            const errorMsg = document.getElementById('error-msg');
+
+            errorMsg.textContent = "";
+
+            let index = 0;
+            for (let i = 0; i < rows; i++) {
+                for (let j = 0; j < cols; j++) {
+                    const valA = parseFloat(inputsA[index].value) || 0;
+                    const valB = parseFloat(inputsB[index].value) || 0;
+                    const sum = valA + valB;
+                    
+                    // Menampilkan hasil dengan format yang rapi (menghindari desimal panjang jika bulat)
+                    results[index].textContent = Number.isInteger(sum) ? sum : sum.toFixed(2);
+                    
+                    index++;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

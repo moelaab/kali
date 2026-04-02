@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<!--******************************************-->
+<!--*  Authored with PreTeXt                 *-->
+<!--*  pretextbook.org                       *-->
+<!--*  Theme: default-modern                 *-->
+<!--*  Palette: blue-green                   *-->
+<!--******************************************-->
+
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="theorem theorem-like"><h4 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">2.4.5</span><span class="period">.</span><span class="space"> </span><span class="title">Teorema Invertibilitas.</span>
+</h4>
+<div class="para">Misalkan <span class="process-math">\(A=[a_{ij}]\)</span> adalah matriks <span class="process-math">\(n\times n\text{.}\)</span> Pernyataan-pernyataan berikut ekuivalen.</div> <ol class="decimal" id="th_invertibility-2-2">
+<li><div class="para">
+<span class="process-math">\(A\)</span> invertibel.</div></li>
+<li><div class="para logical">
+<div class="para">Persamaan matriks</div>
+<div class="displaymath process-math">
+\begin{equation*}
+A\underset{n\times 1}{\boldx}=\underset{n\times 1}{\boldb}
+\end{equation*}
+</div>
+<div class="para">memiliki <em class="emphasis">solusi tunggal</em> untuk <em class="emphasis">sembarang</em> vektor kolom <span class="process-math">\(\boldb\text{.}\)</span>
+</div>
+</div></li>
+<li><div class="para logical">
+<div class="para">Persamaan matriks</div>
+<div class="displaymath process-math">
+\begin{equation*}
+A\underset{n\times 1}{\boldx}=\underset{n\times 1}{\boldzero}
+\end{equation*}
+</div>
+<div class="para">memiliki <em class="emphasis">solusi tunggal</em>: yaitu, <span class="process-math">\(\boldx=\boldzero_{n\times 1}\text{.}\)</span>
+</div>
+</div></li>
+<li><div class="para">
+<span class="process-math">\(A\)</span> ekuivalen baris dengan <span class="process-math">\(I_n\text{,}\)</span> matriks identitas <span class="process-math">\(n\times n\text{.}\)</span>
+</div></li>
+<li><div class="para">
+<span class="process-math">\(A\)</span> adalah produk dari matriks elementer.</div></li>
+</ol></article><details class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4></summary><article class="hiddenproof knowl__content"><div class="para logical">
+<div class="para">Ingat bahwa untuk menunjukkan dua pernyataan <span class="process-math">\(\mathcal{P}\)</span> dan <span class="process-math">\(\mathcal{Q}\)</span> ekuivalen, kita harus menunjukkan dua implikasi: <span class="process-math">\(\mathcal{P}\implies \mathcal{Q}\text{,}\)</span> dan <span class="process-math">\(\mathcal{Q}\implies \mathcal{P}\text{.}\)</span> Alih-alih melakukan ini untuk setiap pasangan kalimat di atas, kita meringankan beban kerja kita dengan justru menunjukkan <em class="emphasis">siklus</em> implikasi berikut:</div>
+<div class="displaymath process-math">
+\begin{equation*}
+(1)\implies(2)\implies(3)\implies(4)\implies(5)\implies (1)\text{.}
+\end{equation*}
+</div>
+<div class="para">Karena implikasi bersifat transitif, mulai dari sembarang titik dalam siklus kita dan membuat jalan kita sepanjang rantai implikasi, kita melihat bahwa sembarang satu proposisi mengimplikasikan proposisi lainnya.</div>
+</div>
+<article class="case"><h5 class="heading">
+<span class="process-math">\((1)\implies (2)\)</span>.</h5>
+<div class="para logical">
+<div class="para">Misalkan <span class="process-math">\(A^{-1}\)</span> ada. Diberikan sembarang vektor kolom <span class="process-math">\(\boldb\text{,}\)</span> kita memiliki</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/cor_solving_invertible.html">
+\begin{align*}
+A\boldx=\boldb \amp \iff \boldx=A^{-1}\boldb \amp (\knowl{./knowl/xref/cor_solving_invertible.html}{\text{Corollary 2.3.4}})\text{,}
+\end{align*}
+</div>
+<div class="para">yang menunjukkan bahwa <span class="process-math">\(\boldx=A^{-1}\boldb\)</span> adalah solusi tunggal untuk <span class="process-math">\(A\boldx=\boldb\text{.}\)</span>
+</div>
+</div></article><article class="case"><h5 class="heading">
+<span class="process-math">\((2)\implies (3)\)</span>.</h5>
+<div class="para">Jelas, jika <span class="process-math">\(A\boldx=\boldb\)</span> memiliki solusi tunggal untuk <em class="emphasis">sembarang</em> pilihan <span class="process-math">\(\boldb\text{,}\)</span> maka ia memiliki solusi tunggal untuk pilihan <em class="emphasis">tertentu</em> <span class="process-math">\(\boldb=\boldzero\text{.}\)</span> Karena <span class="process-math">\(\boldx=\boldzero_{n\times 1}\)</span> jelas merupakan solusi untuk persamaan tersebut, ia harus menjadi satu-satunya solusi.</div></article><article class="case"><h5 class="heading">
+<span class="process-math">\((3)\implies (4)\)</span>.</h5>
+<div class="para">Reduksi baris <span class="process-math">\(A\)</span> menjadi matriks <span class="process-math">\(U\)</span> dalam bentuk eselon baris <em class="emphasis">tereduksi</em> menggunakan eliminasi Gauss-Jordan. (Lihat <code class="code-inline tex2jax_ignore">[cross-reference to target(s) "th_matrixforms" missing or not unique]</code>.) Karena himpunan solusi untuk <span class="process-math">\(A\boldx=\boldzero\)</span> identik dengan himpunan solusi untuk <span class="process-math">\(U\boldx=\boldzero\)</span> (terapkan <code class="code-inline tex2jax_ignore">[cross-reference to target(s) "s_systems_th_rowops" missing or not unique]</code> pada sistem linear berkorespondensinya), kita melihat bahwa <span class="process-math">\(\boldzero\)</span> adalah satu-satunya solusi untuk <span class="process-math">\(U\boldx=\boldzero\text{.}\)</span> <code class="code-inline tex2jax_ignore">[cross-reference to target(s) "proc_solveSystem" missing or not unique]</code> sekarang mengimplikasikan <span class="process-math">\(U\)</span> memiliki leading one di setiap kolom. Karena <span class="process-math">\(U\)</span> adalah <span class="process-math">\(n\times n\)</span> dan dalam bentuk eselon baris <em class="emphasis">tereduksi</em>, mengikuti bahwa <span class="process-math">\(U\)</span> harus menjadi matriks identitas. (Yakinkan diri Anda tentang ini.) Dengan demikian <span class="process-math">\(A\)</span> ekuivalen baris dengan <span class="process-math">\(U=I\text{,}\)</span> matriks identitas.</div></article><article class="case"><h5 class="heading">
+<span class="process-math">\((4)\implies (5)\)</span>.</h5>
+<div class="para logical">
+<div class="para">Jika <span class="process-math">\(A\)</span> ekuivalen baris dengan <span class="process-math">\(I\text{,}\)</span> maka menurut diskusi kita setelah <a href="s_invertibility_theorem.html#eq_GE_via_elem_mat" class="xref" data-knowl="./knowl/xref/eq_GE_via_elem_mat.html" data-reveal-label="Reveal" data-close-label="Close" title="Equation 2.4.3">(2.4.3)</a>, kita memiliki <span class="process-math">\(I=E_rE_{r-1}\cdots E_1A\)</span> untuk sembarang koleksi matriks elementer <span class="process-math">\(E_i\text{.}\)</span> Karena matriks elementer invertibel kita dapat mengalikan kedua sisi persamaan ini dengan</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/eq_GE_via_elem_mat.html ./knowl/xref/th_inverse_elem.html">
+\begin{equation*}
+(E_rE_{r-1}\cdots E_1)^{-1}=E_1^{-1}E_{2}^{-1}\cdots E_r^{-1}
+\end{equation*}
+</div>
+<div class="para">untuk menyimpulkan</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/eq_GE_via_elem_mat.html ./knowl/xref/th_inverse_elem.html">
+\begin{equation*}
+A=E_1^{-1}E_{2}^{-1}\cdots E_r^{-1}\text{.}
+\end{equation*}
+</div>
+<div class="para">Karena invers matriks elementer adalah elementer (<a href="s_invertibility_theorem.html#th_inverse_elem" class="xref" data-knowl="./knowl/xref/th_inverse_elem.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 2.4.3: Invers Matriks Elementer">Theorem 2.4.3</a>), kita menyimpulkan bahwa <span class="process-math">\(A\)</span> adalah produk dari matriks elementer.</div>
+</div></article><article class="case"><h5 class="heading">
+<span class="process-math">\((5)\implies (1)\)</span>.</h5>
+<div class="para">Jika <span class="process-math">\(A\)</span> adalah produk dari matriks elementer, maka ia adalah produk dari matriks invertibel. Karena produk matriks invertibel adalah invertibel, kita menyimpulkan bahwa <span class="process-math">\(A\)</span> invertibel.</div></article></article></details><span class="incontext"><a class="internal" href="s_invertibility_theorem.html#th_invertibility">in-context</a></span>
+</body>
+</html>

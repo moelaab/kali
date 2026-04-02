@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<!--******************************************-->
+<!--*  Authored with PreTeXt                 *-->
+<!--*  pretextbook.org                       *-->
+<!--*  Theme: default-modern                 *-->
+<!--*  Palette: blue-green                   *-->
+<!--******************************************-->
+
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<script>// Make *any* div with class 'sagecell-sage' an executable Sage cell
+// Their results will be linked, only within language type
+sagecell.makeSagecell({
+  "inputLocation": "div.sagecell-sage",
+  "linked": true,
+  "linkKey": "linked-sage",
+  "autoeval": false,
+  "languages": [
+    "sage"
+  ],
+  "evalButtonText": "Evaluate (Sage)"
+});
+</script>
+</head>
+<body class="ignore-math">
+<article class="computation computation-like"><h5 class="heading">
+<span class="type">Computation</span><span class="space"> </span><span class="codenumber">1.2.11</span><span class="period">.</span><span class="space"> </span><span class="title">Matriks Augmentasi.</span>
+</h5>
+<div class="para">Sage memiliki metode matriks, <code class="code-inline tex2jax_ignore">.augment()</code>, yang akan menggabungkan dua matriks, berdampingan asalkan keduanya memiliki jumlah baris yang sama. Metode yang sama akan memungkinkan Anda untuk mengaugmentasi matriks dengan vektor kolom, seperti yang dijelaskan dalam <a href="s_systems.html#definition-AM" class="xref" data-knowl="./knowl/xref/definition-AM.html" data-reveal-label="Reveal" data-close-label="Close" title="Definition 1.2.9: Matriks Augmentasi">Definition 1.2.9</a>, asalkan jumlah entri dalam vektor sesuai dengan jumlah baris untuk matriks. Di sini kita mengulang konstruksi dalam <a href="s_systems.html#example-AMAA" class="xref" data-knowl="./knowl/xref/example-AMAA.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.2.10: Matriks augmentasi">Example 1.2.10</a>. Kita sekarang akan memformat matriks kita sebagai input di beberapa baris, suatu praktik yang dapat Anda gunakan dalam lembar kerja Anda sendiri, atau tidak.</div>
+<div id="sagecell-AM-1" class="ptx-sagecell sagecell-sage"><script type="text/x-sage">A = matrix(QQ, 3, 3, [[1, -1, 2],
+                      [2,  1, 1],
+                      [1,  1, 0]])
+b = vector(QQ, [1, 8, 5])
+M = A.augment(b)
+M
+</script></div>
+<div class="para">Perhatikan bahwa metode matriks <code class="code-inline tex2jax_ignore">.augment()</code> membutuhkan beberapa input, dalam kasus di atas, vektor <code class="code-inline tex2jax_ignore">b</code>. Ini akan menjelaskan perlunya tanda kurung pada akhir perintah “titik”, bahkan jika perintah tertentu tidak mengharapkan input.</div>
+<div class="para">Beberapa metode memungkinkan input opsional, biasanya menggunakan kata kunci. Matriks dapat melacak subdivisi, membuat pemisah antara baris dan/atau kolom. Saat mengaugmentasi, Anda dapat meminta subdivisi untuk disertakan. Evaluasi sel komputasi di atas jika Anda belum melakukannya, sehingga <code class="code-inline tex2jax_ignore">A</code> dan <code class="code-inline tex2jax_ignore">b</code> terdefinisi, dan kemudian evaluasi:</div>
+<div id="sagecell-AM-2" class="ptx-sagecell sagecell-sage"><script type="text/x-sage">M = A.augment(b, subdivide=True)
+M
+</script></div>
+<div class="para">Sebagai demonstrasi parsial manipulasi subdivisi matriks, kita dapat mengatur ulang subdivisi dari <code class="code-inline tex2jax_ignore">M</code> dengan metode <code class="code-inline tex2jax_ignore">.subdivide()</code>. Kita memberikan daftar baris untuk disubdivisi <em class="emphasis">sebelum</em>, kemudian daftar kolom untuk disubdivisi <em class="emphasis">sebelum</em>, di mana kita ingat bahwa penghitungan dimulai dari nol.</div>
+<div id="sagecell-AM-3" class="ptx-sagecell sagecell-sage"><script type="text/x-sage">M.subdivide([1,2],[1])
+M
+</script></div></article><span class="incontext"><a class="internal" href="s_systems.html#sage-AM">in-context</a></span>
+</body>
+</html>

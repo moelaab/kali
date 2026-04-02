@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<!--******************************************-->
+<!--*  Authored with PreTeXt                 *-->
+<!--*  pretextbook.org                       *-->
+<!--*  Theme: default-modern                 *-->
+<!--*  Palette: blue-green                   *-->
+<!--******************************************-->
+
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="theorem theorem-like"><h4 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">2.4.10</span><span class="period">.</span><span class="space"> </span><span class="title">Algoritma Invers.</span>
+</h4>
+<div class="para">Misalkan <span class="process-math">\(A\)</span> adalah matriks <span class="process-math">\(n\times n\text{.}\)</span> Untuk menguji invertibilitas <span class="process-math">\(A\)</span> lanjutkan sebagai berikut.</div> <dl class="description-list">
+<dt>Langkah 1</dt>
+<dd>
+<div class="para">Bangun matriks augmented <span class="process-math">\(n\times 2n\)</span> <span class="process-math">\(\begin{amatrix}[c|c]A\amp I_n\end{amatrix}\)</span> dan gunakan eliminasi Gaussian untuk mereduksi baris menjadi bentuk <span class="process-math">\(\begin{amatrix}[c|c]U\amp B\end{amatrix} \text{,}\)</span> dimana <span class="process-math">\(U\)</span> dalam bentuk eselon baris.</div>
+<div class="para">Matriks <span class="process-math">\(A\)</span> invertibel jika dan hanya jika <span class="process-math">\(U\)</span> memiliki <span class="process-math">\(n\)</span> leading ones.</div>
+</dd>
+<dt>Langkah 2</dt>
+<dd><div class="para">Jika <span class="process-math">\(U\)</span> memiliki <span class="process-math">\(n\)</span> leading ones, reduksi baris lebih lanjut menjadi matriks berbentuk <span class="process-math">\(\begin{amatrix}[c|c] I_n\amp C\end{amatrix}\text{.}\)</span> Maka <span class="process-math">\(A^{-1}=C\text{.}\)</span>
+</div></dd>
+</dl></article><details class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4></summary><article class="hiddenproof knowl__content"><div class="para logical">
+<div class="para">Dari pembuktian <a href="s_invertibility_theorem.html#th_invertibility" class="xref" data-knowl="./knowl/xref/th_invertibility.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 2.4.5: Teorema Invertibilitas">Theorem 2.4.5</a> kita tahu <span class="process-math">\(A\)</span> invertibel jika dan hanya jika <span class="process-math">\(U\)</span> memiliki <span class="process-math">\(n\)</span> leading ones. Pertanyaannya tetap mengapa mereduksi matriks augmented <span class="process-math">\(\begin{amatrix}[c|c]A\amp I\end{amatrix}\)</span> menjadi <span class="process-math">\(\begin{amatrix}[c|c]I\amp C\end{amatrix}\)</span> memberitahu kita bahwa <span class="process-math">\(A^{-1}=C\text{.}\)</span> Misalkan <span class="process-math">\(E_1, E_2, \dots, E_r\)</span> adalah matriks elementer yang merepresentasikan operasi baris yang terlibat dalam proses ini. Maka kita memiliki</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/th_invertibility.html">
+\begin{equation*}
+E_rE_{r-1}\cdots E_1A=I_n\text{.}
+\end{equation*}
+</div>
+<div class="para">Setelah sedikit aljabar, kita melihat bahwa</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/th_invertibility.html">
+\begin{equation*}
+A^{-1}=E_rE_{r-1}\cdots E_1\text{.}
+\end{equation*}
+</div>
+<div class="para">Karena <span class="process-math">\(C\)</span> adalah hasil dari menerapkan operasi baris yang sama pada <span class="process-math">\(I_n\)</span> kita memiliki</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/th_invertibility.html">
+\begin{equation*}
+C=E_rE_{r-1}\cdots E_1I=E_rE_{r-1}\cdots E_1=A^{-1}\text{,}
+\end{equation*}
+</div>
+<div class="para">sebagaimana diklaim.</div>
+</div></article></details><span class="incontext"><a class="internal" href="s_invertibility_theorem.html#th_invertibility_algorithm">in-context</a></span>
+</body>
+</html>
