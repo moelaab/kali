@@ -1240,7 +1240,7 @@ var ptx_lunr_docs = [
   "type": "Section",
   "number": "2.5",
   "title": "Determinan",
-  "body": " Determinan    Determinan adalah sebuah nilai skalar (bilangan real) yang dikaitkan dengan setiap matriks persegi dan . Definisi determinan yang diberikan di bawah ini jauh dari intuitif dan secara khusus, kita akan melihat bahwa , oleh karena itu penting untuk menyelidiki invertibilitas.    Definisi Determinan  Definisi determinan kita bersifat rekursif ; diberikan sebuah matriks  determinannya didefinisikan dalam bentuk determinan dari submatriks tertentu berdimensi . Ini memerlukan beberapa notasi untuk membantu diskusi kita.   Notasi Submatriks  submatriks    submatriks dari    Misalkan adalah matriks dengan . Diberikan , submatriks dari yang diperoleh dengan menghapus baris ke- dan kolom ke- dari dilambangkan .      Jangan menyamakan notasi submatriks dengan notasi entri matriks . Hal yang perlu diperhatikan bahwa submatriks dari diperoleh dengan menghapus baris ke- dan kolom ke- ;     Determinan  determinan    determinan dari    Misalkan . Determinan didefinisikan sebagai berikut:   Kasus dasar:  Ketika kita memiliki dan kita mendefinisikan .    Kasus rekursif:  Ketika kita mendefinisikan .        Kasus Kecil   Mari kita lihat rumus determinan untuk kasus . Anda mungkin ingat rumus untuk matriks dari ; kita akan membuat koneksi lebih eksplisit dalam .  Diberikan , kita memiliki . Rumus untuk kasus cukup sederhana untuk berfungsi sebagai kasus dasar kedua , memungkinkan kita mengakhiri proses rekursif menghitung matriks umum sekali kita sampai pada ekspresi yang melibatkan matriks .  Diberikan , kita memiliki .    Sifat rekursif dari definisi determinan membuat argumen induksi sangat berguna ketika membuktikan sifat-sifat determinan, sebagaimana diilustrasikan oleh teorema berikutnya.   Determinan Matriks Segitiga   Misalkan segitiga (atas, bawah, atau diagonal). Maka . Dengan kata lain, determinan matriks segitiga adalah produk dari entri diagonalnya.    Kita hanya memberikan pembuktian untuk matriks segitiga bawah; pembuktian dalam kasus segitiga atas hampir identik.  Untuk sembarang misalkan menyatakan proposisi: Determinan dari sembarang matriks segitiga bawah adalah produk dari entri diagonalnya . Kita membuktikan dengan induksi bahwa benar untuk semua .   Langkah dasar: tunjukkan benar  Dalam kasus ini , dan memang merupakan produk dari entri diagonal .    Langkah induksi: tunjukkan untuk semua  Misalkan adalah matriks segitiga bawah. Maka untuk semua , dan dengan demikian determinan dari diberikan oleh . Klaim: segitiga bawah. Memang, pertama perhatikan bahwa kita memiliki untuk semua ; dengan menghapus baris pertama dan kolom pertama kita secara efektif menaikkan setiap indeks sebesar satu. Karena segitiga bawah kita memiliki untuk semua , dan dengan demikian juga untuk semua , membuktikan klaim.  Terakhir, dengan mengasumsikan benar (hipotesis induksi) kita memiliki , sebagaimana diinginkan.      Determinan Matriks Identitas   Misalkan adalah matriks identitas . Maka .    Ini mengikuti langsung dari karena entri diagonal dari semuanya satu.      Ekspansi Sepanjang Baris dan Kolom   Secara moral, kita seharusnya memberikan beberapa contoh determinan berdimensi lebih tinggi, tetapi pertama-tama kita memperkenalkan beberapa teori yang memberi kita keleluasaan lebih dalam komputasi kita.    Minor dan Ekspansi Sepanjang Baris\/Kolom  minor matriks  ekspansi sepanjang baris\/kolom    minor ke- dari sebuah matriks    Diberikan matriks  , untuk sembarang pasangan  minor ke- dari didefinisikan sebagai .  Untuk sembarang ekspresi disebut ekspansi sepanjang baris ke- dari .  Untuk sembarang , ekspresi disebut ekspansi sepanjang kolom ke- dari .     Ekspansi Sepanjang Baris   Misalkan . Untuk sembarang kita memiliki . Dengan kata lain, kita dapat menghitung dengan mengekspansi sepanjang sembarang baris dari .    Pembuktian dilakukan dengan induksi pada ukuran matriks.   Langkah dasar:  Untuk tidak ada yang perlu dibuktikan. Diberikan mengekspansi sepanjang sembarang baris menghasilkan , sebagaimana dapat diverifikasi dengan mudah.    Langkah induksi  Asumsikan klaim benar untuk sembarang matriks . Diberikan kita memiliki . Mengekspansi sepanjang baris ke- dari untuk sembarang , di sisi lain, kita mendapatkan . Untuk menunjukkan kedua ekspresi ini sama kita menggunakan hipotesis induksi untuk menghitung setiap dengan mengekspansi sepanjang baris ke- -nya: . Matriks adalah hasil dari pertama-tama menghapus baris 1 dan kolom dari , dan kemudian menghapus baris dan kolom dari matriks yang dihasilkan. Untuk menangani submatriks iteratif seperti ini, kita membuat beberapa observasi sederhana yang menghubungkan baris dan kolom dari dan dengan yang dari .   Baris ke- dari berkorespondensi dengan baris ke- dari , dan baris pertama dari berkorespondensi dengan baris pertama dari .    Jika , maka kolom ke- dari berkorespondensi dengan kolom ke- dari ; jika , maka kolom ke- dari berkorespondensi dengan kolom ke- dari .    Jika , maka kolom ke- dari berkorespondensi dengan kolom ke- dari ; jika , maka kolom ke- dari berkorespondensi dengan kolom ke- dari .   Dari observasi ini kita menurunkan tabel rumus berikut: . Kita sekarang mulai menguraikan : . Ini melengkapi langkah induksi, dan dengan demikian pembuktian selesai.     Secara mengejutkan, ternyata kita dapat menghitung determinan sebuah matriks dengan mengekspansi sepanjang sembarang kolom ( ). Ini adalah konsekuensi dari teorema berikut, yang berguna dengan sendirinya. Pembuktian di bawah ini diambil dari A First Course in Linear Algebra karya Robert Beezer . (Lihat Teorema DT .) Ini menggunakan induksi dan trik indah yang dimulai dari observasi bahwa untuk sembarang .   Determinan dan Transposisi   Misalkan adalah matriks . Maka .    Pembuktian dilakukan dengan induksi pada . Kasus dasar ( ) trivial karena untuk sembarang matriks  .  Untuk induksi kita mengasumsikan bahwa untuk semua kita memiliki untuk sembarang matriks . Misalkan adalah matriks . Kita memiliki . Ini melengkapi pembuktian dengan induksi. (Perhatikan bagaimana dalam kesamaan kedua dalam rantai di atas kita menghitung dalam suku ke- dari dengan mengekspansi sepanjang baris ke- dari . Observasi serupa berlaku untuk kesamaan terakhir.)     Ekspansi Sepanjang Kolom   Misalkan . Untuk sembarang kita memiliki . Dengan kata lain, kita dapat menghitung dengan mengekspansi sepanjang sembarang baris dari .    Untuk sembarang , kita memiliki .      Hitung untuk .    Pertama kita menghitung dengan mengekspansi sepanjang baris kedua. Satu-satunya suku tak-nol dari ekspansi ini adalah yang terakhir, menghasilkan . Kita memiliki . Untuk menghitung determinannya kita mengekspansi sepanjang kolom ketiganya: . Kita menyimpulkan bahwa .     Matriks Tanda   Ketika mengekspansi sepanjang baris atau kolom, mudah tersandung oleh tanda di depan koefisien ke- . Sebuah matriks tanda adalah semacam alat mnemonik untuk membantu Anda dalam hal ini. Ini mudah dihasilkan dengan mengamati bahwa tanda di depan entri ke- selalu (karena ), dan bahwa sembarang langkah horizontal atau vertikal dalam matriks disertai dengan perubahan tanda. Sebagai contoh, untuk kita memiliki matriks tanda berikut: .    Kebebasan menghitung determinan dengan mengekspansi sepanjang sembarang baris atau kolom memunculkan sifat intuitif berikut.   Baris\/Kolom Nol, Penukaran Baris\/Kolom, Baris\/Kolom Identik   Misalkan adalah matriks .   Jika memiliki baris nol atau kolom nol, maka     Asumsikan . Misalkan adalah matriks yang diperoleh dengan menukar dua baris (atau dua kolom) dari . Maka .    Asumsikan . Jika memiliki dua baris identik atau dua kolom identik, maka .       Pernyataan pertama jelas karena menurut dan kita dapat menghitung determinan dengan mengekspansi sepanjang baris nol atau kolom nol yang dimaksud.  Pernyataan ketiga mengikuti dari yang kedua. Memang, jika memiliki dua baris atau kolom identik, maka matriks yang diperoleh dari dengan menukar baris (atau kolom) yang dimaksud adalah itu sendiri. Dengan demikian menurut pernyataan kedua, dan kita menyimpulkan bahwa .  Tinggal hanya menunjukkan pernyataan kedua. Kita hanya membuktikan pernyataan mengenai penukaran baris; pernyataan yang sesuai tentang kolom mengikuti dari . Pembuktian dilakukan dengan induksi.   Langkah dasar:  Misalkan . Maka , dan .    Langkah induksi  Kita mengasumsikan dengan induksi bahwa hasil berlaku untuk sembarang matriks , , dan menunjukkan hal yang sama benar untuk sembarang matriks .  Misalkan adalah matriks , dan misalkan adalah hasil dari menukar baris ke- dan ke- dari . Kita menghitung determinan dari dan dengan mengekspansi sepanjang baris ke- , dimana dan . Ini dimungkinkan karena .  Bergerak sepanjang baris ke- , perhatikan bahwa setiap submatriks adalah hasil dari menukar dua baris dari yang semula berkorespondensi dengan baris ke- dan ke- dari . Karena submatriks ini berdimensi , kita memiliki menurut induksi. Terakhir, karena baris ke- dari dan sama kita memiliki .     Sebagai konsekuensi lebih lanjut dari dan , kita dapat menurunkan rumus matriks adjoin .   Matriks Adjoin  matriks adjoin    adjoin dari matriks persegi    Misalkan adalah matriks . Matriks adjoin dari , dilambangkan , adalah matriks yang entri ke- -nya didefinisikan sebagai berikut: .      Berhati-hatilah dengan pembalikan urutan dalam definisi ini. Entri ke- dari sama dengan plus atau minus minor ke- dari . Mari kita lihat ini dalam aksi untuk beberapa matriks kecil.  Untuk kita memiliki .  Untuk kita memiliki .     Rumus Matriks Adjoin   Diberikan matriks  , kita memiliki . Sebagai konsekuensi, jika , maka invertibel dan .    Pertama perhatikan bahwa pernyataan kedua mengenai invertibilitas mengikuti langsung dari , karena dalam kasus ini menetapkan kita memiliki .  Dengan demikian cukup membuktikan . Untuk melakukannya, kita harus menunjukkan bahwa .   Kasus:  Dalam kasus ini kita memiliki . Argumen serupa menunjukkan bahwa , meskipun dalam kasus ini kita menggunakan ekspansi sepanjang kolom.    Kasus:  Ketika kita memiliki , dimana adalah matriks yang diperoleh dengan mengganti baris ke- dari dengan salinan baris ke- -nya. Karena memiliki dua baris identik mengimplikasikan , sebagaimana diinginkan. Sekali lagi, argumen serupa menggunakan ekspansi sepanjang kolom menunjukkan bahwa .       Gunakan rumus matriks adjoin untuk menghitung , dimana .    Pertama hitung dengan mengekspansi sepanjang baris ketiga: . Selanjutnya, hitung . Maka kita memiliki .      Sebelum Anda terlalu bersemangat tentang rumus matriks adjoin, Anda harus tahu bahwa seiring bertambah, prosedur ini menjadi jauh lebih mahal dalam terms jumlah operasi aritmetika yang terlibat dibandingkan algoritma invers kita berdasarkan eliminasi Gauss-Jordan. Anda mendapatkan gambaran tentang ini sudah dari contoh sebelumnya. Secara umum, algoritma invers Gauss-Jordan adalah cara yang tepat.      Operasi Baris dan Determinan  Misalkan matriks persegi dapat direduksi baris menjadi melalui urutan operasi baris. Secara umum kita tidak memiliki , tetapi kita dapat menghitung dari dengan melacak operasi mana yang digunakan.   Operasi Baris dan Determinan   Misalkan adalah matriks . Menggunakan notasi dari kita memiliki:              .   Secara khusus, mengambil , kita memiliki .    Pernyataan pertama mengikuti dengan mudah dengan menghitung dengan mengekspansi sepanjang baris ke- . Pernyataan kedua sebenarnya adalah penyataan ulang dari pernyataan kedua . Tinggal membuktikan pernyataan ketiga.  Misalkan , dan tetapkan . Maka identik dengan dengan pengecualian baris ke- , yang entri ke- -nya adalah . Dengan demikian , dimana adalah matriks yang diperoleh dengan mengganti baris ke- dari dengan baris yang identik dengan baris ke- -nya. Menurut kita menyimpulkan , dan dengan demikian , sebagaimana diinginkan.      Dalam bahasa operasi baris, diterjemahkan sebagai berikut:   Menskalakan baris matriks dengan memiliki efek menskalakan determinan dengan .    Menukar dua baris matriks mengubah tanda determinan.    Melakukan operasi penjumlahan baris pada matriks tidak memiliki efek pada determinan.        Operasi Kolom dan Determinan   Sebagaimana ditunjukkan dalam determinan berperilaku dengan cara serupa terhadap operasi kolom elementer : , menskalakan kolom dengan konstanta tak-nol menskalakan determinan dengan , menukar kolom mengalikan determinan dengan , menambahkan kelipatan satu kolom ke kolom lain membiarkan determinan tidak berubah.     Determinan dan Produk Matriks Elementer   Misalkan adalah matriks , dan misalkan kita memiliki untuk sembarang koleksi matriks elementer . Maka .    Ini adalah pembuktian mudah dengan induksi pada jumlah matriks elementer yang terlibat, kasus dasar ( ) yang dibahas oleh .     memiliki aplikasi komputasional dan teoretis.  Di sisi komputasional, ini menyarankan metode alternatif menghitung : pertama reduksi baris menjadi matriks lebih sederhana , pastikan untuk melacak operasi yang Anda gunakan; susun persamaan seperti dalam yang merepresentasikan reduksi baris; kemudian selesaikan persamaan yang bersesuaian untuk dalam terms dan .   Determinan melalui Reduksi Baris   Misalkan matriks dapat direduksi baris menjadi dengan melakukan urutan operasi baris berikut:   Pertama tukar baris kedua dan ketiga.    Kemudian skalakan baris pertama dengan     Kemudian ganti baris kedua dengan baris kedua ditambah baris pertama.   Hitung .    Dalam terms matriks elementer kita memiliki , dan dengan demikian . Kita menyimpulkan bahwa .    Di sisi teoretis, mengimplikasikan baik maupun .   Determinan dan Invertibilitas   Misalkan adalah matriks . Maka invertibel jika dan hanya jika .    Implikasi dibuktikan dalam .  Untuk arah sebaliknya, asumsikan invertibel. Maka mengimplikasikan adalah produk dari matriks elementer: . Maka mengimplikasikan . Karena untuk semua ( ), kita menyimpulkan .     Determinan Bersifat Multiplikatif   Misalkan dan adalah matriks . Maka .    Kita pertimbangkan dua kasus berdasarkan invertibilitas dari dan\/atau .   atau tidak invertibel  Dalam kasus ini tidak invertibel ( ), dan dengan demikian menurut . Dengan penalaran yang sama kita harus memiliki atau . Dengan demikian dalam kasus ini.    dan keduanya invertibel  Dalam kasus ini kita dapat menulis untuk sembarang matriks elementer dan ( ). Maka .     Kita mengakhiri bagian ini (dan bab) dengan menambahkan hasil dari dan salah satu latihan tugas rumah kita ke teorema invertibilitas kita.   Teorema Invertibilitas (Edisi Diperluas)   Misalkan adalah matriks . Pernyataan-pernyataan berikut ekuivalen.     invertibel.    Persamaan matriks memiliki solusi tunggal untuk sembarang vektor kolom .    Persamaan matriks memiliki solusi untuk sembarang vektor kolom .    Persamaan matriks memiliki solusi tunggal : yaitu, .     ekuivalen baris dengan , matriks identitas .     adalah produk dari matriks elementer.     .         Latihan WeBWork      Use the appropriate property of determinants to find  Do not evaluate the determinants. Answer:                  Consider the following Gauss elimination:   What is the determinant of ?                   Find such that the following matrix is singular.                   If and are matrices, , , then   ,   ,   ,   ,   .                                   Latihan Tertulis    Misalkan    Hitung dengan mengekspansi sepanjang baris kedua.    Hitung dengan mengekspansi sepanjang kolom ketiga.        Ekspansi Baris\/Kolom   Hitung determinan dari matriks yang diberikan. Tunjukkan baris atau kolom mana yang Anda ekspansikan.                          Determinan dan Invertibilitas   Untuk setiap matriks, temukan semua nilai (jika ada) yang membuat matriks tersebut invertibel. Gunakan determinan.                                 Rumus Matriks Adjoin   Gunakan rumus matriks adjoin untuk menghitung invers dari setiap matriks.                    Misalkan . Tunjukkan tanpa menghitung determinan secara langsung. Dengan kata lain, gunakan teknik reduksi baris atau .      Misalkan adalah matriks , dan misalkan adalah skalar. Nyatakan dan buktikan rumus yang menghubungkan dengan .      Asumsikan adalah matriks yang memenuhi . Hitung determinan dari matriks yang diberikan.                            Misalkan dan adalah matriks , dan misalkan invertibel. Buktikan pernyataan berikut:     .     .        Asumsikan matriks persegi memenuhi . Tunjukkan bahwa .      Buktikan bahwa matriks persegi invertibel jika dan hanya jika invertibel.     Matriks Adjoin   Latihan-latihan berikut mengeksplorasi hubungan antara matriks persegi dan adjoinnya .     Berikan contoh eksplisit matriks persegi yang memenuhi dan .  Dengan kata lain, tunjukkan bahwa dimungkinkan bagi matriks tak-nol untuk memiliki matriks adjoin nol.      Misalkan adalah matriks . Buktikan: .      Buktikan: invertibel jika dan hanya jika invertibel.      Asumsikan invertibel. Buktikan: .       Dalam pembuktian pernyataan (2) dari kita hanya menunjukkan bahwa jika adalah matriks persegi dengan dua baris identik, maka . Dengan mengasumsikan ini, tunjukkan bahwa hal yang sama berlaku jika memiliki dua kolom identik.      Nyatakan dan buktikan analogi dari yang mendeskripsikan bagaimana operasi kolom yang bersesuaian (yaitu, skalakan kolom dengan , tukar dua kolom, penjumlahan kolom) memengaruhi determinan sebuah matriks. (Lihat ).    Nyatakan setiap jenis operasi kolom ini sebagai perkalian di kanan dengan matriks elementer.      Misalkan adalah matriks dengan sepanjang diagonal dan di tempat lainnya: yaitu, . Nyatakan dan buktikan rumus untuk . (Rumus Anda akan melibatkan , , dan .)  Lihat kasus dan terlebih dahulu. Untuk membuktikan rumus dalam kasus umum Anda mungkin ingin menggunakan reduksi baris dan .      Diberikan skalar matriks Vandermonde didefinisikan sebagai . Dengan kata lain, kita memiliki Buktikan: .      "
+  "body": " Determinan    Determinan adalah sebuah nilai skalar (bilangan real) yang dikaitkan dengan setiap matriks persegi dan . Definisi determinan yang diberikan di bawah ini jauh dari intuitif dan secara khusus, kita akan melihat bahwa , oleh karena itu penting untuk menyelidiki invertibilitas.    Definisi Determinan  Definisi determinan kita bersifat rekursif ; diberikan sebuah matriks  determinannya didefinisikan dalam bentuk determinan dari submatriks tertentu berdimensi . Ini memerlukan beberapa notasi untuk membantu diskusi kita.   Notasi Submatriks  submatriks    submatriks dari    Misalkan adalah matriks dengan . Diberikan , submatriks dari yang diperoleh dengan menghapus baris ke- dan kolom ke- dari dilambangkan .      Jangan menyamakan notasi submatriks dengan notasi entri matriks . Hal yang perlu diperhatikan bahwa submatriks dari diperoleh dengan menghapus baris ke- dan kolom ke- ;     Determinan  determinan    determinan dari    Misalkan . Determinan didefinisikan sebagai berikut:   Kasus dasar:  Ketika kita memiliki dan kita mendefinisikan .    Kasus rekursif:  Ketika kita mendefinisikan .        Kasus Kecil   Mari kita lihat rumus determinan untuk kasus . Anda mungkin ingat rumus untuk matriks dari ; kita akan membuat koneksi lebih eksplisit dalam .  Diberikan , kita memiliki . Rumus untuk kasus cukup sederhana untuk berfungsi sebagai kasus dasar kedua , memungkinkan kita mengakhiri proses rekursif menghitung matriks umum sekali kita sampai pada ekspresi yang melibatkan matriks .  Diberikan , kita memiliki .    Sifat rekursif dari definisi determinan membuat argumen induksi sangat berguna ketika membuktikan sifat-sifat determinan, sebagaimana diilustrasikan oleh teorema berikutnya.    Matriks Segitiga Atas ( Upper Triangular Matrix )  Matriks segitiga atas adalah matriks persegi di mana semua elemen di bawah diagonal utama bernilai nol.  Secara matematis, matriks disebut segitiga atas jika:   Contoh:     Matriks Segitiga Bawah ( Lower Triangular Matrix )  Matriks segitiga bawah adalah matriks persegi di mana semua elemen di atas diagonal utama bernilai nol.  Secara matematis, matriks disebut segitiga bawah jika:   Contoh:    Perbedaan Utama   Segitiga Atas: Nol di bawah diagonal ( untuk )  Segitiga Bawah: Nol di atas diagonal ( untuk )       Determinan Matriks Segitiga   Misalkan segitiga (atas, bawah, atau diagonal). Maka . Dengan kata lain, determinan matriks segitiga adalah produk dari entri diagonalnya.    Kita hanya memberikan pembuktian untuk matriks segitiga bawah; pembuktian dalam kasus segitiga atas hampir identik.  Untuk sembarang misalkan menyatakan proposisi: Determinan dari sembarang matriks segitiga bawah adalah produk dari entri diagonalnya . Kita membuktikan dengan induksi bahwa benar untuk semua .   Langkah dasar: tunjukkan benar  Dalam kasus ini , dan memang merupakan produk dari entri diagonal .    Langkah induksi: tunjukkan untuk semua  Misalkan adalah matriks segitiga bawah. Maka untuk semua , dan dengan demikian determinan dari diberikan oleh . Klaim: segitiga bawah. Memang, pertama perhatikan bahwa kita memiliki untuk semua ; dengan menghapus baris pertama dan kolom pertama kita secara efektif menaikkan setiap indeks sebesar satu. Karena segitiga bawah kita memiliki untuk semua , dan dengan demikian juga untuk semua , membuktikan klaim.  Terakhir, dengan mengasumsikan benar (hipotesis induksi) kita memiliki , sebagaimana diinginkan.      Determinan Matriks Identitas   Misalkan adalah matriks identitas . Maka .    Ini mengikuti langsung dari karena entri diagonal dari semuanya satu.      Ekspansi Sepanjang Baris dan Kolom   Kita akan memberikan beberapa contoh determinan berdimensi lebih tinggi, tetapi sebelumnya kita memperkenalkan beberapa teori yang memberikan pemahaman lebih tentang komputasi matrik determinan    Minor dan Ekspansi Baris\/Kolom  minor matriks  ekspansi baris\/kolom    minor ke- dari sebuah matriks    Diberikan matriks  , untuk sembarang pasangan  minor ke- dari didefinisikan sebagai .  Untuk sembarang ekspresi disebut ekspansi baris ke- dari .  Untuk sembarang , ekspresi disebut ekspansi kolom ke- dari .     Ekspansi Baris   Misalkan . Untuk sembarang kita memiliki . Dengan kata lain, kita dapat menghitung dengan mengekspansi sembarang baris dari .    Pembuktian dilakukan dengan induksi pada ukuran matriks.   Langkah dasar:  Untuk tidak ada yang perlu dibuktikan. Diberikan mengekspansi sepanjang sembarang baris menghasilkan , sebagaimana dapat diverifikasi dengan mudah.    Langkah induksi  Asumsikan klaim benar untuk sembarang matriks . Diberikan kita memiliki . Mengekspansi sepanjang baris ke- dari untuk sembarang , di sisi lain, kita mendapatkan . Untuk menunjukkan kedua ekspresi ini sama kita menggunakan hipotesis induksi untuk menghitung setiap dengan mengekspansi sepanjang baris ke- -nya: . Matriks adalah hasil dari pertama-tama menghapus baris 1 dan kolom dari , dan kemudian menghapus baris dan kolom dari matriks yang dihasilkan. Untuk menangani submatriks iteratif seperti ini, kita membuat beberapa observasi sederhana yang menghubungkan baris dan kolom dari dan dengan yang dari .   Baris ke- dari berkorespondensi dengan baris ke- dari , dan baris pertama dari berkorespondensi dengan baris pertama dari .    Jika , maka kolom ke- dari berkorespondensi dengan kolom ke- dari ; jika , maka kolom ke- dari berkorespondensi dengan kolom ke- dari .    Jika , maka kolom ke- dari berkorespondensi dengan kolom ke- dari ; jika , maka kolom ke- dari berkorespondensi dengan kolom ke- dari .   Dari observasi ini kita menurunkan tabel rumus berikut: . Kita sekarang mulai menguraikan : . Ini melengkapi langkah induksi, dan dengan demikian pembuktian selesai.        Determinan dan Transposisi   Misalkan adalah matriks . Maka .    Pembuktian dilakukan dengan induksi pada . Kasus dasar ( ) trivial karena untuk sembarang matriks  .  Untuk induksi kita mengasumsikan bahwa untuk semua kita memiliki untuk sembarang matriks . Misalkan adalah matriks . Kita memiliki . Ini melengkapi pembuktian dengan induksi. (Perhatikan bagaimana dalam kesamaan kedua dalam rantai di atas kita menghitung dalam suku ke- dari dengan mengekspansi sepanjang baris ke- dari . Observasi serupa berlaku untuk kesamaan terakhir.)     Ekspansi Kolom   Misalkan . Untuk sembarang kita memiliki . Dengan kata lain, kita dapat menghitung dengan mengekspansi sembarang baris dari .    Untuk sembarang , kita memiliki .      Hitung untuk .    Pertama kita menghitung dengan mengekspansi sepanjang baris kedua. Satu-satunya suku tak-nol dari ekspansi ini adalah yang terakhir, menghasilkan . Kita memiliki . Untuk menghitung determinannya kita mengekspansi sepanjang kolom ketiganya: . Kita menyimpulkan bahwa .     Matriks Tanda   Ketika mengekspansi baris atau kolom, kita perlu menandai di depan koefisien ke- . Sebuah matriks tanda adalah membantu Anda dalam hal ini. Ini mudah dihasilkan dengan memberi tanda di depan entri ke- selalu (karena ). Sebagai contoh, untuk kita memiliki matriks tanda berikut: .     Baris\/Kolom Nol, Penukaran Baris\/Kolom, Baris\/Kolom Identik   Misalkan adalah matriks .   Jika memiliki baris nol atau kolom nol, maka     Asumsikan . Misalkan adalah matriks yang diperoleh dengan menukar dua baris (atau dua kolom) dari . Maka .    Asumsikan . Jika memiliki dua baris identik atau dua kolom identik, maka .       Pernyataan pertama jelas karena menurut dan kita dapat menghitung determinan dengan mengekspansi sepanjang baris nol atau kolom nol yang dimaksud.  Pernyataan ketiga mengikuti dari yang kedua. Memang, jika memiliki dua baris atau kolom identik, maka matriks yang diperoleh dari dengan menukar baris (atau kolom) yang dimaksud adalah itu sendiri. Dengan demikian menurut pernyataan kedua, dan kita menyimpulkan bahwa .  Tinggal hanya menunjukkan pernyataan kedua. Kita hanya membuktikan pernyataan mengenai penukaran baris; pernyataan yang sesuai tentang kolom mengikuti dari . Pembuktian dilakukan dengan induksi.   Langkah dasar:  Misalkan . Maka , dan .    Langkah induksi  Kita mengasumsikan dengan induksi bahwa hasil berlaku untuk sembarang matriks , , dan menunjukkan hal yang sama benar untuk sembarang matriks .  Misalkan adalah matriks , dan misalkan adalah hasil dari menukar baris ke- dan ke- dari . Kita menghitung determinan dari dan dengan mengekspansi sepanjang baris ke- , dimana dan . Ini dimungkinkan karena .  Bergerak sepanjang baris ke- , perhatikan bahwa setiap submatriks adalah hasil dari menukar dua baris dari yang semula berkorespondensi dengan baris ke- dan ke- dari . Karena submatriks ini berdimensi , kita memiliki menurut induksi. Terakhir, karena baris ke- dari dan sama kita memiliki .     Sebagai konsekuensi lebih lanjut dari dan , kita dapat menurunkan rumus matriks adjoin .   Matriks Adjoin  matriks adjoin    adjoin dari matriks persegi    Misalkan adalah matriks . Matriks adjoin dari , dilambangkan , adalah matriks yang entri ke- -nya didefinisikan sebagai berikut: .      Berhati-hatilah dengan pembalikan urutan dalam definisi ini. Entri ke- dari sama dengan plus atau minus minor ke- dari . Mari kita lihat ini dalam aksi untuk beberapa matriks kecil.  Untuk kita memiliki .  Untuk kita memiliki .     Rumus Matriks Adjoin   Diberikan matriks  , kita memiliki . Sebagai konsekuensi, jika , maka invertibel dan .    Pertama perhatikan bahwa pernyataan kedua mengenai invertibilitas mengikuti langsung dari , karena dalam kasus ini menetapkan kita memiliki .  Dengan demikian cukup membuktikan . Untuk melakukannya, kita harus menunjukkan bahwa .   Kasus:  Dalam kasus ini kita memiliki . Argumen serupa menunjukkan bahwa , meskipun dalam kasus ini kita menggunakan ekspansi sepanjang kolom.    Kasus:  Ketika kita memiliki , dimana adalah matriks yang diperoleh dengan mengganti baris ke- dari dengan salinan baris ke- -nya. Karena memiliki dua baris identik mengimplikasikan , sebagaimana diinginkan. Sekali lagi, argumen serupa menggunakan ekspansi sepanjang kolom menunjukkan bahwa .       Gunakan rumus matriks adjoin untuk menghitung , dimana .    Pertama hitung dengan mengekspansi sepanjang baris ketiga: . Selanjutnya, hitung . Maka kita memiliki .      Sebelum Anda terlalu bersemangat tentang rumus matriks adjoin, Anda harus tahu bahwa seiring bertambah, prosedur ini menjadi jauh lebih mahal dalam terms jumlah operasi aritmetika yang terlibat dibandingkan algoritma invers kita berdasarkan eliminasi Gauss-Jordan. Anda mendapatkan gambaran tentang ini sudah dari contoh sebelumnya. Secara umum, algoritma invers Gauss-Jordan adalah cara yang tepat.       "
 },
 {
   "id": "d_minors",
@@ -1279,11 +1279,20 @@ var ptx_lunr_docs = [
   "body": " Kasus Kecil   Mari kita lihat rumus determinan untuk kasus . Anda mungkin ingat rumus untuk matriks dari ; kita akan membuat koneksi lebih eksplisit dalam .  Diberikan , kita memiliki . Rumus untuk kasus cukup sederhana untuk berfungsi sebagai kasus dasar kedua , memungkinkan kita mengakhiri proses rekursif menghitung matriks umum sekali kita sampai pada ekspresi yang melibatkan matriks .  Diberikan , kita memiliki .   "
 },
 {
+  "id": "segitiga",
+  "level": "2",
+  "url": "s_det.html#segitiga",
+  "type": "Remark",
+  "number": "2.5.5",
+  "title": "",
+  "body": "   Matriks Segitiga Atas ( Upper Triangular Matrix )  Matriks segitiga atas adalah matriks persegi di mana semua elemen di bawah diagonal utama bernilai nol.  Secara matematis, matriks disebut segitiga atas jika:   Contoh:     Matriks Segitiga Bawah ( Lower Triangular Matrix )  Matriks segitiga bawah adalah matriks persegi di mana semua elemen di atas diagonal utama bernilai nol.  Secara matematis, matriks disebut segitiga bawah jika:   Contoh:    Perbedaan Utama   Segitiga Atas: Nol di bawah diagonal ( untuk )  Segitiga Bawah: Nol di atas diagonal ( untuk )    "
+},
+{
   "id": "th_det_triangular",
   "level": "2",
   "url": "s_det.html#th_det_triangular",
   "type": "Theorem",
-  "number": "2.5.5",
+  "number": "2.5.6",
   "title": "Determinan Matriks Segitiga.",
   "body": " Determinan Matriks Segitiga   Misalkan segitiga (atas, bawah, atau diagonal). Maka . Dengan kata lain, determinan matriks segitiga adalah produk dari entri diagonalnya.    Kita hanya memberikan pembuktian untuk matriks segitiga bawah; pembuktian dalam kasus segitiga atas hampir identik.  Untuk sembarang misalkan menyatakan proposisi: Determinan dari sembarang matriks segitiga bawah adalah produk dari entri diagonalnya . Kita membuktikan dengan induksi bahwa benar untuk semua .   Langkah dasar: tunjukkan benar  Dalam kasus ini , dan memang merupakan produk dari entri diagonal .    Langkah induksi: tunjukkan untuk semua  Misalkan adalah matriks segitiga bawah. Maka untuk semua , dan dengan demikian determinan dari diberikan oleh . Klaim: segitiga bawah. Memang, pertama perhatikan bahwa kita memiliki untuk semua ; dengan menghapus baris pertama dan kolom pertama kita secara efektif menaikkan setiap indeks sebesar satu. Karena segitiga bawah kita memiliki untuk semua , dan dengan demikian juga untuk semua , membuktikan klaim.  Terakhir, dengan mengasumsikan benar (hipotesis induksi) kita memiliki , sebagaimana diinginkan.    "
 },
@@ -1292,7 +1301,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_det.html#cor_det_identity",
   "type": "Corollary",
-  "number": "2.5.6",
+  "number": "2.5.7",
   "title": "Determinan Matriks Identitas.",
   "body": " Determinan Matriks Identitas   Misalkan adalah matriks identitas . Maka .    Ini mengikuti langsung dari karena entri diagonal dari semuanya satu.   "
 },
@@ -1301,25 +1310,25 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_det.html#d_minors_expansions",
   "type": "Definition",
-  "number": "2.5.7",
-  "title": "Minor dan Ekspansi Sepanjang Baris\/Kolom.",
-  "body": " Minor dan Ekspansi Sepanjang Baris\/Kolom  minor matriks  ekspansi sepanjang baris\/kolom    minor ke- dari sebuah matriks    Diberikan matriks  , untuk sembarang pasangan  minor ke- dari didefinisikan sebagai .  Untuk sembarang ekspresi disebut ekspansi sepanjang baris ke- dari .  Untuk sembarang , ekspresi disebut ekspansi sepanjang kolom ke- dari .   "
+  "number": "2.5.8",
+  "title": "Minor dan Ekspansi  Baris\/Kolom.",
+  "body": " Minor dan Ekspansi Baris\/Kolom  minor matriks  ekspansi baris\/kolom    minor ke- dari sebuah matriks    Diberikan matriks  , untuk sembarang pasangan  minor ke- dari didefinisikan sebagai .  Untuk sembarang ekspresi disebut ekspansi baris ke- dari .  Untuk sembarang , ekspresi disebut ekspansi kolom ke- dari .   "
 },
 {
   "id": "th_expansion_row",
   "level": "2",
   "url": "s_det.html#th_expansion_row",
   "type": "Theorem",
-  "number": "2.5.8",
-  "title": "Ekspansi Sepanjang Baris.",
-  "body": " Ekspansi Sepanjang Baris   Misalkan . Untuk sembarang kita memiliki . Dengan kata lain, kita dapat menghitung dengan mengekspansi sepanjang sembarang baris dari .    Pembuktian dilakukan dengan induksi pada ukuran matriks.   Langkah dasar:  Untuk tidak ada yang perlu dibuktikan. Diberikan mengekspansi sepanjang sembarang baris menghasilkan , sebagaimana dapat diverifikasi dengan mudah.    Langkah induksi  Asumsikan klaim benar untuk sembarang matriks . Diberikan kita memiliki . Mengekspansi sepanjang baris ke- dari untuk sembarang , di sisi lain, kita mendapatkan . Untuk menunjukkan kedua ekspresi ini sama kita menggunakan hipotesis induksi untuk menghitung setiap dengan mengekspansi sepanjang baris ke- -nya: . Matriks adalah hasil dari pertama-tama menghapus baris 1 dan kolom dari , dan kemudian menghapus baris dan kolom dari matriks yang dihasilkan. Untuk menangani submatriks iteratif seperti ini, kita membuat beberapa observasi sederhana yang menghubungkan baris dan kolom dari dan dengan yang dari .   Baris ke- dari berkorespondensi dengan baris ke- dari , dan baris pertama dari berkorespondensi dengan baris pertama dari .    Jika , maka kolom ke- dari berkorespondensi dengan kolom ke- dari ; jika , maka kolom ke- dari berkorespondensi dengan kolom ke- dari .    Jika , maka kolom ke- dari berkorespondensi dengan kolom ke- dari ; jika , maka kolom ke- dari berkorespondensi dengan kolom ke- dari .   Dari observasi ini kita menurunkan tabel rumus berikut: . Kita sekarang mulai menguraikan : . Ini melengkapi langkah induksi, dan dengan demikian pembuktian selesai.    "
+  "number": "2.5.9",
+  "title": "Ekspansi  Baris.",
+  "body": " Ekspansi Baris   Misalkan . Untuk sembarang kita memiliki . Dengan kata lain, kita dapat menghitung dengan mengekspansi sembarang baris dari .    Pembuktian dilakukan dengan induksi pada ukuran matriks.   Langkah dasar:  Untuk tidak ada yang perlu dibuktikan. Diberikan mengekspansi sepanjang sembarang baris menghasilkan , sebagaimana dapat diverifikasi dengan mudah.    Langkah induksi  Asumsikan klaim benar untuk sembarang matriks . Diberikan kita memiliki . Mengekspansi sepanjang baris ke- dari untuk sembarang , di sisi lain, kita mendapatkan . Untuk menunjukkan kedua ekspresi ini sama kita menggunakan hipotesis induksi untuk menghitung setiap dengan mengekspansi sepanjang baris ke- -nya: . Matriks adalah hasil dari pertama-tama menghapus baris 1 dan kolom dari , dan kemudian menghapus baris dan kolom dari matriks yang dihasilkan. Untuk menangani submatriks iteratif seperti ini, kita membuat beberapa observasi sederhana yang menghubungkan baris dan kolom dari dan dengan yang dari .   Baris ke- dari berkorespondensi dengan baris ke- dari , dan baris pertama dari berkorespondensi dengan baris pertama dari .    Jika , maka kolom ke- dari berkorespondensi dengan kolom ke- dari ; jika , maka kolom ke- dari berkorespondensi dengan kolom ke- dari .    Jika , maka kolom ke- dari berkorespondensi dengan kolom ke- dari ; jika , maka kolom ke- dari berkorespondensi dengan kolom ke- dari .   Dari observasi ini kita menurunkan tabel rumus berikut: . Kita sekarang mulai menguraikan : . Ini melengkapi langkah induksi, dan dengan demikian pembuktian selesai.    "
 },
 {
   "id": "th_det_transpose",
   "level": "2",
   "url": "s_det.html#th_det_transpose",
   "type": "Theorem",
-  "number": "2.5.9",
+  "number": "2.5.10",
   "title": "Determinan dan Transposisi.",
   "body": " Determinan dan Transposisi   Misalkan adalah matriks . Maka .    Pembuktian dilakukan dengan induksi pada . Kasus dasar ( ) trivial karena untuk sembarang matriks  .  Untuk induksi kita mengasumsikan bahwa untuk semua kita memiliki untuk sembarang matriks . Misalkan adalah matriks . Kita memiliki . Ini melengkapi pembuktian dengan induksi. (Perhatikan bagaimana dalam kesamaan kedua dalam rantai di atas kita menghitung dalam suku ke- dari dengan mengekspansi sepanjang baris ke- dari . Observasi serupa berlaku untuk kesamaan terakhir.)   "
 },
@@ -1328,16 +1337,16 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_det.html#cor_expansion_columns",
   "type": "Corollary",
-  "number": "2.5.10",
-  "title": "Ekspansi Sepanjang Kolom.",
-  "body": " Ekspansi Sepanjang Kolom   Misalkan . Untuk sembarang kita memiliki . Dengan kata lain, kita dapat menghitung dengan mengekspansi sepanjang sembarang baris dari .    Untuk sembarang , kita memiliki .   "
+  "number": "2.5.11",
+  "title": "Ekspansi Kolom.",
+  "body": " Ekspansi Kolom   Misalkan . Untuk sembarang kita memiliki . Dengan kata lain, kita dapat menghitung dengan mengekspansi sembarang baris dari .    Untuk sembarang , kita memiliki .   "
 },
 {
   "id": "ss_expansion_rows_columns-8",
   "level": "2",
   "url": "s_det.html#ss_expansion_rows_columns-8",
   "type": "Example",
-  "number": "2.5.11",
+  "number": "2.5.12",
   "title": "",
   "body": "  Hitung untuk .    Pertama kita menghitung dengan mengekspansi sepanjang baris kedua. Satu-satunya suku tak-nol dari ekspansi ini adalah yang terakhir, menghasilkan . Kita memiliki . Untuk menghitung determinannya kita mengekspansi sepanjang kolom ketiganya: . Kita menyimpulkan bahwa .   "
 },
@@ -1346,16 +1355,16 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_det.html#rm_sign_matrix",
   "type": "Remark",
-  "number": "2.5.12",
+  "number": "2.5.13",
   "title": "Matriks Tanda.",
-  "body": " Matriks Tanda   Ketika mengekspansi sepanjang baris atau kolom, mudah tersandung oleh tanda di depan koefisien ke- . Sebuah matriks tanda adalah semacam alat mnemonik untuk membantu Anda dalam hal ini. Ini mudah dihasilkan dengan mengamati bahwa tanda di depan entri ke- selalu (karena ), dan bahwa sembarang langkah horizontal atau vertikal dalam matriks disertai dengan perubahan tanda. Sebagai contoh, untuk kita memiliki matriks tanda berikut: .   "
+  "body": " Matriks Tanda   Ketika mengekspansi baris atau kolom, kita perlu menandai di depan koefisien ke- . Sebuah matriks tanda adalah membantu Anda dalam hal ini. Ini mudah dihasilkan dengan memberi tanda di depan entri ke- selalu (karena ). Sebagai contoh, untuk kita memiliki matriks tanda berikut: .   "
 },
 {
   "id": "th_det_zero_repeated_row",
   "level": "2",
   "url": "s_det.html#th_det_zero_repeated_row",
   "type": "Theorem",
-  "number": "2.5.13",
+  "number": "2.5.14",
   "title": "Baris\/Kolom Nol, Penukaran Baris\/Kolom, Baris\/Kolom Identik.",
   "body": " Baris\/Kolom Nol, Penukaran Baris\/Kolom, Baris\/Kolom Identik   Misalkan adalah matriks .   Jika memiliki baris nol atau kolom nol, maka     Asumsikan . Misalkan adalah matriks yang diperoleh dengan menukar dua baris (atau dua kolom) dari . Maka .    Asumsikan . Jika memiliki dua baris identik atau dua kolom identik, maka .       Pernyataan pertama jelas karena menurut dan kita dapat menghitung determinan dengan mengekspansi sepanjang baris nol atau kolom nol yang dimaksud.  Pernyataan ketiga mengikuti dari yang kedua. Memang, jika memiliki dua baris atau kolom identik, maka matriks yang diperoleh dari dengan menukar baris (atau kolom) yang dimaksud adalah itu sendiri. Dengan demikian menurut pernyataan kedua, dan kita menyimpulkan bahwa .  Tinggal hanya menunjukkan pernyataan kedua. Kita hanya membuktikan pernyataan mengenai penukaran baris; pernyataan yang sesuai tentang kolom mengikuti dari . Pembuktian dilakukan dengan induksi.   Langkah dasar:  Misalkan . Maka , dan .    Langkah induksi  Kita mengasumsikan dengan induksi bahwa hasil berlaku untuk sembarang matriks , , dan menunjukkan hal yang sama benar untuk sembarang matriks .  Misalkan adalah matriks , dan misalkan adalah hasil dari menukar baris ke- dan ke- dari . Kita menghitung determinan dari dan dengan mengekspansi sepanjang baris ke- , dimana dan . Ini dimungkinkan karena .  Bergerak sepanjang baris ke- , perhatikan bahwa setiap submatriks adalah hasil dari menukar dua baris dari yang semula berkorespondensi dengan baris ke- dan ke- dari . Karena submatriks ini berdimensi , kita memiliki menurut induksi. Terakhir, karena baris ke- dari dan sama kita memiliki .    "
 },
@@ -1364,7 +1373,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_det.html#d_adjoint",
   "type": "Definition",
-  "number": "2.5.14",
+  "number": "2.5.15",
   "title": "Matriks Adjoin.",
   "body": " Matriks Adjoin  matriks adjoin    adjoin dari matriks persegi    Misalkan adalah matriks . Matriks adjoin dari , dilambangkan , adalah matriks yang entri ke- -nya didefinisikan sebagai berikut: .   "
 },
@@ -1373,7 +1382,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_det.html#rm_adjoint",
   "type": "Remark",
-  "number": "2.5.15",
+  "number": "2.5.16",
   "title": "",
   "body": "  Berhati-hatilah dengan pembalikan urutan dalam definisi ini. Entri ke- dari sama dengan plus atau minus minor ke- dari . Mari kita lihat ini dalam aksi untuk beberapa matriks kecil.  Untuk kita memiliki .  Untuk kita memiliki .   "
 },
@@ -1382,16 +1391,16 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_det.html#th_adjoint",
   "type": "Theorem",
-  "number": "2.5.16",
+  "number": "2.5.17",
   "title": "Rumus Matriks Adjoin.",
   "body": " Rumus Matriks Adjoin   Diberikan matriks  , kita memiliki . Sebagai konsekuensi, jika , maka invertibel dan .    Pertama perhatikan bahwa pernyataan kedua mengenai invertibilitas mengikuti langsung dari , karena dalam kasus ini menetapkan kita memiliki .  Dengan demikian cukup membuktikan . Untuk melakukannya, kita harus menunjukkan bahwa .   Kasus:  Dalam kasus ini kita memiliki . Argumen serupa menunjukkan bahwa , meskipun dalam kasus ini kita menggunakan ekspansi sepanjang kolom.    Kasus:  Ketika kita memiliki , dimana adalah matriks yang diperoleh dengan mengganti baris ke- dari dengan salinan baris ke- -nya. Karena memiliki dua baris identik mengimplikasikan , sebagaimana diinginkan. Sekali lagi, argumen serupa menggunakan ekspansi sepanjang kolom menunjukkan bahwa .    "
 },
 {
-  "id": "ss_expansion_rows_columns-16",
+  "id": "ss_expansion_rows_columns-15",
   "level": "2",
-  "url": "s_det.html#ss_expansion_rows_columns-16",
+  "url": "s_det.html#ss_expansion_rows_columns-15",
   "type": "Example",
-  "number": "2.5.17",
+  "number": "2.5.18",
   "title": "",
   "body": "  Gunakan rumus matriks adjoin untuk menghitung , dimana .    Pertama hitung dengan mengekspansi sepanjang baris ketiga: . Selanjutnya, hitung . Maka kita memiliki .   "
 },
@@ -1400,333 +1409,9 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_det.html#rm_adjoint_form",
   "type": "Remark",
-  "number": "2.5.18",
+  "number": "2.5.19",
   "title": "",
   "body": "  Sebelum Anda terlalu bersemangat tentang rumus matriks adjoin, Anda harus tahu bahwa seiring bertambah, prosedur ini menjadi jauh lebih mahal dalam terms jumlah operasi aritmetika yang terlibat dibandingkan algoritma invers kita berdasarkan eliminasi Gauss-Jordan. Anda mendapatkan gambaran tentang ini sudah dari contoh sebelumnya. Secara umum, algoritma invers Gauss-Jordan adalah cara yang tepat.   "
-},
-{
-  "id": "th_det_row_ops",
-  "level": "2",
-  "url": "s_det.html#th_det_row_ops",
-  "type": "Theorem",
-  "number": "2.5.19",
-  "title": "Operasi Baris dan Determinan.",
-  "body": " Operasi Baris dan Determinan   Misalkan adalah matriks . Menggunakan notasi dari kita memiliki:              .   Secara khusus, mengambil , kita memiliki .    Pernyataan pertama mengikuti dengan mudah dengan menghitung dengan mengekspansi sepanjang baris ke- . Pernyataan kedua sebenarnya adalah penyataan ulang dari pernyataan kedua . Tinggal membuktikan pernyataan ketiga.  Misalkan , dan tetapkan . Maka identik dengan dengan pengecualian baris ke- , yang entri ke- -nya adalah . Dengan demikian , dimana adalah matriks yang diperoleh dengan mengganti baris ke- dari dengan baris yang identik dengan baris ke- -nya. Menurut kita menyimpulkan , dan dengan demikian , sebagaimana diinginkan.   "
-},
-{
-  "id": "rm_det_row_ops",
-  "level": "2",
-  "url": "s_det.html#rm_det_row_ops",
-  "type": "Remark",
-  "number": "2.5.20",
-  "title": "",
-  "body": "  Dalam bahasa operasi baris, diterjemahkan sebagai berikut:   Menskalakan baris matriks dengan memiliki efek menskalakan determinan dengan .    Menukar dua baris matriks mengubah tanda determinan.    Melakukan operasi penjumlahan baris pada matriks tidak memiliki efek pada determinan.      "
-},
-{
-  "id": "rm_det_col_ops",
-  "level": "2",
-  "url": "s_det.html#rm_det_col_ops",
-  "type": "Remark",
-  "number": "2.5.21",
-  "title": "Operasi Kolom dan Determinan.",
-  "body": " Operasi Kolom dan Determinan   Sebagaimana ditunjukkan dalam determinan berperilaku dengan cara serupa terhadap operasi kolom elementer : , menskalakan kolom dengan konstanta tak-nol menskalakan determinan dengan , menukar kolom mengalikan determinan dengan , menambahkan kelipatan satu kolom ke kolom lain membiarkan determinan tidak berubah.   "
-},
-{
-  "id": "cor_det_prod_elem",
-  "level": "2",
-  "url": "s_det.html#cor_det_prod_elem",
-  "type": "Corollary",
-  "number": "2.5.22",
-  "title": "Determinan dan Produk Matriks Elementer.",
-  "body": " Determinan dan Produk Matriks Elementer   Misalkan adalah matriks , dan misalkan kita memiliki untuk sembarang koleksi matriks elementer . Maka .    Ini adalah pembuktian mudah dengan induksi pada jumlah matriks elementer yang terlibat, kasus dasar ( ) yang dibahas oleh .   "
-},
-{
-  "id": "ss_det_row_ops-9",
-  "level": "2",
-  "url": "s_det.html#ss_det_row_ops-9",
-  "type": "Example",
-  "number": "2.5.23",
-  "title": "Determinan melalui Reduksi Baris.",
-  "body": " Determinan melalui Reduksi Baris   Misalkan matriks dapat direduksi baris menjadi dengan melakukan urutan operasi baris berikut:   Pertama tukar baris kedua dan ketiga.    Kemudian skalakan baris pertama dengan     Kemudian ganti baris kedua dengan baris kedua ditambah baris pertama.   Hitung .    Dalam terms matriks elementer kita memiliki , dan dengan demikian . Kita menyimpulkan bahwa .   "
-},
-{
-  "id": "th_inv_iff_det",
-  "level": "2",
-  "url": "s_det.html#th_inv_iff_det",
-  "type": "Theorem",
-  "number": "2.5.24",
-  "title": "Determinan dan Invertibilitas.",
-  "body": " Determinan dan Invertibilitas   Misalkan adalah matriks . Maka invertibel jika dan hanya jika .    Implikasi dibuktikan dalam .  Untuk arah sebaliknya, asumsikan invertibel. Maka mengimplikasikan adalah produk dari matriks elementer: . Maka mengimplikasikan . Karena untuk semua ( ), kita menyimpulkan .   "
-},
-{
-  "id": "th_det_mult",
-  "level": "2",
-  "url": "s_det.html#th_det_mult",
-  "type": "Theorem",
-  "number": "2.5.25",
-  "title": "Determinan Bersifat Multiplikatif.",
-  "body": " Determinan Bersifat Multiplikatif   Misalkan dan adalah matriks . Maka .    Kita pertimbangkan dua kasus berdasarkan invertibilitas dari dan\/atau .   atau tidak invertibel  Dalam kasus ini tidak invertibel ( ), dan dengan demikian menurut . Dengan penalaran yang sama kita harus memiliki atau . Dengan demikian dalam kasus ini.    dan keduanya invertibel  Dalam kasus ini kita dapat menulis untuk sembarang matriks elementer dan ( ). Maka .    "
-},
-{
-  "id": "th_invertibility_expanded",
-  "level": "2",
-  "url": "s_det.html#th_invertibility_expanded",
-  "type": "Theorem",
-  "number": "2.5.26",
-  "title": "Teorema Invertibilitas (Edisi Diperluas).",
-  "body": " Teorema Invertibilitas (Edisi Diperluas)   Misalkan adalah matriks . Pernyataan-pernyataan berikut ekuivalen.     invertibel.    Persamaan matriks memiliki solusi tunggal untuk sembarang vektor kolom .    Persamaan matriks memiliki solusi untuk sembarang vektor kolom .    Persamaan matriks memiliki solusi tunggal : yaitu, .     ekuivalen baris dengan , matriks identitas .     adalah produk dari matriks elementer.     .     "
-},
-{
-  "id": "s_det_ex-1-2",
-  "level": "2",
-  "url": "s_det.html#s_det_ex-1-2",
-  "type": "Exercise",
-  "number": "2.5.4.1",
-  "title": "",
-  "body": "    Use the appropriate property of determinants to find  Do not evaluate the determinants. Answer:             "
-},
-{
-  "id": "s_det_ex-1-3",
-  "level": "2",
-  "url": "s_det.html#s_det_ex-1-3",
-  "type": "Exercise",
-  "number": "2.5.4.2",
-  "title": "",
-  "body": "    Consider the following Gauss elimination:   What is the determinant of ?              "
-},
-{
-  "id": "s_det_ex-1-4",
-  "level": "2",
-  "url": "s_det.html#s_det_ex-1-4",
-  "type": "Exercise",
-  "number": "2.5.4.3",
-  "title": "",
-  "body": "    Find such that the following matrix is singular.              "
-},
-{
-  "id": "s_det_ex-1-5",
-  "level": "2",
-  "url": "s_det.html#s_det_ex-1-5",
-  "type": "Exercise",
-  "number": "2.5.4.4",
-  "title": "",
-  "body": "    If and are matrices, , , then   ,   ,   ,   ,   .                                "
-},
-{
-  "id": "s_det_ex-2-2",
-  "level": "2",
-  "url": "s_det.html#s_det_ex-2-2",
-  "type": "Exercise",
-  "number": "2.5.4.5",
-  "title": "",
-  "body": "  Misalkan    Hitung dengan mengekspansi sepanjang baris kedua.    Hitung dengan mengekspansi sepanjang kolom ketiga.      "
-},
-{
-  "id": "s_det_ex-2-3-3",
-  "level": "2",
-  "url": "s_det.html#s_det_ex-2-3-3",
-  "type": "Exercise",
-  "number": "2.5.4.6",
-  "title": "",
-  "body": "      "
-},
-{
-  "id": "s_det_ex-2-3-4",
-  "level": "2",
-  "url": "s_det.html#s_det_ex-2-3-4",
-  "type": "Exercise",
-  "number": "2.5.4.7",
-  "title": "",
-  "body": "      "
-},
-{
-  "id": "s_det_ex-2-3-5",
-  "level": "2",
-  "url": "s_det.html#s_det_ex-2-3-5",
-  "type": "Exercise",
-  "number": "2.5.4.8",
-  "title": "",
-  "body": "      "
-},
-{
-  "id": "s_det_ex-2-4-3",
-  "level": "2",
-  "url": "s_det.html#s_det_ex-2-4-3",
-  "type": "Exercise",
-  "number": "2.5.4.9",
-  "title": "",
-  "body": "      "
-},
-{
-  "id": "s_det_ex-2-4-4",
-  "level": "2",
-  "url": "s_det.html#s_det_ex-2-4-4",
-  "type": "Exercise",
-  "number": "2.5.4.10",
-  "title": "",
-  "body": "      "
-},
-{
-  "id": "s_det_ex-2-4-5",
-  "level": "2",
-  "url": "s_det.html#s_det_ex-2-4-5",
-  "type": "Exercise",
-  "number": "2.5.4.11",
-  "title": "",
-  "body": "      "
-},
-{
-  "id": "s_det_ex-2-4-6",
-  "level": "2",
-  "url": "s_det.html#s_det_ex-2-4-6",
-  "type": "Exercise",
-  "number": "2.5.4.12",
-  "title": "",
-  "body": "      "
-},
-{
-  "id": "s_det_ex-2-5-3",
-  "level": "2",
-  "url": "s_det.html#s_det_ex-2-5-3",
-  "type": "Exercise",
-  "number": "2.5.4.13",
-  "title": "",
-  "body": "      "
-},
-{
-  "id": "s_det_ex-2-5-4",
-  "level": "2",
-  "url": "s_det.html#s_det_ex-2-5-4",
-  "type": "Exercise",
-  "number": "2.5.4.14",
-  "title": "",
-  "body": "      "
-},
-{
-  "id": "s_det_ex-2-6",
-  "level": "2",
-  "url": "s_det.html#s_det_ex-2-6",
-  "type": "Exercise",
-  "number": "2.5.4.15",
-  "title": "",
-  "body": "  Misalkan . Tunjukkan tanpa menghitung determinan secara langsung. Dengan kata lain, gunakan teknik reduksi baris atau .   "
-},
-{
-  "id": "s_det_ex-2-7",
-  "level": "2",
-  "url": "s_det.html#s_det_ex-2-7",
-  "type": "Exercise",
-  "number": "2.5.4.16",
-  "title": "",
-  "body": "  Misalkan adalah matriks , dan misalkan adalah skalar. Nyatakan dan buktikan rumus yang menghubungkan dengan .   "
-},
-{
-  "id": "s_det_ex-2-8",
-  "level": "2",
-  "url": "s_det.html#s_det_ex-2-8",
-  "type": "Exercise",
-  "number": "2.5.4.17",
-  "title": "",
-  "body": "  Asumsikan adalah matriks yang memenuhi . Hitung determinan dari matriks yang diberikan.                         "
-},
-{
-  "id": "s_det_ex-2-9",
-  "level": "2",
-  "url": "s_det.html#s_det_ex-2-9",
-  "type": "Exercise",
-  "number": "2.5.4.18",
-  "title": "",
-  "body": "  Misalkan dan adalah matriks , dan misalkan invertibel. Buktikan pernyataan berikut:     .     .     "
-},
-{
-  "id": "s_det_ex-2-10",
-  "level": "2",
-  "url": "s_det.html#s_det_ex-2-10",
-  "type": "Exercise",
-  "number": "2.5.4.19",
-  "title": "",
-  "body": "  Asumsikan matriks persegi memenuhi . Tunjukkan bahwa .   "
-},
-{
-  "id": "s_det_ex-2-11",
-  "level": "2",
-  "url": "s_det.html#s_det_ex-2-11",
-  "type": "Exercise",
-  "number": "2.5.4.20",
-  "title": "",
-  "body": "  Buktikan bahwa matriks persegi invertibel jika dan hanya jika invertibel.   "
-},
-{
-  "id": "s_det_ex-2-12-3",
-  "level": "2",
-  "url": "s_det.html#s_det_ex-2-12-3",
-  "type": "Exercise",
-  "number": "2.5.4.21",
-  "title": "",
-  "body": "  Berikan contoh eksplisit matriks persegi yang memenuhi dan .  Dengan kata lain, tunjukkan bahwa dimungkinkan bagi matriks tak-nol untuk memiliki matriks adjoin nol.   "
-},
-{
-  "id": "s_det_ex-2-12-4",
-  "level": "2",
-  "url": "s_det.html#s_det_ex-2-12-4",
-  "type": "Exercise",
-  "number": "2.5.4.22",
-  "title": "",
-  "body": "  Misalkan adalah matriks . Buktikan: .   "
-},
-{
-  "id": "s_det_ex-2-12-5",
-  "level": "2",
-  "url": "s_det.html#s_det_ex-2-12-5",
-  "type": "Exercise",
-  "number": "2.5.4.23",
-  "title": "",
-  "body": "  Buktikan: invertibel jika dan hanya jika invertibel.   "
-},
-{
-  "id": "s_det_ex-2-12-6",
-  "level": "2",
-  "url": "s_det.html#s_det_ex-2-12-6",
-  "type": "Exercise",
-  "number": "2.5.4.24",
-  "title": "",
-  "body": "  Asumsikan invertibel. Buktikan: .   "
-},
-{
-  "id": "s_det_ex-2-13",
-  "level": "2",
-  "url": "s_det.html#s_det_ex-2-13",
-  "type": "Exercise",
-  "number": "2.5.4.25",
-  "title": "",
-  "body": "  Dalam pembuktian pernyataan (2) dari kita hanya menunjukkan bahwa jika adalah matriks persegi dengan dua baris identik, maka . Dengan mengasumsikan ini, tunjukkan bahwa hal yang sama berlaku jika memiliki dua kolom identik.   "
-},
-{
-  "id": "ex_det_col_ops",
-  "level": "2",
-  "url": "s_det.html#ex_det_col_ops",
-  "type": "Exercise",
-  "number": "2.5.4.26",
-  "title": "",
-  "body": "  Nyatakan dan buktikan analogi dari yang mendeskripsikan bagaimana operasi kolom yang bersesuaian (yaitu, skalakan kolom dengan , tukar dua kolom, penjumlahan kolom) memengaruhi determinan sebuah matriks. (Lihat ).    Nyatakan setiap jenis operasi kolom ini sebagai perkalian di kanan dengan matriks elementer.   "
-},
-{
-  "id": "s_det_ex-2-15",
-  "level": "2",
-  "url": "s_det.html#s_det_ex-2-15",
-  "type": "Exercise",
-  "number": "2.5.4.27",
-  "title": "",
-  "body": "  Misalkan adalah matriks dengan sepanjang diagonal dan di tempat lainnya: yaitu, . Nyatakan dan buktikan rumus untuk . (Rumus Anda akan melibatkan , , dan .)  Lihat kasus dan terlebih dahulu. Untuk membuktikan rumus dalam kasus umum Anda mungkin ingin menggunakan reduksi baris dan .   "
-},
-{
-  "id": "s_det_ex-2-16",
-  "level": "2",
-  "url": "s_det.html#s_det_ex-2-16",
-  "type": "Exercise",
-  "number": "2.5.4.28",
-  "title": "",
-  "body": "  Diberikan skalar matriks Vandermonde didefinisikan sebagai . Dengan kata lain, kita memiliki Buktikan: .   "
 },
 {
   "id": "app-sage-reference",
