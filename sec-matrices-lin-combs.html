@@ -1,0 +1,1699 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="en-US" dir="ltr">
+<!--******************************************-->
+<!--*  Authored with PreTeXt                 *-->
+<!--*  pretextbook.org                       *-->
+<!--*  Theme: default-modern                 *-->
+<!--*  Palette: blue-green                   *-->
+<!--******************************************-->
+<head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Perkalian Matriks dan Kombinasi Linear</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+<link href="_static/pretext/css/theme.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/ol-markers.css" rel="stylesheet" type="text/css">
+<script>
+var runestoneMathReady = new Promise((resolve) => window.rsMathReady = resolve);
+window.MathJax = {
+  "tex": {
+    "inlineMath": [
+      [
+        "\\(",
+        "\\)"
+      ]
+    ],
+    "tags": "none",
+    "tagSide": "right",
+    "tagIndent": ".8em",
+    "packages": {
+      "[+]": [
+        "base",
+        "ams",
+        "amscd",
+        "color",
+        "newcommand",
+        "knowl"
+      ]
+    }
+  },
+  "options": {
+    "ignoreHtmlClass": "tex2jax_ignore|ignore-math",
+    "processHtmlClass": "process-math",
+    "renderActions": {
+      "findScript": [
+        10,
+        function (doc) {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(function(node) {
+                var display = !!node.type.match(/; *mode=display/);
+                var math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                var text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = {node: text, delim: '', n: 0};
+                math.end = {node: text, delim: '', n: 0};
+                doc.math.push(math);
+            });
+        },
+        ""
+      ]
+    }
+  },
+  "chtml": {
+    "scale": 0.98,
+    "mtextInheritFont": true
+  },
+  "loader": {
+    "load": [
+      "input/asciimath",
+      "[tex]/amscd",
+      "[tex]/color",
+      "[tex]/newcommand",
+      "[pretext]/mathjaxknowl3.js"
+    ],
+    "paths": {
+      "pretext": "_static/pretext/js"
+    }
+  },
+  "startup": {
+    pageReady() {
+      return MathJax.startup.defaultPageReady().then(function () {
+      console.log("in ready function");
+      rsMathReady();
+      }
+    )}
+  }
+};
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="book">
+<meta property="book:title" content="Komputasi Aljabar Linear">
+<meta property="book:author" content=" Mulaab M ">
+<script src="_static/pretext/js/jquery.min.js"></script><script src="_static/pretext/js/pretext.js"></script><script src="_static/pretext/js/pretext_add_on.js?x=1"></script><!--** eBookCongig is necessary to configure interactive       **-->
+<!--** Runestone components to run locally in reader's browser **-->
+<!--** No external communication:                              **-->
+<!--**     log level is 0, Runestone Services are disabled     **-->
+<script type="text/javascript">
+eBookConfig = {};
+eBookConfig.useRunestoneServices = false;
+eBookConfig.host = 'http://127.0.0.1:8000';
+eBookConfig.course = 'PTX_Course_Title_Here';
+eBookConfig.basecourse = 'PTX_Base_Course';
+eBookConfig.isLoggedIn = false;
+eBookConfig.email = '';
+eBookConfig.isInstructor = false;
+eBookConfig.logLevel = 0;
+eBookConfig.username = '';
+eBookConfig.readings = null;
+eBookConfig.activities = null;
+eBookConfig.downloadsEnabled = false;
+eBookConfig.allow_pairs = false;
+eBookConfig.enableScratchAC = false;
+eBookConfig.build_info = "";
+eBookConfig.python3 = null;
+eBookConfig.runestone_version = '7.13.2';
+eBookConfig.jobehost = '';
+eBookConfig.proxyuri_runs = '';
+eBookConfig.proxyuri_files = '';
+eBookConfig.enable_chatcodes =  false;
+</script>
+<!--*** Runestone Services ***-->
+<script src="_static/prefix-runtime.56158f4758afd49f.bundle.js"></script><script src="_static/prefix-723.3e6434f80549315a.bundle.js"></script><script src="_static/prefix-runestone.46363294e9238f09.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-723.3bccd435914aa0ff.css">
+<link rel="stylesheet" type="text/css" href="_static/prefix-runestone.b12a7b3f0773ebcd.css">
+<script src="_static/pretext/js/lti_iframe_resizer.js"></script><script src="https://sagecell.sagemath.org/static/embedded_sagecell.js"></script><script async="" src="https://cse.google.com/cse.js?cx=015103900096539427448:ngwuia10qci"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js" integrity="sha512-4xUl/d6D6THrAnXAwGajXkoWaeMNwEKK4iNfq5DotEbLPAfk6FSxSP3ydNxqDgCw1c/0Z1Jg6L8h2j+++9BZmg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="lunr-pretext-search-index.js" async=""></script><script src="_static/pretext/js/pretext_search.js"></script><script src="_static/pretext/js/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
+</script><script>// Make *any* div with class 'sagecell-sage' an executable Sage cell
+// Their results will be linked, only within language type
+sagecell.makeSagecell({
+  "inputLocation": "div.sagecell-sage",
+  "linked": true,
+  "linkKey": "linked-sage",
+  "autoeval": false,
+  "languages": [
+    "sage"
+  ],
+  "evalButtonText": "Evaluate (Sage)"
+});
+</script>
+</head>
+<body id="ula" class="pretext book ignore-math">
+<a class="assistive" href="#ptx-content">Skip to main content</a><header id="ptx-masthead" class="ptx-masthead"><div class="ptx-banner">
+<a id="logo-link" class="logo-link" target="_blank" href="https://moelaab.github.io/kali"><img src="external/images/ula-logo.png" alt="Logo image"></a><div class="title-container">
+<h1 class="heading"><a href="ula.html"><span class="title">Komputasi Aljabar Linear</span></a></h1>
+<p class="byline">Mulaab M</p>
+</div>
+</div></header><nav id="ptx-navbar" class="ptx-navbar navbar"><div class="ptx-navbar-contents">
+<button class="toc-toggle button" title="Contents"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5d2;</span><span class="name">Contents</span></button><a class="index-button button" href="backmatter-3.html" title="Index"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe88e;</span><span class="name">Index</span></a><div class="searchwrapper" role="search"><div class="gcse-search"></div></div>
+<div class="searchbox">
+<div class="searchwidget"><button id="searchbutton" class="searchbutton button" type="button" title="Search book"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe8b6;</span><span class="name">Search Book</span></button></div>
+<div id="searchresultsplaceholder" class="searchresultsplaceholder" style="display: none">
+<div class="search-results-controls">
+<input aria-label="Search term" id="ptxsearch" class="ptxsearch" type="text" name="terms" placeholder="Search term"><button title="Close search" id="closesearchresults" class="closesearchresults"><span class="material-symbols-outlined">close</span></button>
+</div>
+<h2 class="search-results-heading">Search Results: </h2>
+<div id="searchempty" class="searchempty"><span>No results.</span></div>
+<ol id="searchresults" class="searchresults"></ol>
+</div>
+</div>
+<span class="nav-other-controls"><button id="light-dark-button" class="light-dark-button button" title="Dark Mode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span class="name">Dark Mode</span></button></span><span class="treebuttons"><a class="previous-button button" href="sec-vectors-lin-combs.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="up-button button" href="chap3.html" title="Up"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Up</span></a><a class="next-button button" href="sec-span.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span>
+</div></nav><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\(   \newcommand{\avec}{{\mathbf a}}
+   \newcommand{\bvec}{{\mathbf b}}
+   \newcommand{\cvec}{{\mathbf c}}
+   \newcommand{\dvec}{{\mathbf d}}
+   \newcommand{\dtil}{\widetilde{\mathbf d}}
+   \newcommand{\evec}{{\mathbf e}}
+   \newcommand{\fvec}{{\mathbf f}}
+   \newcommand{\nvec}{{\mathbf n}}
+   \newcommand{\pvec}{{\mathbf p}}
+   \newcommand{\qvec}{{\mathbf q}}
+   \newcommand{\svec}{{\mathbf s}}
+   \newcommand{\tvec}{{\mathbf t}}
+   \newcommand{\uvec}{{\mathbf u}}
+   \newcommand{\vvec}{{\mathbf v}}
+   \newcommand{\wvec}{{\mathbf w}}
+   \newcommand{\xvec}{{\mathbf x}}
+   \newcommand{\yvec}{{\mathbf y}}
+   \newcommand{\zvec}{{\mathbf z}}
+   \newcommand{\rvec}{{\mathbf r}}
+   \newcommand{\mvec}{{\mathbf m}}
+   \newcommand{\zerovec}{{\mathbf 0}}
+   \newcommand{\onevec}{{\mathbf 1}}
+   \newcommand{\real}{{\mathbb R}}
+   \newcommand{\twovec}[2]{\left[\begin{array}{r}#1 \\ #2
+   \end{array}\right]}
+   \newcommand{\ctwovec}[2]{\left[\begin{array}{c}#1 \\ #2
+   \end{array}\right]}
+   \newcommand{\threevec}[3]{\left[\begin{array}{r}#1 \\ #2 \\ #3
+   \end{array}\right]}
+   \newcommand{\cthreevec}[3]{\left[\begin{array}{c}#1 \\ #2 \\ #3
+   \end{array}\right]}
+   \newcommand{\fourvec}[4]{\left[\begin{array}{r}#1 \\ #2 \\ #3 \\ #4
+   \end{array}\right]}
+   \newcommand{\cfourvec}[4]{\left[\begin{array}{c}#1 \\ #2 \\ #3 \\ #4
+   \end{array}\right]}
+   \newcommand{\fivevec}[5]{\left[\begin{array}{r}#1 \\ #2 \\ #3 \\
+   #4 \\ #5 \\ \end{array}\right]}
+   \newcommand{\cfivevec}[5]{\left[\begin{array}{c}#1 \\ #2 \\ #3 \\
+   #4 \\ #5 \\ \end{array}\right]}
+   \newcommand{\mattwo}[4]{\left[\begin{array}{rr}#1 \amp #2 \\ #3 \amp #4 \\ \end{array}\right]}
+   \newcommand{\laspan}[1]{\text{Span}\left\{#1\right\}}
+   \newcommand{\bcal}{{\cal B}}
+   \newcommand{\ccal}{{\cal C}}
+   \newcommand{\scal}{{\cal S}}
+   \newcommand{\wcal}{{\cal W}}
+   \newcommand{\ecal}{{\cal E}}
+   \newcommand{\coords}[2]{\left\{#1\right\}_{#2}}
+   \newcommand{\gray}[1]{\color{gray}{#1}}
+   \newcommand{\lgray}[1]{\color{lightgray}{#1}}
+   \newcommand{\rank}{\operatorname{rank}}
+   \newcommand{\row}{\text{Row}}
+   \newcommand{\col}{\text{Col}}
+   \renewcommand{\row}{\text{Row}}
+   \newcommand{\nul}{\text{Nul}}
+   \newcommand{\var}{\text{Var}}
+   \newcommand{\corr}{\text{corr}}
+   \newcommand{\len}[1]{\left|#1\right|}
+   \newcommand{\bbar}{\overline{\bvec}}
+   \newcommand{\bhat}{\widehat{\bvec}}
+   \newcommand{\bperp}{\bvec^\perp}
+   \newcommand{\xhat}{\widehat{\xvec}}
+   \newcommand{\vhat}{\widehat{\vvec}}
+   \newcommand{\uhat}{\widehat{\uvec}}
+   \newcommand{\what}{\widehat{\wvec}}
+   \newcommand{\Sighat}{\widehat{\Sigma}}
+   \newcommand{\basis}[2]{#1_1,#1_2,\ldots,#1_{#2}}
+
+
+
+
+\newcommand{\eqsys}{\begin{array}{rcrcrcr}
+     a_{11}x_{1}\amp +\amp a_{12}x_{2}\amp +\cdots+\amp  a_{1n}x_{n}\amp =\amp b_1\\
+     a_{21}x_{1}\amp +\amp a_{22}x_{2}\amp +\cdots+\amp a_{2n}x_{n}\amp =\amp b_2\\
+     \amp \vdots\amp   \amp \vdots \amp  \amp \vdots \amp  \\
+     a_{m1}x_{1}\amp +\amp a_{m2}x_{2}\amp +\cdots +\amp a_{mn}x_{n}\amp =\amp b_m
+     \end{array}
+     }
+  
+\newcommand{\homsys}{\begin{array}{rcrcrcr}
+a_{11}x_{1}\amp +\amp a_{12}x_{2}\amp +\cdots+\amp  a_{1n}x_{n}\amp =\amp 0\\
+	a_{21}x_{1}\amp +\amp a_{22}x_{2}\amp +\cdots+\amp a_{2n}x_{n}\amp =\amp 0\\
+	\amp \vdots\amp   \amp \vdots \amp  \amp \vdots \amp  \vdots\\
+	a_{m1}x_{1}\amp +\amp a_{m2}x_{2}\amp +\cdots +\amp a_{mn}x_{n}\amp =\amp 0
+	\end{array}
+	}
+\newcommand{\R}{{\mathbb R}}
+\newcommand{\boldn}{{\mathbf n}}
+
+ \newenvironment{linsys}[2][m]{
+     \begin{array}[#1]{@{}*{#2}{rc}r@{}}
+     }{
+     \end{array}}
+
+\newcommand{\augmatrix}{
+     \begin{amatrix}[cccc|c]
+     a_{11} \amp  a_{12} \amp  \cdots \amp  a_{1n} \amp b_{1}\\
+     a_{21} \amp  a_{22} \amp  \cdots \amp  a_{2n} \amp b_{2}\\
+     \vdots  \amp  \vdots  \amp  \ddots \amp  \vdots  \amp \vdots\\
+     a_{m1} \amp  a_{m2} \amp  \cdots \amp  a_{mn}\amp b_{m}
+     \end{amatrix}
+     }
+  \newenvironment{amatrix}[1][ccc|c]{\left[\begin{array}{#1}}{\end{array}\right]}
+  
+  
+  
+  \newcommand{\linearsystem}[2]{\mathcal{LS}\!\left(#1,\,#2\right)}
+  \newcommand{\vect}[1]{\mathbf{#1}}
+  \newcommand{\colvector}[1]{\begin{bmatrix}#1\end{bmatrix}}
+  \newcommand{\augmented}[2]{\left[\,#1 \mid #2\,\right]}
+  
+  \newcommand{\Z}{{\mathbb Z}}
+     \newcommand{\Q}{{\mathbb Q}}
+     \newcommand{\R}{{\mathbb R}}
+     \newcommand{\C}{{\mathbb C}}
+     \newcommand{\T}{{\mathbb T}}
+     \newcommand{\F}{{\mathbb F}}
+     \newcommand{\HH}{{\mathbb H}}
+     \newcommand{\compose}{\circ}
+     \newcommand{\bolda}{{\mathbf a}}
+     \newcommand{\boldb}{{\mathbf b}}
+     \newcommand{\boldc}{{\mathbf c}}
+     \newcommand{\boldd}{{\mathbf d}}
+     \newcommand{\bolde}{{\mathbf e}}
+     \newcommand{\boldi}{{\mathbf i}}
+     \newcommand{\boldj}{{\mathbf j}}
+     \newcommand{\boldk}{{\mathbf k}}
+     \newcommand{\boldn}{{\mathbf n}}
+     \newcommand{\boldp}{{\mathbf p}}
+     \newcommand{\boldq}{{\mathbf q}}
+     \newcommand{\boldr}{{\mathbf r}}
+     \newcommand{\bolds}{{\mathbf s}}
+     \newcommand{\boldt}{{\mathbf t}}
+     \newcommand{\boldu}{{\mathbf u}}
+     \newcommand{\boldv}{{\mathbf v}}
+     \newcommand{\boldw}{{\mathbf w}}
+     \newcommand{\boldx}{{\mathbf x}}
+     \newcommand{\boldy}{{\mathbf y}}
+     \newcommand{\boldz}{{\mathbf z}}
+     \newcommand{\boldzero}{{\mathbf 0}}
+     \newcommand{\boldmod}{\boldsymbol{ \bmod }}
+     \newcommand{\boldT}{{\mathbf T}}
+     \newcommand{\boldN}{{\mathbf N}}
+     \newcommand{\boldB}{{\mathbf B}}
+     \newcommand{\boldF}{{\mathbf F}}
+     \newcommand{\boldS}{{\mathbf S}}
+     \newcommand{\boldG}{{\mathbf G}}
+     \newcommand{\boldK}{{\mathbf K}}
+     \newcommand{\boldL}{{\mathbf L}}
+     \DeclareMathOperator{\lcm}{lcm}
+     \DeclareMathOperator{\Span}{span}
+     \DeclareMathOperator{\tr}{tr}
+     \DeclareMathOperator{\NS}{null}
+     \DeclareMathOperator{\RS}{row}
+     \DeclareMathOperator{\CS}{col}
+     \DeclareMathOperator{\im}{im}
+     \DeclareMathOperator{\range}{range}
+     \DeclareMathOperator{\rank}{rank}
+     \DeclareMathOperator{\nullity}{nullity}
+     \DeclareMathOperator{\sign}{sign}
+     \DeclareMathOperator{\Fix}{Fix}
+     \DeclareMathOperator{\Aff}{Aff}
+     \DeclareMathOperator{\Frac}{Frac}
+     \DeclareMathOperator{\Ann}{Ann}
+     \DeclareMathOperator{\Tor}{Tor}
+     \DeclareMathOperator{\id}{id}
+     \DeclareMathOperator{\mdeg}{mdeg}
+     \DeclareMathOperator{\Lt}{Lt}
+     \DeclareMathOperator{\Lc}{Lc}
+     \DeclareMathOperator{\disc}{disc}
+     \DeclareMathOperator{\Frob}{Frob}
+     \DeclareMathOperator{\adj}{adj}
+     \DeclareMathOperator{\curl}{curl}
+     \DeclareMathOperator{\grad}{grad}
+     \DeclareMathOperator{\diver}{div}
+     \DeclareMathOperator{\flux}{flux}
+     \def\Gal{\operatorname{Gal}}
+     \def\ord{\operatorname{ord}}
+     \def\ML{\operatorname{M}}
+     \def\GL{\operatorname{GL}}
+     \def\PGL{\operatorname{PGL}}
+     \def\SL{\operatorname{SL}}
+     \def\PSL{\operatorname{PSL}}
+     \def\GSp{\operatorname{GSp}}
+     \def\PGSp{\operatorname{PGSp}}
+     \def\Sp{\operatorname{Sp}}
+     \def\PSp{\operatorname{PSp}}
+     \def\Aut{\operatorname{Aut}}
+     \def\Inn{\operatorname{Inn}}
+     \def\Hom{\operatorname{Hom}}
+     \def\End{\operatorname{End}}
+     \def\ch{\operatorname{char}}
+     \def\Zp{\Z/p\Z}
+     \def\Zm{\Z/m\Z}
+     \def\Zn{\Z/n\Z}
+     \def\Fp{\F_p}
+     \newcommand{\surjects}{\twoheadrightarrow}
+     \newcommand{\injects}{\hookrightarrow}
+     \newcommand{\bijects}{\leftrightarrow}
+     \newcommand{\isomto}{\overset{\sim}{\rightarrow}}
+     \newcommand{\floor}[1]{\lfloor#1\rfloor}
+     \newcommand{\ceiling}[1]{\left\lceil#1\right\rceil}
+     \newcommand{\mclass}[2][m]{[#2]_{#1}}
+     \newcommand{\val}[2][]{\left\lvert #2\right\rvert_{#1}}
+     \newcommand{\abs}[2][]{\left\lvert #2\right\rvert_{#1}}
+     \newcommand{\valuation}[2][]{\left\lvert #2\right\rvert_{#1}}
+     \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+     \newcommand{\anpoly}{a_nx^n+a_{n-1}x^{n-1}\cdots +a_1x+a_0}
+     \newcommand{\anmonic}{x^n+a_{n-1}x^{n-1}\cdots +a_1x+a_0}
+     \newcommand{\bmpoly}{b_mx^m+b_{m-1}x^{m-1}\cdots +b_1x+b_0}
+     \newcommand{\bnpoly}{b_nx^n+b_{n-1}x^{n-1}\cdots +b_1x+b_0}
+     \newcommand{\pder}[2]{\frac{\partial#1}{\partial#2}}
+     \newcommand{\normalin}{\trianglelefteq}
+     \newcommand{\angvec}[1]{\langle #1\rangle}
+     \newcommand{\varpoly}[2]{#1_{#2}x^{#2}+#1_{#2-1}x^{#2-1}\cdots +#1_1x+#1_0}
+     \newcommand{\varpower}[1][a]{#1_0+#1_1x+#1_1x^2+\cdots}
+     \newcommand{\limasto}[2][x]{\lim_{#1\rightarrow #2}}
+     \def\ntoinfty{\lim_{n\rightarrow\infty}}
+     \def\xtoinfty{\lim_{x\rightarrow\infty}}
+     \def\ii{\item}
+     \def\bb{\begin{enumerate}}
+     \def\ee{\end{enumerate}}
+     \def\ds{\displaystyle}
+     \def\p{\partial}
+     \newcommand{\abcdmatrix}[4]{\begin{bmatrix}#1\amp #2\\ #3\amp #4 \end{bmatrix}
+     }
+     \newenvironment{amatrix}[1][ccc|c]{\left[\begin{array}{#1}}{\end{array}\right]}
+     \newenvironment{linsys}[2][m]{
+     \begin{array}[#1]{@{}*{#2}{rc}r@{}}
+     }{
+     \end{array}}
+     \newcommand{\eqsys}{\begin{array}{rcrcrcr}
+     a_{11}x_{1}\amp +\amp a_{12}x_{2}\amp +\cdots+\amp  a_{1n}x_{n}\amp =\amp b_1\\
+     a_{21}x_{1}\amp +\amp a_{22}x_{2}\amp +\cdots+\amp a_{2n}x_{n}\amp =\amp b_2\\
+     \amp \vdots\amp   \amp \vdots \amp  \amp \vdots \amp  \\
+     a_{m1}x_{1}\amp +\amp a_{m2}x_{2}\amp +\cdots +\amp a_{mn}x_{n}\amp =\amp b_m
+     \end{array}
+     }
+     \newcommand{\numeqsys}{\begin{array}{rrcrcrcr}
+     e_1:\amp  a_{11}x_{1}\amp +\amp a_{12}x_{2}\amp +\cdots+\amp  a_{1n}x_{n}\amp =\amp b_1\\
+     e_2: \amp a_{21}x_{1}\amp +\amp a_{22}x_{2}\amp +\cdots+\amp a_{2n}x_{n}\amp =\amp b_2\\
+     \amp \vdots\amp   \amp \vdots \amp  \amp \vdots \amp  \\
+     e_m: \amp a_{m1}x_{1}\amp +\amp a_{m2}x_{2}\amp +\cdots +\amp a_{mn}x_{n}\amp =\amp b_m
+     \end{array}
+     }
+     \newcommand{\homsys}{\begin{array}{rcrcrcr}
+     a_{11}x_{1}\amp +\amp a_{12}x_{2}\amp +\cdots+\amp  a_{1n}x_{n}\amp =\amp 0\\
+     a_{21}x_{1}\amp +\amp a_{22}x_{2}\amp +\cdots+\amp a_{2n}x_{n}\amp =\amp 0\\
+     \amp \vdots\amp   \amp \vdots \amp  \amp \vdots \amp \\
+     a_{m1}x_{1}\amp +\amp a_{m2}x_{2}\amp +\cdots +\amp a_{mn}x_{n}\amp =\amp 0
+     \end{array}
+     }
+     \newcommand{\vareqsys}[4]{
+     \begin{array}{ccccccc}
+     #3_{11}x_{1}\amp +\amp #3_{12}x_{2}\amp +\cdots+\amp  #3_{1#2}x_{#2}\amp =\amp #4_1\\
+     #3_{21}x_{1}\amp +\amp #3_{22}x_{2}\amp +\cdots+\amp #3_{2#2}x_{#2}\amp =\amp #4_2\\
+     \vdots \amp \amp \vdots \amp  \amp \vdots \amp =\amp  \\
+     #3_{#1 1}x_{1}\amp +\amp #3_{#1 2}x_{2}\amp +\cdots +\amp #3_{#1 #2}x_{#2}\amp =\amp #4_{#1}
+     \end{array}
+     }
+     \newcommand{\genmatrix}[1][a]{
+     \begin{bmatrix}
+     #1_{11} \amp  #1_{12} \amp  \cdots \amp  #1_{1n} \\
+     #1_{21} \amp  #1_{22} \amp  \cdots \amp  #1_{2n} \\
+     \vdots  \amp  \vdots  \amp  \ddots \amp  \vdots  \\
+     #1_{m1} \amp  #1_{m2} \amp  \cdots \amp  #1_{mn}
+     \end{bmatrix}
+     }
+     \newcommand{\varmatrix}[3]{
+     \begin{bmatrix}
+     #3_{11} \amp  #3_{12} \amp  \cdots \amp  #3_{1#2} \\
+     #3_{21} \amp  #3_{22} \amp  \cdots \amp  #3_{2#2} \\
+     \vdots  \amp  \vdots  \amp  \ddots \amp  \vdots  \\
+     #3_{#1 1} \amp  #3_{#1 2} \amp  \cdots \amp  #3_{#1 #2}
+     \end{bmatrix}
+     }
+     \newcommand{\augmatrix}{
+     \begin{amatrix}[cccc|c]
+     a_{11} \amp  a_{12} \amp  \cdots \amp  a_{1n} \amp b_{1}\\
+     a_{21} \amp  a_{22} \amp  \cdots \amp  a_{2n} \amp b_{2}\\
+     \vdots  \amp  \vdots  \amp  \ddots \amp  \vdots  \amp \vdots\\
+     a_{m1} \amp  a_{m2} \amp  \cdots \amp  a_{mn}\amp b_{m}
+     \end{amatrix}
+     }
+     \newcommand{\varaugmatrix}[4]{
+     \begin{amatrix}[cccc|c]
+     #3_{11} \amp  #3_{12} \amp  \cdots \amp  #3_{1#2} \amp #4_{1}\\
+     #3_{21} \amp  #3_{22} \amp  \cdots \amp  #3_{2#2} \amp #4_{2}\\
+     \vdots  \amp  \vdots  \amp  \ddots \amp  \vdots  \amp \vdots\\
+     #3_{#1 1} \amp  #3_{#1 2} \amp  \cdots \amp  #3_{#1 #2}\amp #4_{#1}
+     \end{amatrix}
+     }
+     \newcommand{\spaceforemptycolumn}{\makebox[\wd\boxofmathplus]{\ }}
+
+     \newcommand{\generalmatrix}[3]{
+     \left(
+     \begin{array}{cccc}
+     #1_{1,1}  \amp #1_{1,2}  \amp \ldots  \amp #1_{1,#2}  \\
+     #1_{2,1}  \amp #1_{2,2}  \amp \ldots  \amp #1_{2,#2}  \\
+     \amp \vdots                         \\
+     #1_{#3,1} \amp #1_{#3,2} \amp \ldots  \amp #1_{#3,#2}
+     \end{array}
+     \right)  }
+     \newcommand{\colvec}[2][c]{\begin{amatrix}[#1] #2 \end{amatrix}}
+     \DeclareMathOperator{\size}{size}
+     \DeclareMathOperator{\adjoint}{adj}
+     \DeclareMathOperator{\sgn}{sgn}
+     \newcommand{\restrictionmap}[2]{{#1}\mathpunct\upharpoonright\hbox{}_{#2}}
+     \renewcommand{\emptyset}{\varnothing}
+
+     \newcommand{\proj}[2]{\mbox{proj}_{#2}({#1}) }
+     \renewcommand{\Re}{\operatorname{Re}}
+      \renewcommand{\Im}{\operatorname{Im}}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\definecolor{fillinmathshade}{gray}{0.9}
+\newcommand{\fillinmath}[1]{\mathchoice{\colorbox{fillinmathshade}{$\displaystyle     \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\textstyle        \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptstyle      \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptscriptstyle\phantom{\,#1\,}$}}}
+\)</span></div>
+<div class="ptx-page">
+<div id="ptx-sidebar" class="ptx-sidebar"><nav id="ptx-toc" class="ptx-toc depth2 focused" data-preexpanded-levels="0" data-max-levels="2"><ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-frontmatter">
+<div class="toc-title-box"><a href="frontmatter.html" class="internal"><span class="title">Front Matter</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-colophon"><div class="toc-title-box"><a href="frontmatter-4.html" class="internal"><span class="title">Colophon</span></a></div></li>
+<li class="toc-item toc-dedication"><div class="toc-title-box"><a href="frontmatter-5.html" class="internal"><span class="title">Dedication</span></a></div></li>
+<li class="toc-item toc-acknowledgement"><div class="toc-title-box"><a href="frontmatter-6.html" class="internal"><span class="title">Acknowledgements</span></a></div></li>
+<li class="toc-item toc-preface"><div class="toc-title-box"><a href="frontmatter-7.html" class="internal"><span class="title">Tujuan Kami</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="chap1.html" class="internal"><span class="codenumber">1</span> <span class="title">Sistem Persamaan</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-expect.html" class="internal"><span class="codenumber">1.1</span> <span class="title">Apa yang dapat kita harapkan</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-expect.html#sec-expect-3" class="internal"><span class="codenumber">1.1.1</span> <span class="title">Beberapa contoh sederhana</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_systems.html" class="internal"><span class="codenumber">1.2</span> <span class="title">Sistem Persamaan Linear</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="s_systems.html#ss_linear_equations" class="internal"><span class="codenumber">1.2.1</span> <span class="title">Sistem Persamaan Linear</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_systems.html#ss_linear_equations-11" class="internal"><span class="codenumber">1.2.1.1</span> <span class="title">Representasi Matriks dari Sistem Linear</span></a></div></li></ul>
+</li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_systemsb.html" class="internal"><span class="codenumber">1.3</span> <span class="title">Eliminasi Gaussian</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_systemsb.html#ss_ge_row_echelon" class="internal"><span class="codenumber">1.3.1</span> <span class="title">Matriks bentuk eselon baris</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_systemsb.html#ss_gaussian_elimination" class="internal"><span class="codenumber">1.3.2</span> <span class="title">Eliminasi Gaussian</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="chap2.html" class="internal"><span class="codenumber">2</span> <span class="title">Matrik</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_matrix.html" class="internal"><span class="codenumber">2.1</span> <span class="title">Aritmetika Matriks</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_matrix.html#ss_matrix_attributes" class="internal"><span class="codenumber">2.1.1</span> <span class="title">Dasar-dasar matrik</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_matrix.html#ss_matrix_arithmetic" class="internal"><span class="codenumber">2.1.2</span> <span class="title">Penjumlahan, pengurangan dan perkalian skalar</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_matrix.html#ss_matrix_mult" class="internal"><span class="codenumber">2.1.3</span> <span class="title">Perkalian matriks</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_matrix.html#s_column_row_method" class="internal"><span class="codenumber">2.1.4</span> <span class="title">Metode alternatif perkalian matrik</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_matrix.html#s_matrix-7" class="internal"><span class="codenumber">2.1.5</span> <span class="title">Transpos dari sebuah matriks</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="s_algebraic.html" class="internal"><span class="codenumber">2.2</span> <span class="title">Aljabar Matriks</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_invertible_matrices.html" class="internal"><span class="codenumber">2.3</span> <span class="title">Matriks Invertibel</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_invertible_matrices.html#subsec-invertible" class="internal"><span class="codenumber">2.3.1</span> <span class="title">Matriks Invers</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_invertible_matrices.html#s_invertible_matrices-4" class="internal"><span class="codenumber">2.3.2</span> <span class="title">Pangkat Matriks, Polinomial Matriks</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="s_invertible_matrices.html#s_invertible_matrices_ex" class="internal"><span class="codenumber">2.3.3</span> <span class="title">Exercises</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_invertibility_theorem.html" class="internal"><span class="codenumber">2.4</span> <span class="title">Teorema Invertibilitas</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_invertibility_theorem.html#ss_elementary_matrix" class="internal"><span class="codenumber">2.4.1</span> <span class="title">Matriks Elementer</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_invertibility_theorem.html#ss_systems_to_matrix_eqns" class="internal"><span class="codenumber">2.4.2</span> <span class="title">Selingan tentang Persamaan Matriks</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_invertibility_theorem.html#ss_invertibility_th" class="internal"><span class="codenumber">2.4.3</span> <span class="title">Teorema Invertibilitas</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_invertibility_theorem.html#ss_invertibility_alg" class="internal"><span class="codenumber">2.4.4</span> <span class="title">Algoritma Invertibilitas</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_invertibility_theorem.html#ss_invertible_loose_ends" class="internal"><span class="codenumber">2.4.5</span> <span class="title">Beberapa Ujung Teoretis yang Longgar</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_det.html" class="internal"><span class="codenumber">2.5</span> <span class="title">Determinan</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_det.html#ss_det" class="internal"><span class="codenumber">2.5.1</span> <span class="title">Definisi Determinan</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_det.html#ss_expansion_rows_columns" class="internal"><span class="codenumber">2.5.2</span> <span class="title">Ekspansi Baris dan Kolom</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter contains-active">
+<div class="toc-title-box"><a href="chap3.html" class="internal"><span class="codenumber">3</span> <span class="title">Vektor, Matriks, dan Kombinasi Linear</span></a></div>
+<ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-vectors-lin-combs.html" class="internal"><span class="codenumber">3.1</span> <span class="title">Vektor dan Kombinasi Linear</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-vectors-lin-combs.html#sec-vectors-lin-combs-3" class="internal"><span class="codenumber">3.1.1</span> <span class="title">Vektor</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-vectors-lin-combs.html#sec-vectors-lin-combs-4" class="internal"><span class="codenumber">3.1.2</span> <span class="title">Kombinasi Linear</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-vectors-lin-combs.html#sec-vectors-lin-combs-5" class="internal"><span class="codenumber">3.1.3</span> <span class="title">Ringkasan</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section contains-active">
+<div class="toc-title-box"><a href="sec-matrices-lin-combs.html" class="internal"><span class="codenumber">3.2</span> <span class="title">Perkalian Matriks dan Kombinasi Linear</span></a></div>
+<ul class="structural toc-item-list active">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-matrices-lin-combs.html#sec-matrices-lin-combs-3" class="internal"><span class="codenumber">3.2.1</span> <span class="title">Perkalian Skalar dan Penjumlahan Matriks</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-matrices-lin-combs.html#sec-matrices-lin-combs-4" class="internal"><span class="codenumber">3.2.2</span> <span class="title">Perkalian Matriks-Vektor dan Kombinasi Linear</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-matrices-lin-combs.html#sec-matrices-lin-combs-5" class="internal"><span class="codenumber">3.2.3</span> <span class="title">Perkalian Matriks-Vektor dan Sistem Linear</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-matrices-lin-combs.html#sec-matrices-lin-combs-6" class="internal"><span class="codenumber">3.2.4</span> <span class="title">Produk Matriks-Matriks</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-matrices-lin-combs.html#sec-matrices-lin-combs-7" class="internal"><span class="codenumber">3.2.5</span> <span class="title">Ringkasan</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-span.html" class="internal"><span class="codenumber">3.3</span> <span class="title">Span dari Himpunan Vektor</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-span.html#sec-span-3" class="internal"><span class="codenumber">3.3.1</span> <span class="title">Span dari Himpunan Vektor</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-span.html#sec-span-4" class="internal"><span class="codenumber">3.3.2</span> <span class="title">Posisi Pivot dan Span</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-span.html#sec-span-5" class="internal"><span class="codenumber">3.3.3</span> <span class="title">Ringkasan</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-linear-dep.html" class="internal"><span class="codenumber">3.4</span> <span class="title">Ketergantungan Linear</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-linear-dep.html#sec-linear-dep-3" class="internal"><span class="codenumber">3.4.1</span> <span class="title">Ketergantungan Linear</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-linear-dep.html#sec-linear-dep-4" class="internal"><span class="codenumber">3.4.2</span> <span class="title">Cara Mengenali Ketergantungan Linear</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-linear-dep.html#sec-linear-dep-5" class="internal"><span class="codenumber">3.4.3</span> <span class="title">Persamaan Homogen</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-linear-dep.html#sec-linear-dep-6" class="internal"><span class="codenumber">3.4.4</span> <span class="title">Ringkasan</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-linear-trans.html" class="internal"><span class="codenumber">3.5</span> <span class="title">Transformasi Matriks</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-linear-trans.html#sec-linear-trans-3" class="internal"><span class="codenumber">3.5.1</span> <span class="title">Transformasi Matriks</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-linear-trans.html#sec-linear-trans-4" class="internal"><span class="codenumber">3.5.2</span> <span class="title">Mengomposisikan Transformasi Matriks</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-linear-trans.html#subsec-dynamical-systems" class="internal"><span class="codenumber">3.5.3</span> <span class="title">Sistem Dinamis Diskrit</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-linear-trans.html#sec-linear-trans-6" class="internal"><span class="codenumber">3.5.4</span> <span class="title">Ringkasan</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-transforms-geom.html" class="internal"><span class="codenumber">3.6</span> <span class="title">Geometri Transformasi Matriks</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-transforms-geom.html#sec-transforms-geom-3" class="internal"><span class="codenumber">3.6.1</span> <span class="title">Geometri Transformasi Matriks <span class="process-math">\(2\times2\)</span></span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-transforms-geom.html#sec-transforms-geom-4" class="internal"><span class="codenumber">3.6.2</span> <span class="title">Transformasi Matriks dan Animasi Komputer</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-transforms-geom.html#sec-transforms-geom-5" class="internal"><span class="codenumber">3.6.3</span> <span class="title">Ringkasan</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-backmatter">
+<div class="toc-title-box"><a href="backmatter.html" class="internal"><span class="title">Back Matter</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-appendix"><div class="toc-title-box"><a href="app-sage-reference.html" class="internal"><span class="codenumber">A</span> <span class="title">Referensi Sage</span></a></div></li>
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="backmatter-3.html" class="internal"><span class="title">Index</span></a></div></li>
+<li class="toc-item toc-colophon"><div class="toc-title-box"><a href="backmatter-4.html" class="internal"><span class="title">Colophon</span></a></div></li>
+<li class="toc-item toc-references"><div class="toc-title-box"><a href="references-backmatter.html" class="internal"><span class="title">References</span></a></div></li>
+</ul>
+</li>
+</ul></nav></div>
+<main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="section" id="sec-matrices-lin-combs"><h2 class="heading hide-type">
+<span class="type">Section</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">3.2</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Perkalian Matriks dan Kombinasi Linear</span>
+</h2>
+<section class="introduction" id="sec-matrices-lin-combs-2"><div class="para logical" id="sec-matrices-lin-combs-2-1">
+<div class="para">Bagian sebelumnya memperkenalkan vektor dan kombinasi linear serta mendemonstrasikan bagaimana mereka memberikan cara untuk memikirkan sistem linear secara geometris. Secara khusus, kita melihat bahwa vektor <span class="process-math">\(\bvec\)</span> adalah kombinasi linear dari vektor-vektor <span class="process-math">\(\vvec_1,\vvec_2,\ldots,\vvec_n\)</span> tepat ketika sistem linear yang berkorespondensi dengan matriks augmented</div>
+<div class="displaymath process-math" id="sec-matrices-lin-combs-2-1-3">
+\begin{equation*}
+\left[\begin{array}{rrrr|r}
+\vvec_1 \amp \vvec_2 \amp \cdots \amp \vvec_n \amp \bvec
+\end{array}\right]
+\end{equation*}
+</div>
+<div class="para">konsisten.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="sec-matrices-lin-combs-2-2">Tujuan kita dalam bagian ini adalah memperkenalkan perkalian matriks, operasi aljabar lain yang memperdalam koneksi antara sistem linear dan kombinasi linear.<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div></section><section class="subsection" id="sec-matrices-lin-combs-3"><h3 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">3.2.1</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Perkalian Skalar dan Penjumlahan Matriks</span>
+</h3>
+<div class="para logical" id="sec-matrices-lin-combs-3-2">
+<div class="para"> Kita pertama-tama memikirkan matriks sebagai susunan persegi panjang dari bilangan. Jika kita mengatakan bahwa <em class="emphasis">bentuk</em> sebuah matriks adalah <span class="process-math">\(m\times
+n\text{,}\)</span> kita berarti bahwa ia memiliki <span class="process-math">\(m\)</span> baris dan <span class="process-math">\(n\)</span> kolom. Misalnya, bentuk dari matriks di bawah ini adalah <span class="process-math">\(3\times4\text{:}\)</span>
+</div>
+<div class="displaymath process-math" id="sec-matrices-lin-combs-3-2-7">
+\begin{equation*}
+\left[
+\begin{array}{rrrr}
+0 \amp 4 \amp -3 \amp 1 \\
+3 \amp -1 \amp 2 \amp 0 \\
+2 \amp 0 \amp -1 \amp 1 \\
+\end{array}
+\right]\text{.}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="sec-matrices-lin-combs-3-3">
+<div class="para">Kita juga dapat memikirkan kolom-kolom dari sebuah matriks sebagai himpunan vektor. Misalnya, matriks di atas dapat direpresentasikan sebagai</div>
+<div class="displaymath process-math" id="sec-matrices-lin-combs-3-3-1">
+\begin{equation*}
+\left[
+\begin{array}{rrrr}
+\vvec_1 \amp \vvec_2 \amp \vvec_3 \amp \vvec_4
+\end{array}
+\right]
+\end{equation*}
+</div>
+<div class="para">dimana</div>
+<div class="displaymath process-math" id="sec-matrices-lin-combs-3-3-2">
+\begin{equation*}
+\vvec_1=\left[\begin{array}{r}0\\3\\2\\ \end{array}\right],
+\vvec_2=\left[\begin{array}{r}4\\-1\\0\\ \end{array}\right],
+\vvec_3=\left[\begin{array}{r}-3\\2\\-1\\ \end{array}\right],
+\vvec_4=\left[\begin{array}{r}1\\0\\1\\ \end{array}\right]\text{.}
+\end{equation*}
+</div>
+<div class="para">Dengan cara ini, kita melihat bahwa matriks <span class="process-math">\(3\times 4\)</span> ekuivalen dengan himpunan terurut dari 4 vektor di <span class="process-math">\(\real^3\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-3-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="sec-matrices-lin-combs-3-4">
+<div class="para"> Ini berarti bahwa kita dapat mendefinisikan operasi perkalian skalar dan penjumlahan matriks menggunakan operasi vektor kolom-wise yang bersesuaian. Misalnya,</div>
+<div class="displaymath process-math" id="sec-matrices-lin-combs-3-4-3">
+\begin{equation*}
+\begin{aligned}
+c\left[\begin{array}{rrrr}
+\vvec_1 \amp \vvec_2 \amp \cdots \amp \vvec_n
+\end{array}
+\right]
+{}={} \amp
+\left[\begin{array}{rrrr}
+c\vvec_1 \amp c\vvec_2 \amp \cdots \amp c\vvec_n
+\end{array}
+\right] \\
+\left[\begin{array}{rrrr}
+\vvec_1 \amp \vvec_2 \amp \cdots \amp \vvec_n
+\end{array}
+\right]
+{}+{} \amp
+\left[\begin{array}{rrrr}
+\wvec_1 \amp \wvec_2 \amp \cdots \amp \wvec_n
+\end{array}
+\right]
+\\
+{}={} \amp
+\left[\begin{array}{rrrr}
+\vvec_1+\wvec_1 \amp \vvec_2+\wvec_2 \amp \cdots \amp
+\vvec_n+\wvec_n 
+\end{array}
+\right]. \\
+\end{aligned}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-3-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="exploration project-like" id="sec-matrices-lin-combs-3-5"><h4 class="heading">
+<span class="type">Preview Activity</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">3.2.1</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Operasi Matriks.</span>
+</h4>
+<div class="para logical" id="sec-matrices-lin-combs-3-5-2-1">
+<ol class="lower-alpha ol-marker-1" id="sec-matrices-lin-combs-3-5-2-1-1">
+<li id="sec-matrices-lin-combs-3-5-2-1-1-1">
+<div class="para logical" id="sec-matrices-lin-combs-3-5-2-1-1-1-1">
+<div class="para">Hitung kelipatan skalar</div>
+<div class="displaymath process-math" id="sec-matrices-lin-combs-3-5-2-1-1-1-1-1">
+\begin{equation*}
+-3\left[
+\begin{array}{rrr}
+3 \amp 1 \amp 0 \\
+-4 \amp 3 \amp -1 \\
+\end{array}
+\right]\text{.}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-3-5-2-1-1-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item a"><a href="#sec-matrices-lin-combs-3-5-2-1-1-1" title="Copy heading and permalink for Item a" aria-label="Copy heading and permalink for Item a">🔗</a></div>
+</li>
+<li id="sec-matrices-lin-combs-3-5-2-1-1-2">
+<div class="para logical" id="sec-matrices-lin-combs-3-5-2-1-1-2-1">
+<div class="para">Temukan jumlah</div>
+<div class="displaymath process-math" id="sec-matrices-lin-combs-3-5-2-1-1-2-1-1">
+\begin{equation*}
+\left[
+\begin{array}{rr}
+0 \amp -3 \\ 
+1 \amp -2 \\
+3 \amp 4 \\
+\end{array}
+\right]
++
+\left[
+\begin{array}{rrr}
+4 \amp -1 \\
+-2 \amp 2 \\
+1 \amp 1 \\
+\end{array}
+\right]\text{.}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-3-5-2-1-1-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item b"><a href="#sec-matrices-lin-combs-3-5-2-1-1-2" title="Copy heading and permalink for Item b" aria-label="Copy heading and permalink for Item b">🔗</a></div>
+</li>
+<li id="sec-matrices-lin-combs-3-5-2-1-1-3">
+<div class="para" id="sec-matrices-lin-combs-3-5-2-1-1-3-1">Misalkan <span class="process-math">\(A\)</span> dan <span class="process-math">\(B\)</span> adalah dua matriks. Apa yang perlu kita ketahui tentang bentuk mereka sebelum kita dapat membentuk jumlah <span class="process-math">\(A+B\text{?}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-3-5-2-1-1-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item c"><a href="#sec-matrices-lin-combs-3-5-2-1-1-3" title="Copy heading and permalink for Item c" aria-label="Copy heading and permalink for Item c">🔗</a></div>
+</li>
+<li id="sec-matrices-lin-combs-3-5-2-1-1-4">
+<div class="para logical" id="sec-matrices-lin-combs-3-5-2-1-1-4-2">
+<div class="para">Matriks <span class="process-math">\(I_n\text{,}\)</span> yang kita sebut matriks <em class="emphasis">identitas</em>, adalah matriks <span class="process-math">\(n\times n\)</span> yang entrinya nol kecuali untuk entri diagonal, yang semuanya adalah 1. Misalnya,</div>
+<div class="displaymath process-math" id="sec-matrices-lin-combs-3-5-2-1-1-4-2-4">
+\begin{equation*}
+I_3 = 
+\left[
+\begin{array}{rrr}
+1 \amp 0 \amp 0 \\
+0 \amp 1 \amp 0 \\
+0 \amp 0 \amp 1 \\
+\end{array}
+\right]\text{.}
+\end{equation*}
+</div>
+<div class="para">Jika kita dapat membentuk jumlah <span class="process-math">\(A+I_n\text{,}\)</span> apa yang harus benar tentang matriks <span class="process-math">\(A\text{?}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-3-5-2-1-1-4-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item d"><a href="#sec-matrices-lin-combs-3-5-2-1-1-4" title="Copy heading and permalink for Item d" aria-label="Copy heading and permalink for Item d">🔗</a></div>
+</li>
+<li id="sec-matrices-lin-combs-3-5-2-1-1-5">
+<div class="para logical" id="sec-matrices-lin-combs-3-5-2-1-1-5-1">
+<div class="para">Temukan matriks <span class="process-math">\(A - 2I_3\)</span> dimana</div>
+<div class="displaymath process-math" id="sec-matrices-lin-combs-3-5-2-1-1-5-1-2">
+\begin{equation*}
+A = 
+\left[
+\begin{array}{rrr}
+1 \amp 2 \amp -2 \\
+2 \amp -3 \amp 3 \\
+-2 \amp 3 \amp 4 \\
+\end{array}
+\right]\text{.}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-3-5-2-1-1-5-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item e"><a href="#sec-matrices-lin-combs-3-5-2-1-1-5" title="Copy heading and permalink for Item e" aria-label="Copy heading and permalink for Item e">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-3-5-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Preview Activity 3.2.1: Operasi Matriks"><a href="#sec-matrices-lin-combs-3-5" title="Copy heading and permalink for Preview Activity 3.2.1: Operasi Matriks" aria-label="Copy heading and permalink for Preview Activity 3.2.1: Operasi Matriks">🔗</a></div></article><div class="para" id="sec-matrices-lin-combs-3-6">Sebagaimana aktivitas pratinjau ini menunjukkan, operasi perkalian skalar dan penjumlahan matriks adalah perluasan alami dari padanan vektor mereka. Namun, diperlukan kehati-hatian saat menambahkan matriks. Karena kita memerlukan jumlah vektor yang sama untuk menambahkan dan karena vektor-vektor tersebut harus memiliki dimensi yang sama, dua matriks harus memiliki bentuk yang sama jika kita ingin membentuk jumlahnya.<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-3-6" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Subsection 3.2.1: Perkalian Skalar dan Penjumlahan Matriks"><a href="#sec-matrices-lin-combs-3" title="Copy heading and permalink for Subsection 3.2.1: Perkalian Skalar dan Penjumlahan Matriks" aria-label="Copy heading and permalink for Subsection 3.2.1: Perkalian Skalar dan Penjumlahan Matriks">🔗</a></div></section><section class="subsection" id="sec-matrices-lin-combs-4"><h3 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">3.2.2</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Perkalian Matriks-Vektor dan Kombinasi Linear</span>
+</h3>
+<div class="para" id="sec-matrices-lin-combs-4-2">Operasi yang lebih penting adalah perkalian matriks karena memungkinkan kita untuk mengekspresikan sistem linear secara kompak. Kita sekarang memperkenalkan produk dari sebuah matriks dan vektor dengan sebuah contoh.<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-4-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="example example-like" id="sec-matrices-lin-combs-4-3"><h4 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">3.2.1</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Perkalian Matriks-Vektor.</span>
+</h4>
+<div class="para logical" id="sec-matrices-lin-combs-4-3-2-1">
+<div class="para">Misalkan kita memiliki matriks <span class="process-math">\(A\)</span> dan vektor <span class="process-math">\(\xvec\text{:}\)</span>
+</div>
+<div class="displaymath process-math" id="sec-matrices-lin-combs-4-3-2-1-3">
+\begin{equation*}
+A = \left[\begin{array}{rr}
+-2 \amp 3 \\
+0 \amp 2 \\
+3 \amp 1 \\
+\end{array}\right],~~~
+\xvec = \left[\begin{array}{r}
+2 \\ 3 \\ \end{array}\right]\text{.}
+\end{equation*}
+</div>
+<div class="para">Produk mereka akan didefinisikan sebagai kombinasi linear dari kolom-kolom <span class="process-math">\(A\)</span> menggunakan komponen-komponen <span class="process-math">\(\xvec\)</span> sebagai bobot. Ini berarti bahwa</div>
+<div class="displaymath process-math" id="sec-matrices-lin-combs-4-3-2-1-6">
+\begin{equation*}
+\begin{aligned}
+A\xvec = 
+\left[\begin{array}{rr}
+-2 \amp 3 \\
+0 \amp 2 \\
+3 \amp 1 \\
+\end{array}\right]
+\left[\begin{array}{r} 2 \\ 3 \\ \end{array}\right]
+{}={} \amp
+2 \left[\begin{array}{r} -2 \\ 0 \\ 3 \\ \end{array}\right] +
+3 \left[\begin{array}{r} 3 \\ 2 \\ 1 \\ \end{array}\right]
+\\ \\
+{}={} \amp
+\left[\begin{array}{r} -4 \\ 0 \\ 6 \\ \end{array}\right] +
+\left[\begin{array}{r} 9 \\ 6 \\ 3 \\ \end{array}\right] \\ \\
+{}={} \amp
+\left[\begin{array}{r} 5 \\ 6 \\ 9 \\ \end{array}\right]. \\
+\end{aligned}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-4-3-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <div class="para" id="sec-matrices-lin-combs-4-3-2-2">Karena <span class="process-math">\(A\)</span> memiliki dua kolom, kita memerlukan dua bobot untuk membentuk kombinasi linear dari kolom-kolom tersebut, yang berarti bahwa <span class="process-math">\(\xvec\)</span> harus memiliki dua komponen. Dengan kata lain, jumlah kolom dari <span class="process-math">\(A\)</span> harus sama dengan dimensi dari vektor <span class="process-math">\(\xvec\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-4-3-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <div class="para" id="sec-matrices-lin-combs-4-3-2-3">Demikian pula, kolom-kolom dari <span class="process-math">\(A\)</span> adalah 3-dimensi sehingga sembarang kombinasi linear dari mereka juga 3-dimensi. Oleh karena itu, <span class="process-math">\(A\xvec\)</span> akan menjadi 3-dimensi.<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-4-3-2-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <div class="para" id="sec-matrices-lin-combs-4-3-2-4">Kita kemudian melihat bahwa jika <span class="process-math">\(A\)</span> adalah matriks <span class="process-math">\(3\times2\text{,}\)</span> <span class="process-math">\(\xvec\)</span> harus menjadi vektor 2-dimensi dan <span class="process-math">\(A\xvec\)</span> akan menjadi 3-dimensi.<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-4-3-2-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Example 3.2.1: Perkalian Matriks-Vektor"><a href="#sec-matrices-lin-combs-4-3" title="Copy heading and permalink for Example 3.2.1: Perkalian Matriks-Vektor" aria-label="Copy heading and permalink for Example 3.2.1: Perkalian Matriks-Vektor">🔗</a></div></article><div class="para" id="sec-matrices-lin-combs-4-4">Secara lebih umum, kita memiliki definisi berikut.<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-4-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="definition definition-like" id="sec-matrices-lin-combs-4-5"><h4 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">3.2.2</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Perkalian Matriks-Vektor.</span>
+</h4>
+<div class="para logical" id="sec-matrices-lin-combs-4-5-3-1">
+<div class="para">Produk dari sebuah matriks <span class="process-math">\(A\)</span> oleh sebuah vektor <span class="process-math">\(\xvec\)</span> akan menjadi kombinasi linear dari kolom-kolom <span class="process-math">\(A\)</span> menggunakan komponen-komponen <span class="process-math">\(\xvec\)</span> sebagai bobot. Secara lebih spesifik, jika</div>
+<div class="displaymath process-math" id="sec-matrices-lin-combs-4-5-3-1-5">
+\begin{equation*}
+A=\left[\begin{array}{rrrr}
+\vvec_1 \amp \vvec_2 \amp \ldots \amp \vvec_n
+\end{array}\right],~~~
+\xvec = \left[\begin{array}{r}
+c_1 \\ c_2 \\ \vdots \\ c_n \end{array}\right],
+\end{equation*}
+</div>
+<div class="para">maka</div>
+<div class="displaymath process-math" id="sec-matrices-lin-combs-4-5-3-1-6">
+\begin{equation*}
+A\xvec = c_1\vvec_1 + c_2\vvec_2 + \ldots + c_n\vvec_n\text{.}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-4-5-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <div class="para" id="sec-matrices-lin-combs-4-5-3-2">Jika <span class="process-math">\(A\)</span> adalah matriks <span class="process-math">\(m\times n\text{,}\)</span> maka <span class="process-math">\(\xvec\)</span> harus menjadi vektor <span class="process-math">\(n\)</span>-dimensi, dan produk <span class="process-math">\(A\xvec\)</span> akan menjadi vektor <span class="process-math">\(m\)</span>-dimensi.<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-4-5-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 3.2.2: Perkalian Matriks-Vektor"><a href="#sec-matrices-lin-combs-4-5" title="Copy heading and permalink for Definition 3.2.2: Perkalian Matriks-Vektor" aria-label="Copy heading and permalink for Definition 3.2.2: Perkalian Matriks-Vektor">🔗</a></div></article><div class="para" id="sec-matrices-lin-combs-4-6">Aktivitas berikutnya mengeksplorasi beberapa sifat perkalian matriks.<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-4-6" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="activity project-like" id="sec-matrices-lin-combs-4-7"><h4 class="heading">
+<span class="type">Activity</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">3.2.2</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Perkalian Matriks-Vektor.</span>
+</h4>
+<div class="para logical" id="sec-matrices-lin-combs-4-7-2-1">
+<ol class="lower-alpha ol-marker-1" id="sec-matrices-lin-combs-4-7-2-1-1">
+<li id="li-example-product">
+<div class="para logical" id="li-example-product-1">
+<div class="para">Temukan produk matriks</div>
+<div class="displaymath process-math" id="li-example-product-1-1">
+\begin{equation*}
+\left[
+\begin{array}{rrrr}
+1 \amp 2 \amp 0 \amp -1 \\
+2 \amp 4 \amp -3 \amp -2 \\
+-1 \amp -2 \amp 6 \amp 1 \\
+\end{array}
+\right]
+\left[
+\begin{array}{r}
+3 \\ 1 \\ -1 \\ 1 \\
+\end{array}
+\right]\text{.}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#li-example-product-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item a"><a href="#li-example-product" title="Copy heading and permalink for Item a" aria-label="Copy heading and permalink for Item a">🔗</a></div>
+</li>
+<li id="sec-matrices-lin-combs-4-7-2-1-1-2">
+<div class="para logical" id="sec-matrices-lin-combs-4-7-2-1-1-2-1">
+<div class="para">Misalkan <span class="process-math">\(A\)</span> adalah matriks</div>
+<div class="displaymath process-math" id="sec-matrices-lin-combs-4-7-2-1-1-2-1-2">
+\begin{equation*}
+\left[
+\begin{array}{rrr}
+3 \amp -1 \amp 0 \\
+0 \amp -2 \amp 4 \\
+2 \amp 1 \amp 5 \\
+1 \amp 0 \amp 3 \\
+\end{array}
+\right]\text{.}
+\end{equation*}
+</div>
+<div class="para">Jika <span class="process-math">\(A\xvec\)</span> terdefinisi, berapakah dimensi dari vektor <span class="process-math">\(\xvec\)</span> dan berapakah dimensi dari <span class="process-math">\(A\xvec\text{?}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-4-7-2-1-1-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item b"><a href="#sec-matrices-lin-combs-4-7-2-1-1-2" title="Copy heading and permalink for Item b" aria-label="Copy heading and permalink for Item b">🔗</a></div>
+</li>
+<li id="sec-matrices-lin-combs-4-7-2-1-1-3">
+<div class="para" id="sec-matrices-lin-combs-4-7-2-1-1-3-1">Sebuah vektor yang entrinya semuanya nol dilambangkan dengan <span class="process-math">\(\zerovec\text{.}\)</span> Jika <span class="process-math">\(A\)</span> adalah matriks, berapakah produk <span class="process-math">\(A\zerovec\text{?}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-4-7-2-1-1-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item c"><a href="#sec-matrices-lin-combs-4-7-2-1-1-3" title="Copy heading and permalink for Item c" aria-label="Copy heading and permalink for Item c">🔗</a></div>
+</li>
+<li id="sec-matrices-lin-combs-4-7-2-1-1-4">
+<div class="para" id="sec-matrices-lin-combs-4-7-2-1-1-4-1">Misalkan <span class="process-math">\(I = \left[\begin{array}{rrr}
+1 \amp 0 \amp 0 \\
+0 \amp 1 \amp 0 \\
+0 \amp 0 \amp 1 \\
+\end{array}\right]\)</span> adalah matriks identitas dan <span class="process-math">\(\xvec=\threevec{x_1}{x_2}{x_3}\text{.}\)</span> Temukan produk <span class="process-math">\(I\xvec\)</span> dan jelaskan mengapa <span class="process-math">\(I\)</span> disebut matriks identitas.<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-4-7-2-1-1-4-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item d"><a href="#sec-matrices-lin-combs-4-7-2-1-1-4" title="Copy heading and permalink for Item d" aria-label="Copy heading and permalink for Item d">🔗</a></div>
+</li>
+<li id="sec-matrices-lin-combs-4-7-2-1-1-5">
+<div class="para logical" id="sec-matrices-lin-combs-4-7-2-1-1-5-1">
+<div class="para">Misalkan kita menuliskan matriks <span class="process-math">\(A\)</span> dalam terms kolom-kolomnya sebagai</div>
+<div class="displaymath process-math" id="sec-matrices-lin-combs-4-7-2-1-1-5-1-2">
+\begin{equation*}
+A = \left[
+\begin{array}{rrrr}
+\vvec_1 \amp \vvec_2 \amp \cdots \amp \vvec_n \\
+\end{array}
+\right]\text{.}
+\end{equation*}
+</div>
+<div class="para">Jika vektor <span class="process-math">\(\evec_1 = \left[\begin{array}{c} 1 \\ 0 \\
+\vdots \\ 0 \end{array}\right]\text{,}\)</span> berapakah produk <span class="process-math">\(A\evec_1\text{?}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-4-7-2-1-1-5-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item e"><a href="#sec-matrices-lin-combs-4-7-2-1-1-5" title="Copy heading and permalink for Item e" aria-label="Copy heading and permalink for Item e">🔗</a></div>
+</li>
+<li id="sec-matrices-lin-combs-4-7-2-1-1-6">
+<div class="para logical" id="sec-matrices-lin-combs-4-7-2-1-1-6-1">
+<div class="para">Misalkan</div>
+<div class="displaymath process-math" id="sec-matrices-lin-combs-4-7-2-1-1-6-1-1">
+\begin{equation*}
+A = \left[
+\begin{array}{rrrr}
+1 \amp 2 \\
+-1 \amp 1 \\
+\end{array}
+\right],
+\bvec = \left[
+\begin{array}{r}
+6 \\ 0
+\end{array}
+\right]\text{.}
+\end{equation*}
+</div>
+<div class="para">Apakah terdapat vektor <span class="process-math">\(\xvec\)</span> sedemikian sehingga <span class="process-math">\(A\xvec = \bvec\text{?}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-4-7-2-1-1-6-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item f"><a href="#sec-matrices-lin-combs-4-7-2-1-1-6" title="Copy heading and permalink for Item f" aria-label="Copy heading and permalink for Item f">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-4-7-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Activity 3.2.2: Perkalian Matriks-Vektor"><a href="#sec-matrices-lin-combs-4-7" title="Copy heading and permalink for Activity 3.2.2: Perkalian Matriks-Vektor" aria-label="Copy heading and permalink for Activity 3.2.2: Perkalian Matriks-Vektor">🔗</a></div></article><div class="para logical" id="sec-matrices-lin-combs-4-8">
+<div class="para">Perkalian matriks <span class="process-math">\(A\)</span> dan vektor didefinisikan sebagai kombinasi linear dari kolom-kolom <span class="process-math">\(A\text{.}\)</span> Namun, terdapat jalan pintas untuk menghitung produk seperti itu. Mari kita lihat contoh sebelumnya dan fokus pada baris pertama dari produk.</div>
+<div class="displaymath process-math" id="sec-matrices-lin-combs-4-8-3">
+\begin{equation*}
+\left[\begin{array}{rr}
+-2 \amp 3 \\
+0 \amp 2 \\
+3 \amp 1 \\
+\end{array}\right]
+\left[\begin{array}{r} 2 \\ 3 \\ \end{array}\right]
+=
+2 \left[\begin{array}{r} -2 \\ * \\ * \\ \end{array}\right] +
+3 \left[\begin{array}{r} 3 \\ * \\ * \\ \end{array}\right]
+=
+\left[\begin{array}{c} 2(-2)+3(3) \\ * \\ * \\ \end{array}\right] 
+=
+\left[\begin{array}{r} 5 \\ * \\ * \\ \end{array}\right]\text{.}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-4-8" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="sec-matrices-lin-combs-4-9">Untuk menemukan komponen pertama dari produk, kita mempertimbangkan baris pertama dari matriks. Kita kemudian mengalikan entri pertama dalam baris tersebut dengan komponen pertama dari vektor, entri kedua dengan komponen kedua dari vektor, dan seterusnya, dan menjumlahkan hasilnya. Dengan cara ini, kita melihat bahwa komponen ketiga dari produk akan diperoleh dari baris ketiga dari matriks dengan menghitung <span class="process-math">\(2(3) + 3(1) = 9\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-4-9" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="sec-matrices-lin-combs-4-10">Anda didorong untuk mengevaluasi produk <a href="sec-matrices-lin-combs.html#li-example-product" class="xref" data-knowl="./knowl/xref/li-example-product.html" data-reveal-label="Reveal" data-close-label="Close" title="Item a">Item a</a> dari aktivitas sebelumnya menggunakan jalan pintas ini dan membandingkan hasilnya dengan apa yang Anda temukan saat menyelesaikan aktivitas tersebut.<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-4-10" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="activity project-like" id="sec-matrices-lin-combs-4-11"><h4 class="heading">
+<span class="type">Activity</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">3.2.3</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h4>
+<div class="para logical" id="sec-matrices-lin-combs-4-11-1-1">
+<div class="para">Sage dapat menemukan produk dari matriks dan vektor menggunakan operator <code class="code-inline tex2jax_ignore">*</code>. Misalnya, <div id="sec-matrices-lin-combs-4-11-1-1-2" class="ptx-sagecell sagecell-sage"><script type="text/x-sage">A = matrix(2,2,[1,2,2,1])
+v = vector([3,-1])
+A*v
+</script></div>
+</div>
+<ol class="lower-alpha ol-marker-1" id="sec-matrices-lin-combs-4-11-1-1-3">
+<li id="sec-matrices-lin-combs-4-11-1-1-3-1">
+<div class="para logical" id="sec-matrices-lin-combs-4-11-1-1-3-1-1">
+<div class="para">Gunakan Sage untuk mengevaluasi produk</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/li-example-product.html" id="sec-matrices-lin-combs-4-11-1-1-3-1-1-1">
+\begin{equation*}
+\left[
+\begin{array}{rrrr}
+1 \amp 2 \amp 0 \amp -1 \\
+2 \amp 4 \amp -3 \amp -2 \\
+-1 \amp -2 \amp 6 \amp 1 \\
+\end{array}
+\right]
+\left[
+\begin{array}{r}
+3 \\ 1 \\ -1 \\ 1 \\
+\end{array}
+\right]
+\end{equation*}
+</div>
+<div class="para">dari <a href="sec-matrices-lin-combs.html#li-example-product" class="xref" data-knowl="./knowl/xref/li-example-product.html" data-reveal-label="Reveal" data-close-label="Close" title="Item a">Item a</a> dari aktivitas sebelumnya. <div id="sec-matrices-lin-combs-4-11-1-1-3-1-1-3" class="ptx-sagecell sagecell-sage"><script type="text/x-sage">
+</script></div>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-4-11-1-1-3-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item a"><a href="#sec-matrices-lin-combs-4-11-1-1-3-1" title="Copy heading and permalink for Item a" aria-label="Copy heading and permalink for Item a">🔗</a></div>
+</li>
+<li id="sec-matrices-lin-combs-4-11-1-1-3-2">
+<div class="para logical" id="sec-matrices-lin-combs-4-11-1-1-3-2-1">
+<div class="para">Dalam Sage, definisikan matriks dan vektor</div>
+<div class="displaymath process-math" id="sec-matrices-lin-combs-4-11-1-1-3-2-1-1">
+\begin{equation*}
+A = \left[
+\begin{array}{rrr}
+-2 \amp 0 \\
+3 \amp 1 \\
+4 \amp 2 \\
+\end{array}
+\right],
+\zerovec = \left[
+\begin{array}{r} 0 \\ 0 \end{array}
+\right],
+\vvec = \left[
+\begin{array}{r} -2 \\ 3 \end{array}
+\right],
+\wvec = \left[
+\begin{array}{r} 1 \\ 2 \end{array}
+\right]\text{.}
+\end{equation*}
+</div>
+<div class="para"><div id="sec-matrices-lin-combs-4-11-1-1-3-2-1-2" class="ptx-sagecell sagecell-sage"><script type="text/x-sage">
+</script></div></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-4-11-1-1-3-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item b"><a href="#sec-matrices-lin-combs-4-11-1-1-3-2" title="Copy heading and permalink for Item b" aria-label="Copy heading and permalink for Item b">🔗</a></div>
+</li>
+<li id="sec-matrices-lin-combs-4-11-1-1-3-3">
+<div class="para" id="sec-matrices-lin-combs-4-11-1-1-3-3-1">Apa yang Anda temukan ketika Anda mengevaluasi <span class="process-math">\(A\zerovec\text{?}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-4-11-1-1-3-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item c"><a href="#sec-matrices-lin-combs-4-11-1-1-3-3" title="Copy heading and permalink for Item c" aria-label="Copy heading and permalink for Item c">🔗</a></div>
+</li>
+<li id="sec-matrices-lin-combs-4-11-1-1-3-4">
+<div class="para" id="sec-matrices-lin-combs-4-11-1-1-3-4-1">Apa yang Anda temukan ketika Anda mengevaluasi <span class="process-math">\(A(3\vvec)\)</span> dan <span class="process-math">\(3(A\vvec)\)</span> dan membandingkan hasil Anda?<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-4-11-1-1-3-4-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item d"><a href="#sec-matrices-lin-combs-4-11-1-1-3-4" title="Copy heading and permalink for Item d" aria-label="Copy heading and permalink for Item d">🔗</a></div>
+</li>
+<li id="sec-matrices-lin-combs-4-11-1-1-3-5">
+<div class="para" id="sec-matrices-lin-combs-4-11-1-1-3-5-1">Apa yang Anda temukan ketika Anda mengevaluasi <span class="process-math">\(A(\vvec+\wvec)\)</span> dan <span class="process-math">\(A\vvec + A\wvec\)</span> dan membandingkan hasil Anda?<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-4-11-1-1-3-5-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item e"><a href="#sec-matrices-lin-combs-4-11-1-1-3-5" title="Copy heading and permalink for Item e" aria-label="Copy heading and permalink for Item e">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-4-11-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Activity 3.2.3"><a href="#sec-matrices-lin-combs-4-11" title="Copy heading and permalink for Activity 3.2.3" aria-label="Copy heading and permalink for Activity 3.2.3">🔗</a></div></article><div class="para" id="sec-matrices-lin-combs-4-12">Aktivitas ini mendemonstrasikan beberapa sifat umum yang dipenuhi oleh perkalian matriks yang kita catat di sini.<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-4-12" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="proposition theorem-like" id="prop-matrix-mult-prop"><h4 class="heading">
+<span class="type">Proposition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">3.2.3</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Linearitas Perkalian Matriks.</span>
+</h4>
+<div class="para logical" id="prop-matrix-mult-prop-2-1">
+<div class="para">Jika <span class="process-math">\(A\)</span> adalah matriks, <span class="process-math">\(\vvec\)</span> dan <span class="process-math">\(\wvec\)</span> vektor-vektor dengan dimensi yang sesuai, dan <span class="process-math">\(c\)</span> skalar, maka</div>
+<ul class="disc" id="prop-matrix-mult-prop-2-1-5">
+<li id="prop-matrix-mult-prop-2-1-5-1">
+<div class="para" id="prop-matrix-mult-prop-2-1-5-1-1">
+<span class="process-math">\(A\zerovec = \zerovec\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#prop-matrix-mult-prop-2-1-5-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item"><a href="#prop-matrix-mult-prop-2-1-5-1" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+<li id="prop-matrix-mult-prop-2-1-5-2">
+<div class="para" id="prop-matrix-mult-prop-2-1-5-2-1">
+<span class="process-math">\(A(c\vvec) = cA\vvec\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#prop-matrix-mult-prop-2-1-5-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item"><a href="#prop-matrix-mult-prop-2-1-5-2" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+<li id="prop-matrix-mult-prop-2-1-5-3">
+<div class="para" id="prop-matrix-mult-prop-2-1-5-3-1">
+<span class="process-math">\(A(\vvec+\wvec) = A\vvec + A\wvec\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#prop-matrix-mult-prop-2-1-5-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item"><a href="#prop-matrix-mult-prop-2-1-5-3" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+</ul>
+<div class="autopermalink" data-description="Paragraph"><a href="#prop-matrix-mult-prop-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proposition 3.2.3: Linearitas Perkalian Matriks"><a href="#prop-matrix-mult-prop" title="Copy heading and permalink for Proposition 3.2.3: Linearitas Perkalian Matriks" aria-label="Copy heading and permalink for Proposition 3.2.3: Linearitas Perkalian Matriks">🔗</a></div></article><div class="autopermalink" data-description="Subsection 3.2.2: Perkalian Matriks-Vektor dan Kombinasi Linear"><a href="#sec-matrices-lin-combs-4" title="Copy heading and permalink for Subsection 3.2.2: Perkalian Matriks-Vektor dan Kombinasi Linear" aria-label="Copy heading and permalink for Subsection 3.2.2: Perkalian Matriks-Vektor dan Kombinasi Linear">🔗</a></div></section><section class="subsection" id="sec-matrices-lin-combs-5"><h3 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">3.2.3</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Perkalian Matriks-Vektor dan Sistem Linear</span>
+</h3>
+<div class="para" id="sec-matrices-lin-combs-5-2">Sejauh ini, kita telah mulai dengan matriks <span class="process-math">\(A\)</span> dan vektor <span class="process-math">\(\xvec\)</span> dan membentuk produk mereka <span class="process-math">\(A\xvec = \bvec\text{.}\)</span> Kita sekarang ingin membalik ini: mulai dengan matriks <span class="process-math">\(A\)</span> dan vektor <span class="process-math">\(\bvec\text{,}\)</span> kita akan bertanya apakah kita dapat menemukan vektor <span class="process-math">\(\xvec\)</span> sedemikian sehingga <span class="process-math">\(A\xvec = \bvec\text{.}\)</span> Ini akan secara alami mengarah kembali ke sistem linear.<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-5-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="sec-matrices-lin-combs-5-3">
+<div class="para">Untuk melihat koneksi antara persamaan matriks <span class="process-math">\(A\xvec = \bvec\)</span> dan sistem linear, mari kita tuliskan matriks <span class="process-math">\(A\)</span> dalam terms kolom-kolomnya <span class="process-math">\(\vvec_i\)</span> dan <span class="process-math">\(\xvec\)</span> dalam terms komponen-komponennya.</div>
+<div class="displaymath process-math" id="sec-matrices-lin-combs-5-3-5">
+\begin{equation*}
+A = \left[
+\begin{array}{rrrr}
+\vvec_1 \amp \vvec_2 \amp \ldots \vvec_n
+\end{array}
+\right],
+\xvec = \left[
+\begin{array}{c}
+c_1 \\ c_2 \\ \vdots \\ c_n \\
+\end{array}
+\right]\text{.}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-5-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="sec-matrices-lin-combs-5-4">
+<div class="para">Kita tahu bahwa produk matriks <span class="process-math">\(A\xvec\)</span> membentuk kombinasi linear dari kolom-kolom <span class="process-math">\(A\text{.}\)</span> Oleh karena itu, persamaan <span class="process-math">\(A\xvec = \bvec\)</span> hanyalah cara kompak untuk menuliskan persamaan untuk bobot <span class="process-math">\(c_i\text{:}\)</span>
+</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-system-comb.html" id="sec-matrices-lin-combs-5-4-5">
+\begin{equation*}
+c_1\vvec_1 + c_2\vvec_2 + \ldots + c_n\vvec_n = \bvec\text{.}
+\end{equation*}
+</div>
+<div class="para">Kita telah melihat persamaan ini sebelumnya: Ingat bahwa <a href="sec-vectors-lin-combs.html#prop-system-comb" class="xref" data-knowl="./knowl/xref/prop-system-comb.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 3.1.12">Proposition 3.1.12</a> mengatakan bahwa solusi dari persamaan ini sama dengan solusi dari sistem linear yang matriks augmented-nya adalah</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-system-comb.html" id="sec-matrices-lin-combs-5-4-7">
+\begin{equation*}
+\left[\begin{array}{rrrr|r}
+\vvec_1 \amp \vvec_2 \amp \ldots \amp \vvec_n \amp \bvec
+\end{array}\right]\text{.}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-5-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="sec-matrices-lin-combs-5-5">Ini memberi kita tiga cara berbeda untuk melihat ruang solusi yang sama.<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-5-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="proposition theorem-like" id="prop-matrix-eq-solution"><h4 class="heading">
+<span class="type">Proposition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">3.2.4</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h4>
+<div class="para logical" id="prop-matrix-eq-solution-1-1">
+<div class="para">Jika <span class="process-math">\(A=\left[\begin{array}{rrrr}
+\vvec_1\amp\vvec_2\amp\ldots\vvec_n
+\end{array}\right]\)</span> dan <span class="process-math">\(\xvec=\left[
+\begin{array}{c}
+x_1 \\ x_2 \\ \vdots \\ x_n \\
+\end{array}\right]
+\text{,}\)</span> maka pernyataan-pernyataan berikut ekuivalen.</div>
+<ul class="disc" id="prop-matrix-eq-solution-1-1-3">
+<li id="prop-matrix-eq-solution-1-1-3-1">
+<div class="para" id="prop-matrix-eq-solution-1-1-3-1-1">Vektor <span class="process-math">\(\xvec\)</span> memenuhi persamaan <span class="process-math">\(A\xvec = \bvec
+\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#prop-matrix-eq-solution-1-1-3-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item"><a href="#prop-matrix-eq-solution-1-1-3-1" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+<li id="prop-matrix-eq-solution-1-1-3-2">
+<div class="para logical" id="prop-matrix-eq-solution-1-1-3-2-1">
+<div class="para">Vektor <span class="process-math">\(\bvec\)</span> adalah kombinasi linear dari kolom-kolom <span class="process-math">\(A\)</span> dengan bobot <span class="process-math">\(x_j\text{:}\)</span>
+</div>
+<div class="displaymath process-math" id="prop-matrix-eq-solution-1-1-3-2-1-4">
+\begin{equation*}
+x_1\vvec_1 + x_2\vvec_2 + \ldots + x_n\vvec_n = \bvec\text{.}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#prop-matrix-eq-solution-1-1-3-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item"><a href="#prop-matrix-eq-solution-1-1-3-2" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+<li id="prop-matrix-eq-solution-1-1-3-3">
+<div class="para logical" id="prop-matrix-eq-solution-1-1-3-3-1">
+<div class="para">Komponen-komponen dari <span class="process-math">\(\xvec\)</span> membentuk solusi untuk sistem linear yang berkorespondensi dengan matriks augmented</div>
+<div class="displaymath process-math" id="prop-matrix-eq-solution-1-1-3-3-1-2">
+\begin{equation*}
+\left[\begin{array}{rrrr|r}
+\vvec_1 \amp \vvec_2 \amp \cdots \amp \vvec_n \amp \bvec
+\end{array}\right]\text{.}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#prop-matrix-eq-solution-1-1-3-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item"><a href="#prop-matrix-eq-solution-1-1-3-3" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+</ul>
+<div class="autopermalink" data-description="Paragraph"><a href="#prop-matrix-eq-solution-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proposition 3.2.4"><a href="#prop-matrix-eq-solution" title="Copy heading and permalink for Proposition 3.2.4" aria-label="Copy heading and permalink for Proposition 3.2.4">🔗</a></div></article><div class="para logical" id="sec-matrices-lin-combs-5-7">
+<div class="para">Ketika matriks <span class="process-math">\(A = \left[\begin{array}{rrrr}
+\vvec_1\amp\vvec_2\amp\cdots\amp\vvec_n\end{array}\right]\text{,}\)</span> kita akan sering menuliskan</div>
+<div class="displaymath process-math" id="sec-matrices-lin-combs-5-7-2">
+\begin{equation*}
+\left[\begin{array}{rrrr|r}
+\vvec_1\amp\vvec_2\amp\cdots\amp\vvec_n\amp\bvec\end{array}\right]
+= \left[ \begin{array}{r|r} A \amp \bvec \end{array}\right]
+\end{equation*}
+</div>
+<div class="para">dan mengatakan bahwa matriks <span class="process-math">\(A\)</span> diaugmentasi oleh vektor <span class="process-math">\(\bvec\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-5-7" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="sec-matrices-lin-combs-5-8">Persamaan <span class="process-math">\(A\xvec = \bvec\)</span> memberikan cara notasi yang kompak untuk menuliskan sistem linear. Lebih lanjut, notasi ini akan memungkinkan kita untuk fokus pada fitur-fitur penting dari sistem yang menentukan ruang solusinya.<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-5-8" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="example example-like" id="sec-matrices-lin-combs-5-9"><h4 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">3.2.5</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h4>
+<div class="para logical" id="sec-matrices-lin-combs-5-9-1-1">
+<div class="para">Kita akan mendeskripsikan ruang solusi dari persamaan</div>
+<div class="displaymath process-math" id="sec-matrices-lin-combs-5-9-1-1-1">
+\begin{equation*}
+\left[\begin{array}{rrr}
+2 \amp 0 \amp 2 \\
+4 \amp -1 \amp 6 \\
+1 \amp 3 \amp -5 \\
+\end{array}\right]
+\xvec
+=
+\left[\begin{array}{r}
+0 \\ -5 \\ 15
+\end{array}\right].
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-5-9-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <div class="para logical" id="sec-matrices-lin-combs-5-9-1-2">
+<div class="para">Menurut <a href="sec-matrices-lin-combs.html#prop-matrix-eq-solution" class="xref" data-knowl="./knowl/xref/prop-matrix-eq-solution.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 3.2.4">Proposition 3.2.4</a>, persamaan ini dapat diekspresikan secara ekuivalen sebagai</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-matrix-eq-solution.html" id="sec-matrices-lin-combs-5-9-1-2-2">
+\begin{equation*}
+x_1\left[\begin{array}{r}2\\4\\1\end{array}\right] +
+x_2\left[\begin{array}{r}0\\-1\\3\end{array}\right]+
+x_3\left[\begin{array}{r}2\\6\\-5\end{array}\right]=
+\left[\begin{array}{r}0\\-5\\15\end{array}\right]\text{,}
+\end{equation*}
+</div>
+<div class="para">yang merupakan sistem linear yang berkorespondensi dengan matriks augmented</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-matrix-eq-solution.html" id="sec-matrices-lin-combs-5-9-1-2-3">
+\begin{equation*}
+\left[\begin{array}{rrr|r}
+2 \amp 0 \amp 2 \amp 0 \\
+4 \amp -1 \amp 6 \amp -5 \\
+1 \amp 3 \amp -5 \amp 15 \\
+\end{array} \right]\text{.}
+\end{equation*}
+</div>
+<div class="para">Bentuk eselon baris tereduksi dari matriks augmented adalah</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-matrix-eq-solution.html" id="sec-matrices-lin-combs-5-9-1-2-4">
+\begin{equation*}
+\left[\begin{array}{rrr|r}
+2 \amp 0 \amp 2 \amp 0 \\
+4 \amp -1 \amp 6 \amp -5 \\
+1 \amp 3 \amp -5 \amp 15 \\
+\end{array} \right]
+\sim
+\left[\begin{array}{rrr|r}
+1 \amp 0 \amp 1 \amp 0 \\
+0 \amp 1 \amp -2 \amp 5 \\
+0 \amp 0 \amp 0 \amp 0 \\
+\end{array} \right],
+\end{equation*}
+</div>
+<div class="para">yang berkorespondensi dengan sistem linear</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-matrix-eq-solution.html" id="sec-matrices-lin-combs-5-9-1-2-5">
+\begin{equation*}
+\begin{alignedat}{4}
+x_1 \amp \amp \amp {}+{} \amp x_3 \amp {}={} \amp 0 \\
+\amp \amp x_2 \amp {}-{} \amp 2x_3 \amp {}={} \amp 5. \\
+\end{alignedat}
+\end{equation*}
+</div>
+<div class="para">Variabel <span class="process-math">\(x_3\)</span> bebas sehingga kita dapat menuliskan ruang solusi secara parametrik sebagai</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/prop-matrix-eq-solution.html" id="sec-matrices-lin-combs-5-9-1-2-7">
+\begin{equation*}
+\begin{aligned}
+x_1 \amp {}={} -x_3 \\
+x_2 \amp {}={} 5+2x_3. \\
+\end{aligned}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-5-9-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <div class="para logical" id="sec-matrices-lin-combs-5-9-1-3">
+<div class="para">Karena kita awalnya diminta untuk mendeskripsikan solusi dari persamaan <span class="process-math">\(A\xvec = \bvec\text{,}\)</span> kita akan mengekspresikan solusi dalam terms vektor <span class="process-math">\(\xvec\text{:}\)</span>
+</div>
+<div class="displaymath process-math" id="sec-matrices-lin-combs-5-9-1-3-3">
+\begin{equation*}
+\xvec
+=\left[
+\begin{array}{r}
+x_1 \\ x_2 \\ x_3
+\end{array}
+\right]
+=
+\left[
+\begin{array}{r}
+-x_3 \\ 5 + 2x_3 \\ x_3
+\end{array}
+\right]
+=\left[\begin{array}{r}0\\5\\0\end{array}\right]
++x_3\left[\begin{array}{r}-1\\2\\1\end{array}\right]
+\end{equation*}
+</div>
+<div class="para">Sebagaimana sebelumnya, kita menyebut ini deskripsi parametrik dari ruang solusi.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-5-9-1-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <div class="para" id="sec-matrices-lin-combs-5-9-1-4">Ini menunjukkan bahwa solusi <span class="process-math">\(\xvec\)</span> dapat dituliskan dalam bentuk <span class="process-math">\(\vvec + x_3\wvec\text{,}\)</span> untuk vektor-vektor <span class="process-math">\(\vvec\)</span> dan <span class="process-math">\(\wvec\)</span> yang sesuai. Secara geometris, ruang solusi adalah garis di <span class="process-math">\(\real^3\)</span> melalui <span class="process-math">\(\vvec\)</span> bergerak sejajar dengan <span class="process-math">\(\wvec\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-5-9-1-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Example 3.2.5"><a href="#sec-matrices-lin-combs-5-9" title="Copy heading and permalink for Example 3.2.5" aria-label="Copy heading and permalink for Example 3.2.5">🔗</a></div></article><article class="activity project-like" id="sec-matrices-lin-combs-5-10"><h4 class="heading">
+<span class="type">Activity</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">3.2.4</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Persamaan <span class="process-math">\(A\xvec = \bvec\)</span>.</span>
+</h4>
+<div class="para logical" id="sec-matrices-lin-combs-5-10-2-1">
+<ol class="lower-alpha ol-marker-1" id="sec-matrices-lin-combs-5-10-2-1-1">
+<li id="sec-matrices-lin-combs-5-10-2-1-1-1">
+<div class="para logical" id="sec-matrices-lin-combs-5-10-2-1-1-1-1">
+<div class="para">Pertimbangkan sistem linear</div>
+<div class="displaymath process-math" id="sec-matrices-lin-combs-5-10-2-1-1-1-1-1">
+\begin{equation*}
+\begin{alignedat}{4}
+2x \amp {}+{} \amp y \amp {}-{} \amp 3z \amp {}={} \amp 4 \\
+-x \amp {}+{} \amp 2y \amp {}+{} \amp z \amp {}={} \amp 3 \\
+3x \amp {}-{} \amp y \amp \amp \amp {}={} \amp -4. \\
+\end{alignedat}
+\end{equation*}
+</div>
+<div class="para">Identifikasi matriks <span class="process-math">\(A\)</span> dan vektor <span class="process-math">\(\bvec\)</span> untuk mengekspresikan sistem ini dalam bentuk <span class="process-math">\(A\xvec = \bvec\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-5-10-2-1-1-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item a"><a href="#sec-matrices-lin-combs-5-10-2-1-1-1" title="Copy heading and permalink for Item a" aria-label="Copy heading and permalink for Item a">🔗</a></div>
+</li>
+<li id="sec-matrices-lin-combs-5-10-2-1-1-2">
+<div class="para logical" id="sec-matrices-lin-combs-5-10-2-1-1-2-1">
+<div class="para">Jika <span class="process-math">\(A\)</span> dan <span class="process-math">\(\bvec\)</span> seperti di bawah ini, tuliskan sistem linear yang berkorespondensi dengan persamaan <span class="process-math">\(A\xvec=\bvec\)</span> dan deskripsikan ruang solusinya, menggunakan deskripsi parametrik jika sesuai:</div>
+<div class="displaymath process-math" id="sec-matrices-lin-combs-5-10-2-1-1-2-1-4">
+\begin{equation*}
+A = \left[\begin{array}{rrr}
+3 \amp -1 \amp 0 \\
+-2 \amp 0 \amp 6
+\end{array}
+\right],~~~
+\bvec = \left[\begin{array}{r}
+-6 \\ 2
+\end{array}
+\right].
+\end{equation*}
+</div>
+<div class="para"><div id="sec-matrices-lin-combs-5-10-2-1-1-2-1-5" class="ptx-sagecell sagecell-sage"><script type="text/x-sage">
+</script></div></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-5-10-2-1-1-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item b"><a href="#sec-matrices-lin-combs-5-10-2-1-1-2" title="Copy heading and permalink for Item b" aria-label="Copy heading and permalink for Item b">🔗</a></div>
+</li>
+<li id="sec-matrices-lin-combs-5-10-2-1-1-3">
+<div class="para logical" id="sec-matrices-lin-combs-5-10-2-1-1-3-1">
+<div class="para">Deskripsikan ruang solusi dari persamaan</div>
+<div class="displaymath process-math" id="sec-matrices-lin-combs-5-10-2-1-1-3-1-1">
+\begin{equation*}
+\left[
+\begin{array}{rrrr}
+1 \amp 2 \amp 0 \amp -1 \\
+2 \amp 4 \amp -3 \amp -2 \\
+-1 \amp -2 \amp 6 \amp 1 \\
+\end{array}
+\right]
+\xvec
+= 
+\left[\begin{array}{r}
+-1 \\ 1 \\ 5
+\end{array}
+\right]\text{.}
+\end{equation*}
+</div>
+<div class="para"><div id="sec-matrices-lin-combs-5-10-2-1-1-3-1-2" class="ptx-sagecell sagecell-sage"><script type="text/x-sage">
+</script></div></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-5-10-2-1-1-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item c"><a href="#sec-matrices-lin-combs-5-10-2-1-1-3" title="Copy heading and permalink for Item c" aria-label="Copy heading and permalink for Item c">🔗</a></div>
+</li>
+<li id="sec-matrices-lin-combs-5-10-2-1-1-4">
+<div class="para" id="sec-matrices-lin-combs-5-10-2-1-1-4-1">Misalkan <span class="process-math">\(A\)</span> adalah matriks <span class="process-math">\(m\times n\text{.}\)</span> Apa yang dapat Anda jamin tentang ruang solusi dari persamaan <span class="process-math">\(A\xvec = \zerovec\text{?}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-5-10-2-1-1-4-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item d"><a href="#sec-matrices-lin-combs-5-10-2-1-1-4" title="Copy heading and permalink for Item d" aria-label="Copy heading and permalink for Item d">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-5-10-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Activity 3.2.4: Persamaan A\xvec = \bvec"><a href="#sec-matrices-lin-combs-5-10" title="Copy heading and permalink for Activity 3.2.4: Persamaan A\xvec = \bvec" aria-label="Copy heading and permalink for Activity 3.2.4: Persamaan A\xvec = \bvec">🔗</a></div></article><div class="autopermalink" data-description="Subsection 3.2.3: Perkalian Matriks-Vektor dan Sistem Linear"><a href="#sec-matrices-lin-combs-5" title="Copy heading and permalink for Subsection 3.2.3: Perkalian Matriks-Vektor dan Sistem Linear" aria-label="Copy heading and permalink for Subsection 3.2.3: Perkalian Matriks-Vektor dan Sistem Linear">🔗</a></div></section><section class="subsection" id="sec-matrices-lin-combs-6"><h3 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">3.2.4</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Produk Matriks-Matriks</span>
+</h3>
+<div class="para" id="sec-matrices-lin-combs-6-2">Dalam bagian ini, kita telah mengembangkan beberapa operasi aljabar pada matriks dengan tujuan menyederhanakan deskripsi sistem linear kita. Kita sekarang memperkenalkan operasi terakhir, produk dari dua matriks, yang akan menjadi penting ketika kita mempelajari transformasi linear dalam <a href="sec-linear-trans.html" class="internal" title="Section 3.5: Transformasi Matriks">Section 3.5</a>.<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-6-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="definition definition-like" id="sec-matrices-lin-combs-6-3"><h4 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">3.2.6</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Perkalian Matriks-Matriks.</span>
+</h4>
+<div class="para logical" id="sec-matrices-lin-combs-6-3-2-1">
+<div class="para">Diberikan matriks <span class="process-math">\(A\)</span> dan <span class="process-math">\(B\text{,}\)</span> kita membentuk produk mereka <span class="process-math">\(AB\)</span> dengan pertama-tama menuliskan <span class="process-math">\(B\)</span> dalam terms kolom-kolomnya</div>
+<div class="displaymath process-math" id="sec-matrices-lin-combs-6-3-2-1-5">
+\begin{equation*}
+B = \left[\begin{array}{rrrr}
+\vvec_1 \amp \vvec_2 \amp \cdots \amp \vvec_p
+\end{array}\right]
+\end{equation*}
+</div>
+<div class="para">dan kemudian mendefinisikan</div>
+<div class="displaymath process-math" id="sec-matrices-lin-combs-6-3-2-1-6">
+\begin{equation*}
+AB = \left[\begin{array}{rrrr}
+A\vvec_1 \amp A\vvec_2 \amp \cdots \amp A\vvec_p
+\end{array}\right].
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-6-3-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 3.2.6: Perkalian Matriks-Matriks"><a href="#sec-matrices-lin-combs-6-3" title="Copy heading and permalink for Definition 3.2.6: Perkalian Matriks-Matriks" aria-label="Copy heading and permalink for Definition 3.2.6: Perkalian Matriks-Matriks">🔗</a></div></article><article class="example example-like" id="sec-matrices-lin-combs-6-4"><h4 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">3.2.7</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h4>
+<div class="para logical" id="sec-matrices-lin-combs-6-4-1-1">
+<div class="para">Diberikan matriks</div>
+<div class="displaymath process-math" id="sec-matrices-lin-combs-6-4-1-1-1">
+\begin{equation*}
+A = \left[\begin{array}{rr}
+4 \amp 2 \\
+0 \amp 1 \\
+-3 \amp 4 \\
+2 \amp 0 \\
+\end{array}\right],~~~
+B = \left[\begin{array}{rrr}
+-2 \amp 3 \amp 0 \\
+1 \amp 2 \amp -2 \\
+\end{array}\right]\text{,}
+\end{equation*}
+</div>
+<div class="para">kita memiliki</div>
+<div class="displaymath process-math" id="sec-matrices-lin-combs-6-4-1-1-2">
+\begin{equation*}
+AB = \left[\begin{array}{rrr}
+A \twovec{-2}{1} \amp
+A \twovec{3}{2}  \amp
+A \twovec{0}{-2} 
+\end{array}\right]
+= \left[\begin{array}{rrr}
+-6 \amp 16 \amp -4 \\
+1 \amp 2 \amp -2 \\
+10 \amp -1 \amp -8 \\
+-4 \amp 6 \amp 0
+\end{array}\right]\text{.}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-6-4-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Example 3.2.7"><a href="#sec-matrices-lin-combs-6-4" title="Copy heading and permalink for Example 3.2.7" aria-label="Copy heading and permalink for Example 3.2.7">🔗</a></div></article><article class="observation remark-like" id="sec-matrices-lin-combs-6-5"><h4 class="heading">
+<span class="type">Observation</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">3.2.8</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h4>
+<div class="para" id="sec-matrices-lin-combs-6-5-1-1">Penting untuk dicatat bahwa kita hanya dapat mengalikan matriks jika bentuk matriks-matriks tersebut kompatibel. Secara lebih spesifik, ketika membangun produk <span class="process-math">\(AB\text{,}\)</span> matriks <span class="process-math">\(A\)</span> mengalikan kolom-kolom dari <span class="process-math">\(B\text{.}\)</span> Oleh karena itu, jumlah kolom dari <span class="process-math">\(A\)</span> harus sama dengan jumlah baris dari <span class="process-math">\(B\text{.}\)</span> Ketika kondisi ini terpenuhi, jumlah baris dari <span class="process-math">\(AB\)</span> adalah jumlah baris dari <span class="process-math">\(A\text{,}\)</span> dan jumlah kolom dari <span class="process-math">\(AB\)</span> adalah jumlah kolom dari <span class="process-math">\(B\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-6-5-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Observation 3.2.8"><a href="#sec-matrices-lin-combs-6-5" title="Copy heading and permalink for Observation 3.2.8" aria-label="Copy heading and permalink for Observation 3.2.8">🔗</a></div></article><article class="activity project-like" id="sec-matrices-lin-combs-6-6"><h4 class="heading">
+<span class="type">Activity</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">3.2.5</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h4>
+<div class="para logical" id="sec-matrices-lin-combs-6-6-1-1">
+<div class="para">Pertimbangkan matriks</div>
+<div class="displaymath process-math" id="sec-matrices-lin-combs-6-6-1-1-1">
+\begin{equation*}
+A = \left[\begin{array}{rrr}
+1 \amp 3 \amp 2 \\
+-3 \amp 4 \amp -1 \\
+\end{array}\right],~~~
+B = \left[\begin{array}{rr}
+3 \amp 0 \\
+1 \amp 2 \\
+-2 \amp -1 \\
+\end{array}\right]\text{.}
+\end{equation*}
+</div>
+<ol class="lower-alpha ol-marker-1" id="sec-matrices-lin-combs-6-6-1-1-2">
+<li id="sec-matrices-lin-combs-6-6-1-1-2-1">
+<div class="para" id="sec-matrices-lin-combs-6-6-1-1-2-1-1">Sebelum menghitung, pertama jelaskan mengapa bentuk dari <span class="process-math">\(A\)</span> dan <span class="process-math">\(B\)</span> memungkinkan kita untuk membentuk produk <span class="process-math">\(AB\text{.}\)</span> Kemudian deskripsikan bentuk dari <span class="process-math">\(AB\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-6-6-1-1-2-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item a"><a href="#sec-matrices-lin-combs-6-6-1-1-2-1" title="Copy heading and permalink for Item a" aria-label="Copy heading and permalink for Item a">🔗</a></div>
+</li>
+<li id="sec-matrices-lin-combs-6-6-1-1-2-2">
+<div class="para" id="sec-matrices-lin-combs-6-6-1-1-2-2-1">Hitung produk <span class="process-math">\(AB\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-6-6-1-1-2-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item b"><a href="#sec-matrices-lin-combs-6-6-1-1-2-2" title="Copy heading and permalink for Item b" aria-label="Copy heading and permalink for Item b">🔗</a></div>
+</li>
+<li id="sec-matrices-lin-combs-6-6-1-1-2-3">
+<div class="para" id="sec-matrices-lin-combs-6-6-1-1-2-3-1">Sage dapat mengalikan matriks menggunakan operator <code class="code-inline tex2jax_ignore">*</code>. Definisikan matriks <span class="process-math">\(A\)</span> dan <span class="process-math">\(B\)</span> dalam sel Sage di bawah ini dan periksa pekerjaan Anda dengan menghitung <span class="process-math">\(AB\text{.}\)</span> <div id="sec-matrices-lin-combs-6-6-1-1-2-3-1-5" class="ptx-sagecell sagecell-sage"><script type="text/x-sage">
+</script></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-6-6-1-1-2-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item c"><a href="#sec-matrices-lin-combs-6-6-1-1-2-3" title="Copy heading and permalink for Item c" aria-label="Copy heading and permalink for Item c">🔗</a></div>
+</li>
+<li id="sec-matrices-lin-combs-6-6-1-1-2-4">
+<div class="para" id="sec-matrices-lin-combs-6-6-1-1-2-4-1">Apakah kita dapat membentuk produk matriks <span class="process-math">\(BA\text{?}\)</span> Jika ya, gunakan sel Sage di atas untuk menemukan <span class="process-math">\(BA\text{.}\)</span> Apakah umumnya benar bahwa <span class="process-math">\(AB = BA\text{?}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-6-6-1-1-2-4-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item d"><a href="#sec-matrices-lin-combs-6-6-1-1-2-4" title="Copy heading and permalink for Item d" aria-label="Copy heading and permalink for Item d">🔗</a></div>
+</li>
+<li id="sec-matrices-lin-combs-6-6-1-1-2-5">
+<div class="para logical" id="sec-matrices-lin-combs-6-6-1-1-2-5-1">
+<div class="para">Misalkan kita membentuk tiga matriks.</div>
+<div class="displaymath process-math" id="sec-matrices-lin-combs-6-6-1-1-2-5-1-1">
+\begin{equation*}
+A = \left[\begin{array}{rr}
+1 \amp 2 \\
+3 \amp -2 \\
+\end{array}\right],
+B = \left[\begin{array}{rr}
+0 \amp 4 \\
+2 \amp -1 \\
+\end{array}\right],
+C = \left[\begin{array}{rr}
+-1 \amp 3 \\
+4 \amp 3 \\
+\end{array}\right]\text{.}
+\end{equation*}
+</div>
+<div class="para">Bandingkan apa yang terjadi ketika Anda menghitung <span class="process-math">\(A(B+C)\)</span> dan <span class="process-math">\(AB + AC\text{.}\)</span> Nyatakan temuan Anda sebagai prinsip umum. <div id="sec-matrices-lin-combs-6-6-1-1-2-5-1-4" class="ptx-sagecell sagecell-sage"><script type="text/x-sage">
+</script></div>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-6-6-1-1-2-5-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item e"><a href="#sec-matrices-lin-combs-6-6-1-1-2-5" title="Copy heading and permalink for Item e" aria-label="Copy heading and permalink for Item e">🔗</a></div>
+</li>
+<li id="sec-matrices-lin-combs-6-6-1-1-2-6">
+<div class="para" id="sec-matrices-lin-combs-6-6-1-1-2-6-1">Bandingkan hasil dari mengevaluasi <span class="process-math">\(A(BC)\)</span> dan <span class="process-math">\((AB)C\)</span> dan nyatakan temuan Anda sebagai prinsip umum.<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-6-6-1-1-2-6-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item f"><a href="#sec-matrices-lin-combs-6-6-1-1-2-6" title="Copy heading and permalink for Item f" aria-label="Copy heading and permalink for Item f">🔗</a></div>
+</li>
+<li id="sec-matrices-lin-combs-6-6-1-1-2-7">
+<div class="para logical" id="sec-matrices-lin-combs-6-6-1-1-2-7-1">
+<div class="para">Ketika kita berurusan dengan bilangan real, kita tahu jika <span class="process-math">\(a\neq 0\)</span> dan <span class="process-math">\(ab = ac\text{,}\)</span> maka <span class="process-math">\(b=c\text{.}\)</span> Definisikan matriks</div>
+<div class="displaymath process-math" id="sec-matrices-lin-combs-6-6-1-1-2-7-1-4">
+\begin{equation*}
+A = \left[\begin{array}{rr}
+1 \amp 2 \\
+-2 \amp -4 \\
+\end{array}\right],
+B = \left[\begin{array}{rr}
+3 \amp 0 \\
+1 \amp 3 \\
+\end{array}\right],
+C = \left[\begin{array}{rr}
+1 \amp 2 \\
+2 \amp 2 \\
+\end{array}\right]
+\end{equation*}
+</div>
+<div class="para">dan hitung <span class="process-math">\(AB\)</span> dan <span class="process-math">\(AC\text{.}\)</span> <div id="sec-matrices-lin-combs-6-6-1-1-2-7-1-7" class="ptx-sagecell sagecell-sage"><script type="text/x-sage">
+</script></div> Jika <span class="process-math">\(AB = AC\text{,}\)</span> apakah selalu benar bahwa <span class="process-math">\(B = C\text{?}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-6-6-1-1-2-7-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item g"><a href="#sec-matrices-lin-combs-6-6-1-1-2-7" title="Copy heading and permalink for Item g" aria-label="Copy heading and permalink for Item g">🔗</a></div>
+</li>
+<li id="sec-matrices-lin-combs-6-6-1-1-2-8">
+<div class="para logical" id="sec-matrices-lin-combs-6-6-1-1-2-8-1">
+<div class="para">Sekali lagi, dengan bilangan real, kita tahu bahwa jika <span class="process-math">\(ab = 0\text{,}\)</span> maka <span class="process-math">\(a = 0\)</span> atau <span class="process-math">\(b=0\text{.}\)</span> Definisikan</div>
+<div class="displaymath process-math" id="sec-matrices-lin-combs-6-6-1-1-2-8-1-4">
+\begin{equation*}
+A = \left[\begin{array}{rr}
+1 \amp 2 \\
+-2 \amp -4 \\
+\end{array}\right],
+B = \left[\begin{array}{rr}
+2 \amp -4 \\
+-1 \amp 2 \\
+\end{array}\right]
+\end{equation*}
+</div>
+<div class="para">dan hitung <span class="process-math">\(AB\text{.}\)</span> <div id="sec-matrices-lin-combs-6-6-1-1-2-8-1-6" class="ptx-sagecell sagecell-sage"><script type="text/x-sage">
+</script></div> Jika <span class="process-math">\(AB = 0\text{,}\)</span> apakah selalu benar bahwa <span class="process-math">\(A=0\)</span> atau <span class="process-math">\(B=0\text{?}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-6-6-1-1-2-8-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item h"><a href="#sec-matrices-lin-combs-6-6-1-1-2-8" title="Copy heading and permalink for Item h" aria-label="Copy heading and permalink for Item h">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-6-6-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Activity 3.2.5"><a href="#sec-matrices-lin-combs-6-6" title="Copy heading and permalink for Activity 3.2.5" aria-label="Copy heading and permalink for Activity 3.2.5">🔗</a></div></article><div class="para" id="sec-matrices-lin-combs-6-7">Aktivitas ini mendemonstrasikan beberapa sifat umum tentang produk matriks, yang mencerminkan beberapa sifat tentang operasi dengan bilangan real.<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-6-7" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="assemblage assemblage-like" id="sec-matrices-lin-combs-6-8"><h4 class="heading"><span class="title">Sifat-Sifat Perkalian Matriks-Matriks.</span></h4>
+<div class="para logical" id="sec-matrices-lin-combs-6-8-2">
+<div class="para">Jika <span class="process-math">\(A\text{,}\)</span> <span class="process-math">\(B\text{,}\)</span> dan <span class="process-math">\(C\)</span> adalah matriks sedemikian sehingga operasi-operasi berikut terdefinisi, maka mengikuti bahwa</div>
+<dl class="description-list">
+<dt id="sec-matrices-lin-combs-6-8-2-4-1">Asosiativitas:<div class="autopermalink" data-description="Item: Asosiativitas:"><a href="#sec-matrices-lin-combs-6-8-2-4-1" title="Copy heading and permalink for Item: Asosiativitas:" aria-label="Copy heading and permalink for Item: Asosiativitas:">🔗</a></div>
+</dt>
+<dd><div class="para" id="sec-matrices-lin-combs-6-8-2-4-1-2">
+<span class="process-math">\(A(BC) =  (AB)C\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-6-8-2-4-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div></dd>
+<dt id="sec-matrices-lin-combs-6-8-2-4-2">Distributivitas:<div class="autopermalink" data-description="Item: Distributivitas:"><a href="#sec-matrices-lin-combs-6-8-2-4-2" title="Copy heading and permalink for Item: Distributivitas:" aria-label="Copy heading and permalink for Item: Distributivitas:">🔗</a></div>
+</dt>
+<dd>
+<div class="para" id="sec-matrices-lin-combs-6-8-2-4-2-2">
+<span class="process-math">\(A(B+C) = AB+AC\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-6-8-2-4-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="sec-matrices-lin-combs-6-8-2-4-2-3">
+<span class="process-math">\((A+B)C = AC+BC\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-6-8-2-4-2-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+</dd>
+</dl>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-6-8-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Assemblage: Sifat-Sifat Perkalian Matriks-Matriks"><a href="#sec-matrices-lin-combs-6-8" title="Copy heading and permalink for Assemblage: Sifat-Sifat Perkalian Matriks-Matriks" aria-label="Copy heading and permalink for Assemblage: Sifat-Sifat Perkalian Matriks-Matriks">🔗</a></div></article><div class="para" id="sec-matrices-lin-combs-6-9">Pada saat yang sama, terdapat beberapa sifat yang berlaku untuk bilangan real yang tidak berlaku untuk matriks.<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-6-9" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="assemblage assemblage-like" id="sec-matrices-lin-combs-6-10"><h4 class="heading"><span class="title">Peringatan.</span></h4>
+<div class="para logical" id="sec-matrices-lin-combs-6-10-2">
+<div class="para">Sifat-sifat berikut berlaku untuk bilangan real tetapi tidak untuk matriks.</div>
+<dl class="description-list">
+<dt id="sec-matrices-lin-combs-6-10-2-1-1">Komutativitas:<div class="autopermalink" data-description="Item: Komutativitas:"><a href="#sec-matrices-lin-combs-6-10-2-1-1" title="Copy heading and permalink for Item: Komutativitas:" aria-label="Copy heading and permalink for Item: Komutativitas:">🔗</a></div>
+</dt>
+<dd><div class="para" id="sec-matrices-lin-combs-6-10-2-1-1-2">
+<em class="emphasis">Tidak</em> umumnya benar bahwa <span class="process-math">\(AB = BA\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-6-10-2-1-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div></dd>
+<dt id="sec-matrices-lin-combs-6-10-2-1-2">Pencoretan:<div class="autopermalink" data-description="Item: Pencoretan:"><a href="#sec-matrices-lin-combs-6-10-2-1-2" title="Copy heading and permalink for Item: Pencoretan:" aria-label="Copy heading and permalink for Item: Pencoretan:">🔗</a></div>
+</dt>
+<dd><div class="para" id="sec-matrices-lin-combs-6-10-2-1-2-2">
+<em class="emphasis">Tidak</em> umumnya benar bahwa <span class="process-math">\(AB = AC\)</span> mengimplikasikan bahwa <span class="process-math">\(B = C\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-6-10-2-1-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div></dd>
+<dt id="sec-matrices-lin-combs-6-10-2-1-3">Pembagi nol:<div class="autopermalink" data-description="Item: Pembagi nol:"><a href="#sec-matrices-lin-combs-6-10-2-1-3" title="Copy heading and permalink for Item: Pembagi nol:" aria-label="Copy heading and permalink for Item: Pembagi nol:">🔗</a></div>
+</dt>
+<dd><div class="para" id="sec-matrices-lin-combs-6-10-2-1-3-2">
+<em class="emphasis">Tidak</em> umumnya benar bahwa <span class="process-math">\(AB = 0\)</span> mengimplikasikan bahwa <span class="process-math">\(A=0\)</span> atau <span class="process-math">\(B=0\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-6-10-2-1-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div></dd>
+</dl>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-6-10-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Assemblage: Peringatan"><a href="#sec-matrices-lin-combs-6-10" title="Copy heading and permalink for Assemblage: Peringatan" aria-label="Copy heading and permalink for Assemblage: Peringatan">🔗</a></div></article><div class="autopermalink" data-description="Subsection 3.2.4: Produk Matriks-Matriks"><a href="#sec-matrices-lin-combs-6" title="Copy heading and permalink for Subsection 3.2.4: Produk Matriks-Matriks" aria-label="Copy heading and permalink for Subsection 3.2.4: Produk Matriks-Matriks">🔗</a></div></section><section class="subsection" id="sec-matrices-lin-combs-7"><h3 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">3.2.5</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Ringkasan</span>
+</h3>
+<div class="para logical" id="sec-matrices-lin-combs-7-2">
+<div class="para">Dalam bagian ini, kita telah menemukan cara yang sangat sederhana untuk mengekspresikan sistem linear menggunakan perkalian matriks.</div>
+<ul class="disc" id="sec-matrices-lin-combs-7-2-1">
+<li id="sec-matrices-lin-combs-7-2-1-1">
+<div class="para" id="sec-matrices-lin-combs-7-2-1-1-1">Jika <span class="process-math">\(A\)</span> adalah matriks <span class="process-math">\(m\times n\)</span> dan <span class="process-math">\(\xvec\)</span> vektor <span class="process-math">\(n\)</span>-dimensi, maka <span class="process-math">\(A\xvec\)</span> adalah kombinasi linear dari kolom-kolom <span class="process-math">\(A\)</span> menggunakan komponen-komponen <span class="process-math">\(\xvec\)</span> sebagai bobot. Vektor <span class="process-math">\(A\xvec\)</span> adalah <span class="process-math">\(m\)</span>-dimensi.<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-7-2-1-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item"><a href="#sec-matrices-lin-combs-7-2-1-1" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+<li id="sec-matrices-lin-combs-7-2-1-2">
+<div class="para" id="sec-matrices-lin-combs-7-2-1-2-1">Ruang solusi untuk persamaan <span class="process-math">\(A\xvec = \bvec\)</span> sama dengan ruang solusi untuk sistem linear yang berkorespondensi dengan matriks augmented <span class="process-math">\(\left[ \begin{array}{r|r} A \amp \bvec \end{array}\right]\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-7-2-1-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item"><a href="#sec-matrices-lin-combs-7-2-1-2" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+<li id="sec-matrices-lin-combs-7-2-1-3">
+<div class="para" id="sec-matrices-lin-combs-7-2-1-3-1">Jika <span class="process-math">\(A\)</span> adalah matriks <span class="process-math">\(m\times n\)</span> dan <span class="process-math">\(B\)</span> adalah matriks <span class="process-math">\(n\times p\text{,}\)</span> kita dapat membentuk produk <span class="process-math">\(AB\text{,}\)</span> yang merupakan matriks <span class="process-math">\(m\times p\)</span> yang kolom-kolomnya adalah produk dari <span class="process-math">\(A\)</span> dan kolom-kolom dari <span class="process-math">\(B\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-7-2-1-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item"><a href="#sec-matrices-lin-combs-7-2-1-3" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+</ul>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-matrices-lin-combs-7-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Subsection 3.2.5: Ringkasan"><a href="#sec-matrices-lin-combs-7" title="Copy heading and permalink for Subsection 3.2.5: Ringkasan" aria-label="Copy heading and permalink for Subsection 3.2.5: Ringkasan">🔗</a></div></section><div class="autopermalink" data-description="Section 3.2: Perkalian Matriks dan Kombinasi Linear"><a href="#sec-matrices-lin-combs" title="Copy heading and permalink for Section 3.2: Perkalian Matriks dan Kombinasi Linear" aria-label="Copy heading and permalink for Section 3.2: Perkalian Matriks dan Kombinasi Linear">🔗</a></div></section></div>
+<div id="ptx-content-footer" class="ptx-content-footer">
+<a class="previous-button button" href="sec-vectors-lin-combs.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="sec-span.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
+</div></main>
+</div>
+<div id="ptx-page-footer" class="ptx-page-footer">
+<a class="pretext-link" href="https://pretextbook.org" title="PreTeXt"><div class="logo"><svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="338 3000 8772 6866" role="img"><title>PreTeXt logo</title><g style="stroke-width:.025in; stroke:currentColor; fill:none"><polyline points="472,3590 472,9732 " style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round; "></polyline><path style="stroke-width:126;stroke-linecap:butt;" d="M 4724,9448 A 4660 4660  0  0  1  8598  9259"></path><path style="stroke-width:174;stroke-linecap:butt;" d="M 4488,9685 A 4228 4228  0  0  0   472  9732"></path><path style="stroke-width:126;stroke-linecap:butt;" d="M 4724,3590 A 4241 4241  0  0  1  8598  3496"></path><path style="stroke-width:126;stroke-linecap:round;" d="M 850,3496  A 4241 4241  0  0  1  4724  3590"></path><path style="stroke-width:126;stroke-linecap:round;" d="M 850,9259  A 4507 4507  0  0  1  4724  9448"></path><polyline points="5385,4299 4062,8125" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8598,3496 8598,9259" style="stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="850,3496 850,9259" style="stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="4960,9685 4488,9685" style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="3070,4582 1889,6141 3070,7700" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="6418,4582 7600,6141 6418,7700" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8976,3590 8976,9732" style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><path style="stroke-width:174;stroke-linecap:butt;" d="M 4960,9685 A 4228 4228  0  0  1  8976  9732"></path></g></svg></div></a><a class="runestone-link" href="https://runestone.academy" title="Runestone Academy"><img class="logo" src="https://runestone.academy/runestone/static/images/RAIcon_cropped.png" alt="Runstone Academy logo"></a><a class="mathjax-link" href="https://www.mathjax.org" title="MathJax"><img class="logo" src="https://www.mathjax.org/badge/badge-square-2.png" alt="MathJax logo"></a>
+</div>
+</body>
+</html>

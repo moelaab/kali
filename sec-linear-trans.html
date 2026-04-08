@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="en-US" dir="ltr">
+<!--******************************************-->
+<!--*  Authored with PreTeXt                 *-->
+<!--*  pretextbook.org                       *-->
+<!--*  Theme: default-modern                 *-->
+<!--*  Palette: blue-green                   *-->
+<!--******************************************-->
+<head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Transformasi Matriks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+<link href="_static/pretext/css/theme.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/ol-markers.css" rel="stylesheet" type="text/css">
+<script>
+var runestoneMathReady = new Promise((resolve) => window.rsMathReady = resolve);
+window.MathJax = {
+  "tex": {
+    "inlineMath": [
+      [
+        "\\(",
+        "\\)"
+      ]
+    ],
+    "tags": "none",
+    "tagSide": "right",
+    "tagIndent": ".8em",
+    "packages": {
+      "[+]": [
+        "base",
+        "ams",
+        "amscd",
+        "color",
+        "newcommand",
+        "knowl"
+      ]
+    }
+  },
+  "options": {
+    "ignoreHtmlClass": "tex2jax_ignore|ignore-math",
+    "processHtmlClass": "process-math",
+    "renderActions": {
+      "findScript": [
+        10,
+        function (doc) {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(function(node) {
+                var display = !!node.type.match(/; *mode=display/);
+                var math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                var text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = {node: text, delim: '', n: 0};
+                math.end = {node: text, delim: '', n: 0};
+                doc.math.push(math);
+            });
+        },
+        ""
+      ]
+    }
+  },
+  "chtml": {
+    "scale": 0.98,
+    "mtextInheritFont": true
+  },
+  "loader": {
+    "load": [
+      "input/asciimath",
+      "[tex]/amscd",
+      "[tex]/color",
+      "[tex]/newcommand",
+      "[pretext]/mathjaxknowl3.js"
+    ],
+    "paths": {
+      "pretext": "_static/pretext/js"
+    }
+  },
+  "startup": {
+    pageReady() {
+      return MathJax.startup.defaultPageReady().then(function () {
+      console.log("in ready function");
+      rsMathReady();
+      }
+    )}
+  }
+};
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="book">
+<meta property="book:title" content="Komputasi Aljabar Linear">
+<meta property="book:author" content=" Mulaab M ">
+<script src="_static/pretext/js/jquery.min.js"></script><script src="_static/pretext/js/pretext.js"></script><script src="_static/pretext/js/pretext_add_on.js?x=1"></script><!--** eBookCongig is necessary to configure interactive       **-->
+<!--** Runestone components to run locally in reader's browser **-->
+<!--** No external communication:                              **-->
+<!--**     log level is 0, Runestone Services are disabled     **-->
+<script type="text/javascript">
+eBookConfig = {};
+eBookConfig.useRunestoneServices = false;
+eBookConfig.host = 'http://127.0.0.1:8000';
+eBookConfig.course = 'PTX_Course_Title_Here';
+eBookConfig.basecourse = 'PTX_Base_Course';
+eBookConfig.isLoggedIn = false;
+eBookConfig.email = '';
+eBookConfig.isInstructor = false;
+eBookConfig.logLevel = 0;
+eBookConfig.username = '';
+eBookConfig.readings = null;
+eBookConfig.activities = null;
+eBookConfig.downloadsEnabled = false;
+eBookConfig.allow_pairs = false;
+eBookConfig.enableScratchAC = false;
+eBookConfig.build_info = "";
+eBookConfig.python3 = null;
+eBookConfig.runestone_version = '7.13.2';
+eBookConfig.jobehost = '';
+eBookConfig.proxyuri_runs = '';
+eBookConfig.proxyuri_files = '';
+eBookConfig.enable_chatcodes =  false;
+</script>
+<!--*** Runestone Services ***-->
+<script src="_static/prefix-runtime.56158f4758afd49f.bundle.js"></script><script src="_static/prefix-723.3e6434f80549315a.bundle.js"></script><script src="_static/prefix-runestone.46363294e9238f09.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-723.3bccd435914aa0ff.css">
+<link rel="stylesheet" type="text/css" href="_static/prefix-runestone.b12a7b3f0773ebcd.css">
+<script src="_static/pretext/js/lti_iframe_resizer.js"></script><script src="https://sagecell.sagemath.org/static/embedded_sagecell.js"></script><script async="" src="https://cse.google.com/cse.js?cx=015103900096539427448:ngwuia10qci"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js" integrity="sha512-4xUl/d6D6THrAnXAwGajXkoWaeMNwEKK4iNfq5DotEbLPAfk6FSxSP3ydNxqDgCw1c/0Z1Jg6L8h2j+++9BZmg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="lunr-pretext-search-index.js" async=""></script><script src="_static/pretext/js/pretext_search.js"></script><script src="_static/pretext/js/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
+</script><script>// Make *any* div with class 'sagecell-sage' an executable Sage cell
+// Their results will be linked, only within language type
+sagecell.makeSagecell({
+  "inputLocation": "div.sagecell-sage",
+  "linked": true,
+  "linkKey": "linked-sage",
+  "autoeval": false,
+  "languages": [
+    "sage"
+  ],
+  "evalButtonText": "Evaluate (Sage)"
+});
+</script>
+</head>
+<body id="ula" class="pretext book ignore-math">
+<a class="assistive" href="#ptx-content">Skip to main content</a><header id="ptx-masthead" class="ptx-masthead"><div class="ptx-banner">
+<a id="logo-link" class="logo-link" target="_blank" href="https://moelaab.github.io/kali"><img src="external/images/ula-logo.png" alt="Logo image"></a><div class="title-container">
+<h1 class="heading"><a href="ula.html"><span class="title">Komputasi Aljabar Linear</span></a></h1>
+<p class="byline">Mulaab M</p>
+</div>
+</div></header><nav id="ptx-navbar" class="ptx-navbar navbar"><div class="ptx-navbar-contents">
+<button class="toc-toggle button" title="Contents"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5d2;</span><span class="name">Contents</span></button><a class="index-button button" href="backmatter-3.html" title="Index"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe88e;</span><span class="name">Index</span></a><div class="searchwrapper" role="search"><div class="gcse-search"></div></div>
+<div class="searchbox">
+<div class="searchwidget"><button id="searchbutton" class="searchbutton button" type="button" title="Search book"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe8b6;</span><span class="name">Search Book</span></button></div>
+<div id="searchresultsplaceholder" class="searchresultsplaceholder" style="display: none">
+<div class="search-results-controls">
+<input aria-label="Search term" id="ptxsearch" class="ptxsearch" type="text" name="terms" placeholder="Search term"><button title="Close search" id="closesearchresults" class="closesearchresults"><span class="material-symbols-outlined">close</span></button>
+</div>
+<h2 class="search-results-heading">Search Results: </h2>
+<div id="searchempty" class="searchempty"><span>No results.</span></div>
+<ol id="searchresults" class="searchresults"></ol>
+</div>
+</div>
+<span class="nav-other-controls"><button id="light-dark-button" class="light-dark-button button" title="Dark Mode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span class="name">Dark Mode</span></button></span><span class="treebuttons"><a class="previous-button button" href="sec-vectors-lin-combs.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="up-button button" href="chap3.html" title="Up"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Up</span></a><a class="next-button button" href="sec-transforms-geom.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span>
+</div></nav><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\(   \newcommand{\avec}{{\mathbf a}}
+   \newcommand{\bvec}{{\mathbf b}}
+   \newcommand{\cvec}{{\mathbf c}}
+   \newcommand{\dvec}{{\mathbf d}}
+   \newcommand{\dtil}{\widetilde{\mathbf d}}
+   \newcommand{\evec}{{\mathbf e}}
+   \newcommand{\fvec}{{\mathbf f}}
+   \newcommand{\nvec}{{\mathbf n}}
+   \newcommand{\pvec}{{\mathbf p}}
+   \newcommand{\qvec}{{\mathbf q}}
+   \newcommand{\svec}{{\mathbf s}}
+   \newcommand{\tvec}{{\mathbf t}}
+   \newcommand{\uvec}{{\mathbf u}}
+   \newcommand{\vvec}{{\mathbf v}}
+   \newcommand{\wvec}{{\mathbf w}}
+   \newcommand{\xvec}{{\mathbf x}}
+   \newcommand{\yvec}{{\mathbf y}}
+   \newcommand{\zvec}{{\mathbf z}}
+   \newcommand{\rvec}{{\mathbf r}}
+   \newcommand{\mvec}{{\mathbf m}}
+   \newcommand{\zerovec}{{\mathbf 0}}
+   \newcommand{\onevec}{{\mathbf 1}}
+   \newcommand{\real}{{\mathbb R}}
+   \newcommand{\twovec}[2]{\left[\begin{array}{r}#1 \\ #2
+   \end{array}\right]}
+   \newcommand{\ctwovec}[2]{\left[\begin{array}{c}#1 \\ #2
+   \end{array}\right]}
+   \newcommand{\threevec}[3]{\left[\begin{array}{r}#1 \\ #2 \\ #3
+   \end{array}\right]}
+   \newcommand{\cthreevec}[3]{\left[\begin{array}{c}#1 \\ #2 \\ #3
+   \end{array}\right]}
+   \newcommand{\fourvec}[4]{\left[\begin{array}{r}#1 \\ #2 \\ #3 \\ #4
+   \end{array}\right]}
+   \newcommand{\cfourvec}[4]{\left[\begin{array}{c}#1 \\ #2 \\ #3 \\ #4
+   \end{array}\right]}
+   \newcommand{\fivevec}[5]{\left[\begin{array}{r}#1 \\ #2 \\ #3 \\
+   #4 \\ #5 \\ \end{array}\right]}
+   \newcommand{\cfivevec}[5]{\left[\begin{array}{c}#1 \\ #2 \\ #3 \\
+   #4 \\ #5 \\ \end{array}\right]}
+   \newcommand{\mattwo}[4]{\left[\begin{array}{rr}#1 \amp #2 \\ #3 \amp #4 \\ \end{array}\right]}
+   \newcommand{\laspan}[1]{\text{Span}\left\{#1\right\}}
+   \newcommand{\bcal}{{\cal B}}
+   \newcommand{\ccal}{{\cal C}}
+   \newcommand{\scal}{{\cal S}}
+   \newcommand{\wcal}{{\cal W}}
+   \newcommand{\ecal}{{\cal E}}
+   \newcommand{\coords}[2]{\left\{#1\right\}_{#2}}
+   \newcommand{\gray}[1]{\color{gray}{#1}}
+   \newcommand{\lgray}[1]{\color{lightgray}{#1}}
+   \newcommand{\rank}{\operatorname{rank}}
+   \newcommand{\row}{\text{Row}}
+   \newcommand{\col}{\text{Col}}
+   \renewcommand{\row}{\text{Row}}
+   \newcommand{\nul}{\text{Nul}}
+   \newcommand{\var}{\text{Var}}
+   \newcommand{\corr}{\text{corr}}
+   \newcommand{\len}[1]{\left|#1\right|}
+   \newcommand{\bbar}{\overline{\bvec}}
+   \newcommand{\bhat}{\widehat{\bvec}}
+   \newcommand{\bperp}{\bvec^\perp}
+   \newcommand{\xhat}{\widehat{\xvec}}
+   \newcommand{\vhat}{\widehat{\vvec}}
+   \newcommand{\uhat}{\widehat{\uvec}}
+   \newcommand{\what}{\widehat{\wvec}}
+   \newcommand{\Sighat}{\widehat{\Sigma}}
+   \newcommand{\basis}[2]{#1_1,#1_2,\ldots,#1_{#2}}
+
+
+
+
+\newcommand{\eqsys}{\begin{array}{rcrcrcr}
+     a_{11}x_{1}\amp +\amp a_{12}x_{2}\amp +\cdots+\amp  a_{1n}x_{n}\amp =\amp b_1\\
+     a_{21}x_{1}\amp +\amp a_{22}x_{2}\amp +\cdots+\amp a_{2n}x_{n}\amp =\amp b_2\\
+     \amp \vdots\amp   \amp \vdots \amp  \amp \vdots \amp  \\
+     a_{m1}x_{1}\amp +\amp a_{m2}x_{2}\amp +\cdots +\amp a_{mn}x_{n}\amp =\amp b_m
+     \end{array}
+     }
+  
+\newcommand{\homsys}{\begin{array}{rcrcrcr}
+a_{11}x_{1}\amp +\amp a_{12}x_{2}\amp +\cdots+\amp  a_{1n}x_{n}\amp =\amp 0\\
+	a_{21}x_{1}\amp +\amp a_{22}x_{2}\amp +\cdots+\amp a_{2n}x_{n}\amp =\amp 0\\
+	\amp \vdots\amp   \amp \vdots \amp  \amp \vdots \amp  \vdots\\
+	a_{m1}x_{1}\amp +\amp a_{m2}x_{2}\amp +\cdots +\amp a_{mn}x_{n}\amp =\amp 0
+	\end{array}
+	}
+\newcommand{\R}{{\mathbb R}}
+\newcommand{\boldn}{{\mathbf n}}
+
+ \newenvironment{linsys}[2][m]{
+     \begin{array}[#1]{@{}*{#2}{rc}r@{}}
+     }{
+     \end{array}}
+
+\newcommand{\augmatrix}{
+     \begin{amatrix}[cccc|c]
+     a_{11} \amp  a_{12} \amp  \cdots \amp  a_{1n} \amp b_{1}\\
+     a_{21} \amp  a_{22} \amp  \cdots \amp  a_{2n} \amp b_{2}\\
+     \vdots  \amp  \vdots  \amp  \ddots \amp  \vdots  \amp \vdots\\
+     a_{m1} \amp  a_{m2} \amp  \cdots \amp  a_{mn}\amp b_{m}
+     \end{amatrix}
+     }
+  \newenvironment{amatrix}[1][ccc|c]{\left[\begin{array}{#1}}{\end{array}\right]}
+  
+  
+  
+  \newcommand{\linearsystem}[2]{\mathcal{LS}\!\left(#1,\,#2\right)}
+  \newcommand{\vect}[1]{\mathbf{#1}}
+  \newcommand{\colvector}[1]{\begin{bmatrix}#1\end{bmatrix}}
+  \newcommand{\augmented}[2]{\left[\,#1 \mid #2\,\right]}
+  
+  \newcommand{\Z}{{\mathbb Z}}
+     \newcommand{\Q}{{\mathbb Q}}
+     \newcommand{\R}{{\mathbb R}}
+     \newcommand{\C}{{\mathbb C}}
+     \newcommand{\T}{{\mathbb T}}
+     \newcommand{\F}{{\mathbb F}}
+     \newcommand{\HH}{{\mathbb H}}
+     \newcommand{\compose}{\circ}
+     \newcommand{\bolda}{{\mathbf a}}
+     \newcommand{\boldb}{{\mathbf b}}
+     \newcommand{\boldc}{{\mathbf c}}
+     \newcommand{\boldd}{{\mathbf d}}
+     \newcommand{\bolde}{{\mathbf e}}
+     \newcommand{\boldi}{{\mathbf i}}
+     \newcommand{\boldj}{{\mathbf j}}
+     \newcommand{\boldk}{{\mathbf k}}
+     \newcommand{\boldn}{{\mathbf n}}
+     \newcommand{\boldp}{{\mathbf p}}
+     \newcommand{\boldq}{{\mathbf q}}
+     \newcommand{\boldr}{{\mathbf r}}
+     \newcommand{\bolds}{{\mathbf s}}
+     \newcommand{\boldt}{{\mathbf t}}
+     \newcommand{\boldu}{{\mathbf u}}
+     \newcommand{\boldv}{{\mathbf v}}
+     \newcommand{\boldw}{{\mathbf w}}
+     \newcommand{\boldx}{{\mathbf x}}
+     \newcommand{\boldy}{{\mathbf y}}
+     \newcommand{\boldz}{{\mathbf z}}
+     \newcommand{\boldzero}{{\mathbf 0}}
+     \newcommand{\boldmod}{\boldsymbol{ \bmod }}
+     \newcommand{\boldT}{{\mathbf T}}
+     \newcommand{\boldN}{{\mathbf N}}
+     \newcommand{\boldB}{{\mathbf B}}
+     \newcommand{\boldF}{{\mathbf F}}
+     \newcommand{\boldS}{{\mathbf S}}
+     \newcommand{\boldG}{{\mathbf G}}
+     \newcommand{\boldK}{{\mathbf K}}
+     \newcommand{\boldL}{{\mathbf L}}
+     \DeclareMathOperator{\lcm}{lcm}
+     \DeclareMathOperator{\Span}{span}
+     \DeclareMathOperator{\tr}{tr}
+     \DeclareMathOperator{\NS}{null}
+     \DeclareMathOperator{\RS}{row}
+     \DeclareMathOperator{\CS}{col}
+     \DeclareMathOperator{\im}{im}
+     \DeclareMathOperator{\range}{range}
+     \DeclareMathOperator{\rank}{rank}
+     \DeclareMathOperator{\nullity}{nullity}
+     \DeclareMathOperator{\sign}{sign}
+     \DeclareMathOperator{\Fix}{Fix}
+     \DeclareMathOperator{\Aff}{Aff}
+     \DeclareMathOperator{\Frac}{Frac}
+     \DeclareMathOperator{\Ann}{Ann}
+     \DeclareMathOperator{\Tor}{Tor}
+     \DeclareMathOperator{\id}{id}
+     \DeclareMathOperator{\mdeg}{mdeg}
+     \DeclareMathOperator{\Lt}{Lt}
+     \DeclareMathOperator{\Lc}{Lc}
+     \DeclareMathOperator{\disc}{disc}
+     \DeclareMathOperator{\Frob}{Frob}
+     \DeclareMathOperator{\adj}{adj}
+     \DeclareMathOperator{\curl}{curl}
+     \DeclareMathOperator{\grad}{grad}
+     \DeclareMathOperator{\diver}{div}
+     \DeclareMathOperator{\flux}{flux}
+     \def\Gal{\operatorname{Gal}}
+     \def\ord{\operatorname{ord}}
+     \def\ML{\operatorname{M}}
+     \def\GL{\operatorname{GL}}
+     \def\PGL{\operatorname{PGL}}
+     \def\SL{\operatorname{SL}}
+     \def\PSL{\operatorname{PSL}}
+     \def\GSp{\operatorname{GSp}}
+     \def\PGSp{\operatorname{PGSp}}
+     \def\Sp{\operatorname{Sp}}
+     \def\PSp{\operatorname{PSp}}
+     \def\Aut{\operatorname{Aut}}
+     \def\Inn{\operatorname{Inn}}
+     \def\Hom{\operatorname{Hom}}
+     \def\End{\operatorname{End}}
+     \def\ch{\operatorname{char}}
+     \def\Zp{\Z/p\Z}
+     \def\Zm{\Z/m\Z}
+     \def\Zn{\Z/n\Z}
+     \def\Fp{\F_p}
+     \newcommand{\surjects}{\twoheadrightarrow}
+     \newcommand{\injects}{\hookrightarrow}
+     \newcommand{\bijects}{\leftrightarrow}
+     \newcommand{\isomto}{\overset{\sim}{\rightarrow}}
+     \newcommand{\floor}[1]{\lfloor#1\rfloor}
+     \newcommand{\ceiling}[1]{\left\lceil#1\right\rceil}
+     \newcommand{\mclass}[2][m]{[#2]_{#1}}
+     \newcommand{\val}[2][]{\left\lvert #2\right\rvert_{#1}}
+     \newcommand{\abs}[2][]{\left\lvert #2\right\rvert_{#1}}
+     \newcommand{\valuation}[2][]{\left\lvert #2\right\rvert_{#1}}
+     \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+     \newcommand{\anpoly}{a_nx^n+a_{n-1}x^{n-1}\cdots +a_1x+a_0}
+     \newcommand{\anmonic}{x^n+a_{n-1}x^{n-1}\cdots +a_1x+a_0}
+     \newcommand{\bmpoly}{b_mx^m+b_{m-1}x^{m-1}\cdots +b_1x+b_0}
+     \newcommand{\bnpoly}{b_nx^n+b_{n-1}x^{n-1}\cdots +b_1x+b_0}
+     \newcommand{\pder}[2]{\frac{\partial#1}{\partial#2}}
+     \newcommand{\normalin}{\trianglelefteq}
+     \newcommand{\angvec}[1]{\langle #1\rangle}
+     \newcommand{\varpoly}[2]{#1_{#2}x^{#2}+#1_{#2-1}x^{#2-1}\cdots +#1_1x+#1_0}
+     \newcommand{\varpower}[1][a]{#1_0+#1_1x+#1_1x^2+\cdots}
+     \newcommand{\limasto}[2][x]{\lim_{#1\rightarrow #2}}
+     \def\ntoinfty{\lim_{n\rightarrow\infty}}
+     \def\xtoinfty{\lim_{x\rightarrow\infty}}
+     \def\ii{\item}
+     \def\bb{\begin{enumerate}}
+     \def\ee{\end{enumerate}}
+     \def\ds{\displaystyle}
+     \def\p{\partial}
+     \newcommand{\abcdmatrix}[4]{\begin{bmatrix}#1\amp #2\\ #3\amp #4 \end{bmatrix}
+     }
+     \newenvironment{amatrix}[1][ccc|c]{\left[\begin{array}{#1}}{\end{array}\right]}
+     \newenvironment{linsys}[2][m]{
+     \begin{array}[#1]{@{}*{#2}{rc}r@{}}
+     }{
+     \end{array}}
+     \newcommand{\eqsys}{\begin{array}{rcrcrcr}
+     a_{11}x_{1}\amp +\amp a_{12}x_{2}\amp +\cdots+\amp  a_{1n}x_{n}\amp =\amp b_1\\
+     a_{21}x_{1}\amp +\amp a_{22}x_{2}\amp +\cdots+\amp a_{2n}x_{n}\amp =\amp b_2\\
+     \amp \vdots\amp   \amp \vdots \amp  \amp \vdots \amp  \\
+     a_{m1}x_{1}\amp +\amp a_{m2}x_{2}\amp +\cdots +\amp a_{mn}x_{n}\amp =\amp b_m
+     \end{array}
+     }
+     \newcommand{\numeqsys}{\begin{array}{rrcrcrcr}
+     e_1:\amp  a_{11}x_{1}\amp +\amp a_{12}x_{2}\amp +\cdots+\amp  a_{1n}x_{n}\amp =\amp b_1\\
+     e_2: \amp a_{21}x_{1}\amp +\amp a_{22}x_{2}\amp +\cdots+\amp a_{2n}x_{n}\amp =\amp b_2\\
+     \amp \vdots\amp   \amp \vdots \amp  \amp \vdots \amp  \\
+     e_m: \amp a_{m1}x_{1}\amp +\amp a_{m2}x_{2}\amp +\cdots +\amp a_{mn}x_{n}\amp =\amp b_m
+     \end{array}
+     }
+     \newcommand{\homsys}{\begin{array}{rcrcrcr}
+     a_{11}x_{1}\amp +\amp a_{12}x_{2}\amp +\cdots+\amp  a_{1n}x_{n}\amp =\amp 0\\
+     a_{21}x_{1}\amp +\amp a_{22}x_{2}\amp +\cdots+\amp a_{2n}x_{n}\amp =\amp 0\\
+     \amp \vdots\amp   \amp \vdots \amp  \amp \vdots \amp \\
+     a_{m1}x_{1}\amp +\amp a_{m2}x_{2}\amp +\cdots +\amp a_{mn}x_{n}\amp =\amp 0
+     \end{array}
+     }
+     \newcommand{\vareqsys}[4]{
+     \begin{array}{ccccccc}
+     #3_{11}x_{1}\amp +\amp #3_{12}x_{2}\amp +\cdots+\amp  #3_{1#2}x_{#2}\amp =\amp #4_1\\
+     #3_{21}x_{1}\amp +\amp #3_{22}x_{2}\amp +\cdots+\amp #3_{2#2}x_{#2}\amp =\amp #4_2\\
+     \vdots \amp \amp \vdots \amp  \amp \vdots \amp =\amp  \\
+     #3_{#1 1}x_{1}\amp +\amp #3_{#1 2}x_{2}\amp +\cdots +\amp #3_{#1 #2}x_{#2}\amp =\amp #4_{#1}
+     \end{array}
+     }
+     \newcommand{\genmatrix}[1][a]{
+     \begin{bmatrix}
+     #1_{11} \amp  #1_{12} \amp  \cdots \amp  #1_{1n} \\
+     #1_{21} \amp  #1_{22} \amp  \cdots \amp  #1_{2n} \\
+     \vdots  \amp  \vdots  \amp  \ddots \amp  \vdots  \\
+     #1_{m1} \amp  #1_{m2} \amp  \cdots \amp  #1_{mn}
+     \end{bmatrix}
+     }
+     \newcommand{\varmatrix}[3]{
+     \begin{bmatrix}
+     #3_{11} \amp  #3_{12} \amp  \cdots \amp  #3_{1#2} \\
+     #3_{21} \amp  #3_{22} \amp  \cdots \amp  #3_{2#2} \\
+     \vdots  \amp  \vdots  \amp  \ddots \amp  \vdots  \\
+     #3_{#1 1} \amp  #3_{#1 2} \amp  \cdots \amp  #3_{#1 #2}
+     \end{bmatrix}
+     }
+     \newcommand{\augmatrix}{
+     \begin{amatrix}[cccc|c]
+     a_{11} \amp  a_{12} \amp  \cdots \amp  a_{1n} \amp b_{1}\\
+     a_{21} \amp  a_{22} \amp  \cdots \amp  a_{2n} \amp b_{2}\\
+     \vdots  \amp  \vdots  \amp  \ddots \amp  \vdots  \amp \vdots\\
+     a_{m1} \amp  a_{m2} \amp  \cdots \amp  a_{mn}\amp b_{m}
+     \end{amatrix}
+     }
+     \newcommand{\varaugmatrix}[4]{
+     \begin{amatrix}[cccc|c]
+     #3_{11} \amp  #3_{12} \amp  \cdots \amp  #3_{1#2} \amp #4_{1}\\
+     #3_{21} \amp  #3_{22} \amp  \cdots \amp  #3_{2#2} \amp #4_{2}\\
+     \vdots  \amp  \vdots  \amp  \ddots \amp  \vdots  \amp \vdots\\
+     #3_{#1 1} \amp  #3_{#1 2} \amp  \cdots \amp  #3_{#1 #2}\amp #4_{#1}
+     \end{amatrix}
+     }
+     \newcommand{\spaceforemptycolumn}{\makebox[\wd\boxofmathplus]{\ }}
+
+     \newcommand{\generalmatrix}[3]{
+     \left(
+     \begin{array}{cccc}
+     #1_{1,1}  \amp #1_{1,2}  \amp \ldots  \amp #1_{1,#2}  \\
+     #1_{2,1}  \amp #1_{2,2}  \amp \ldots  \amp #1_{2,#2}  \\
+     \amp \vdots                         \\
+     #1_{#3,1} \amp #1_{#3,2} \amp \ldots  \amp #1_{#3,#2}
+     \end{array}
+     \right)  }
+     \newcommand{\colvec}[2][c]{\begin{amatrix}[#1] #2 \end{amatrix}}
+     \DeclareMathOperator{\size}{size}
+     \DeclareMathOperator{\adjoint}{adj}
+     \DeclareMathOperator{\sgn}{sgn}
+     \newcommand{\restrictionmap}[2]{{#1}\mathpunct\upharpoonright\hbox{}_{#2}}
+     \renewcommand{\emptyset}{\varnothing}
+
+     \newcommand{\proj}[2]{\mbox{proj}_{#2}({#1}) }
+     \renewcommand{\Re}{\operatorname{Re}}
+      \renewcommand{\Im}{\operatorname{Im}}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\definecolor{fillinmathshade}{gray}{0.9}
+\newcommand{\fillinmath}[1]{\mathchoice{\colorbox{fillinmathshade}{$\displaystyle     \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\textstyle        \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptstyle      \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptscriptstyle\phantom{\,#1\,}$}}}
+\)</span></div>
+<div class="ptx-page">
+<div id="ptx-sidebar" class="ptx-sidebar"><nav id="ptx-toc" class="ptx-toc depth2 focused" data-preexpanded-levels="0" data-max-levels="2"><ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-frontmatter">
+<div class="toc-title-box"><a href="frontmatter.html" class="internal"><span class="title">Front Matter</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-colophon"><div class="toc-title-box"><a href="frontmatter-4.html" class="internal"><span class="title">Colophon</span></a></div></li>
+<li class="toc-item toc-dedication"><div class="toc-title-box"><a href="frontmatter-5.html" class="internal"><span class="title">Dedication</span></a></div></li>
+<li class="toc-item toc-acknowledgement"><div class="toc-title-box"><a href="frontmatter-6.html" class="internal"><span class="title">Acknowledgements</span></a></div></li>
+<li class="toc-item toc-preface"><div class="toc-title-box"><a href="frontmatter-7.html" class="internal"><span class="title">Tujuan Kami</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="chap1.html" class="internal"><span class="codenumber">1</span> <span class="title">Sistem Persamaan</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-expect.html" class="internal"><span class="codenumber">1.1</span> <span class="title">Apa yang dapat kita harapkan</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-expect.html#sec-expect-3" class="internal"><span class="codenumber">1.1.1</span> <span class="title">Beberapa contoh sederhana</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_systems.html" class="internal"><span class="codenumber">1.2</span> <span class="title">Sistem Persamaan Linear</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="s_systems.html#ss_linear_equations" class="internal"><span class="codenumber">1.2.1</span> <span class="title">Sistem Persamaan Linear</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_systems.html#ss_linear_equations-11" class="internal"><span class="codenumber">1.2.1.1</span> <span class="title">Representasi Matriks dari Sistem Linear</span></a></div></li></ul>
+</li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_systemsb.html" class="internal"><span class="codenumber">1.3</span> <span class="title">Eliminasi Gaussian</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_systemsb.html#ss_ge_row_echelon" class="internal"><span class="codenumber">1.3.1</span> <span class="title">Matriks bentuk eselon baris</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_systemsb.html#ss_gaussian_elimination" class="internal"><span class="codenumber">1.3.2</span> <span class="title">Eliminasi Gaussian</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="chap2.html" class="internal"><span class="codenumber">2</span> <span class="title">Matrik</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_matrix.html" class="internal"><span class="codenumber">2.1</span> <span class="title">Aritmetika Matriks</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_matrix.html#ss_matrix_attributes" class="internal"><span class="codenumber">2.1.1</span> <span class="title">Dasar-dasar matrik</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_matrix.html#ss_matrix_arithmetic" class="internal"><span class="codenumber">2.1.2</span> <span class="title">Penjumlahan, pengurangan dan perkalian skalar</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_matrix.html#ss_matrix_mult" class="internal"><span class="codenumber">2.1.3</span> <span class="title">Perkalian matriks</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_matrix.html#s_column_row_method" class="internal"><span class="codenumber">2.1.4</span> <span class="title">Metode alternatif perkalian matrik</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_matrix.html#s_matrix-7" class="internal"><span class="codenumber">2.1.5</span> <span class="title">Transpos dari sebuah matriks</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="s_algebraic.html" class="internal"><span class="codenumber">2.2</span> <span class="title">Aljabar Matriks</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_invertible_matrices.html" class="internal"><span class="codenumber">2.3</span> <span class="title">Matriks Invertibel</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_invertible_matrices.html#subsec-invertible" class="internal"><span class="codenumber">2.3.1</span> <span class="title">Matriks Invers</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_invertible_matrices.html#s_invertible_matrices-4" class="internal"><span class="codenumber">2.3.2</span> <span class="title">Pangkat Matriks, Polinomial Matriks</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="s_invertible_matrices.html#s_invertible_matrices_ex" class="internal"><span class="codenumber">2.3.3</span> <span class="title">Exercises</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_invertibility_theorem.html" class="internal"><span class="codenumber">2.4</span> <span class="title">Teorema Invertibilitas</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_invertibility_theorem.html#ss_elementary_matrix" class="internal"><span class="codenumber">2.4.1</span> <span class="title">Matriks Elementer</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_invertibility_theorem.html#ss_systems_to_matrix_eqns" class="internal"><span class="codenumber">2.4.2</span> <span class="title">Selingan tentang Persamaan Matriks</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_invertibility_theorem.html#ss_invertibility_th" class="internal"><span class="codenumber">2.4.3</span> <span class="title">Teorema Invertibilitas</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_invertibility_theorem.html#ss_invertibility_alg" class="internal"><span class="codenumber">2.4.4</span> <span class="title">Algoritma Invertibilitas</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_invertibility_theorem.html#ss_invertible_loose_ends" class="internal"><span class="codenumber">2.4.5</span> <span class="title">Beberapa Ujung Teoretis yang Longgar</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_det.html" class="internal"><span class="codenumber">2.5</span> <span class="title">Determinan</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_det.html#ss_det" class="internal"><span class="codenumber">2.5.1</span> <span class="title">Definisi Determinan</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_det.html#ss_expansion_rows_columns" class="internal"><span class="codenumber">2.5.2</span> <span class="title">Ekspansi Baris dan Kolom</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter contains-active">
+<div class="toc-title-box"><a href="chap3.html" class="internal"><span class="codenumber">3</span> <span class="title">Vektor, Matriks, dan Kombinasi Linear</span></a></div>
+<ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-vectors-lin-combs.html" class="internal"><span class="codenumber">3.1</span> <span class="title">Vektor dan Kombinasi Linear</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-vectors-lin-combs.html#sec-vectors-lin-combs-3" class="internal"><span class="codenumber">3.1.1</span> <span class="title">Vektor</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-vectors-lin-combs.html#sec-vectors-lin-combs-4" class="internal"><span class="codenumber">3.1.2</span> <span class="title">Kombinasi Linear</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section contains-active">
+<div class="toc-title-box"><a href="sec-linear-trans.html" class="internal"><span class="codenumber">3.2</span> <span class="title">Transformasi Matriks</span></a></div>
+<ul class="structural toc-item-list active">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-linear-trans.html#sec-linear-trans-3" class="internal"><span class="codenumber">3.2.1</span> <span class="title">Transformasi Matriks</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-linear-trans.html#sec-linear-trans-4" class="internal"><span class="codenumber">3.2.2</span> <span class="title">Mengomposisikan Transformasi Matriks</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-linear-trans.html#subsec-dynamical-systems" class="internal"><span class="codenumber">3.2.3</span> <span class="title">Sistem Dinamis Diskrit</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-linear-trans.html#sec-linear-trans-6" class="internal"><span class="codenumber">3.2.4</span> <span class="title">Ringkasan</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-transforms-geom.html" class="internal"><span class="codenumber">3.3</span> <span class="title">Geometri Transformasi Matriks</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-transforms-geom.html#sec-transforms-geom-3" class="internal"><span class="codenumber">3.3.1</span> <span class="title">Geometri Transformasi Matriks <span class="process-math">\(2\times2\)</span></span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-transforms-geom.html#sec-transforms-geom-4" class="internal"><span class="codenumber">3.3.2</span> <span class="title">Transformasi Matriks dan Animasi Komputer</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-transforms-geom.html#sec-transforms-geom-5" class="internal"><span class="codenumber">3.3.3</span> <span class="title">Ringkasan</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-backmatter">
+<div class="toc-title-box"><a href="backmatter.html" class="internal"><span class="title">Back Matter</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-appendix"><div class="toc-title-box"><a href="app-sage-reference.html" class="internal"><span class="codenumber">A</span> <span class="title">Referensi Sage</span></a></div></li>
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="backmatter-3.html" class="internal"><span class="title">Index</span></a></div></li>
+<li class="toc-item toc-colophon"><div class="toc-title-box"><a href="backmatter-4.html" class="internal"><span class="title">Colophon</span></a></div></li>
+<li class="toc-item toc-references"><div class="toc-title-box"><a href="references-backmatter.html" class="internal"><span class="title">References</span></a></div></li>
+</ul>
+</li>
+</ul></nav></div>
+<main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="section" id="sec-linear-trans"><h2 class="heading hide-type">
+<span class="type">Section</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">3.2</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Transformasi Matriks</span>
+</h2>
+<section class="introduction" id="sec-linear-trans-2"><div class="para" id="sec-linear-trans-2-1">Beberapa bagian sebelumnya memperkenalkan kita pada perkalian matriks-vektor sebagai sarana untuk memikirkan solusi sistem linear secara geometris. Secara khusus, kita menuliskan ulang sistem linear sebagai persamaan matriks <span class="process-math">\(A\xvec = \bvec\)</span> dan mengembangkan konsep span dan ketergantungan linear sebagai respons terhadap <code class="code-inline tex2jax_ignore">[cross-reference to target(s) "fundamental-questions" missing or not unique]</code><div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="sec-linear-trans-2-2">Dalam bagian ini, kita akan mengeksplorasi bagaimana perkalian matriks-vektor mendefinisikan jenis fungsi tertentu, yang kita sebut <em class="emphasis">transformasi matriks</em>, serupa dengan yang ditemui dalam kursus aljabar sebelumnya. Secara khusus, kita akan mengembangkan beberapa alat aljabar untuk memikirkan transformasi matriks dan melihat beberapa contoh yang memotivasi. Dalam bagian berikutnya, kita akan melihat bagaimana transformasi matriks mendeskripsikan operasi geometris penting dan bagaimana mereka digunakan dalam animasi komputer.<div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="exploration project-like" id="sec-linear-trans-2-3"><h3 class="heading">
+<span class="type">Preview Activity</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">3.2.1</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h3>
+<div class="para logical" id="sec-linear-trans-2-3-1-1">
+<div class="para">Kita akan mulai dengan mempertimbangkan situasi yang lebih familiar; yaitu, fungsi <span class="process-math">\(f(x) = x^2\text{,}\)</span> yang mengambil bilangan real <span class="process-math">\(x\)</span> sebagai input dan menghasilkan kuadratnya <span class="process-math">\(x^2\)</span> sebagai output-nya.</div>
+<ol class="lower-alpha ol-marker-1" id="sec-linear-trans-2-3-1-1-4">
+<li id="sec-linear-trans-2-3-1-1-4-1">
+<div class="para" id="sec-linear-trans-2-3-1-1-4-1-1">Berapakah nilai dari <span class="process-math">\(f(3)\text{?}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-2-3-1-1-4-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item a"><a href="#sec-linear-trans-2-3-1-1-4-1" title="Copy heading and permalink for Item a" aria-label="Copy heading and permalink for Item a">🔗</a></div>
+</li>
+<li id="sec-linear-trans-2-3-1-1-4-2">
+<div class="para" id="sec-linear-trans-2-3-1-1-4-2-1">Dapatkah kita menyelesaikan persamaan <span class="process-math">\(f(x) = 4\text{?}\)</span> Jika ya, apakah solusinya tunggal?<div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-2-3-1-1-4-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item b"><a href="#sec-linear-trans-2-3-1-1-4-2" title="Copy heading and permalink for Item b" aria-label="Copy heading and permalink for Item b">🔗</a></div>
+</li>
+<li id="sec-linear-trans-2-3-1-1-4-3">
+<div class="para" id="sec-linear-trans-2-3-1-1-4-3-1">Dapatkah kita menyelesaikan persamaan <span class="process-math">\(f(x) = -10\text{?}\)</span> Jika ya, apakah solusinya tunggal?<div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-2-3-1-1-4-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item c"><a href="#sec-linear-trans-2-3-1-1-4-3" title="Copy heading and permalink for Item c" aria-label="Copy heading and permalink for Item c">🔗</a></div>
+</li>
+<li id="sec-linear-trans-2-3-1-1-4-4">
+<div class="para" id="sec-linear-trans-2-3-1-1-4-4-1">Sketsa grafik fungsi <span class="process-math">\(f(x)=x^2\)</span> dalam <a href="sec-linear-trans.html#fig-graph-square" class="xref" data-knowl="./knowl/xref/fig-graph-square.html" data-reveal-label="Reveal" data-close-label="Close" title="Figure 3.2.1">Figure 3.2.1</a> <figure class="figure figure-like" id="fig-graph-square"><div class="sidebyside"><div class="sbsrow" style="margin-left:25%;margin-right:25%;grid-template-columns:100%;column-gap:0%;"><div class="sbspanel sbspanel--top top" style=""><div class="image-box"><img src="external/images/empty-4.svg" role="img" class="contained"></div></div></div></div>
+<figcaption><span class="type">Figure</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">3.2.1<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>Gambarkan grafik fungsi <span class="process-math">\(f(x)=x^2\)</span> di atas.<div class="autopermalink" data-description="Figure 3.2.1"><a href="#fig-graph-square" title="Copy heading and permalink for Figure 3.2.1" aria-label="Copy heading and permalink for Figure 3.2.1">🔗</a></div></figcaption></figure><div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-2-3-1-1-4-4-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item d"><a href="#sec-linear-trans-2-3-1-1-4-4" title="Copy heading and permalink for Item d" aria-label="Copy heading and permalink for Item d">🔗</a></div>
+</li>
+<li id="sec-linear-trans-2-3-1-1-4-5">
+<div class="para" id="sec-linear-trans-2-3-1-1-4-5-1">Kita sekarang akan mempertimbangkan fungsi yang memiliki bentuk <span class="process-math">\(g(x)=mx\text{.}\)</span> Gambarkan grafik fungsi <span class="process-math">\(g(x) = 2x\)</span> di sebelah kiri dalam <a href="sec-linear-trans.html#fig-graph-linear" class="xref" data-knowl="./knowl/xref/fig-graph-linear.html" data-reveal-label="Reveal" data-close-label="Close" title="Figure 3.2.2">Figure 3.2.2</a>. <figure class="figure figure-like" id="fig-graph-linear"><div class="sidebyside"><div class="sbsrow" style="margin-left:2.5%;margin-right:2.5%;grid-template-columns:47.3684210526316% 47.3684210526316%;column-gap:5%;">
+<div class="sbspanel sbspanel--top top" style=""><div class="image-box"><img src="external/images/empty-4.svg" role="img" class="contained"></div></div>
+<div class="sbspanel sbspanel--top top" style=""><div class="image-box"><img src="external/images/empty-4.svg" role="img" class="contained"></div></div>
+</div></div>
+<figcaption><span class="type">Figure</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">3.2.2<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>Grafik fungsi <span class="process-math">\(g(x)=2x\)</span> dan <span class="process-math">\(h(x) =
+-\frac13 x\text{.}\)</span><div class="autopermalink" data-description="Figure 3.2.2"><a href="#fig-graph-linear" title="Copy heading and permalink for Figure 3.2.2" aria-label="Copy heading and permalink for Figure 3.2.2">🔗</a></div></figcaption></figure><div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-2-3-1-1-4-5-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item e"><a href="#sec-linear-trans-2-3-1-1-4-5" title="Copy heading and permalink for Item e" aria-label="Copy heading and permalink for Item e">🔗</a></div>
+</li>
+<li id="sec-linear-trans-2-3-1-1-4-6">
+<div class="para" id="sec-linear-trans-2-3-1-1-4-6-1">Gambarkan grafik fungsi <span class="process-math">\(h(x) = -\frac13 x\)</span> di sebelah kanan <a href="sec-linear-trans.html#fig-graph-linear" class="xref" data-knowl="./knowl/xref/fig-graph-linear.html" data-reveal-label="Reveal" data-close-label="Close" title="Figure 3.2.2">Figure 3.2.2</a>.<div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-2-3-1-1-4-6-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item f"><a href="#sec-linear-trans-2-3-1-1-4-6" title="Copy heading and permalink for Item f" aria-label="Copy heading and permalink for Item f">🔗</a></div>
+</li>
+<li id="sec-linear-trans-2-3-1-1-4-7">
+<div class="para" id="sec-linear-trans-2-3-1-1-4-7-1">Ingat bahwa mengomposisikan dua fungsi berarti kita menggunakan output dari satu fungsi sebagai input ke fungsi lain; yaitu, <span class="process-math">\((g\circ h)(x) = g(h(x))\text{.}\)</span> Fungsi apa yang dihasilkan dari mengomposisikan <span class="process-math">\((g\circ h)(x)\text{?}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-2-3-1-1-4-7-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item g"><a href="#sec-linear-trans-2-3-1-1-4-7" title="Copy heading and permalink for Item g" aria-label="Copy heading and permalink for Item g">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-2-3-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Preview Activity 3.2.1"><a href="#sec-linear-trans-2-3" title="Copy heading and permalink for Preview Activity 3.2.1" aria-label="Copy heading and permalink for Preview Activity 3.2.1">🔗</a></div></article></section><section class="subsection" id="sec-linear-trans-3"><h3 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">3.2.1</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Transformasi Matriks</span>
+</h3>
+<div class="para" id="sec-linear-trans-3-2">Dalam aktivitas pratinjau, kita mempertimbangkan fungsi linear familiar dari satu variabel, seperti <span class="process-math">\(g(x) = 2x\text{.}\)</span> Kita membangun fungsi seperti ini dengan memilih bilangan <span class="process-math">\(m\text{;}\)</span> ketika diberikan input <span class="process-math">\(x\text{,}\)</span> output <span class="process-math">\(g(x) = mx\)</span> dibentuk dengan mengalikan <span class="process-math">\(x\)</span> dengan <span class="process-math">\(m\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="sec-linear-trans-3-3">Dalam bagian ini, kita akan mempertimbangkan fungsi yang input-nya adalah vektor dan output-nya adalah vektor yang didefinisikan melalui perkalian matriks-vektor. Artinya, jika <span class="process-math">\(A\)</span> adalah matriks dan <span class="process-math">\(\xvec\)</span> adalah vektor, fungsi <span class="process-math">\(T(\xvec) = A\xvec\)</span> membentuk produk <span class="process-math">\(A\xvec\)</span> sebagai output-nya. Fungsi seperti itu disebut transformasi matriks.<div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-3-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="definition definition-like" id="sec-linear-trans-3-4"><h4 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">3.2.3</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h4> <div class="para" id="sec-linear-trans-3-4-1-2">
+<dfn class="terminology">Transformasi matriks</dfn> yang terkait dengan matriks <span class="process-math">\(A\)</span> adalah fungsi yang menetapkan kepada vektor <span class="process-math">\(\xvec\)</span> vektor <span class="process-math">\(A\xvec\text{;}\)</span> yaitu, <span class="process-math">\(T(\xvec) = A\xvec\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-3-4-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 3.2.3"><a href="#sec-linear-trans-3-4" title="Copy heading and permalink for Definition 3.2.3" aria-label="Copy heading and permalink for Definition 3.2.3">🔗</a></div></article><article class="example example-like" id="example-matrix-to-mt"><h4 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">3.2.4</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h4>
+<div class="para logical" id="example-matrix-to-mt-1-1">
+<div class="para">Matriks <span class="process-math">\(A =
+\begin{bmatrix} 3 \amp -2 \\
+1 \amp 2 \\
+0 \amp 3
+\end{bmatrix}\)</span> mendefinisikan transformasi matriks <span class="process-math">\(T(\xvec) =
+A\xvec\)</span> dengan cara berikut:</div>
+<div class="displaymath process-math" id="example-matrix-to-mt-1-1-3">
+\begin{equation*}
+T\left(\twovec{x_1}{x_2}\right) =
+\begin{bmatrix} 3 \amp -2 \\
+1 \amp 2 \\
+0 \amp 3
+\end{bmatrix}
+\twovec{x_1}{x_2} = 
+\cthreevec{3x_1 - 2x_2}{x_1 + 2x_2}{3x_2}.
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#example-matrix-to-mt-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <div class="para logical" id="example-matrix-to-mt-1-2">
+<div class="para">Perhatikan bahwa input ke <span class="process-math">\(T\)</span> adalah vektor dua-dimensi <span class="process-math">\(\twovec{x_1}{x_2}\)</span> dan output-nya adalah vektor tiga-dimensi <span class="process-math">\(\cthreevec{3x_1 - 2x_2}{x_1 +
+2x_2}{3x_2}\text{.}\)</span> Sebagai singkatan, kita akan menuliskan</div>
+<div class="displaymath process-math" id="example-matrix-to-mt-1-2-4">
+\begin{equation*}
+T:\real^2\to\real^3
+\end{equation*}
+</div>
+<div class="para">untuk mengindikasikan bahwa input-nya adalah vektor dua-dimensi dan output-nya adalah vektor tiga-dimensi.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#example-matrix-to-mt-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Example 3.2.4"><a href="#example-matrix-to-mt" title="Copy heading and permalink for Example 3.2.4" aria-label="Copy heading and permalink for Example 3.2.4">🔗</a></div></article><article class="example example-like" id="example-mt-to-matrix"><h4 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">3.2.5</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h4>
+<div class="para logical" id="example-mt-to-matrix-1-1">
+<div class="para">Misalkan kita memiliki fungsi <span class="process-math">\(T:\real^3\to\real^2\)</span> yang memiliki bentuk</div>
+<div class="displaymath process-math" id="example-mt-to-matrix-1-1-2">
+\begin{equation*}
+T\left(\threevec{x_1}{x_2}{x_3}\right) =
+\begin{bmatrix}
+-4x_1 -x_2 + 2x_3 \\
+x_1 + 2x_2 - x_3 \\
+\end{bmatrix}.
+\end{equation*}
+</div>
+<div class="para">Kita dapat menuliskan</div>
+<div class="displaymath process-math" id="example-mt-to-matrix-1-1-3">
+\begin{equation*}
+\begin{aligned}
+T\left(\threevec{x_1}{x_2}{x_3}\right) 
+\amp {}={}
+\begin{bmatrix}
+-4x_1 -x_2 + 2x_3 \\
+x_1 + 2x_2 - x_3 \\
+\end{bmatrix} \\
+\amp {}={} 
+\twovec{-4x_1}{x_1} + \twovec{-x_2}{2x_2} +
+\twovec{2x_3}{-x_3}  \\
+\amp {}={}
+x_1\twovec{-4}1 + x_2\twovec{-1}2 + x_3\twovec2{-1}  \\
+\amp{}={}
+\begin{bmatrix}
+-4 \amp -1 \amp 2 \\
+1 \amp 2 \amp -1 \\
+\end{bmatrix}
+\threevec{x_1}{x_2}{x_3}.
+\end{aligned}
+\end{equation*}
+</div>
+<div class="para">Ini menunjukkan bahwa <span class="process-math">\(T\)</span> adalah transformasi matriks <span class="process-math">\(T(\xvec) = A\xvec\)</span> yang terkait dengan matriks <span class="process-math">\(A = 
+\begin{bmatrix}
+-4 \amp -1 \amp 2 \\
+1 \amp 2 \amp -1 \\
+\end{bmatrix}.\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#example-mt-to-matrix-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Example 3.2.5"><a href="#example-mt-to-matrix" title="Copy heading and permalink for Example 3.2.5" aria-label="Copy heading and permalink for Example 3.2.5">🔗</a></div></article><article class="activity project-like" id="sec-linear-trans-3-7"><h4 class="heading">
+<span class="type">Activity</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">3.2.2</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h4>
+<div class="para logical" id="sec-linear-trans-3-7-1-1">
+<div class="para">Dalam aktivitas ini, kita akan melihat beberapa contoh transformasi matriks.</div>
+<ol class="lower-alpha ol-marker-1" id="sec-linear-trans-3-7-1-1-1">
+<li id="sec-linear-trans-3-7-1-1-1-1">
+<div class="para logical" id="sec-linear-trans-3-7-1-1-1-1-1">
+<div class="para">Untuk memulai, misalkan <span class="process-math">\(A\)</span> adalah matriks</div>
+<div class="displaymath process-math" id="sec-linear-trans-3-7-1-1-1-1-1-2">
+\begin{equation*}
+A = \left[\begin{array}{rr}
+2 \amp 1 \\
+1 \amp 2 \\
+\end{array}\right].
+\end{equation*}
+</div>
+<div class="para">dengan transformasi matriks terkait <span class="process-math">\(T(\xvec) =
+A\xvec\text{.}\)</span>
+</div>
+<ol class="decimal ol-marker-5" id="sec-linear-trans-3-7-1-1-1-1-1-4">
+<li id="sec-linear-trans-3-7-1-1-1-1-1-4-1">
+<div class="para" id="sec-linear-trans-3-7-1-1-1-1-1-4-1-1">Berapakah <span class="process-math">\(T\left(\twovec{1}{-2}\right)\text{?}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-3-7-1-1-1-1-1-4-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item a.1"><a href="#sec-linear-trans-3-7-1-1-1-1-1-4-1" title="Copy heading and permalink for Item a.1" aria-label="Copy heading and permalink for Item a.1">🔗</a></div>
+</li>
+<li id="sec-linear-trans-3-7-1-1-1-1-1-4-2">
+<div class="para" id="sec-linear-trans-3-7-1-1-1-1-1-4-2-1">Berapakah <span class="process-math">\(T\left(\twovec{1}{0}\right)\text{?}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-3-7-1-1-1-1-1-4-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item a.2"><a href="#sec-linear-trans-3-7-1-1-1-1-1-4-2" title="Copy heading and permalink for Item a.2" aria-label="Copy heading and permalink for Item a.2">🔗</a></div>
+</li>
+<li id="sec-linear-trans-3-7-1-1-1-1-1-4-3">
+<div class="para" id="sec-linear-trans-3-7-1-1-1-1-1-4-3-1">Berapakah <span class="process-math">\(T\left(\twovec{0}{1}\right)\text{?}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-3-7-1-1-1-1-1-4-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item a.3"><a href="#sec-linear-trans-3-7-1-1-1-1-1-4-3" title="Copy heading and permalink for Item a.3" aria-label="Copy heading and permalink for Item a.3">🔗</a></div>
+</li>
+<li id="sec-linear-trans-3-7-1-1-1-1-1-4-4">
+<div class="para" id="sec-linear-trans-3-7-1-1-1-1-1-4-4-1">Apakah terdapat vektor <span class="process-math">\(\xvec\)</span> sedemikian sehingga <span class="process-math">\(T(\xvec) = \twovec{3}{0}\text{?}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-3-7-1-1-1-1-1-4-4-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item a.4"><a href="#sec-linear-trans-3-7-1-1-1-1-1-4-4" title="Copy heading and permalink for Item a.4" aria-label="Copy heading and permalink for Item a.4">🔗</a></div>
+</li>
+<li id="sec-linear-trans-3-7-1-1-1-1-1-4-5">
+<div class="para" id="sec-linear-trans-3-7-1-1-1-1-1-4-5-1">Tuliskan <span class="process-math">\(T\left(\twovec xy\right)\)</span> sebagai vektor dua-dimensi.<div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-3-7-1-1-1-1-1-4-5-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item a.5"><a href="#sec-linear-trans-3-7-1-1-1-1-1-4-5" title="Copy heading and permalink for Item a.5" aria-label="Copy heading and permalink for Item a.5">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-3-7-1-1-1-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item a"><a href="#sec-linear-trans-3-7-1-1-1-1" title="Copy heading and permalink for Item a" aria-label="Copy heading and permalink for Item a">🔗</a></div>
+</li>
+<li id="sec-linear-trans-3-7-1-1-1-2">
+<div class="para logical" id="sec-linear-trans-3-7-1-1-1-2-1">
+<div class="para">Misalkan <span class="process-math">\(T(\xvec) = A\xvec\)</span> dimana</div>
+<div class="displaymath process-math" id="sec-linear-trans-3-7-1-1-1-2-1-2">
+\begin{equation*}
+A=\left[\begin{array}{rrrr}
+3 \amp 3 \amp -2 \amp 1 \\
+0 \amp 2 \amp 1 \amp -3 \\
+-2 \amp 1 \amp 4 \amp -4
+\end{array}\right]\text{.}
+\end{equation*}
+</div>
+<ol class="decimal ol-marker-5" id="sec-linear-trans-3-7-1-1-1-2-1-3">
+<li id="sec-linear-trans-3-7-1-1-1-2-1-3-1">
+<div class="para" id="sec-linear-trans-3-7-1-1-1-2-1-3-1-1">Berapakah dimensi dari vektor-vektor <span class="process-math">\(\xvec\)</span> yang merupakan input untuk <span class="process-math">\(T\text{?}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-3-7-1-1-1-2-1-3-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item b.1"><a href="#sec-linear-trans-3-7-1-1-1-2-1-3-1" title="Copy heading and permalink for Item b.1" aria-label="Copy heading and permalink for Item b.1">🔗</a></div>
+</li>
+<li id="sec-linear-trans-3-7-1-1-1-2-1-3-2">
+<div class="para" id="sec-linear-trans-3-7-1-1-1-2-1-3-2-1">Berapakah dimensi dari vektor-vektor <span class="process-math">\(T(\xvec)=A\xvec\)</span> yang merupakan output?<div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-3-7-1-1-1-2-1-3-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item b.2"><a href="#sec-linear-trans-3-7-1-1-1-2-1-3-2" title="Copy heading and permalink for Item b.2" aria-label="Copy heading and permalink for Item b.2">🔗</a></div>
+</li>
+<li id="sec-linear-trans-3-7-1-1-1-2-1-3-3">
+<div class="para" id="sec-linear-trans-3-7-1-1-1-2-1-3-3-1">Jika kita mendeskripsikan transformasi ini sebagai <span class="process-math">\(T:\real^n\to\real^m\text{,}\)</span> berapakah nilai dari <span class="process-math">\(n\)</span> dan <span class="process-math">\(m\)</span> dan bagaimana mereka terkait dengan bentuk dari <span class="process-math">\(A\text{?}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-3-7-1-1-1-2-1-3-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item b.3"><a href="#sec-linear-trans-3-7-1-1-1-2-1-3-3" title="Copy heading and permalink for Item b.3" aria-label="Copy heading and permalink for Item b.3">🔗</a></div>
+</li>
+<li id="sec-linear-trans-3-7-1-1-1-2-1-3-4">
+<div class="para" id="sec-linear-trans-3-7-1-1-1-2-1-3-4-1">Deskripsikan vektor-vektor <span class="process-math">\(\xvec\)</span> untuk mana <span class="process-math">\(T(\xvec) = \zerovec\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-3-7-1-1-1-2-1-3-4-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item b.4"><a href="#sec-linear-trans-3-7-1-1-1-2-1-3-4" title="Copy heading and permalink for Item b.4" aria-label="Copy heading and permalink for Item b.4">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-3-7-1-1-1-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item b"><a href="#sec-linear-trans-3-7-1-1-1-2" title="Copy heading and permalink for Item b" aria-label="Copy heading and permalink for Item b">🔗</a></div>
+</li>
+<li id="sec-linear-trans-3-7-1-1-1-3">
+<div class="para" id="sec-linear-trans-3-7-1-1-1-3-1">Jika <span class="process-math">\(A\)</span> adalah matriks <span class="process-math">\(A=\left[\begin{array}{rr} \vvec_1 \amp \vvec_2
+\end{array}\right]\text{,}\)</span> berapakah <span class="process-math">\(T\left(\twovec10\right)\)</span> dalam terms vektor-vektor <span class="process-math">\(\vvec_1\)</span> dan <span class="process-math">\(\vvec_2\text{?}\)</span> Bagaimana dengan <span class="process-math">\(T\left(\twovec{0}{1}\right)\text{?}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-3-7-1-1-1-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item c"><a href="#sec-linear-trans-3-7-1-1-1-3" title="Copy heading and permalink for Item c" aria-label="Copy heading and permalink for Item c">🔗</a></div>
+</li>
+<li id="sec-linear-trans-3-7-1-1-1-4">
+<div class="para logical" id="sec-linear-trans-3-7-1-1-1-4-1">
+<div class="para">Misalkan <span class="process-math">\(A\)</span> adalah matriks <span class="process-math">\(3\times 2\)</span> dan bahwa <span class="process-math">\(T(\xvec)=A\xvec\text{.}\)</span> Jika</div>
+<div class="displaymath process-math" id="sec-linear-trans-3-7-1-1-1-4-1-4">
+\begin{equation*}
+T\left(\twovec{1}{0}\right) = \threevec{3}{-1}{1},
+T\left(\twovec{0}{1}\right) = \threevec{2}{2}{-1}\text{,}
+\end{equation*}
+</div>
+<div class="para">berapakah matriks <span class="process-math">\(A\text{?}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-3-7-1-1-1-4-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item d"><a href="#sec-linear-trans-3-7-1-1-1-4" title="Copy heading and permalink for Item d" aria-label="Copy heading and permalink for Item d">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-3-7-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Activity 3.2.2"><a href="#sec-linear-trans-3-7" title="Copy heading and permalink for Activity 3.2.2" aria-label="Copy heading and permalink for Activity 3.2.2">🔗</a></div></article><div class="para logical" id="sec-linear-trans-3-8">
+<div class="para">Mari kita diskusikan beberapa isu yang muncul dalam aktivitas ini. Pertama, perhatikan bahwa bentuk matriks <span class="process-math">\(A\)</span> dan dimensi vektor input <span class="process-math">\(\xvec\)</span> harus kompatibel jika produk <span class="process-math">\(A\xvec\)</span> akan terdefinisi. Secara khusus, jika <span class="process-math">\(A\)</span> adalah matriks <span class="process-math">\(m\times n\text{,}\)</span> <span class="process-math">\(\xvec\)</span> perlu berupa vektor <span class="process-math">\(n\)</span>-dimensi, dan produk yang dihasilkan <span class="process-math">\(A\xvec\)</span> akan menjadi vektor <span class="process-math">\(m\)</span>-dimensi. Untuk transformasi matriks terkait, kita oleh karena itu menuliskan <span class="process-math">\(T:\real^n\to\real^m\)</span> yang berarti <span class="process-math">\(T\)</span> mengambil vektor di <span class="process-math">\(\real^n\)</span> sebagai input dan menghasilkan vektor di <span class="process-math">\(\real^m\)</span> sebagai output. Misalnya, jika</div>
+<div class="displaymath process-math" id="sec-linear-trans-3-8-14">
+\begin{equation*}
+A=\left[\begin{array}{rrrr}
+4 \amp 0 \amp -3 \amp 2 \\
+0 \amp 1 \amp 3 \amp 1 \\
+\end{array}\right]\text{,}
+\end{equation*}
+</div>
+<div class="para">maka <span class="process-math">\(T:\real^4\to\real^2\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-3-8" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="sec-linear-trans-3-9">
+<div class="para">Kedua, kita sering dapat merekonstruksi matriks <span class="process-math">\(A\)</span> jika kita hanya mengetahui beberapa nilai output dari transformasi linear terkait <span class="process-math">\(T\)</span> dengan mengingat bahwa perkalian matriks-vektor membangun kombinasi linear. Misalnya, jika <span class="process-math">\(A\)</span> adalah matriks <span class="process-math">\(m\times2\)</span> <span class="process-math">\(A=\left[\begin{array}{rr} \vvec_1
+\amp \vvec_2 \end{array}\right]\text{,}\)</span> maka</div>
+<div class="displaymath process-math" id="sec-linear-trans-3-9-6">
+\begin{equation*}
+T\left(\twovec{1}{0}\right) =
+\left[\begin{array}{rr}
+\vvec_1 \amp \vvec_2
+\end{array}\right]\twovec{1}{0} = 1\vvec_1 + 0\vvec_2 =
+\vvec_1\text{.}
+\end{equation*}
+</div>
+<div class="para">Yaitu, kita dapat menemukan kolom pertama dari <span class="process-math">\(A\)</span> dengan mengevaluasi <span class="process-math">\(T\left(\twovec{1}{0}\right)\text{.}\)</span> Demikian pula, kolom kedua dari <span class="process-math">\(A\)</span> ditemukan dengan mengevaluasi <span class="process-math">\(T\left(\twovec{0}{1}\right)\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-3-9" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="sec-linear-trans-3-10">
+<div class="para">Secara lebih umum, kita akan menuliskan kolom-kolom dari matriks identitas <span class="process-math">\(n\times
+n\)</span> sebagai</div>
+<div class="displaymath process-math" id="sec-linear-trans-3-10-2">
+\begin{equation*}
+\evec_1 = \left[\begin{array}{c}
+1 \\ 0 \\ \vdots \\ 0 \end{array}\right],~~~
+\evec_2 = \left[\begin{array}{c}
+0 \\ 1 \\ \vdots \\ 0 \end{array}\right],~~~
+\ldots,~~~
+\evec_n = \left[\begin{array}{c}
+0 \\ 0 \\ \vdots \\ 1 \end{array}\right]
+\end{equation*}
+</div>
+<div class="para">sehingga</div>
+<div class="displaymath process-math" id="sec-linear-trans-3-10-3">
+\begin{equation*}
+T(\evec_j) = \left[\begin{array}{rrrr}
+\vvec_1 \amp \vvec_2 \amp \ldots \amp \vvec_n
+\end{array}\right]
+~\evec_j = \vvec_j\text{.}
+\end{equation*}
+</div>
+<div class="para">Ini berarti bahwa kolom ke-<span class="process-math">\(j\)</span> dari <span class="process-math">\(A\)</span> ditemukan dengan mengevaluasi <span class="process-math">\(T(\evec_j)\text{.}\)</span> Kita mencatat fakta ini dalam proposisi berikut.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-3-10" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="proposition theorem-like" id="prop-linear-trans-columns"><h4 class="heading">
+<span class="type">Proposition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">3.2.6</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h4>
+<div class="para logical" id="prop-linear-trans-columns-1-1">
+<div class="para">Jika <span class="process-math">\(T:\real^n\to\real^m\)</span> adalah transformasi matriks yang diberikan oleh <span class="process-math">\(T(\xvec) = A\xvec\text{,}\)</span> maka matriks <span class="process-math">\(A\)</span> memiliki kolom-kolom <span class="process-math">\(T(\evec_j)\text{;}\)</span> yaitu,</div>
+<div class="displaymath process-math" id="prop-linear-trans-columns-1-1-5">
+\begin{equation*}
+A = \left[\begin{array}{rrrr}
+T(\evec_1) \amp T(\evec_2) \amp \cdots \amp T(\evec_n)
+\end{array}\right]\text{.}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#prop-linear-trans-columns-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proposition 3.2.6"><a href="#prop-linear-trans-columns" title="Copy heading and permalink for Proposition 3.2.6" aria-label="Copy heading and permalink for Proposition 3.2.6">🔗</a></div></article><article class="activity project-like" id="activity-mt-intro"><h4 class="heading">
+<span class="type">Activity</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">3.2.3</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h4>
+<div class="para logical" id="activity-mt-intro-1-1">
+<div class="para">Mari kita lihat beberapa contoh dan terapkan observasi-observasi ini.</div>
+<ol class="lower-alpha ol-marker-1" id="activity-mt-intro-1-1-1">
+<li id="activity-mt-intro-1-1-1-1">
+<div class="para" id="activity-mt-intro-1-1-1-1-1">Untuk memulai, misalkan <span class="process-math">\(T\)</span> adalah transformasi matriks yang mengambil vektor dua-dimensi <span class="process-math">\(\xvec\)</span> sebagai input dan menghasilkan output <span class="process-math">\(T(\xvec)\text{,}\)</span> vektor dua-dimensi yang diperoleh dengan memutar <span class="process-math">\(\xvec\)</span> berlawanan arah jarum jam sebesar <span class="process-math">\(90^\circ\text{,}\)</span> sebagaimana ditunjukkan dalam <a href="sec-linear-trans.html#fig-mt-rotate" class="xref" data-knowl="./knowl/xref/fig-mt-rotate.html" data-reveal-label="Reveal" data-close-label="Close" title="Figure 3.2.7">Figure 3.2.7</a>.<div class="autopermalink" data-description="Paragraph"><a href="#activity-mt-intro-1-1-1-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<figure class="figure figure-like" id="fig-mt-rotate"><div class="sidebyside"><div class="sbsrow" style="margin-left:2%;margin-right:2%;grid-template-columns:46.875% 46.875%;column-gap:6%;">
+<div class="sbspanel sbspanel--top top" style=""><div class="image-box"><img src="external/images/two-dim-basis.svg" role="img" class="contained"></div></div>
+<div class="sbspanel sbspanel--top top" style=""><div class="image-box"><img src="external/images/two-dim-basis-rotate.svg" role="img" class="contained"></div></div>
+</div></div>
+<figcaption><span class="type">Figure</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">3.2.7<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>Transformasi matriks <span class="process-math">\(T\)</span> mengambil vektor-vektor dua-dimensi di sebelah kiri dan memutar mereka sebesar <span class="process-math">\(90^\circ\)</span> berlawanan arah jarum jam menjadi vektor-vektor di sebelah kanan.<div class="autopermalink" data-description="Figure 3.2.7"><a href="#fig-mt-rotate" title="Copy heading and permalink for Figure 3.2.7" aria-label="Copy heading and permalink for Figure 3.2.7">🔗</a></div></figcaption></figure><div class="para logical" id="activity-mt-intro-1-1-1-1-3">
+<div class="para">Kita akan melihat dalam bagian berikutnya bahwa banyak operasi geometris seperti ini dapat dilakukan oleh transformasi matriks.</div>
+<ol class="decimal ol-marker-5" id="activity-mt-intro-1-1-1-1-3-1">
+<li id="activity-mt-intro-1-1-1-1-3-1-1">
+<div class="para" id="activity-mt-intro-1-1-1-1-3-1-1-1">Jika kita menuliskan <span class="process-math">\(T:\real^n\to\real^m\text{,}\)</span> berapakah nilai dari <span class="process-math">\(m\)</span> dan <span class="process-math">\(n\text{,}\)</span> dan berapakah bentuk dari matriks terkait <span class="process-math">\(A\text{?}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#activity-mt-intro-1-1-1-1-3-1-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item a.1"><a href="#activity-mt-intro-1-1-1-1-3-1-1" title="Copy heading and permalink for Item a.1" aria-label="Copy heading and permalink for Item a.1">🔗</a></div>
+</li>
+<li id="activity-mt-intro-1-1-1-1-3-1-2">
+<div class="para" id="activity-mt-intro-1-1-1-1-3-1-2-1">Tentukan matriks <span class="process-math">\(A\)</span> dengan menerapkan <a href="sec-linear-trans.html#prop-linear-trans-columns" class="xref" data-knowl="./knowl/xref/prop-linear-trans-columns.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 3.2.6">Proposition 3.2.6</a>.<div class="autopermalink" data-description="Paragraph"><a href="#activity-mt-intro-1-1-1-1-3-1-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item a.2"><a href="#activity-mt-intro-1-1-1-1-3-1-2" title="Copy heading and permalink for Item a.2" aria-label="Copy heading and permalink for Item a.2">🔗</a></div>
+</li>
+<li id="activity-mt-intro-1-1-1-1-3-1-3">
+<div class="para" id="activity-mt-intro-1-1-1-1-3-1-3-1">Jika <span class="process-math">\(\vvec=\twovec{-2}{-1}\)</span> sebagaimana ditunjukkan di sebelah kiri dalam <a href="sec-linear-trans.html#fig-mt-rotate" class="xref" data-knowl="./knowl/xref/fig-mt-rotate.html" data-reveal-label="Reveal" data-close-label="Close" title="Figure 3.2.7">Figure 3.2.7</a>, gunakan matriks Anda untuk menentukan <span class="process-math">\(T(\vvec)\)</span> dan verifikasi bahwa hal itu sesuai dengan yang ditunjukkan di sebelah kanan <a href="sec-linear-trans.html#fig-mt-rotate" class="xref" data-knowl="./knowl/xref/fig-mt-rotate.html" data-reveal-label="Reveal" data-close-label="Close" title="Figure 3.2.7">Figure 3.2.7</a>.<div class="autopermalink" data-description="Paragraph"><a href="#activity-mt-intro-1-1-1-1-3-1-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item a.3"><a href="#activity-mt-intro-1-1-1-1-3-1-3" title="Copy heading and permalink for Item a.3" aria-label="Copy heading and permalink for Item a.3">🔗</a></div>
+</li>
+<li id="activity-mt-intro-1-1-1-1-3-1-4">
+<div class="para" id="activity-mt-intro-1-1-1-1-3-1-4-1">Jika <span class="process-math">\(\xvec=\twovec xy\text{,}\)</span> tentukan vektor <span class="process-math">\(T(\xvec)\)</span> yang diperoleh dengan memutar <span class="process-math">\(\xvec\)</span> berlawanan arah jarum jam sebesar <span class="process-math">\(90^\circ\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#activity-mt-intro-1-1-1-1-3-1-4-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item a.4"><a href="#activity-mt-intro-1-1-1-1-3-1-4" title="Copy heading and permalink for Item a.4" aria-label="Copy heading and permalink for Item a.4">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#activity-mt-intro-1-1-1-1-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item a"><a href="#activity-mt-intro-1-1-1-1" title="Copy heading and permalink for Item a" aria-label="Copy heading and permalink for Item a">🔗</a></div>
+</li>
+<li id="activity-mt-intro-1-1-1-2">
+<div class="para logical" id="activity-mt-intro-1-1-1-2-1">
+<div class="para">Misalkan kita bekerja untuk perusahaan yang membuat produk panggang, termasuk kue, donat, dan eclair. Perusahaan mengoperasikan dua toko roti, Toko Roti 1 dan Toko Roti 2. Dalam satu jam operasi,</div>
+<ul class="disc" id="activity-mt-intro-1-1-1-2-1-1">
+<li id="activity-mt-intro-1-1-1-2-1-1-1">
+<div class="para" id="activity-mt-intro-1-1-1-2-1-1-1-1">Toko Roti 1 memproduksi 10 kue, 50 donat, dan 30 eclair.<div class="autopermalink" data-description="Paragraph"><a href="#activity-mt-intro-1-1-1-2-1-1-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item"><a href="#activity-mt-intro-1-1-1-2-1-1-1" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+<li id="activity-mt-intro-1-1-1-2-1-1-2">
+<div class="para" id="activity-mt-intro-1-1-1-2-1-1-2-1">Toko Roti 2 memproduksi 20 kue, 30 donat, dan 30 eclair.<div class="autopermalink" data-description="Paragraph"><a href="#activity-mt-intro-1-1-1-2-1-1-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item"><a href="#activity-mt-intro-1-1-1-2-1-1-2" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+</ul>
+<div class="para">Jika Toko Roti 1 beroperasi selama <span class="process-math">\(x_1\)</span> jam dan Toko Roti 2 selama <span class="process-math">\(x_2\)</span> jam, kita akan menggunakan vektor <span class="process-math">\(\xvec=\twovec{x_1}{x_2}\)</span> untuk mendeskripsikan operasi kedua toko roti.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#activity-mt-intro-1-1-1-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="activity-mt-intro-1-1-1-2-2">
+<div class="para">Kita ingin mendeskripsikan transformasi matriks <span class="process-math">\(T\)</span> dimana <span class="process-math">\(\xvec\)</span> mendeskripsikan jumlah jam toko roti beroperasi dan <span class="process-math">\(T(\xvec)\)</span> mendeskripsikan total jumlah kue, donat, dan eclair yang diproduksi. Artinya, <span class="process-math">\(T(\xvec) = \threevec{y_1}{y_2}{y_3}\)</span> dimana <span class="process-math">\(y_1\)</span> adalah jumlah kue, <span class="process-math">\(y_2\)</span> adalah jumlah donat, dan <span class="process-math">\(y_3\)</span> adalah jumlah eclair yang diproduksi.</div>
+<ol class="decimal ol-marker-5" id="activity-mt-intro-1-1-1-2-2-8">
+<li id="activity-mt-intro-1-1-1-2-2-8-1">
+<div class="para" id="activity-mt-intro-1-1-1-2-2-8-1-1">Jika <span class="process-math">\(T:\real^n\to\real^m\text{,}\)</span> berapakah nilai dari <span class="process-math">\(m\)</span> dan <span class="process-math">\(n\text{,}\)</span> dan berapakah bentuk dari matriks terkait <span class="process-math">\(A\text{?}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#activity-mt-intro-1-1-1-2-2-8-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item b.1"><a href="#activity-mt-intro-1-1-1-2-2-8-1" title="Copy heading and permalink for Item b.1" aria-label="Copy heading and permalink for Item b.1">🔗</a></div>
+</li>
+<li id="activity-mt-intro-1-1-1-2-2-8-2">
+<div class="para" id="activity-mt-intro-1-1-1-2-2-8-2-1">Kita dapat menentukan matriks <span class="process-math">\(A\)</span> menggunakan <a href="sec-linear-trans.html#prop-linear-trans-columns" class="xref" data-knowl="./knowl/xref/prop-linear-trans-columns.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 3.2.6">Proposition 3.2.6</a>. Misalnya, <span class="process-math">\(T\left(\twovec10\right)\)</span> akan mendeskripsikan jumlah kue, donat, dan eclair yang diproduksi ketika Toko Roti 1 beroperasi selama satu jam dan Toko Roti 2 tidak beroperasi. Berapakah vektor ini?<div class="autopermalink" data-description="Paragraph"><a href="#activity-mt-intro-1-1-1-2-2-8-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item b.2"><a href="#activity-mt-intro-1-1-1-2-2-8-2" title="Copy heading and permalink for Item b.2" aria-label="Copy heading and permalink for Item b.2">🔗</a></div>
+</li>
+<li id="activity-mt-intro-1-1-1-2-2-8-3">
+<div class="para" id="activity-mt-intro-1-1-1-2-2-8-3-1">Dengan cara yang sama, tentukan <span class="process-math">\(T\left(\twovec01\right)\text{.}\)</span> Berapakah matriks <span class="process-math">\(A\text{?}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#activity-mt-intro-1-1-1-2-2-8-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item b.3"><a href="#activity-mt-intro-1-1-1-2-2-8-3" title="Copy heading and permalink for Item b.3" aria-label="Copy heading and permalink for Item b.3">🔗</a></div>
+</li>
+<li id="activity-mt-intro-1-1-1-2-2-8-4">
+<div class="para" id="activity-mt-intro-1-1-1-2-2-8-4-1">Jika Toko Roti 1 beroperasi selama 120 jam dan Toko Roti 2 selama 180 jam, berapakah total jumlah kue, donat, dan eclair yang diproduksi? <div id="activity-mt-intro-1-1-1-2-2-8-4-1-1" class="ptx-sagecell sagecell-sage"><script type="text/x-sage">
+</script></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#activity-mt-intro-1-1-1-2-2-8-4-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item b.4"><a href="#activity-mt-intro-1-1-1-2-2-8-4" title="Copy heading and permalink for Item b.4" aria-label="Copy heading and permalink for Item b.4">🔗</a></div>
+</li>
+<li id="activity-mt-intro-1-1-1-2-2-8-5">
+<div class="para" id="activity-mt-intro-1-1-1-2-2-8-5-1">Misalkan dalam satu periode waktu, perusahaan memproduksi 5060 kue, 14310 donat, dan 10470 eclair. Berapa lama masing-masing toko roti beroperasi?<div class="autopermalink" data-description="Paragraph"><a href="#activity-mt-intro-1-1-1-2-2-8-5-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item b.5"><a href="#activity-mt-intro-1-1-1-2-2-8-5" title="Copy heading and permalink for Item b.5" aria-label="Copy heading and permalink for Item b.5">🔗</a></div>
+</li>
+<li id="activity-mt-intro-1-1-1-2-2-8-6">
+<div class="para" id="activity-mt-intro-1-1-1-2-2-8-6-1">Misalkan perusahaan menerima pesanan untuk sejumlah kue, donat, dan eclair. Dapatkah Anda menjamin bahwa Anda dapat memenuhi pesanan tanpa memiliki sisa?<div class="autopermalink" data-description="Paragraph"><a href="#activity-mt-intro-1-1-1-2-2-8-6-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item b.6"><a href="#activity-mt-intro-1-1-1-2-2-8-6" title="Copy heading and permalink for Item b.6" aria-label="Copy heading and permalink for Item b.6">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#activity-mt-intro-1-1-1-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item b"><a href="#activity-mt-intro-1-1-1-2" title="Copy heading and permalink for Item b" aria-label="Copy heading and permalink for Item b">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#activity-mt-intro-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Activity 3.2.3"><a href="#activity-mt-intro" title="Copy heading and permalink for Activity 3.2.3" aria-label="Copy heading and permalink for Activity 3.2.3">🔗</a></div></article><div class="para" id="sec-linear-trans-3-13">Dalam contoh-contoh ini, kita melewatkan poin penting: bagaimana kita tahu fungsi-fungsi <span class="process-math">\(T:\real^n\to\real^m\)</span> ini dapat diekspresikan sebagai transformasi matriks? Kita akan membahas pertanyaan ini secara rinci dalam bagian berikutnya dan tidak mengkhawatirkannya untuk saat ini.<div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-3-13" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Subsection 3.2.1: Transformasi Matriks"><a href="#sec-linear-trans-3" title="Copy heading and permalink for Subsection 3.2.1: Transformasi Matriks" aria-label="Copy heading and permalink for Subsection 3.2.1: Transformasi Matriks">🔗</a></div></section><section class="subsection" id="sec-linear-trans-4"><h3 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">3.2.2</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Mengomposisikan Transformasi Matriks</span>
+</h3>
+<div class="para" id="sec-linear-trans-4-2">Terkadang terjadi bahwa kita ingin menggabungkan transformasi matriks dengan melakukan satu dan kemudian yang lain. Dalam aktivitas terakhir, misalnya, kita mempertimbangkan transformasi matriks dimana <span class="process-math">\(T(\xvec)\)</span> adalah hasil dari memutar vektor dua-dimensi <span class="process-math">\(\xvec\)</span> sebesar <span class="process-math">\(90^\circ\text{.}\)</span> Sekarang misalkan kita tertarik untuk memutar vektor tersebut dua kali; yaitu, kita mengambil vektor <span class="process-math">\(\xvec\text{,}\)</span> memutar-nya sebesar <span class="process-math">\(90^\circ\)</span> untuk memperoleh <span class="process-math">\(T(\xvec)\text{,}\)</span> dan kemudian memutar hasilnya sebesar <span class="process-math">\(90^\circ\)</span> lagi untuk memperoleh <span class="process-math">\(T(T(\xvec))\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-4-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="sec-linear-trans-4-3">
+<div class="para">Proses ini disebut <em class="emphasis">komposisi</em> fungsi dan kemungkinan muncul dalam kursus aljabar sebelumnya. Misalnya, jika <span class="process-math">\(g(x) = 2x + 1\)</span> dan <span class="process-math">\(h(x) = x^2\text{,}\)</span> komposisi dari fungsi-fungsi ini yang diperoleh dengan pertama-tama melakukan <span class="process-math">\(g\)</span> dan kemudian melakukan <span class="process-math">\(h\)</span> dilambangkan dengan</div>
+<div class="displaymath process-math" id="sec-linear-trans-4-3-6">
+\begin{equation*}
+(h\circ g)(x) = h(g(x)) = h(2x+1) = (2x+1)^2.
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-4-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="sec-linear-trans-4-4">
+<div class="para">Mengomposisikan transformasi matriks serupa. Misalkan kita memiliki dua transformasi matriks, <span class="process-math">\(T:\real^n\to\real^m\)</span> dan <span class="process-math">\(S:\real^m\to\real^p\text{.}\)</span> Matriks terkait mereka akan dilambangkan dengan <span class="process-math">\(A\)</span> dan <span class="process-math">\(B\)</span> sehingga <span class="process-math">\(T(\xvec) =
+A\xvec\)</span> dan <span class="process-math">\(S(\xvec) = B\xvec\text{.}\)</span> Jika kita menerapkan <span class="process-math">\(T\)</span> kepada vektor <span class="process-math">\(\xvec\)</span> untuk memperoleh <span class="process-math">\(T(\xvec)\)</span> dan kemudian menerapkan <span class="process-math">\(S\)</span> kepada hasilnya, kita memiliki</div>
+<div class="displaymath process-math" id="sec-linear-trans-4-4-11">
+\begin{equation*}
+(S\circ T)(\xvec) = S(T(\xvec)) = S(A\xvec) = BA\xvec =
+(BA)\xvec.
+\end{equation*}
+</div>
+<div class="para">Perhatikan bahwa ini mengimplikasikan bahwa komposisi <span class="process-math">\((S\circ T)\)</span> sendiri adalah transformasi matriks dan bahwa matriks terkait adalah produk <span class="process-math">\(BA\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-4-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="proposition theorem-like" id="sec-linear-trans-4-5"><h4 class="heading">
+<span class="type">Proposition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">3.2.8</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h4>Jika <span class="process-math">\(T:\real^n\to\real^m\)</span> dan <span class="process-math">\(S:\real^m\to\real^p\)</span> adalah transformasi matriks dengan matriks terkait <span class="process-math">\(A\)</span> dan <span class="process-math">\(B\)</span> masing-masing, maka komposisi <span class="process-math">\((S\circ
+T)\)</span> juga merupakan transformasi matriks yang matriks terkaitnya adalah produk <span class="process-math">\(BA\text{.}\)</span><div class="autopermalink" data-description="Proposition 3.2.8"><a href="#sec-linear-trans-4-5" title="Copy heading and permalink for Proposition 3.2.8" aria-label="Copy heading and permalink for Proposition 3.2.8">🔗</a></div></article><div class="para" id="sec-linear-trans-4-6">Perhatikan bahwa transformasi matriks harus kompatibel jika mereka akan dikomposisikan. Secara khusus, vektor <span class="process-math">\(T(\xvec)\text{,}\)</span> vektor <span class="process-math">\(m\)</span>-dimensi, harus menjadi vektor input yang sesuai untuk <span class="process-math">\(S\text{,}\)</span> yang berarti bahwa input ke <span class="process-math">\(S\)</span> harus berupa <span class="process-math">\(m\)</span>-dimensi. Bahkan, ini adalah kondisi yang sama yang kita perlukan untuk membentuk produk <span class="process-math">\(BA\)</span> dari matriks terkait mereka, yaitu, bahwa jumlah kolom dari <span class="process-math">\(B\)</span> sama dengan jumlah baris dari <span class="process-math">\(A\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-4-6" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="activity project-like" id="sec-linear-trans-4-7"><h4 class="heading">
+<span class="type">Activity</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">3.2.4</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h4>
+<div class="para logical" id="sec-linear-trans-4-7-1-1">
+<div class="para">Kita akan mengeksplorasi komposisi transformasi matriks dengan mengunjungi kembali transformasi matriks dari <a href="sec-linear-trans.html#activity-mt-intro" class="xref" data-knowl="./knowl/xref/activity-mt-intro.html" data-reveal-label="Reveal" data-close-label="Close" title="Activity 3.2.3">Activity 3.2.3</a>.</div>
+<ol class="lower-alpha ol-marker-1" id="sec-linear-trans-4-7-1-1-2">
+<li id="sec-linear-trans-4-7-1-1-2-1">
+<div class="para logical" id="sec-linear-trans-4-7-1-1-2-1-1">
+<div class="para">Mari kita mulai dengan transformasi matriks <span class="process-math">\(T:\real^2\to\real^2\)</span> yang memutar vektor dua-dimensi <span class="process-math">\(\xvec\)</span> sebesar <span class="process-math">\(90^\circ\)</span> untuk menghasilkan <span class="process-math">\(T(\xvec)\text{.}\)</span> Kita melihat dalam aktivitas sebelumnya bahwa matriks terkait adalah <span class="process-math">\(A = \begin{bmatrix}
+0 \amp -1 \\
+1 \amp 0 \\
+\end{bmatrix}
+\text{.}\)</span> Misalkan kita mengomposisikan transformasi matriks ini dengan dirinya sendiri untuk memperoleh <span class="process-math">\((T\circ T)(\xvec) =
+T(T(\xvec))\text{,}\)</span> yang merupakan hasil dari memutar <span class="process-math">\(\xvec\)</span> sebesar <span class="process-math">\(90^\circ\)</span> dua kali.</div>
+<ol class="decimal ol-marker-5" id="sec-linear-trans-4-7-1-1-2-1-1-9">
+<li id="sec-linear-trans-4-7-1-1-2-1-1-9-1">
+<div class="para" id="sec-linear-trans-4-7-1-1-2-1-1-9-1-1">Berapakah matriks yang terkait dengan komposisi <span class="process-math">\((T\circ T)\text{?}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-4-7-1-1-2-1-1-9-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item a.1"><a href="#sec-linear-trans-4-7-1-1-2-1-1-9-1" title="Copy heading and permalink for Item a.1" aria-label="Copy heading and permalink for Item a.1">🔗</a></div>
+</li>
+<li id="sec-linear-trans-4-7-1-1-2-1-1-9-2">
+<div class="para" id="sec-linear-trans-4-7-1-1-2-1-1-9-2-1">Berapakah hasil dari memutar <span class="process-math">\(\vvec=\twovec{-2}{-1}\)</span> dua kali?<div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-4-7-1-1-2-1-1-9-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item a.2"><a href="#sec-linear-trans-4-7-1-1-2-1-1-9-2" title="Copy heading and permalink for Item a.2" aria-label="Copy heading and permalink for Item a.2">🔗</a></div>
+</li>
+<li id="sec-linear-trans-4-7-1-1-2-1-1-9-3">
+<div class="para" id="sec-linear-trans-4-7-1-1-2-1-1-9-3-1">Misalkan <span class="process-math">\(R:\real^2\to\real^2\)</span> adalah transformasi matriks yang memutar vektor-vektor sebesar <span class="process-math">\(180^\circ\text{,}\)</span> sebagaimana ditunjukkan dalam <a href="sec-linear-trans.html#fig-mt-180" class="xref" data-knowl="./knowl/xref/fig-mt-180.html" data-reveal-label="Reveal" data-close-label="Close" title="Figure 3.2.9">Figure 3.2.9</a>.<div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-4-7-1-1-2-1-1-9-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<figure class="figure figure-like" id="fig-mt-180"><div class="sidebyside"><div class="sbsrow" style="margin-left:2%;margin-right:2%;grid-template-columns:46.875% 46.875%;column-gap:6%;">
+<div class="sbspanel sbspanel--top top" style=""><div class="image-box"><img src="external/images/two-dim-basis.svg" role="img" class="contained"></div></div>
+<div class="sbspanel sbspanel--top top" style=""><div class="image-box"><img src="external/images/two-dim-basis-180.svg" role="img" class="contained"></div></div>
+</div></div>
+<figcaption><span class="type">Figure</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">3.2.9<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>Transformasi matriks <span class="process-math">\(R\)</span> mengambil vektor-vektor dua-dimensi di sebelah kiri dan memutar mereka sebesar <span class="process-math">\(180^\circ\)</span> menjadi vektor-vektor di sebelah kanan.<div class="autopermalink" data-description="Figure 3.2.9"><a href="#fig-mt-180" title="Copy heading and permalink for Figure 3.2.9" aria-label="Copy heading and permalink for Figure 3.2.9">🔗</a></div></figcaption></figure><div class="para" id="sec-linear-trans-4-7-1-1-2-1-1-9-3-3">Gunakan <a href="sec-linear-trans.html#prop-linear-trans-columns" class="xref" data-knowl="./knowl/xref/prop-linear-trans-columns.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 3.2.6">Proposition 3.2.6</a> untuk menemukan matriks yang terkait dengan <span class="process-math">\(R\)</span> dan jelaskan mengapa itu adalah matriks yang sama yang terkait dengan <span class="process-math">\((T\circ T)\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-4-7-1-1-2-1-1-9-3-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item a.3"><a href="#sec-linear-trans-4-7-1-1-2-1-1-9-3" title="Copy heading and permalink for Item a.3" aria-label="Copy heading and permalink for Item a.3">🔗</a></div>
+</li>
+<li id="sec-linear-trans-4-7-1-1-2-1-1-9-4">
+<div class="para" id="sec-linear-trans-4-7-1-1-2-1-1-9-4-1">Tuliskan vektor dua-dimensi <span class="process-math">\((T\circ
+T)\left(\twovec xy\right)\text{.}\)</span> Bagaimana vektor ini dapat diekspresikan dalam terms perkalian skalar dan mengapa ini masuk akal secara geometris?<div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-4-7-1-1-2-1-1-9-4-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item a.4"><a href="#sec-linear-trans-4-7-1-1-2-1-1-9-4" title="Copy heading and permalink for Item a.4" aria-label="Copy heading and permalink for Item a.4">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-4-7-1-1-2-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item a"><a href="#sec-linear-trans-4-7-1-1-2-1" title="Copy heading and permalink for Item a" aria-label="Copy heading and permalink for Item a">🔗</a></div>
+</li>
+<li id="sec-linear-trans-4-7-1-1-2-2">
+<div class="para" id="sec-linear-trans-4-7-1-1-2-2-1">Dalam aktivitas sebelumnya, kita membayangkan perusahaan yang mengoperasikan dua toko roti. Kita menemukan transformasi matriks <span class="process-math">\(T:\real^2\to\real^3\)</span> dimana <span class="process-math">\(T\left(\twovec{x_1}{x_2}\right)\)</span> mendeskripsikan jumlah kue, donat, dan eclair ketika Toko Roti1 berjalan selama <span class="process-math">\(x_1\)</span> jam dan Toko Roti 2 berjalan selama <span class="process-math">\(x_2\)</span> jam. Matriks terkait adalah <span class="process-math">\(A = \begin{bmatrix}
+10 \amp 20 \\
+50 \amp 30 \\
+30 \amp 30 \\
+\end{bmatrix}
+\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-4-7-1-1-2-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="sec-linear-trans-4-7-1-1-2-2-2">
+<div class="para">Misalkan sekarang bahwa</div>
+<ul class="disc" id="sec-linear-trans-4-7-1-1-2-2-2-1">
+<li id="sec-linear-trans-4-7-1-1-2-2-2-1-1">
+<div class="para" id="sec-linear-trans-4-7-1-1-2-2-2-1-1-1">Setiap kue memerlukan 4 cangkir tepung dan dan 2 cangkir gula.<div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-4-7-1-1-2-2-2-1-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item"><a href="#sec-linear-trans-4-7-1-1-2-2-2-1-1" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+<li id="sec-linear-trans-4-7-1-1-2-2-2-1-2">
+<div class="para" id="sec-linear-trans-4-7-1-1-2-2-2-1-2-1">Setiap donat memerlukan 1 cangkir tepung dan 1 cangkir gula.<div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-4-7-1-1-2-2-2-1-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item"><a href="#sec-linear-trans-4-7-1-1-2-2-2-1-2" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+<li id="sec-linear-trans-4-7-1-1-2-2-2-1-3">
+<div class="para" id="sec-linear-trans-4-7-1-1-2-2-2-1-3-1">Setiap eclair memerlukan 1 cangkir tepung dan 2 cangkir gula.<div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-4-7-1-1-2-2-2-1-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item"><a href="#sec-linear-trans-4-7-1-1-2-2-2-1-3" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+</ul>
+<div class="para">Kita akan mendeskripsikan transformasi matriks <span class="process-math">\(S:\real^3\to\real^2\)</span> dimana <span class="process-math">\(S\left(\threevec{y_1}{y_2}{y_3}\right)\)</span> adalah vektor dua-dimensi yang mendeskripsikan jumlah cangkir tepung dan gula yang diperlukan untuk membuat <span class="process-math">\(y_1\)</span> kue, <span class="process-math">\(y_2\)</span> donat, dan <span class="process-math">\(y_3\)</span> eclair.</div>
+<ol class="decimal ol-marker-5" id="sec-linear-trans-4-7-1-1-2-2-2-7">
+<li id="sec-linear-trans-4-7-1-1-2-2-2-7-1">
+<div class="para" id="sec-linear-trans-4-7-1-1-2-2-2-7-1-1">Gunakan <a href="sec-linear-trans.html#prop-linear-trans-columns" class="xref" data-knowl="./knowl/xref/prop-linear-trans-columns.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 3.2.6">Proposition 3.2.6</a> untuk menuliskan matriks <span class="process-math">\(B\)</span> yang terkait dengan transformasi <span class="process-math">\(S\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-4-7-1-1-2-2-2-7-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item b.1"><a href="#sec-linear-trans-4-7-1-1-2-2-2-7-1" title="Copy heading and permalink for Item b.1" aria-label="Copy heading and permalink for Item b.1">🔗</a></div>
+</li>
+<li id="sec-linear-trans-4-7-1-1-2-2-2-7-2">
+<div class="para" id="sec-linear-trans-4-7-1-1-2-2-2-7-2-1">Jika kita membuat 1200 kue, 2850 donat, dan 2250 eclair, berapa banyak cangkir tepung dan gula yang diperlukan? <div id="sec-linear-trans-4-7-1-1-2-2-2-7-2-1-1" class="ptx-sagecell sagecell-sage"><script type="text/x-sage">
+</script></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-4-7-1-1-2-2-2-7-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item b.2"><a href="#sec-linear-trans-4-7-1-1-2-2-2-7-2" title="Copy heading and permalink for Item b.2" aria-label="Copy heading and permalink for Item b.2">🔗</a></div>
+</li>
+<li id="sec-linear-trans-4-7-1-1-2-2-2-7-3">
+<div class="para" id="sec-linear-trans-4-7-1-1-2-2-2-7-3-1">Misalkan Toko Roti 1 beroperasi selama 75 jam dan Toko Roti 2 beroperasi selama 53 jam. Berapa banyak kue, donat, dan eclair yang diproduksi? Berapa banyak cangkir tepung dan gula yang diperlukan?<div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-4-7-1-1-2-2-2-7-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item b.3"><a href="#sec-linear-trans-4-7-1-1-2-2-2-7-3" title="Copy heading and permalink for Item b.3" aria-label="Copy heading and permalink for Item b.3">🔗</a></div>
+</li>
+<li id="sec-linear-trans-4-7-1-1-2-2-2-7-4">
+<div class="para" id="sec-linear-trans-4-7-1-1-2-2-2-7-4-1">Apakah makna dari komposisi <span class="process-math">\((S\circ
+T)\)</span> dan berapakah matriks terkaitnya?<div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-4-7-1-1-2-2-2-7-4-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item b.4"><a href="#sec-linear-trans-4-7-1-1-2-2-2-7-4" title="Copy heading and permalink for Item b.4" aria-label="Copy heading and permalink for Item b.4">🔗</a></div>
+</li>
+<li id="sec-linear-trans-4-7-1-1-2-2-2-7-5">
+<div class="para" id="sec-linear-trans-4-7-1-1-2-2-2-7-5-1">Dalam interval waktu tertentu, kedua toko roti menggunakan total 5800 cangkir tepung dan 5980 cangkir gula. Berapa lama kedua toko roti telah beroperasi?<div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-4-7-1-1-2-2-2-7-5-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item b.5"><a href="#sec-linear-trans-4-7-1-1-2-2-2-7-5" title="Copy heading and permalink for Item b.5" aria-label="Copy heading and permalink for Item b.5">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-4-7-1-1-2-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item b"><a href="#sec-linear-trans-4-7-1-1-2-2" title="Copy heading and permalink for Item b" aria-label="Copy heading and permalink for Item b">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-4-7-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Activity 3.2.4"><a href="#sec-linear-trans-4-7" title="Copy heading and permalink for Activity 3.2.4" aria-label="Copy heading and permalink for Activity 3.2.4">🔗</a></div></article><div class="autopermalink" data-description="Subsection 3.2.2: Mengomposisikan Transformasi Matriks"><a href="#sec-linear-trans-4" title="Copy heading and permalink for Subsection 3.2.2: Mengomposisikan Transformasi Matriks" aria-label="Copy heading and permalink for Subsection 3.2.2: Mengomposisikan Transformasi Matriks">🔗</a></div></section><section class="subsection" id="subsec-dynamical-systems"><h3 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">3.2.3</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Sistem Dinamis Diskrit</span>
+</h3>
+<div class="para" id="subsec-dynamical-systems-2">Dalam <code class="code-inline tex2jax_ignore">[cross-reference to target(s) "chap4" missing or not unique]</code>, kita akan memberikan perhatian yang cukup besar pada jenis spesifik transformasi matriks, yang diilustrasikan dalam aktivitas berikutnya.<div class="autopermalink" data-description="Paragraph"><a href="#subsec-dynamical-systems-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="activity project-like" id="subsec-dynamical-systems-3"><h4 class="heading">
+<span class="type">Activity</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">3.2.5</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h4>
+<div class="para logical" id="subsec-dynamical-systems-3-1-1">
+<div class="para">Misalkan kita menjalankan perusahaan yang memiliki dua gudang, yang kita sebut <span class="process-math">\(P\)</span> dan <span class="process-math">\(Q\text{,}\)</span> dan armada 1000 truk pengiriman. Setiap pagi, truk pengiriman berangkat dari salah satu gudang dan kembali di malam hari ke salah satu gudang. Diamati bahwa</div>
+<ul class="disc" id="subsec-dynamical-systems-3-1-1-3">
+<li id="subsec-dynamical-systems-3-1-1-3-1">
+<div class="para" id="subsec-dynamical-systems-3-1-1-3-1-1">70% dari truk yang meninggalkan <span class="process-math">\(P\)</span> kembali ke <span class="process-math">\(P\text{.}\)</span> Sisanya 30% kembali ke <span class="process-math">\(Q\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#subsec-dynamical-systems-3-1-1-3-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item"><a href="#subsec-dynamical-systems-3-1-1-3-1" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+<li id="subsec-dynamical-systems-3-1-1-3-2">
+<div class="para" id="subsec-dynamical-systems-3-1-1-3-2-1">50% dari truk yang meninggalkan <span class="process-math">\(Q\)</span> kembali ke <span class="process-math">\(Q\)</span> dan 50% kembali ke <span class="process-math">\(P\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#subsec-dynamical-systems-3-1-1-3-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item"><a href="#subsec-dynamical-systems-3-1-1-3-2" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+</ul>
+<div class="autopermalink" data-description="Paragraph"><a href="#subsec-dynamical-systems-3-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <div class="para logical" id="subsec-dynamical-systems-3-1-2">
+<div class="para">Distribusi truk direpresentasikan oleh vektor <span class="process-math">\(\xvec=\twovec{x_1}{x_2}\)</span> ketika terdapat <span class="process-math">\(x_1\)</span> truk di lokasi <span class="process-math">\(P\)</span> dan <span class="process-math">\(x_2\)</span> truk di <span class="process-math">\(Q\text{.}\)</span> Jika <span class="process-math">\(\xvec\)</span> mendeskripsikan distribusi truk di pagi hari, maka transformasi matriks <span class="process-math">\(T(\xvec)\)</span> akan mendeskripsikan distribusi di malam hari. <div id="subsec-dynamical-systems-3-1-2-8" class="ptx-sagecell sagecell-sage"><script type="text/x-sage">
+</script></div>
+</div>
+<ol class="lower-alpha ol-marker-1" id="subsec-dynamical-systems-3-1-2-9">
+<li id="subsec-dynamical-systems-3-1-2-9-1">
+<div class="para" id="subsec-dynamical-systems-3-1-2-9-1-1">Misalkan semua 1000 truk memulai hari di lokasi <span class="process-math">\(P\)</span> dan tidak ada di <span class="process-math">\(Q\text{.}\)</span> Berapa banyak truk yang berada di masing-masing lokasi pada malam itu? Menggunakan representasi vektor kita, berapakah <span class="process-math">\(T\left(\ctwovec{1000}{0}\right)\text{?}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#subsec-dynamical-systems-3-1-2-9-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-dynamical-systems-3-1-2-9-1-2">Agar kita dapat menemukan matriks <span class="process-math">\(A\)</span> yang terkait dengan <span class="process-math">\(T\text{,}\)</span> apa yang ini katakan kepada kita tentang <span class="process-math">\(T\left(\twovec{1}{0}\right)\text{?}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#subsec-dynamical-systems-3-1-2-9-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item a"><a href="#subsec-dynamical-systems-3-1-2-9-1" title="Copy heading and permalink for Item a" aria-label="Copy heading and permalink for Item a">🔗</a></div>
+</li>
+<li id="subsec-dynamical-systems-3-1-2-9-2">
+<div class="para" id="subsec-dynamical-systems-3-1-2-9-2-1">Dengan cara yang sama, misalkan semua 1000 truk memulai hari di lokasi <span class="process-math">\(Q\)</span> dan tidak ada di <span class="process-math">\(P\text{.}\)</span> Berapa banyak truk yang berada di masing-masing lokasi pada malam itu? Berapakah hasil <span class="process-math">\(T\left(\ctwovec{0}{1000}\right)\)</span> dan berapakah <span class="process-math">\(T\left(\twovec01\right)\text{?}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#subsec-dynamical-systems-3-1-2-9-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item b"><a href="#subsec-dynamical-systems-3-1-2-9-2" title="Copy heading and permalink for Item b" aria-label="Copy heading and permalink for Item b">🔗</a></div>
+</li>
+<li id="subsec-dynamical-systems-3-1-2-9-3">
+<div class="para" id="subsec-dynamical-systems-3-1-2-9-3-1">Temukan matriks <span class="process-math">\(A\)</span> sedemikian sehingga <span class="process-math">\(T(\xvec) =
+A\xvec\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#subsec-dynamical-systems-3-1-2-9-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item c"><a href="#subsec-dynamical-systems-3-1-2-9-3" title="Copy heading and permalink for Item c" aria-label="Copy heading and permalink for Item c">🔗</a></div>
+</li>
+<li id="subsec-dynamical-systems-3-1-2-9-4">
+<div class="para" id="subsec-dynamical-systems-3-1-2-9-4-1">Misalkan terdapat 100 truk di <span class="process-math">\(P\)</span> dan 900 di <span class="process-math">\(Q\)</span> di pagi hari. Berapa banyak yang berada di kedua lokasi di malam hari?<div class="autopermalink" data-description="Paragraph"><a href="#subsec-dynamical-systems-3-1-2-9-4-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item d"><a href="#subsec-dynamical-systems-3-1-2-9-4" title="Copy heading and permalink for Item d" aria-label="Copy heading and permalink for Item d">🔗</a></div>
+</li>
+<li id="subsec-dynamical-systems-3-1-2-9-5">
+<div class="para" id="subsec-dynamical-systems-3-1-2-9-5-1">Misalkan terdapat 550 truk di <span class="process-math">\(P\)</span> dan 450 di <span class="process-math">\(Q\)</span> di malam hari. Berapa banyak truk yang berada di kedua lokasi pada pagi itu?<div class="autopermalink" data-description="Paragraph"><a href="#subsec-dynamical-systems-3-1-2-9-5-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item e"><a href="#subsec-dynamical-systems-3-1-2-9-5" title="Copy heading and permalink for Item e" aria-label="Copy heading and permalink for Item e">🔗</a></div>
+</li>
+<li id="subsec-dynamical-systems-3-1-2-9-6">
+<div class="para logical" id="subsec-dynamical-systems-3-1-2-9-6-1">
+<div class="para">Misalkan semua truk berada di lokasi <span class="process-math">\(Q\)</span> pada Senin pagi.</div>
+<ol class="decimal ol-marker-5" id="subsec-dynamical-systems-3-1-2-9-6-1-2">
+<li id="subsec-dynamical-systems-3-1-2-9-6-1-2-1">
+<div class="para" id="subsec-dynamical-systems-3-1-2-9-6-1-2-1-1">Berapa banyak truk yang berada di masing-masing lokasi pada Senin malam?<div class="autopermalink" data-description="Paragraph"><a href="#subsec-dynamical-systems-3-1-2-9-6-1-2-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item f.1"><a href="#subsec-dynamical-systems-3-1-2-9-6-1-2-1" title="Copy heading and permalink for Item f.1" aria-label="Copy heading and permalink for Item f.1">🔗</a></div>
+</li>
+<li id="subsec-dynamical-systems-3-1-2-9-6-1-2-2">
+<div class="para" id="subsec-dynamical-systems-3-1-2-9-6-1-2-2-1">Berapa banyak truk yang berada di masing-masing lokasi pada Selasa malam?<div class="autopermalink" data-description="Paragraph"><a href="#subsec-dynamical-systems-3-1-2-9-6-1-2-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item f.2"><a href="#subsec-dynamical-systems-3-1-2-9-6-1-2-2" title="Copy heading and permalink for Item f.2" aria-label="Copy heading and permalink for Item f.2">🔗</a></div>
+</li>
+<li id="subsec-dynamical-systems-3-1-2-9-6-1-2-3">
+<div class="para" id="subsec-dynamical-systems-3-1-2-9-6-1-2-3-1">Berapa banyak truk yang berada di masing-masing lokasi pada Rabu malam?<div class="autopermalink" data-description="Paragraph"><a href="#subsec-dynamical-systems-3-1-2-9-6-1-2-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item f.3"><a href="#subsec-dynamical-systems-3-1-2-9-6-1-2-3" title="Copy heading and permalink for Item f.3" aria-label="Copy heading and permalink for Item f.3">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#subsec-dynamical-systems-3-1-2-9-6-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item f"><a href="#subsec-dynamical-systems-3-1-2-9-6" title="Copy heading and permalink for Item f" aria-label="Copy heading and permalink for Item f">🔗</a></div>
+</li>
+<li id="subsec-dynamical-systems-3-1-2-9-7">
+<div class="para" id="subsec-dynamical-systems-3-1-2-9-7-1">Misalkan <span class="process-math">\(S\)</span> adalah transformasi matriks yang mentransformasikan distribusi truk <span class="process-math">\(\xvec\)</span> satu pagi menjadi distribusi truk pada pagi hari satu minggu (tujuh hari) kemudian. Berapakah matriks yang mendefinisikan transformasi <span class="process-math">\(S\text{?}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#subsec-dynamical-systems-3-1-2-9-7-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item g"><a href="#subsec-dynamical-systems-3-1-2-9-7" title="Copy heading and permalink for Item g" aria-label="Copy heading and permalink for Item g">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#subsec-dynamical-systems-3-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Activity 3.2.5"><a href="#subsec-dynamical-systems-3" title="Copy heading and permalink for Activity 3.2.5" aria-label="Copy heading and permalink for Activity 3.2.5">🔗</a></div></article><div class="para" id="subsec-dynamical-systems-4">Sebagaimana akan kita lihat nanti, jenis situasi ini terjadi cukup sering. Kita memiliki vektor <span class="process-math">\(\xvec\)</span> yang mendeskripsikan keadaan suatu sistem; dalam kasus ini, <span class="process-math">\(\xvec\)</span> mendeskripsikan distribusi truk antara kedua lokasi pada waktu tertentu. Kemudian terdapat matriks transformasi <span class="process-math">\(T(\xvec) = A\xvec\)</span> yang mendeskripsikan keadaan pada waktu berikutnya. Kita menyebut <span class="process-math">\(\xvec\)</span> sebagai vektor <em class="emphasis">keadaan</em> dan <span class="process-math">\(T\)</span> sebagai fungsi <em class="emphasis">transisi</em>, karena ia mendeskripsikan transisi vektor keadaan dari satu waktu ke waktu berikutnya. <div class="autopermalink" data-description="Paragraph"><a href="#subsec-dynamical-systems-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="subsec-dynamical-systems-5">
+<div class="para">Dimulai dengan keadaan awal <span class="process-math">\(\xvec_0\text{,}\)</span> kita ingin mengetahui bagaimana keadaan berevolusi seiring waktu. Misalnya,</div>
+<div class="displaymath process-math" id="subsec-dynamical-systems-5-2">
+\begin{equation*}
+\begin{aligned}
+\xvec_1 \amp = T(\xvec_0)=A\xvec_0 \\
+\xvec_2 \amp = T(\xvec_1) = (T\circ T)(\xvec_0)= A^2\xvec_0 \\
+\xvec_3 \amp = T(\xvec_2) = A^3\xvec_0
+\end{aligned}
+\end{equation*}
+</div>
+<div class="para">dan seterusnya.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#subsec-dynamical-systems-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-dynamical-systems-6"> Kita menyebut situasi dimana keadaan suatu sistem berevolusi dari satu waktu ke waktu berikutnya menurut aturan <span class="process-math">\(\xvec_{k+1}=A\xvec_k\)</span> sebagai <em class="emphasis">sistem dinamis diskrit</em>. Dalam <code class="code-inline tex2jax_ignore">[cross-reference to target(s) "chap4" missing or not unique]</code>, kita akan mengembangkan teori yang memungkinkan kita untuk membuat prediksi jangka panjang tentang evolusi vektor keadaan.<div class="autopermalink" data-description="Paragraph"><a href="#subsec-dynamical-systems-6" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Subsection 3.2.3: Sistem Dinamis Diskrit"><a href="#subsec-dynamical-systems" title="Copy heading and permalink for Subsection 3.2.3: Sistem Dinamis Diskrit" aria-label="Copy heading and permalink for Subsection 3.2.3: Sistem Dinamis Diskrit">🔗</a></div></section><section class="subsection" id="sec-linear-trans-6"><h3 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">3.2.4</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Ringkasan</span>
+</h3>
+<div class="para logical" id="sec-linear-trans-6-2">
+<div class="para">Bagian ini memperkenalkan transformasi matriks, fungsi-fungsi yang didefinisikan oleh perkalian matriks-vektor, seperti <span class="process-math">\(T(\xvec) = A\xvec\)</span> untuk beberapa matriks <span class="process-math">\(A\text{.}\)</span>
+</div>
+<ul class="disc" id="sec-linear-trans-6-2-3">
+<li id="sec-linear-trans-6-2-3-1">
+<div class="para" id="sec-linear-trans-6-2-3-1-1">Jika <span class="process-math">\(A\)</span> adalah matriks <span class="process-math">\(m\times n\text{,}\)</span> maka <span class="process-math">\(T:\real^n\to\real^m\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-6-2-3-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item"><a href="#sec-linear-trans-6-2-3-1" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+<li id="sec-linear-trans-6-2-3-2">
+<div class="para logical" id="sec-linear-trans-6-2-3-2-1">
+<div class="para">Kolom-kolom dari matriks <span class="process-math">\(A\)</span> diberikan oleh mengevaluasi transformasi <span class="process-math">\(T\)</span> pada vektor-vektor <span class="process-math">\(\evec_j\text{;}\)</span> yaitu,</div>
+<div class="displaymath process-math" id="sec-linear-trans-6-2-3-2-1-4">
+\begin{equation*}
+A=\left[\begin{array}{rrrr}
+T(\evec_1) \amp T(\evec_2) \amp \cdots \amp T(\evec_n)
+\end{array}\right]\text{.}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-6-2-3-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item"><a href="#sec-linear-trans-6-2-3-2" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+<li id="sec-linear-trans-6-2-3-3">
+<div class="para" id="sec-linear-trans-6-2-3-3-1">Komposisi transformasi matriks berkorespondensi dengan perkalian matriks.<div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-6-2-3-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item"><a href="#sec-linear-trans-6-2-3-3" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+<li id="sec-linear-trans-6-2-3-4">
+<div class="para" id="sec-linear-trans-6-2-3-4-1">Sistem dinamis diskrit terdiri dari vektor keadaan <span class="process-math">\(\xvec\)</span> bersama dengan fungsi transisi <span class="process-math">\(T(\xvec) =
+A\xvec\)</span> yang mendeskripsikan bagaimana vektor keadaan berevolusi dari satu waktu ke waktu berikutnya. Pangkat dari matriks <span class="process-math">\(A\)</span> menentukan perilaku jangka panjang dari vektor keadaan.<div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-6-2-3-4-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item"><a href="#sec-linear-trans-6-2-3-4" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+</ul>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-linear-trans-6-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Subsection 3.2.4: Ringkasan"><a href="#sec-linear-trans-6" title="Copy heading and permalink for Subsection 3.2.4: Ringkasan" aria-label="Copy heading and permalink for Subsection 3.2.4: Ringkasan">🔗</a></div></section><div class="autopermalink" data-description="Section 3.2: Transformasi Matriks"><a href="#sec-linear-trans" title="Copy heading and permalink for Section 3.2: Transformasi Matriks" aria-label="Copy heading and permalink for Section 3.2: Transformasi Matriks">🔗</a></div></section></div>
+<div id="ptx-content-footer" class="ptx-content-footer">
+<a class="previous-button button" href="sec-vectors-lin-combs.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="sec-transforms-geom.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
+</div></main>
+</div>
+<div id="ptx-page-footer" class="ptx-page-footer">
+<a class="pretext-link" href="https://pretextbook.org" title="PreTeXt"><div class="logo"><svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="338 3000 8772 6866" role="img"><title>PreTeXt logo</title><g style="stroke-width:.025in; stroke:currentColor; fill:none"><polyline points="472,3590 472,9732 " style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round; "></polyline><path style="stroke-width:126;stroke-linecap:butt;" d="M 4724,9448 A 4660 4660  0  0  1  8598  9259"></path><path style="stroke-width:174;stroke-linecap:butt;" d="M 4488,9685 A 4228 4228  0  0  0   472  9732"></path><path style="stroke-width:126;stroke-linecap:butt;" d="M 4724,3590 A 4241 4241  0  0  1  8598  3496"></path><path style="stroke-width:126;stroke-linecap:round;" d="M 850,3496  A 4241 4241  0  0  1  4724  3590"></path><path style="stroke-width:126;stroke-linecap:round;" d="M 850,9259  A 4507 4507  0  0  1  4724  9448"></path><polyline points="5385,4299 4062,8125" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8598,3496 8598,9259" style="stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="850,3496 850,9259" style="stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="4960,9685 4488,9685" style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="3070,4582 1889,6141 3070,7700" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="6418,4582 7600,6141 6418,7700" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8976,3590 8976,9732" style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><path style="stroke-width:174;stroke-linecap:butt;" d="M 4960,9685 A 4228 4228  0  0  1  8976  9732"></path></g></svg></div></a><a class="runestone-link" href="https://runestone.academy" title="Runestone Academy"><img class="logo" src="https://runestone.academy/runestone/static/images/RAIcon_cropped.png" alt="Runstone Academy logo"></a><a class="mathjax-link" href="https://www.mathjax.org" title="MathJax"><img class="logo" src="https://www.mathjax.org/badge/badge-square-2.png" alt="MathJax logo"></a>
+</div>
+</body>
+</html>
