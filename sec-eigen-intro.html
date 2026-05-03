@@ -1,0 +1,1520 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="en-US" dir="ltr">
+<!--******************************************-->
+<!--*  Authored with PreTeXt                 *-->
+<!--*  pretextbook.org                       *-->
+<!--*  Theme: default-modern                 *-->
+<!--*  Palette: blue-green                   *-->
+<!--******************************************-->
+<head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Pengenalan Nilai Eigen dan Vektor Eigen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+<link href="_static/pretext/css/theme.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/ol-markers.css" rel="stylesheet" type="text/css">
+<script>
+var runestoneMathReady = new Promise((resolve) => window.rsMathReady = resolve);
+window.MathJax = {
+  "tex": {
+    "inlineMath": [
+      [
+        "\\(",
+        "\\)"
+      ]
+    ],
+    "tags": "none",
+    "tagSide": "right",
+    "tagIndent": ".8em",
+    "packages": {
+      "[+]": [
+        "base",
+        "ams",
+        "amscd",
+        "color",
+        "newcommand",
+        "knowl"
+      ]
+    }
+  },
+  "options": {
+    "ignoreHtmlClass": "tex2jax_ignore|ignore-math",
+    "processHtmlClass": "process-math",
+    "renderActions": {
+      "findScript": [
+        10,
+        function (doc) {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(function(node) {
+                var display = !!node.type.match(/; *mode=display/);
+                var math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                var text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = {node: text, delim: '', n: 0};
+                math.end = {node: text, delim: '', n: 0};
+                doc.math.push(math);
+            });
+        },
+        ""
+      ]
+    }
+  },
+  "chtml": {
+    "scale": 0.98,
+    "mtextInheritFont": true
+  },
+  "loader": {
+    "load": [
+      "input/asciimath",
+      "[tex]/amscd",
+      "[tex]/color",
+      "[tex]/newcommand",
+      "[pretext]/mathjaxknowl3.js"
+    ],
+    "paths": {
+      "pretext": "_static/pretext/js"
+    }
+  },
+  "startup": {
+    pageReady() {
+      return MathJax.startup.defaultPageReady().then(function () {
+      console.log("in ready function");
+      rsMathReady();
+      }
+    )}
+  }
+};
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="book">
+<meta property="book:title" content="Komputasi Aljabar Linear">
+<meta property="book:author" content=" Mulaab M ">
+<script src="_static/pretext/js/jquery.min.js"></script><script src="_static/pretext/js/pretext.js"></script><script src="_static/pretext/js/pretext_add_on.js?x=1"></script><!--** eBookCongig is necessary to configure interactive       **-->
+<!--** Runestone components to run locally in reader's browser **-->
+<!--** No external communication:                              **-->
+<!--**     log level is 0, Runestone Services are disabled     **-->
+<script type="text/javascript">
+eBookConfig = {};
+eBookConfig.useRunestoneServices = false;
+eBookConfig.host = 'http://127.0.0.1:8000';
+eBookConfig.course = 'PTX_Course_Title_Here';
+eBookConfig.basecourse = 'PTX_Base_Course';
+eBookConfig.isLoggedIn = false;
+eBookConfig.email = '';
+eBookConfig.isInstructor = false;
+eBookConfig.logLevel = 0;
+eBookConfig.username = '';
+eBookConfig.readings = null;
+eBookConfig.activities = null;
+eBookConfig.downloadsEnabled = false;
+eBookConfig.allow_pairs = false;
+eBookConfig.enableScratchAC = false;
+eBookConfig.build_info = "";
+eBookConfig.python3 = null;
+eBookConfig.runestone_version = '7.13.5';
+eBookConfig.jobehost = '';
+eBookConfig.proxyuri_runs = '';
+eBookConfig.proxyuri_files = '';
+eBookConfig.enable_chatcodes =  false;
+</script>
+<!--*** Runestone Services ***-->
+<script src="_static/prefix-runtime.52176322e2c1dde5.bundle.js"></script><script src="_static/prefix-723.3e6434f80549315a.bundle.js"></script><script src="_static/prefix-runestone.bbf2283c5c1d4f99.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-723.3bccd435914aa0ff.css">
+<link rel="stylesheet" type="text/css" href="_static/prefix-runestone.b12a7b3f0773ebcd.css">
+<script src="_static/pretext/js/lti_iframe_resizer.js"></script><script src="https://sagecell.sagemath.org/static/embedded_sagecell.js"></script><script async="" src="https://cse.google.com/cse.js?cx=015103900096539427448:ngwuia10qci"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js" integrity="sha512-4xUl/d6D6THrAnXAwGajXkoWaeMNwEKK4iNfq5DotEbLPAfk6FSxSP3ydNxqDgCw1c/0Z1Jg6L8h2j+++9BZmg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="lunr-pretext-search-index.js" async=""></script><script src="_static/pretext/js/pretext_search.js"></script><script src="_static/pretext/js/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
+</script><script>// Make *any* div with class 'sagecell-sage' an executable Sage cell
+// Their results will be linked, only within language type
+sagecell.makeSagecell({
+  "inputLocation": "div.sagecell-sage",
+  "linked": true,
+  "linkKey": "linked-sage",
+  "autoeval": false,
+  "languages": [
+    "sage"
+  ],
+  "evalButtonText": "Evaluate (Sage)"
+});
+</script>
+</head>
+<body id="ula" class="pretext book ignore-math">
+<a class="assistive" href="#ptx-content">Skip to main content</a><header id="ptx-masthead" class="ptx-masthead"><div class="ptx-banner">
+<a id="logo-link" class="logo-link" target="_blank" href="https://moelaab.github.io/kali"><img src="external/images/ula-logo.png" alt="Logo image"></a><div class="title-container">
+<h1 class="heading"><a href="ula.html"><span class="title">Komputasi Aljabar Linear</span></a></h1>
+<p class="byline">Mulaab M</p>
+</div>
+</div></header><nav id="ptx-navbar" class="ptx-navbar navbar"><div class="ptx-navbar-contents">
+<button class="toc-toggle button" title="Contents"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5d2;</span><span class="name">Contents</span></button><a class="index-button button" href="backmatter-3.html" title="Index"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe88e;</span><span class="name">Index</span></a><div class="searchwrapper" role="search"><div class="gcse-search"></div></div>
+<div class="searchbox">
+<div class="searchwidget"><button id="searchbutton" class="searchbutton button" type="button" title="Search book"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe8b6;</span><span class="name">Search Book</span></button></div>
+<div id="searchresultsplaceholder" class="searchresultsplaceholder" style="display: none">
+<div class="search-results-controls">
+<input aria-label="Search term" id="ptxsearch" class="ptxsearch" type="text" name="terms" placeholder="Search term"><button title="Close search" id="closesearchresults" class="closesearchresults"><span class="material-symbols-outlined">close</span></button>
+</div>
+<h2 class="search-results-heading">Search Results: </h2>
+<div id="searchempty" class="searchempty"><span>No results.</span></div>
+<ol id="searchresults" class="searchresults"></ol>
+</div>
+</div>
+<span class="nav-other-controls"><button id="light-dark-button" class="light-dark-button button" title="Dark Mode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span class="name">Dark Mode</span></button></span><span class="treebuttons"><a class="previous-button button" href="chap4.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="up-button button" href="chap4.html" title="Up"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Up</span></a><a class="next-button button" href="sec-eigen-find.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span>
+</div></nav><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\(   \newcommand{\avec}{{\mathbf a}}
+   \newcommand{\bvec}{{\mathbf b}}
+   \newcommand{\cvec}{{\mathbf c}}
+   \newcommand{\dvec}{{\mathbf d}}
+   \newcommand{\dtil}{\widetilde{\mathbf d}}
+   \newcommand{\evec}{{\mathbf e}}
+   \newcommand{\fvec}{{\mathbf f}}
+   \newcommand{\nvec}{{\mathbf n}}
+   \newcommand{\pvec}{{\mathbf p}}
+   \newcommand{\qvec}{{\mathbf q}}
+   \newcommand{\svec}{{\mathbf s}}
+   \newcommand{\tvec}{{\mathbf t}}
+   \newcommand{\uvec}{{\mathbf u}}
+   \newcommand{\vvec}{{\mathbf v}}
+   \newcommand{\wvec}{{\mathbf w}}
+   \newcommand{\xvec}{{\mathbf x}}
+   \newcommand{\yvec}{{\mathbf y}}
+   \newcommand{\zvec}{{\mathbf z}}
+   \newcommand{\rvec}{{\mathbf r}}
+   \newcommand{\mvec}{{\mathbf m}}
+   \newcommand{\zerovec}{{\mathbf 0}}
+   \newcommand{\onevec}{{\mathbf 1}}
+   \newcommand{\real}{{\mathbb R}}
+   \newcommand{\twovec}[2]{\left[\begin{array}{r}#1 \\ #2
+   \end{array}\right]}
+   \newcommand{\ctwovec}[2]{\left[\begin{array}{c}#1 \\ #2
+   \end{array}\right]}
+   \newcommand{\threevec}[3]{\left[\begin{array}{r}#1 \\ #2 \\ #3
+   \end{array}\right]}
+   \newcommand{\cthreevec}[3]{\left[\begin{array}{c}#1 \\ #2 \\ #3
+   \end{array}\right]}
+   \newcommand{\fourvec}[4]{\left[\begin{array}{r}#1 \\ #2 \\ #3 \\ #4
+   \end{array}\right]}
+   \newcommand{\cfourvec}[4]{\left[\begin{array}{c}#1 \\ #2 \\ #3 \\ #4
+   \end{array}\right]}
+   \newcommand{\fivevec}[5]{\left[\begin{array}{r}#1 \\ #2 \\ #3 \\
+   #4 \\ #5 \\ \end{array}\right]}
+   \newcommand{\cfivevec}[5]{\left[\begin{array}{c}#1 \\ #2 \\ #3 \\
+   #4 \\ #5 \\ \end{array}\right]}
+   \newcommand{\mattwo}[4]{\left[\begin{array}{rr}#1 \amp #2 \\ #3 \amp #4 \\ \end{array}\right]}
+   \newcommand{\laspan}[1]{\text{Span}\left\{#1\right\}}
+   \newcommand{\bcal}{{\cal B}}
+   \newcommand{\ccal}{{\cal C}}
+   \newcommand{\scal}{{\cal S}}
+   \newcommand{\wcal}{{\cal W}}
+   \newcommand{\ecal}{{\cal E}}
+   \newcommand{\coords}[2]{\left\{#1\right\}_{#2}}
+   \newcommand{\gray}[1]{\color{gray}{#1}}
+   \newcommand{\lgray}[1]{\color{lightgray}{#1}}
+   \newcommand{\rank}{\operatorname{rank}}
+   \newcommand{\row}{\text{Row}}
+   \newcommand{\col}{\text{Col}}
+   \renewcommand{\row}{\text{Row}}
+   \newcommand{\nul}{\text{Nul}}
+   \newcommand{\var}{\text{Var}}
+   \newcommand{\corr}{\text{corr}}
+   \newcommand{\len}[1]{\left|#1\right|}
+   \newcommand{\bbar}{\overline{\bvec}}
+   \newcommand{\bhat}{\widehat{\bvec}}
+   \newcommand{\bperp}{\bvec^\perp}
+   \newcommand{\xhat}{\widehat{\xvec}}
+   \newcommand{\vhat}{\widehat{\vvec}}
+   \newcommand{\uhat}{\widehat{\uvec}}
+   \newcommand{\what}{\widehat{\wvec}}
+   \newcommand{\Sighat}{\widehat{\Sigma}}
+   \newcommand{\basis}[2]{#1_1,#1_2,\ldots,#1_{#2}}
+
+
+
+
+\newcommand{\eqsys}{\begin{array}{rcrcrcr}
+     a_{11}x_{1}\amp +\amp a_{12}x_{2}\amp +\cdots+\amp  a_{1n}x_{n}\amp =\amp b_1\\
+     a_{21}x_{1}\amp +\amp a_{22}x_{2}\amp +\cdots+\amp a_{2n}x_{n}\amp =\amp b_2\\
+     \amp \vdots\amp   \amp \vdots \amp  \amp \vdots \amp  \\
+     a_{m1}x_{1}\amp +\amp a_{m2}x_{2}\amp +\cdots +\amp a_{mn}x_{n}\amp =\amp b_m
+     \end{array}
+     }
+  
+\newcommand{\homsys}{\begin{array}{rcrcrcr}
+a_{11}x_{1}\amp +\amp a_{12}x_{2}\amp +\cdots+\amp  a_{1n}x_{n}\amp =\amp 0\\
+	a_{21}x_{1}\amp +\amp a_{22}x_{2}\amp +\cdots+\amp a_{2n}x_{n}\amp =\amp 0\\
+	\amp \vdots\amp   \amp \vdots \amp  \amp \vdots \amp  \vdots\\
+	a_{m1}x_{1}\amp +\amp a_{m2}x_{2}\amp +\cdots +\amp a_{mn}x_{n}\amp =\amp 0
+	\end{array}
+	}
+\newcommand{\R}{{\mathbb R}}
+\newcommand{\boldn}{{\mathbf n}}
+
+ \newenvironment{linsys}[2][m]{
+     \begin{array}[#1]{@{}*{#2}{rc}r@{}}
+     }{
+     \end{array}}
+
+\newcommand{\augmatrix}{
+     \begin{amatrix}[cccc|c]
+     a_{11} \amp  a_{12} \amp  \cdots \amp  a_{1n} \amp b_{1}\\
+     a_{21} \amp  a_{22} \amp  \cdots \amp  a_{2n} \amp b_{2}\\
+     \vdots  \amp  \vdots  \amp  \ddots \amp  \vdots  \amp \vdots\\
+     a_{m1} \amp  a_{m2} \amp  \cdots \amp  a_{mn}\amp b_{m}
+     \end{amatrix}
+     }
+  \newenvironment{amatrix}[1][ccc|c]{\left[\begin{array}{#1}}{\end{array}\right]}
+  
+  
+  
+  \newcommand{\linearsystem}[2]{\mathcal{LS}\!\left(#1,\,#2\right)}
+  \newcommand{\vect}[1]{\mathbf{#1}}
+  \newcommand{\colvector}[1]{\begin{bmatrix}#1\end{bmatrix}}
+  \newcommand{\augmented}[2]{\left[\,#1 \mid #2\,\right]}
+  
+  \newcommand{\Z}{{\mathbb Z}}
+     \newcommand{\Q}{{\mathbb Q}}
+     \newcommand{\R}{{\mathbb R}}
+     \newcommand{\C}{{\mathbb C}}
+     \newcommand{\T}{{\mathbb T}}
+     \newcommand{\F}{{\mathbb F}}
+     \newcommand{\HH}{{\mathbb H}}
+     \newcommand{\compose}{\circ}
+     \newcommand{\bolda}{{\mathbf a}}
+     \newcommand{\boldb}{{\mathbf b}}
+     \newcommand{\boldc}{{\mathbf c}}
+     \newcommand{\boldd}{{\mathbf d}}
+     \newcommand{\bolde}{{\mathbf e}}
+     \newcommand{\boldi}{{\mathbf i}}
+     \newcommand{\boldj}{{\mathbf j}}
+     \newcommand{\boldk}{{\mathbf k}}
+     \newcommand{\boldn}{{\mathbf n}}
+     \newcommand{\boldp}{{\mathbf p}}
+     \newcommand{\boldq}{{\mathbf q}}
+     \newcommand{\boldr}{{\mathbf r}}
+     \newcommand{\bolds}{{\mathbf s}}
+     \newcommand{\boldt}{{\mathbf t}}
+     \newcommand{\boldu}{{\mathbf u}}
+     \newcommand{\boldv}{{\mathbf v}}
+     \newcommand{\boldw}{{\mathbf w}}
+     \newcommand{\boldx}{{\mathbf x}}
+     \newcommand{\boldy}{{\mathbf y}}
+     \newcommand{\boldz}{{\mathbf z}}
+     \newcommand{\boldzero}{{\mathbf 0}}
+     \newcommand{\boldmod}{\boldsymbol{ \bmod }}
+     \newcommand{\boldT}{{\mathbf T}}
+     \newcommand{\boldN}{{\mathbf N}}
+     \newcommand{\boldB}{{\mathbf B}}
+     \newcommand{\boldF}{{\mathbf F}}
+     \newcommand{\boldS}{{\mathbf S}}
+     \newcommand{\boldG}{{\mathbf G}}
+     \newcommand{\boldK}{{\mathbf K}}
+     \newcommand{\boldL}{{\mathbf L}}
+     \DeclareMathOperator{\lcm}{lcm}
+     \DeclareMathOperator{\Span}{span}
+     \DeclareMathOperator{\tr}{tr}
+     \DeclareMathOperator{\NS}{null}
+     \DeclareMathOperator{\RS}{row}
+     \DeclareMathOperator{\CS}{col}
+     \DeclareMathOperator{\im}{im}
+     \DeclareMathOperator{\range}{range}
+     \DeclareMathOperator{\rank}{rank}
+     \DeclareMathOperator{\nullity}{nullity}
+     \DeclareMathOperator{\sign}{sign}
+     \DeclareMathOperator{\Fix}{Fix}
+     \DeclareMathOperator{\Aff}{Aff}
+     \DeclareMathOperator{\Frac}{Frac}
+     \DeclareMathOperator{\Ann}{Ann}
+     \DeclareMathOperator{\Tor}{Tor}
+     \DeclareMathOperator{\id}{id}
+     \DeclareMathOperator{\mdeg}{mdeg}
+     \DeclareMathOperator{\Lt}{Lt}
+     \DeclareMathOperator{\Lc}{Lc}
+     \DeclareMathOperator{\disc}{disc}
+     \DeclareMathOperator{\Frob}{Frob}
+     \DeclareMathOperator{\adj}{adj}
+     \DeclareMathOperator{\curl}{curl}
+     \DeclareMathOperator{\grad}{grad}
+     \DeclareMathOperator{\diver}{div}
+     \DeclareMathOperator{\flux}{flux}
+     \def\Gal{\operatorname{Gal}}
+     \def\ord{\operatorname{ord}}
+     \def\ML{\operatorname{M}}
+     \def\GL{\operatorname{GL}}
+     \def\PGL{\operatorname{PGL}}
+     \def\SL{\operatorname{SL}}
+     \def\PSL{\operatorname{PSL}}
+     \def\GSp{\operatorname{GSp}}
+     \def\PGSp{\operatorname{PGSp}}
+     \def\Sp{\operatorname{Sp}}
+     \def\PSp{\operatorname{PSp}}
+     \def\Aut{\operatorname{Aut}}
+     \def\Inn{\operatorname{Inn}}
+     \def\Hom{\operatorname{Hom}}
+     \def\End{\operatorname{End}}
+     \def\ch{\operatorname{char}}
+     \def\Zp{\Z/p\Z}
+     \def\Zm{\Z/m\Z}
+     \def\Zn{\Z/n\Z}
+     \def\Fp{\F_p}
+     \newcommand{\surjects}{\twoheadrightarrow}
+     \newcommand{\injects}{\hookrightarrow}
+     \newcommand{\bijects}{\leftrightarrow}
+     \newcommand{\isomto}{\overset{\sim}{\rightarrow}}
+     \newcommand{\floor}[1]{\lfloor#1\rfloor}
+     \newcommand{\ceiling}[1]{\left\lceil#1\right\rceil}
+     \newcommand{\mclass}[2][m]{[#2]_{#1}}
+     \newcommand{\val}[2][]{\left\lvert #2\right\rvert_{#1}}
+     \newcommand{\abs}[2][]{\left\lvert #2\right\rvert_{#1}}
+     \newcommand{\valuation}[2][]{\left\lvert #2\right\rvert_{#1}}
+     \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+     \newcommand{\anpoly}{a_nx^n+a_{n-1}x^{n-1}\cdots +a_1x+a_0}
+     \newcommand{\anmonic}{x^n+a_{n-1}x^{n-1}\cdots +a_1x+a_0}
+     \newcommand{\bmpoly}{b_mx^m+b_{m-1}x^{m-1}\cdots +b_1x+b_0}
+     \newcommand{\bnpoly}{b_nx^n+b_{n-1}x^{n-1}\cdots +b_1x+b_0}
+     \newcommand{\pder}[2]{\frac{\partial#1}{\partial#2}}
+     \newcommand{\normalin}{\trianglelefteq}
+     \newcommand{\angvec}[1]{\langle #1\rangle}
+     \newcommand{\varpoly}[2]{#1_{#2}x^{#2}+#1_{#2-1}x^{#2-1}\cdots +#1_1x+#1_0}
+     \newcommand{\varpower}[1][a]{#1_0+#1_1x+#1_1x^2+\cdots}
+     \newcommand{\limasto}[2][x]{\lim_{#1\rightarrow #2}}
+     \def\ntoinfty{\lim_{n\rightarrow\infty}}
+     \def\xtoinfty{\lim_{x\rightarrow\infty}}
+     \def\ii{\item}
+     \def\bb{\begin{enumerate}}
+     \def\ee{\end{enumerate}}
+     \def\ds{\displaystyle}
+     \def\p{\partial}
+     \newcommand{\abcdmatrix}[4]{\begin{bmatrix}#1\amp #2\\ #3\amp #4 \end{bmatrix}
+     }
+     \newenvironment{amatrix}[1][ccc|c]{\left[\begin{array}{#1}}{\end{array}\right]}
+     \newenvironment{linsys}[2][m]{
+     \begin{array}[#1]{@{}*{#2}{rc}r@{}}
+     }{
+     \end{array}}
+     \newcommand{\eqsys}{\begin{array}{rcrcrcr}
+     a_{11}x_{1}\amp +\amp a_{12}x_{2}\amp +\cdots+\amp  a_{1n}x_{n}\amp =\amp b_1\\
+     a_{21}x_{1}\amp +\amp a_{22}x_{2}\amp +\cdots+\amp a_{2n}x_{n}\amp =\amp b_2\\
+     \amp \vdots\amp   \amp \vdots \amp  \amp \vdots \amp  \\
+     a_{m1}x_{1}\amp +\amp a_{m2}x_{2}\amp +\cdots +\amp a_{mn}x_{n}\amp =\amp b_m
+     \end{array}
+     }
+     \newcommand{\numeqsys}{\begin{array}{rrcrcrcr}
+     e_1:\amp  a_{11}x_{1}\amp +\amp a_{12}x_{2}\amp +\cdots+\amp  a_{1n}x_{n}\amp =\amp b_1\\
+     e_2: \amp a_{21}x_{1}\amp +\amp a_{22}x_{2}\amp +\cdots+\amp a_{2n}x_{n}\amp =\amp b_2\\
+     \amp \vdots\amp   \amp \vdots \amp  \amp \vdots \amp  \\
+     e_m: \amp a_{m1}x_{1}\amp +\amp a_{m2}x_{2}\amp +\cdots +\amp a_{mn}x_{n}\amp =\amp b_m
+     \end{array}
+     }
+     \newcommand{\homsys}{\begin{array}{rcrcrcr}
+     a_{11}x_{1}\amp +\amp a_{12}x_{2}\amp +\cdots+\amp  a_{1n}x_{n}\amp =\amp 0\\
+     a_{21}x_{1}\amp +\amp a_{22}x_{2}\amp +\cdots+\amp a_{2n}x_{n}\amp =\amp 0\\
+     \amp \vdots\amp   \amp \vdots \amp  \amp \vdots \amp \\
+     a_{m1}x_{1}\amp +\amp a_{m2}x_{2}\amp +\cdots +\amp a_{mn}x_{n}\amp =\amp 0
+     \end{array}
+     }
+     \newcommand{\vareqsys}[4]{
+     \begin{array}{ccccccc}
+     #3_{11}x_{1}\amp +\amp #3_{12}x_{2}\amp +\cdots+\amp  #3_{1#2}x_{#2}\amp =\amp #4_1\\
+     #3_{21}x_{1}\amp +\amp #3_{22}x_{2}\amp +\cdots+\amp #3_{2#2}x_{#2}\amp =\amp #4_2\\
+     \vdots \amp \amp \vdots \amp  \amp \vdots \amp =\amp  \\
+     #3_{#1 1}x_{1}\amp +\amp #3_{#1 2}x_{2}\amp +\cdots +\amp #3_{#1 #2}x_{#2}\amp =\amp #4_{#1}
+     \end{array}
+     }
+     \newcommand{\genmatrix}[1][a]{
+     \begin{bmatrix}
+     #1_{11} \amp  #1_{12} \amp  \cdots \amp  #1_{1n} \\
+     #1_{21} \amp  #1_{22} \amp  \cdots \amp  #1_{2n} \\
+     \vdots  \amp  \vdots  \amp  \ddots \amp  \vdots  \\
+     #1_{m1} \amp  #1_{m2} \amp  \cdots \amp  #1_{mn}
+     \end{bmatrix}
+     }
+     \newcommand{\varmatrix}[3]{
+     \begin{bmatrix}
+     #3_{11} \amp  #3_{12} \amp  \cdots \amp  #3_{1#2} \\
+     #3_{21} \amp  #3_{22} \amp  \cdots \amp  #3_{2#2} \\
+     \vdots  \amp  \vdots  \amp  \ddots \amp  \vdots  \\
+     #3_{#1 1} \amp  #3_{#1 2} \amp  \cdots \amp  #3_{#1 #2}
+     \end{bmatrix}
+     }
+     \newcommand{\augmatrix}{
+     \begin{amatrix}[cccc|c]
+     a_{11} \amp  a_{12} \amp  \cdots \amp  a_{1n} \amp b_{1}\\
+     a_{21} \amp  a_{22} \amp  \cdots \amp  a_{2n} \amp b_{2}\\
+     \vdots  \amp  \vdots  \amp  \ddots \amp  \vdots  \amp \vdots\\
+     a_{m1} \amp  a_{m2} \amp  \cdots \amp  a_{mn}\amp b_{m}
+     \end{amatrix}
+     }
+     \newcommand{\varaugmatrix}[4]{
+     \begin{amatrix}[cccc|c]
+     #3_{11} \amp  #3_{12} \amp  \cdots \amp  #3_{1#2} \amp #4_{1}\\
+     #3_{21} \amp  #3_{22} \amp  \cdots \amp  #3_{2#2} \amp #4_{2}\\
+     \vdots  \amp  \vdots  \amp  \ddots \amp  \vdots  \amp \vdots\\
+     #3_{#1 1} \amp  #3_{#1 2} \amp  \cdots \amp  #3_{#1 #2}\amp #4_{#1}
+     \end{amatrix}
+     }
+     \newcommand{\spaceforemptycolumn}{\makebox[\wd\boxofmathplus]{\ }}
+
+     \newcommand{\generalmatrix}[3]{
+     \left(
+     \begin{array}{cccc}
+     #1_{1,1}  \amp #1_{1,2}  \amp \ldots  \amp #1_{1,#2}  \\
+     #1_{2,1}  \amp #1_{2,2}  \amp \ldots  \amp #1_{2,#2}  \\
+     \amp \vdots                         \\
+     #1_{#3,1} \amp #1_{#3,2} \amp \ldots  \amp #1_{#3,#2}
+     \end{array}
+     \right)  }
+     \newcommand{\colvec}[2][c]{\begin{amatrix}[#1] #2 \end{amatrix}}
+     \DeclareMathOperator{\size}{size}
+     \DeclareMathOperator{\adjoint}{adj}
+     \DeclareMathOperator{\sgn}{sgn}
+     \newcommand{\restrictionmap}[2]{{#1}\mathpunct\upharpoonright\hbox{}_{#2}}
+     \renewcommand{\emptyset}{\varnothing}
+
+     \newcommand{\proj}[2]{\mbox{proj}_{#2}({#1}) }
+     \renewcommand{\Re}{\operatorname{Re}}
+      \renewcommand{\Im}{\operatorname{Im}}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\definecolor{fillinmathshade}{gray}{0.9}
+\newcommand{\fillinmath}[1]{\mathchoice{\colorbox{fillinmathshade}{$\displaystyle     \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\textstyle        \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptstyle      \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptscriptstyle\phantom{\,#1\,}$}}}
+\)</span></div>
+<div class="ptx-page">
+<div id="ptx-sidebar" class="ptx-sidebar"><nav id="ptx-toc" class="ptx-toc depth2 focused" data-preexpanded-levels="0" data-max-levels="2"><ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-frontmatter">
+<div class="toc-title-box"><a href="frontmatter.html" class="internal"><span class="title">Front Matter</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-colophon"><div class="toc-title-box"><a href="frontmatter-4.html" class="internal"><span class="title">Colophon</span></a></div></li>
+<li class="toc-item toc-dedication"><div class="toc-title-box"><a href="frontmatter-5.html" class="internal"><span class="title">Dedication</span></a></div></li>
+<li class="toc-item toc-acknowledgement"><div class="toc-title-box"><a href="frontmatter-6.html" class="internal"><span class="title">Acknowledgements</span></a></div></li>
+<li class="toc-item toc-preface"><div class="toc-title-box"><a href="frontmatter-7.html" class="internal"><span class="title">Tujuan Kami</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="chap1.html" class="internal"><span class="codenumber">1</span> <span class="title">Sistem Persamaan</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-expect.html" class="internal"><span class="codenumber">1.1</span> <span class="title">Apa yang dapat kita harapkan</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-expect.html#sec-expect-3" class="internal"><span class="codenumber">1.1.1</span> <span class="title">Beberapa contoh sederhana</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_systems.html" class="internal"><span class="codenumber">1.2</span> <span class="title">Sistem Persamaan Linear</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="s_systems.html#ss_linear_equations" class="internal"><span class="codenumber">1.2.1</span> <span class="title">Sistem Persamaan Linear</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_systems.html#ss_linear_equations-11" class="internal"><span class="codenumber">1.2.1.1</span> <span class="title">Representasi Matriks dari Sistem Linear</span></a></div></li></ul>
+</li></ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_systemsb.html" class="internal"><span class="codenumber">1.3</span> <span class="title">Eliminasi Gaussian</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_systemsb.html#ss_ge_row_echelon" class="internal"><span class="codenumber">1.3.1</span> <span class="title">Matriks bentuk eselon baris</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_systemsb.html#ss_gaussian_elimination" class="internal"><span class="codenumber">1.3.2</span> <span class="title">Eliminasi Gaussian</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="chap2.html" class="internal"><span class="codenumber">2</span> <span class="title">Matrik</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_matrix.html" class="internal"><span class="codenumber">2.1</span> <span class="title">Aritmetika Matriks</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_matrix.html#ss_matrix_attributes" class="internal"><span class="codenumber">2.1.1</span> <span class="title">Dasar-dasar matrik</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_matrix.html#ss_matrix_arithmetic" class="internal"><span class="codenumber">2.1.2</span> <span class="title">Penjumlahan, pengurangan dan perkalian skalar</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_matrix.html#ss_matrix_mult" class="internal"><span class="codenumber">2.1.3</span> <span class="title">Perkalian matriks</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_matrix.html#s_column_row_method" class="internal"><span class="codenumber">2.1.4</span> <span class="title">Metode alternatif perkalian matrik</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_matrix.html#s_matrix-7" class="internal"><span class="codenumber">2.1.5</span> <span class="title">Transpos dari sebuah matriks</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="s_algebraic.html" class="internal"><span class="codenumber">2.2</span> <span class="title">Aljabar Matriks</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_invertible_matrices.html" class="internal"><span class="codenumber">2.3</span> <span class="title">Matriks Invertibel</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_invertible_matrices.html#subsec-invertible" class="internal"><span class="codenumber">2.3.1</span> <span class="title">Matriks Invers</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_invertible_matrices.html#s_invertible_matrices-4" class="internal"><span class="codenumber">2.3.2</span> <span class="title">Pangkat Matriks, Polinomial Matriks</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="s_invertible_matrices.html#s_invertible_matrices_ex" class="internal"><span class="codenumber">2.3.3</span> <span class="title">Exercises</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_invertibility_theorem.html" class="internal"><span class="codenumber">2.4</span> <span class="title">Teorema Invertibilitas</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_invertibility_theorem.html#ss_elementary_matrix" class="internal"><span class="codenumber">2.4.1</span> <span class="title">Matriks Elementer</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_invertibility_theorem.html#ss_systems_to_matrix_eqns" class="internal"><span class="codenumber">2.4.2</span> <span class="title">Selingan tentang Persamaan Matriks</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_invertibility_theorem.html#ss_invertibility_th" class="internal"><span class="codenumber">2.4.3</span> <span class="title">Teorema Invertibilitas</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_invertibility_theorem.html#ss_invertibility_alg" class="internal"><span class="codenumber">2.4.4</span> <span class="title">Algoritma Invertibilitas</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_invertibility_theorem.html#ss_invertible_loose_ends" class="internal"><span class="codenumber">2.4.5</span> <span class="title">Beberapa Ujung Teoretis yang Longgar</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_det.html" class="internal"><span class="codenumber">2.5</span> <span class="title">Determinan</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_det.html#ss_det" class="internal"><span class="codenumber">2.5.1</span> <span class="title">Definisi Determinan</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_det.html#ss_expansion_rows_columns" class="internal"><span class="codenumber">2.5.2</span> <span class="title">Ekspansi Baris dan Kolom</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="chap3.html" class="internal"><span class="codenumber">3</span> <span class="title">Vektor, Matriks, dan Kombinasi Linear</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-vectors-lin-combs.html" class="internal"><span class="codenumber">3.1</span> <span class="title">Vektor dan Kombinasi Linear</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-vectors-lin-combs.html#sec-vectors-lin-combs-3" class="internal"><span class="codenumber">3.1.1</span> <span class="title">Vektor</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-vectors-lin-combs.html#sec-vectors-lin-combs-4" class="internal"><span class="codenumber">3.1.2</span> <span class="title">Kombinasi Linear</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-linear-trans.html" class="internal"><span class="codenumber">3.2</span> <span class="title">Transformasi Matriks</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-linear-trans.html#sec-linear-trans-2" class="internal"><span class="codenumber">3.2.1</span> <span class="title">Transformasi Matriks</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-linear-trans.html#sec-linear-trans-3" class="internal"><span class="codenumber">3.2.2</span> <span class="title">Mengomposisikan Transformasi Matriks</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-linear-trans.html#subsec-dynamical-systems" class="internal"><span class="codenumber">3.2.3</span> <span class="title">Sistem Dinamis Diskrit</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-linear-trans.html#sec-linear-trans-5" class="internal"><span class="codenumber">3.2.4</span> <span class="title">Ringkasan</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-transforms-geom.html" class="internal"><span class="codenumber">3.3</span> <span class="title">Geometri Transformasi Matriks</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-transforms-geom.html#sec-transforms-geom-3" class="internal"><span class="codenumber">3.3.1</span> <span class="title">Geometri Transformasi Matriks <span class="process-math">\(2\times2\)</span></span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-transforms-geom.html#sec-transforms-geom-4" class="internal"><span class="codenumber">3.3.2</span> <span class="title">Transformasi Matriks dan Animasi Komputer</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-transforms-geom.html#sec-transforms-geom-5" class="internal"><span class="codenumber">3.3.3</span> <span class="title">Ringkasan</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter contains-active">
+<div class="toc-title-box"><a href="chap4.html" class="internal"><span class="codenumber">4</span> <span class="title">Nilai Eigen dan Vektor Eigen</span></a></div>
+<ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-section contains-active">
+<div class="toc-title-box"><a href="sec-eigen-intro.html" class="internal"><span class="codenumber">4.1</span> <span class="title">Pengenalan Nilai Eigen dan Vektor Eigen</span></a></div>
+<ul class="structural toc-item-list active">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-eigen-intro.html#sec-eigen-intro-3" class="internal"><span class="codenumber">4.1.1</span> <span class="title">Beberapa Contoh</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-eigen-intro.html#subsec-eigen-use" class="internal"><span class="codenumber">4.1.2</span> <span class="title">Kegunaan Nilai Eigen dan Vektor Eigen</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-eigen-intro.html#sec-eigen-intro-5" class="internal"><span class="codenumber">4.1.3</span> <span class="title">Ringkasan</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="sec-eigen-intro.html#sec-eigen-intro-6" class="internal"><span class="codenumber">4.1.4</span> <span class="title">Exercises</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="sec-eigen-find.html" class="internal"><span class="codenumber">4.2</span> <span class="title">Menemukan Nilai Eigen dan Vektor Eigen</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-eigen-find.html#sec-eigen-find-3" class="internal"><span class="codenumber">4.2.1</span> <span class="title">Polinomial Karakteristik</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-eigen-find.html#sec-eigen-find-4" class="internal"><span class="codenumber">4.2.2</span> <span class="title">Menemukan Vektor Eigen</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-eigen-find.html#sec-eigen-find-5" class="internal"><span class="codenumber">4.2.3</span> <span class="title">Polinomial Karakteristik dan Dimensi Ruang Eigen</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-eigen-find.html#sec-eigen-find-6" class="internal"><span class="codenumber">4.2.4</span> <span class="title">Menggunakan Sage untuk Menemukan Nilai Eigen dan Vektor Eigen</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="sec-eigen-find.html#sec-eigen-find-7" class="internal"><span class="codenumber">4.2.5</span> <span class="title">Ringkasan</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-backmatter">
+<div class="toc-title-box"><a href="backmatter.html" class="internal"><span class="title">Back Matter</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-appendix"><div class="toc-title-box"><a href="app-sage-reference.html" class="internal"><span class="codenumber">A</span> <span class="title">Referensi Sage</span></a></div></li>
+<li class="toc-item toc-index"><div class="toc-title-box"><a href="backmatter-3.html" class="internal"><span class="title">Index</span></a></div></li>
+<li class="toc-item toc-colophon"><div class="toc-title-box"><a href="backmatter-4.html" class="internal"><span class="title">Colophon</span></a></div></li>
+<li class="toc-item toc-references"><div class="toc-title-box"><a href="references-backmatter.html" class="internal"><span class="title">References</span></a></div></li>
+</ul>
+</li>
+</ul></nav></div>
+<main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="section" id="sec-eigen-intro"><h2 class="heading hide-type">
+<span class="type">Section</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">4.1</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Pengenalan Nilai Eigen dan Vektor Eigen</span>
+</h2>
+<section class="introduction" id="sec-eigen-intro-2"><div class="para" id="sec-eigen-intro-2-1">Bagian ini memperkenalkan konsep nilai eigen dan vektor eigen serta menawarkan contoh yang memotivasi minat kita terhadapnya. Poin di sini adalah mengembangkan pemahaman intuitif tentang nilai eigen dan vektor eigen dan menjelaskan bagaimana mereka dapat digunakan untuk menyederhanakan beberapa masalah yang sebelumnya telah kita temui. Dalam sisa bab ini, kita akan mengembangkan konsep ini menjadi teori yang lebih kaya dan mengilustrasikan penggunaannya dengan contoh-contoh yang lebih bermakna.<div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="exploration project-like" id="ula-preview-4-1"><h3 class="heading">
+<span class="type">Preview Activity</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">4.1.1</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h3>
+<div class="introduction" id="ula-preview-4-1-1"><div class="para" id="ula-preview-4-1-1-1">Sebelum kita memperkenalkan definisi vektor eigen dan nilai eigen, akan membantu untuk mengingat beberapa ide yang telah kita lihat sebelumnya.<div class="autopermalink" data-description="Paragraph"><a href="#ula-preview-4-1-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div></div>
+<article class="task exercise-like" id="ula-preview-4-1-a"><h4 class="heading"><span class="codenumber">(a)</span></h4>
+<div class="sidebyside"><div class="sbsrow" style="margin-left:1.25%;margin-right:1.25%;grid-template-columns:51.2820512820513% 46.1538461538462%;column-gap:2.5%;">
+<div class="sbspanel sbspanel--top top" style=""><div class="para" id="ula-preview-4-1-a-1-1-1">Misalkan <span class="process-math">\(\vvec\)</span> adalah vektor yang ditunjukkan dalam gambar. Sketsa vektor <span class="process-math">\(2\vvec\)</span> dan vektor <span class="process-math">\(-\vvec\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#ula-preview-4-1-a-1-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div></div>
+<div class="sbspanel sbspanel--top top" style=""><div class="image-box"><img src="external/images/eigen-intro-vec.svg" role="img" class="contained"></div></div>
+</div></div>
+<div class="autopermalink" data-description="Task 4.1.1.a"><a href="#ula-preview-4-1-a" title="Copy heading and permalink for Task 4.1.1.a" aria-label="Copy heading and permalink for Task 4.1.1.a">🔗</a></div></article><article class="task exercise-like" id="ula-preview-4-1-b"><h4 class="heading"><span class="codenumber">(b)</span></h4>
+<div class="para" id="ula-preview-4-1-b-1-1">Nyatakan efek geometris yang dimiliki perkalian skalar pada vektor <span class="process-math">\(\vvec\text{.}\)</span> Kemudian sketsa semua vektor berbentuk <span class="process-math">\(\lambda \vvec\)</span> dimana <span class="process-math">\(\lambda\)</span> adalah skalar.<div class="autopermalink" data-description="Paragraph"><a href="#ula-preview-4-1-b-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Task 4.1.1.b"><a href="#ula-preview-4-1-b" title="Copy heading and permalink for Task 4.1.1.b" aria-label="Copy heading and permalink for Task 4.1.1.b">🔗</a></div></article><article class="task exercise-like" id="ula-preview-4-1-c"><h4 class="heading"><span class="codenumber">(c)</span></h4>
+<div class="para logical" id="ula-preview-4-1-c-1-1">
+<div class="para">Nyatakan efek geometris dari transformasi matriks yang didefinisikan oleh</div>
+<div class="displaymath process-math" id="ula-preview-4-1-c-1-1-1">
+\begin{equation*}
+\left[\begin{array}{rr}
+3 \amp 0 \\
+0 \amp -1 \\
+\end{array}\right]\text{.}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#ula-preview-4-1-c-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Task 4.1.1.c"><a href="#ula-preview-4-1-c" title="Copy heading and permalink for Task 4.1.1.c" aria-label="Copy heading and permalink for Task 4.1.1.c">🔗</a></div></article><article class="task exercise-like" id="ula-preview-4-1-d"><h4 class="heading"><span class="codenumber">(d)</span></h4>
+<div class="para logical" id="ula-preview-4-1-d-1-1">
+<div class="para">Misalkan <span class="process-math">\(A\)</span> adalah matriks <span class="process-math">\(2\times 2\)</span> dan bahwa <span class="process-math">\(\vvec_1\)</span> dan <span class="process-math">\(\vvec_2\)</span> adalah vektor-vektor sedemikian sehingga</div>
+<div class="displaymath process-math" id="ula-preview-4-1-d-1-1-5">
+\begin{equation*}
+A\vvec_1 = 3 \vvec_1, \qquad A\vvec_2 = -\vvec_2\text{.}
+\end{equation*}
+</div>
+<div class="para">Gunakan linearitas perkalian matriks untuk mengekspresikan vektor-vektor berikut dalam terms <span class="process-math">\(\vvec_1\)</span> dan <span class="process-math">\(\vvec_2\text{.}\)</span>
+</div>
+<ol class="decimal ol-marker-5" id="ula-preview-4-1-d-1-1-8">
+<li id="ula-preview-4-1-d-1-1-8-1">
+<div class="para" id="ula-preview-4-1-d-1-1-8-1-1">
+<span class="process-math">\(A(4\vvec_1)\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#ula-preview-4-1-d-1-1-8-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 1"><a href="#ula-preview-4-1-d-1-1-8-1" title="Copy heading and permalink for Item 1" aria-label="Copy heading and permalink for Item 1">🔗</a></div>
+</li>
+<li id="ula-preview-4-1-d-1-1-8-2">
+<div class="para" id="ula-preview-4-1-d-1-1-8-2-1">
+<span class="process-math">\(A(\vvec_1 + \vvec_2)\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#ula-preview-4-1-d-1-1-8-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 2"><a href="#ula-preview-4-1-d-1-1-8-2" title="Copy heading and permalink for Item 2" aria-label="Copy heading and permalink for Item 2">🔗</a></div>
+</li>
+<li id="ula-preview-4-1-d-1-1-8-3">
+<div class="para" id="ula-preview-4-1-d-1-1-8-3-1">
+<span class="process-math">\(A(4\vvec_1 -3\vvec_2)\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#ula-preview-4-1-d-1-1-8-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 3"><a href="#ula-preview-4-1-d-1-1-8-3" title="Copy heading and permalink for Item 3" aria-label="Copy heading and permalink for Item 3">🔗</a></div>
+</li>
+<li id="ula-preview-4-1-d-1-1-8-4">
+<div class="para" id="ula-preview-4-1-d-1-1-8-4-1">
+<span class="process-math">\(A^2\vvec_1\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#ula-preview-4-1-d-1-1-8-4-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 4"><a href="#ula-preview-4-1-d-1-1-8-4" title="Copy heading and permalink for Item 4" aria-label="Copy heading and permalink for Item 4">🔗</a></div>
+</li>
+<li id="ula-preview-4-1-d-1-1-8-5">
+<div class="para" id="ula-preview-4-1-d-1-1-8-5-1">
+<span class="process-math">\(A^2(4\vvec_1 - 3\vvec_2)\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#ula-preview-4-1-d-1-1-8-5-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 5"><a href="#ula-preview-4-1-d-1-1-8-5" title="Copy heading and permalink for Item 5" aria-label="Copy heading and permalink for Item 5">🔗</a></div>
+</li>
+<li id="ula-preview-4-1-d-1-1-8-6">
+<div class="para" id="ula-preview-4-1-d-1-1-8-6-1">
+<span class="process-math">\(A^4\vvec_1\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#ula-preview-4-1-d-1-1-8-6-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 6"><a href="#ula-preview-4-1-d-1-1-8-6" title="Copy heading and permalink for Item 6" aria-label="Copy heading and permalink for Item 6">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#ula-preview-4-1-d-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Task 4.1.1.d"><a href="#ula-preview-4-1-d" title="Copy heading and permalink for Task 4.1.1.d" aria-label="Copy heading and permalink for Task 4.1.1.d">🔗</a></div></article><div class="autopermalink" data-description="Preview Activity 4.1.1"><a href="#ula-preview-4-1" title="Copy heading and permalink for Preview Activity 4.1.1" aria-label="Copy heading and permalink for Preview Activity 4.1.1">🔗</a></div></article></section><section class="subsection" id="sec-eigen-intro-3"><h3 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">4.1.1</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Beberapa Contoh</span>
+</h3>
+<div class="para" id="sec-eigen-intro-3-2">Kita sekarang akan memperkenalkan definisi nilai eigen dan vektor eigen dan kemudian melihat beberapa contoh sederhana.<div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="definition definition-like" id="definition-eigenvectors"><h4 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">4.1.1</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h4> <div class="para logical" id="definition-eigenvectors-1-3">
+<div class="para">Diberikan matriks persegi <span class="process-math">\(n\times n\)</span> <span class="process-math">\(A\text{,}\)</span> kita mengatakan bahwa vektor tak-nol <span class="process-math">\(\vvec\)</span> adalah <em class="emphasis">vektor eigen</em> dari <span class="process-math">\(A\)</span> jika terdapat skalar <span class="process-math">\(\lambda\)</span> sedemikian sehingga</div>
+<div class="displaymath process-math" id="definition-eigenvectors-1-3-7">
+\begin{equation*}
+A\vvec = \lambda \vvec\text{.}
+\end{equation*}
+</div>
+<div class="para">Skalar <span class="process-math">\(\lambda\)</span> disebut <em class="emphasis">nilai eigen</em> yang terkait dengan vektor eigen <span class="process-math">\(\vvec\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#definition-eigenvectors-1-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 4.1.1"><a href="#definition-eigenvectors" title="Copy heading and permalink for Definition 4.1.1" aria-label="Copy heading and permalink for Definition 4.1.1">🔗</a></div></article><div class="para" id="sec-eigen-intro-3-4">Pada pandangan pertama, terdapat banyak hal yang terjadi dalam definisi ini sehingga mari kita lihat sebuah contoh.<div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-3-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="example example-like" id="sec-eigen-intro-3-5"><h4 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">4.1.2</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h4>
+<div class="para logical" id="sec-eigen-intro-3-5-1-1">
+<div class="para">Pertimbangkan matriks <span class="process-math">\(A = \left[\begin{array}{rr}
+7 \amp 6 \\
+6 \amp -2 \\
+\end{array}\right]\)</span> dan vektor <span class="process-math">\(\vvec=\twovec{2}{1}\text{.}\)</span> Kita menemukan bahwa</div>
+<div class="displaymath process-math" id="sec-eigen-intro-3-5-1-1-3">
+\begin{equation*}
+A\vvec = \left[\begin{array}{rr}
+7 \amp 6 \\
+6 \amp -2 \\
+\end{array}\right]
+\twovec{2}{1}
+=
+\twovec{20}{10}
+=10\twovec{2}{1}
+=10\vvec\text{.}
+\end{equation*}
+</div>
+<div class="para">Dengan kata lain, <span class="process-math">\(A\vvec = 10\vvec\text{,}\)</span> yang mengatakan bahwa <span class="process-math">\(\vvec\)</span> adalah vektor eigen dari matriks <span class="process-math">\(A\)</span> dengan nilai eigen terkait <span class="process-math">\(\lambda = 10\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-3-5-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <div class="para logical" id="sec-eigen-intro-3-5-1-2">
+<div class="para">Demikian pula, jika <span class="process-math">\(\wvec = \twovec{-1}{2}\text{,}\)</span> kita menemukan bahwa</div>
+<div class="displaymath process-math" id="sec-eigen-intro-3-5-1-2-2">
+\begin{equation*}
+A\wvec = \left[\begin{array}{rr}
+7 \amp 6 \\
+6 \amp -2 \\
+\end{array}\right]
+\twovec{-1}{2}
+=
+\twovec{5}{-10}
+=-5\twovec{-1}{2}
+=-5\wvec\text{.}
+\end{equation*}
+</div>
+<div class="para">Disini lagi, kita memiliki <span class="process-math">\(A\wvec = -5\wvec\)</span> yang menunjukkan bahwa <span class="process-math">\(\wvec\)</span> adalah vektor eigen dari <span class="process-math">\(A\)</span> dengan nilai eigen terkait <span class="process-math">\(\lambda=-5\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-3-5-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Example 4.1.2"><a href="#sec-eigen-intro-3-5" title="Copy heading and permalink for Example 4.1.2" aria-label="Copy heading and permalink for Example 4.1.2">🔗</a></div></article><article class="activity project-like" id="activity-eigen-geom"><h4 class="heading">
+<span class="type">Activity</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">4.1.2</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h4>
+<div class="para logical" id="activity-eigen-geom-1-1">
+<div class="para">Definisi ini memiliki interpretasi geometris penting yang akan kita selidiki di sini.</div>
+<ol class="lower-alpha ol-marker-1" id="activity-eigen-geom-1-1-1">
+<li id="activity-eigen-geom-1-1-1-1">
+<div class="para" id="activity-eigen-geom-1-1-1-1-1">Misalkan <span class="process-math">\(\vvec\)</span> adalah vektor tak-nol dan bahwa <span class="process-math">\(\lambda\)</span> adalah skalar. Apakah hubungan geometris antara <span class="process-math">\(\vvec\)</span> dan <span class="process-math">\(\lambda\vvec\text{?}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#activity-eigen-geom-1-1-1-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item a"><a href="#activity-eigen-geom-1-1-1-1" title="Copy heading and permalink for Item a" aria-label="Copy heading and permalink for Item a">🔗</a></div>
+</li>
+<li id="activity-eigen-geom-1-1-1-2">
+<div class="para" id="activity-eigen-geom-1-1-1-2-1">Mari kita sekarang pertimbangkan kondisi vektor eigen: <span class="process-math">\(A\vvec = \lambda\vvec\text{.}\)</span> Disini kita memiliki dua vektor, <span class="process-math">\(\vvec\)</span> dan <span class="process-math">\(A\vvec\text{.}\)</span> Jika <span class="process-math">\(A\vvec =
+\lambda\vvec\text{,}\)</span> apakah hubungan geometris antara <span class="process-math">\(\vvec\)</span> dan <span class="process-math">\(A\vvec\text{?}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#activity-eigen-geom-1-1-1-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item b"><a href="#activity-eigen-geom-1-1-1-2" title="Copy heading and permalink for Item b" aria-label="Copy heading and permalink for Item b">🔗</a></div>
+</li>
+<li id="activity-eigen-geom-1-1-1-3">
+<figure class="figure figure-like" id="js-eigen"><div class="interactive-iframe-container"><iframe id="interactive-eigen" style="width:600px; height:567px; display: block; " src="interactive-eigen-if.html"></iframe></div>
+<div class="interactive-iframe-container__opener"><a href="interactive-eigen.html" title="Open in new tab" aria-label="Open in new tab" target="_blank"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe89e;</span></a></div>
+<div class="instructions interactive__instructions"><details id="interactive-eigen-2" class="solution-like born-hidden-knowl"><summary class="knowl__link"><h5 class="heading"><span class="type">Instructions<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h5></summary><div class="solution-like knowl__content">
+<div class="para" id="interactive-eigen-2-1">Slider dalam diagram di bawah ini memungkinkan Anda untuk memilih matriks <span class="process-math">\(A = \begin{bmatrix} a \amp b \\ c \amp d
+\end{bmatrix}\text{.}\)</span> Vektor <span class="process-math">\(\vvec\text{,}\)</span> diarsir merah, dapat dipindahkan dengan mengklik pada kepala vektor. Vektor <span class="process-math">\(A\vvec\)</span> kemudian ditunjukkan dalam garis luar.<div class="autopermalink" data-description="Paragraph"><a href="#interactive-eigen-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Instructions"><a href="#interactive-eigen-2" title="Copy heading and permalink for Instructions" aria-label="Copy heading and permalink for Instructions">🔗</a></div>
+</div></details></div>
+<figcaption><span class="type">Figure</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">4.1.3<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>Interpretasi geometris dari kondisi nilai eigen-vektor eigen <span class="process-math">\(A\vvec = \lambda\vvec\)</span> .<div class="autopermalink" data-description="Figure 4.1.3"><a href="#js-eigen" title="Copy heading and permalink for Figure 4.1.3" aria-label="Copy heading and permalink for Figure 4.1.3">🔗</a></div></figcaption></figure><div class="para" id="activity-eigen-geom-1-1-1-3-2">Pilih matriks <span class="process-math">\(A=
+\left[\begin{array}{rr}
+1\amp 2 \\
+2\amp 1 \\
+\end{array}\right]
+\text{.}\)</span> Gerakkan vektor <span class="process-math">\(\vvec\)</span> sehingga kondisi vektor eigen terpenuhi. Apakah vektor eigen <span class="process-math">\(\vvec\)</span> dan apakah nilai eigen terkait?<div class="autopermalink" data-description="Paragraph"><a href="#activity-eigen-geom-1-1-1-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item c"><a href="#activity-eigen-geom-1-1-1-3" title="Copy heading and permalink for Item c" aria-label="Copy heading and permalink for Item c">🔗</a></div>
+</li>
+<li id="activity-eigen-geom-1-1-1-4">
+<div class="para" id="activity-eigen-geom-1-1-1-4-1">Dengan menghitung secara aljabar <span class="process-math">\(A\vvec\text{,}\)</span> verifikasi bahwa kondisi vektor eigen berlaku untuk vektor <span class="process-math">\(\vvec\)</span> yang Anda temukan.<div class="autopermalink" data-description="Paragraph"><a href="#activity-eigen-geom-1-1-1-4-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item d"><a href="#activity-eigen-geom-1-1-1-4" title="Copy heading and permalink for Item d" aria-label="Copy heading and permalink for Item d">🔗</a></div>
+</li>
+<li id="activity-eigen-geom-1-1-1-5">
+<div class="para" id="activity-eigen-geom-1-1-1-5-1">Jika Anda mengalikan vektor eigen <span class="process-math">\(\vvec\)</span> yang Anda temukan dengan <span class="process-math">\(2\text{,}\)</span> apakah Anda masih memiliki vektor eigen? Jika ya, apakah nilai eigen terkait?<div class="autopermalink" data-description="Paragraph"><a href="#activity-eigen-geom-1-1-1-5-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item e"><a href="#activity-eigen-geom-1-1-1-5" title="Copy heading and permalink for Item e" aria-label="Copy heading and permalink for Item e">🔗</a></div>
+</li>
+<li id="activity-eigen-geom-1-1-1-6">
+<div class="para" id="activity-eigen-geom-1-1-1-6-1">Apakah Anda dapat menemukan vektor eigen lain <span class="process-math">\(\vvec\)</span> yang bukan kelipatan skalar dari yang pertama yang Anda temukan? Jika ya, apakah vektor eigen dan apakah nilai eigen terkait?<div class="autopermalink" data-description="Paragraph"><a href="#activity-eigen-geom-1-1-1-6-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item f"><a href="#activity-eigen-geom-1-1-1-6" title="Copy heading and permalink for Item f" aria-label="Copy heading and permalink for Item f">🔗</a></div>
+</li>
+<li id="activity-eigen-geom-1-1-1-7">
+<div class="para" id="activity-eigen-geom-1-1-1-7-1">Sekarang pertimbangkan matriks <span class="process-math">\(A = \left[\begin{array}{rr}
+2 \amp 1 \\
+0 \amp 2 \\
+\end{array}\right]
+\text{.}\)</span> Gunakan diagram untuk mendeskripsikan sembarang vektor eigen dan nilai eigen terkait.<div class="autopermalink" data-description="Paragraph"><a href="#activity-eigen-geom-1-1-1-7-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item g"><a href="#activity-eigen-geom-1-1-1-7" title="Copy heading and permalink for Item g" aria-label="Copy heading and permalink for Item g">🔗</a></div>
+</li>
+<li id="activity-eigen-geom-1-1-1-8">
+<div class="para" id="activity-eigen-geom-1-1-1-8-1">Akhirnya, pertimbangkan matriks <span class="process-math">\(A = \left[\begin{array}{rr}
+0 \amp -1 \\
+1 \amp 0 \\
+\end{array}\right]
+\text{.}\)</span> Gunakan diagram untuk mendeskripsikan sembarang vektor eigen dan nilai eigen terkait. Transformasi geometris apa yang dilakukan matriks ini pada vektor-vektor? Bagaimana hal ini menjelaskan keberadaan sembarang vektor eigen?<div class="autopermalink" data-description="Paragraph"><a href="#activity-eigen-geom-1-1-1-8-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item h"><a href="#activity-eigen-geom-1-1-1-8" title="Copy heading and permalink for Item h" aria-label="Copy heading and permalink for Item h">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#activity-eigen-geom-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Activity 4.1.2"><a href="#activity-eigen-geom" title="Copy heading and permalink for Activity 4.1.2" aria-label="Copy heading and permalink for Activity 4.1.2">🔗</a></div></article><div class="para" id="sec-eigen-intro-3-7">Mari kita pertimbangkan ide-ide yang kita lihat dalam aktivitas dalam beberapa kedalaman lebih lanjut. Agar menjadi vektor eigen dari <span class="process-math">\(A\text{,}\)</span> vektor <span class="process-math">\(\vvec\)</span> harus memenuhi <span class="process-math">\(A\vvec = \lambda\vvec\)</span> untuk beberapa skalar <span class="process-math">\(\lambda\text{.}\)</span> Ini berarti bahwa <span class="process-math">\(\vvec\)</span> dan <span class="process-math">\(A\vvec\)</span> adalah kelipatan skalar satu sama lain sehingga mereka harus terletak pada garis yang sama.<div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-3-7" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="sec-eigen-intro-3-8">Pertimbangkan sekarang matriks <span class="process-math">\(A = \left[\begin{array}{rr}
+1 \amp 2 \\
+2 \amp 1 \\
+\end{array}\right]
+\text{.}\)</span> Di sebelah kiri <a href="sec-eigen-intro.html#fig-eigen-intro" class="xref" data-knowl="./knowl/xref/fig-eigen-intro.html" data-reveal-label="Reveal" data-close-label="Close" title="Figure 4.1.4">Figure 4.1.4</a>, kita melihat bahwa <span class="process-math">\(\vvec=\twovec{1}{0}\)</span> bukan vektor eigen dari <span class="process-math">\(A\)</span> karena vektor-vektor <span class="process-math">\(\vvec\)</span> dan <span class="process-math">\(A\vvec\)</span> tidak terletak pada garis yang sama. Di sebelah kanan, namun, kita melihat bahwa <span class="process-math">\(\vvec=\twovec{1}{1}\)</span> adalah vektor eigen. Bahkan, <span class="process-math">\(A\vvec\)</span> diperoleh dari <span class="process-math">\(\vvec\)</span> dengan meregangkan <span class="process-math">\(\vvec\)</span> dengan faktor <span class="process-math">\(3\text{.}\)</span> Oleh karena itu, <span class="process-math">\(\vvec\)</span> adalah vektor eigen dari <span class="process-math">\(A\)</span> dengan nilai eigen <span class="process-math">\(\lambda = 3\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-3-8" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<figure class="figure figure-like" id="fig-eigen-intro"><div class="sidebyside"><div class="sbsrow" style="margin-left:2.5%;margin-right:2.5%;grid-template-columns:47.3684210526316% 47.3684210526316%;column-gap:5%;">
+<div class="sbspanel sbspanel--top top" style=""><div class="image-box"><img src="external/images/eigen-intro-1-0.svg" role="img" class="contained"></div></div>
+<div class="sbspanel sbspanel--top top" style=""><div class="image-box"><img src="external/images/eigen-intro-1-1.svg" role="img" class="contained"></div></div>
+</div></div>
+<figcaption><span class="type">Figure</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">4.1.4<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>Di sebelah kiri, vektor <span class="process-math">\(\vvec\)</span> bukan vektor eigen. Di sebelah kanan, vektor <span class="process-math">\(\vvec\)</span> adalah vektor eigen dengan nilai eigen <span class="process-math">\(\lambda = 3\text{.}\)</span><div class="autopermalink" data-description="Figure 4.1.4"><a href="#fig-eigen-intro" title="Copy heading and permalink for Figure 4.1.4" aria-label="Copy heading and permalink for Figure 4.1.4">🔗</a></div></figcaption></figure><div class="para" id="sec-eigen-intro-3-10">Tidak sulit untuk melihat bahwa sembarang kelipatan dari <span class="process-math">\(\twovec{1}{1}\)</span> juga merupakan vektor eigen dari <span class="process-math">\(A\)</span> dengan nilai eigen <span class="process-math">\(\lambda = 3\text{.}\)</span> Memang, kita akan melihat nanti bahwa semua vektor eigen yang terkait dengan nilai eigen tertentu membentuk subruang dari <span class="process-math">\(\real^n\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-3-10" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="sec-eigen-intro-3-11">Dalam <a href="sec-eigen-intro.html#fig-eigen-intro-2" class="xref" data-knowl="./knowl/xref/fig-eigen-intro-2.html" data-reveal-label="Reveal" data-close-label="Close" title="Figure 4.1.5">Figure 4.1.5</a>, kita melihat bahwa <span class="process-math">\(\vvec=\twovec{-1}{1}\)</span> juga merupakan vektor eigen dengan nilai eigen <span class="process-math">\(\lambda =-1\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-3-11" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<figure class="figure figure-like" id="fig-eigen-intro-2"><div class="sidebyside"><div class="sbsrow" style="margin-left:27.5%;margin-right:27.5%;grid-template-columns:100%;column-gap:0%;"><div class="sbspanel sbspanel--top top" style=""><div class="image-box"><img src="external/images/eigen-intro-1-m1.svg" role="img" class="contained"></div></div></div></div>
+<figcaption><span class="type">Figure</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">4.1.5<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>Disini kita melihat vektor eigen lain <span class="process-math">\(\vvec\)</span> dengan nilai eigen <span class="process-math">\(\lambda = -1\text{.}\)</span><div class="autopermalink" data-description="Figure 4.1.5"><a href="#fig-eigen-intro-2" title="Copy heading and permalink for Figure 4.1.5" aria-label="Copy heading and permalink for Figure 4.1.5">🔗</a></div></figcaption></figure><div class="para" id="sec-eigen-intro-3-13">Diagram interaktif yang kita gunakan dalam aktivitas dimaksudkan untuk menyampaikan fakta bahwa vektor-vektor eigen dari matriks <span class="process-math">\(A\)</span> adalah vektor-vektor khusus. Sebagian besar waktu, vektor-vektor <span class="process-math">\(\vvec\)</span> dan <span class="process-math">\(A\vvec\)</span> tampak tidak terkait secara visual. Untuk vektor-vektor tertentu, namun, <span class="process-math">\(\vvec\)</span> dan <span class="process-math">\(A\vvec\)</span> sejajar satu sama lain. Sesuatu yang penting terjadi ketika hal itu terjadi sehingga kita menarik perhatian pada vektor-vektor ini dengan menyebutnya vektor eigen. Untuk vektor-vektor ini, operasi mengalikan dengan <span class="process-math">\(A\)</span> tereduksi menjadi operasi yang jauh lebih sederhana yaitu perkalian skalar dengan <span class="process-math">\(\lambda\text{.}\)</span> Alasan vektor eigen penting adalah karena sangat nyaman untuk dapat mengganti perkalian matriks dengan perkalian skalar.<div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-3-13" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Subsection 4.1.1: Beberapa Contoh"><a href="#sec-eigen-intro-3" title="Copy heading and permalink for Subsection 4.1.1: Beberapa Contoh" aria-label="Copy heading and permalink for Subsection 4.1.1: Beberapa Contoh">🔗</a></div></section><section class="subsection" id="subsec-eigen-use"><h3 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">4.1.2</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Kegunaan Nilai Eigen dan Vektor Eigen</span>
+</h3>
+<div class="para" id="subsec-eigen-use-2">Dalam bagian berikutnya, kita akan memperkenalkan teknik aljabar untuk menemukan nilai eigen dan vektor eigen dari matriks. Sebelum melakukan itu, namun, kita ingin mendiskusikan mengapa nilai eigen dan vektor eigen sangat berguna.<div class="autopermalink" data-description="Paragraph"><a href="#subsec-eigen-use-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="subsec-eigen-use-3">
+<div class="para">Mari kita terus melihat contoh <span class="process-math">\(A = \left[\begin{array}{rr} 1 \amp 2 \\ 2 \amp 1 \\
+\end{array}\right] \text{.}\)</span> Kita telah melihat bahwa <span class="process-math">\(\vvec_1 =
+\twovec{1}{1}\)</span> adalah vektor eigen dengan nilai eigen <span class="process-math">\(\lambda=3\)</span> dan <span class="process-math">\(\vvec_2=\twovec{-1}{1}\)</span> adalah vektor eigen dengan nilai eigen <span class="process-math">\(\lambda = -1\text{.}\)</span> Ini berarti bahwa <span class="process-math">\(A\vvec_1 = 3\vvec_1\)</span> dan <span class="process-math">\(A\vvec_2=-\vvec_2\text{.}\)</span> Dengan linearitas perkalian matriks, kita dapat menentukan apa yang terjadi ketika kita mengalikan kombinasi linear dari <span class="process-math">\(\vvec_1\)</span> dan <span class="process-math">\(\vvec_2\)</span> dengan <span class="process-math">\(A\text{:}\)</span>
+</div>
+<div class="displaymath process-math" id="subsec-eigen-use-3-11">
+\begin{equation*}
+A(c_1\vvec_1 + c_2\vvec_2) = 3c_1\vvec_1 - c_2\vvec_2\text{.}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#subsec-eigen-use-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="sidebyside"><div class="sbsrow" style="margin-left:0%;margin-right:0%;grid-template-columns:50% 50%;column-gap:0%;">
+<div class="sbspanel sbspanel--top top" style=""><div class="para logical" id="subsec-eigen-use-4-1">
+<div class="para">Misalnya, jika kita mempertimbangkan vektor <span class="process-math">\(\xvec=\vvec_1-2\vvec_2\text{,}\)</span> kita menemukan bahwa</div>
+<div class="displaymath process-math" id="subsec-eigen-use-4-1-2">
+\begin{equation*}
+\begin{aligned}
+A\xvec\amp{}={}A(\vvec_1 - 2\vvec_2) \\
+A\xvec\amp{}={} 3\vvec_1 + 2\vvec_2
+\end{aligned}
+\end{equation*}
+</div>
+<div class="para">sebagaimana terlihat dalam gambar.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#subsec-eigen-use-4-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div></div>
+<div class="sbspanel sbspanel--top top" style=""><div class="image-box"><img src="external/images/eigen-basis.svg" role="img" class="contained"></div></div>
+</div></div>
+<div class="para" id="subsec-eigen-use-5">Dengan kata lain, mengalikan dengan <span class="process-math">\(A\)</span> memiliki efek meregangkan vektor <span class="process-math">\(\xvec\)</span> dalam arah <span class="process-math">\(\vvec_1\)</span> dengan faktor <span class="process-math">\(3\)</span> dan membalik <span class="process-math">\(\xvec\)</span> dalam arah <span class="process-math">\(\vvec_2\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#subsec-eigen-use-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-eigen-use-6">Kita dapat menarik analogi dengan contoh yang lebih familiar dari matriks diagonal <span class="process-math">\(D=\left[\begin{array}{rr}
+3 \amp 0 \\
+0 \amp -1 \\
+\end{array}\right]
+\text{.}\)</span> Sebagaimana telah kita lihat, transformasi matriks yang didefinisikan oleh <span class="process-math">\(D\)</span> menggabungkan peregangan horizontal dengan faktor 3 dengan refleksi melintasi sumbu horizontal, sebagaimana diilustrasikan dalam <a href="sec-eigen-intro.html#fig-eigen-intro-diagonal" class="xref" data-knowl="./knowl/xref/fig-eigen-intro-diagonal.html" data-reveal-label="Reveal" data-close-label="Close" title="Figure 4.1.6">Figure 4.1.6</a>.<div class="autopermalink" data-description="Paragraph"><a href="#subsec-eigen-use-6" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<figure class="figure figure-like" id="fig-eigen-intro-diagonal"><div class="sidebyside"><div class="sbsrow" style="margin-left:10%;margin-right:10%;grid-template-columns:100%;column-gap:0%;"><div class="sbspanel sbspanel--top top" style=""><div class="image-box"><img src="external/images/eigen-intro-diagonal.svg" role="img" class="contained"></div></div></div></div>
+<figcaption><span class="type">Figure</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">4.1.6<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>Matriks diagonal <span class="process-math">\(D\)</span> meregangkan vektor-vektor secara horizontal dengan faktor <span class="process-math">\(3\)</span> dan membalik vektor-vektor secara vertikal.<div class="autopermalink" data-description="Figure 4.1.6"><a href="#fig-eigen-intro-diagonal" title="Copy heading and permalink for Figure 4.1.6" aria-label="Copy heading and permalink for Figure 4.1.6">🔗</a></div></figcaption></figure><div class="para" id="subsec-eigen-use-8">Matriks <span class="process-math">\(A=\left[\begin{array}{rr}
+1 \amp 2 \\
+2 \amp 1 \\
+\end{array}\right]\)</span> memiliki efek serupa ketika dilihat dalam basis yang didefinisikan oleh vektor-vektor eigen <span class="process-math">\(\vvec_1\)</span> dan <span class="process-math">\(\vvec_2\text{,}\)</span> sebagaimana terlihat dalam <a href="sec-eigen-intro.html#fig-eigen-intro-A" class="xref" data-knowl="./knowl/xref/fig-eigen-intro-A.html" data-reveal-label="Reveal" data-close-label="Close" title="Figure 4.1.7">Figure 4.1.7</a>.<div class="autopermalink" data-description="Paragraph"><a href="#subsec-eigen-use-8" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<figure class="figure figure-like" id="fig-eigen-intro-A"><div class="sidebyside"><div class="sbsrow" style="margin-left:10%;margin-right:10%;grid-template-columns:100%;column-gap:0%;"><div class="sbspanel sbspanel--top top" style=""><div class="image-box"><img src="external/images/eigen-intro-A.svg" role="img" class="contained"></div></div></div></div>
+<figcaption><span class="type">Figure</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">4.1.7<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>Matriks <span class="process-math">\(A\)</span> memiliki efek geometris yang sama dengan matriks diagonal <span class="process-math">\(D\)</span> ketika diekspresikan dalam sistem koordinat yang didefinisikan oleh basis vektor-vektor eigen.<div class="autopermalink" data-description="Figure 4.1.7"><a href="#fig-eigen-intro-A" title="Copy heading and permalink for Figure 4.1.7" aria-label="Copy heading and permalink for Figure 4.1.7">🔗</a></div></figcaption></figure><div class="para" id="subsec-eigen-use-10">Dalam pengertian yang akan dibuat presisi nanti, memiliki himpunan vektor-vektor eigen dari <span class="process-math">\(A\)</span> yang membentuk basis dari <span class="process-math">\(\real^2\)</span> memungkinkan kita untuk memikirkan <span class="process-math">\(A\)</span> sebagai ekuivalen dengan matriks diagonal <span class="process-math">\(D\text{.}\)</span> Tentu saja, sebagaimana contoh-contoh lain dalam aktivitas sebelumnya menunjukkan, mungkin tidak selalu mungkin untuk membentuk basis dari vektor-vektor eigen dari matriks. Misalnya, satu-satunya vektor eigen dari matriks <span class="process-math">\(\left[\begin{array}{rr} 2 \amp 1 \\ 0 \amp 2
+\end{array}\right]\text{,}\)</span> yang merepresentasikan shear, memiliki bentuk <span class="process-math">\(\twovec{x}{0}\text{.}\)</span> Dalam contoh ini, kita tidak dapat membuat basis untuk <span class="process-math">\(\real^2\)</span> yang terdiri dari vektor-vektor eigen dari matriks. Ini juga berlaku untuk matriks <span class="process-math">\(\left[\begin{array}{rr}
+0 \amp -1 \\
+1 \amp 0 \\
+\end{array}\right]
+\text{,}\)</span> yang merepresentasikan rotasi <span class="process-math">\(90^\circ\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#subsec-eigen-use-10" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="activity project-like" id="activity-eigen-intro"><h4 class="heading">
+<span class="type">Activity</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">4.1.3</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h4>
+<div class="para" id="activity-eigen-intro-1-1">Mari kita pertimbangkan contoh yang mengilustrasikan bagaimana kita dapat menerapkan ide-ide ini untuk digunakan.<div class="autopermalink" data-description="Paragraph"><a href="#activity-eigen-intro-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <div class="para logical" id="activity-eigen-intro-1-2">
+<div class="para">Misalkan kita bekerja untuk perusahaan penyewaan mobil yang memiliki dua lokasi, <span class="process-math">\(P\)</span> dan <span class="process-math">\(Q\text{.}\)</span> Ketika seorang pelanggan menyewa mobil di satu lokasi, mereka memiliki opsi untuk mengembalikannya ke salah satu lokasi di akhir hari. Setelah melakukan riset pasar, kita menentukan:</div>
+<ul class="disc" id="activity-eigen-intro-1-2-3">
+<li id="activity-eigen-intro-1-2-3-1">
+<div class="para" id="activity-eigen-intro-1-2-3-1-1">80% dari mobil yang disewa di lokasi <span class="process-math">\(P\)</span> adalah dikembalikan ke <span class="process-math">\(P\)</span> dan 20% dikembalikan ke <span class="process-math">\(Q\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#activity-eigen-intro-1-2-3-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item"><a href="#activity-eigen-intro-1-2-3-1" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+<li id="activity-eigen-intro-1-2-3-2">
+<div class="para" id="activity-eigen-intro-1-2-3-2-1">40% dari mobil yang disewa di lokasi <span class="process-math">\(Q\)</span> adalah dikembalikan ke <span class="process-math">\(Q\)</span> dan 60% dikembalikan ke <span class="process-math">\(P\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#activity-eigen-intro-1-2-3-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item"><a href="#activity-eigen-intro-1-2-3-2" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+</ul>
+<ol class="lower-alpha ol-marker-1" id="activity-eigen-intro-1-2-4">
+<li id="activity-eigen-intro-1-2-4-1">
+<div class="para" id="activity-eigen-intro-1-2-4-1-1">Misalkan terdapat 1000 mobil di lokasi <span class="process-math">\(P\)</span> dan tidak ada mobil di lokasi <span class="process-math">\(Q\)</span> pada Senin pagi. Berapa banyak mobil yang berada di lokasi <span class="process-math">\(P\)</span> dan <span class="process-math">\(Q\)</span> di akhir hari pada Senin?<div class="autopermalink" data-description="Paragraph"><a href="#activity-eigen-intro-1-2-4-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item a"><a href="#activity-eigen-intro-1-2-4-1" title="Copy heading and permalink for Item a" aria-label="Copy heading and permalink for Item a">🔗</a></div>
+</li>
+<li id="activity-eigen-intro-1-2-4-2">
+<div class="para" id="activity-eigen-intro-1-2-4-2-1">Berapa banyak yang berada di lokasi <span class="process-math">\(P\)</span> dan <span class="process-math">\(Q\)</span> di akhir hari pada Selasa?<div class="autopermalink" data-description="Paragraph"><a href="#activity-eigen-intro-1-2-4-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item b"><a href="#activity-eigen-intro-1-2-4-2" title="Copy heading and permalink for Item b" aria-label="Copy heading and permalink for Item b">🔗</a></div>
+</li>
+<li id="activity-eigen-intro-1-2-4-3">
+<div class="para logical" id="activity-eigen-intro-1-2-4-3-1">
+<div class="para">Jika kita membiarkan <span class="process-math">\(P_k\)</span> dan <span class="process-math">\(Q_k\)</span> menjadi jumlah mobil di lokasi <span class="process-math">\(P\)</span> dan <span class="process-math">\(Q\text{,}\)</span> masing-masing, di akhir hari <span class="process-math">\(k\text{,}\)</span> kita kemudian memiliki</div>
+<div class="displaymath process-math" id="activity-eigen-intro-1-2-4-3-1-6">
+\begin{equation*}
+\begin{aligned}
+P_{k+1}\amp {}={} 0.8P_k + 0.6Q_k \\
+Q_{k+1}\amp {}={} 0.2P_k + 0.4Q_k\text{.} \\
+\end{aligned}
+\end{equation*}
+</div>
+<div class="para">Kita dapat menuliskan vektor <span class="process-math">\(\xvec_k = \twovec{P_k}{Q_k}\)</span> untuk merefleksikan jumlah mobil di kedua lokasi di akhir hari <span class="process-math">\(k\text{,}\)</span> yang mengatakan bahwa</div>
+<div class="displaymath process-math" id="activity-eigen-intro-1-2-4-3-1-9">
+\begin{equation*}
+\xvec_{k+1} =
+\left[\begin{array}{rr}
+0.8 \amp 0.6 \\
+0.2 \amp 0.4 \\
+\end{array}\right]
+\xvec_k
+\end{equation*}
+</div>
+<div class="para">atau <span class="process-math">\(\xvec_{k+1} = A\xvec_k\)</span> dimana <span class="process-math">\(A=\left[\begin{array}{rr}0.8 \amp 0.6 \\ 0.2 \amp 0.4
+\end{array}\right]\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#activity-eigen-intro-1-2-4-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="activity-eigen-intro-1-2-4-3-2">
+<div class="para">Misalkan</div>
+<div class="displaymath process-math" id="activity-eigen-intro-1-2-4-3-2-1">
+\begin{equation*}
+\vvec_1 = \twovec{3}{1},
+\qquad
+\vvec_2 = \twovec{-1}{1}\text{.}
+\end{equation*}
+</div>
+<div class="para">Hitung <span class="process-math">\(A\vvec_1\)</span> dan <span class="process-math">\(A\vvec_2\)</span> untuk mendemonstrasikan bahwa <span class="process-math">\(\vvec_1\)</span> dan <span class="process-math">\(\vvec_2\)</span> adalah vektor eigen dari <span class="process-math">\(A\text{.}\)</span> Apakah nilai eigen terkait <span class="process-math">\(\lambda_1\)</span> dan <span class="process-math">\(\lambda_2\text{?}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#activity-eigen-intro-1-2-4-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item c"><a href="#activity-eigen-intro-1-2-4-3" title="Copy heading and permalink for Item c" aria-label="Copy heading and permalink for Item c">🔗</a></div>
+</li>
+<li id="activity-eigen-intro-1-2-4-4">
+<div class="para" id="activity-eigen-intro-1-2-4-4-1">Kita mengatakan bahwa 1000 mobil awalnya berada di lokasi <span class="process-math">\(P\)</span> dan tidak ada di lokasi <span class="process-math">\(Q\text{.}\)</span> Ini berarti bahwa vektor awal yang mendeskripsikan jumlah mobil adalah <span class="process-math">\(\xvec_0 =
+\ctwovec{1000}{0}\text{.}\)</span> Tuliskan <span class="process-math">\(\xvec_0\)</span> sebagai kombinasi linear dari <span class="process-math">\(\vvec_1\)</span> dan <span class="process-math">\(\vvec_2\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#activity-eigen-intro-1-2-4-4-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item d"><a href="#activity-eigen-intro-1-2-4-4" title="Copy heading and permalink for Item d" aria-label="Copy heading and permalink for Item d">🔗</a></div>
+</li>
+<li id="activity-eigen-intro-1-2-4-5">
+<div class="para" id="activity-eigen-intro-1-2-4-5-1">Ingat bahwa <span class="process-math">\(\vvec_1\)</span> dan <span class="process-math">\(\vvec_2\)</span> adalah vektor eigen dari <span class="process-math">\(A\text{.}\)</span> Gunakan linearitas perkalian matriks untuk menuliskan vektor <span class="process-math">\(\xvec_1 =
+A\xvec_0\text{,}\)</span> yang mendeskripsikan jumlah mobil di kedua lokasi di akhir hari pertama, sebagai kombinasi linear dari <span class="process-math">\(\vvec_1\)</span> dan <span class="process-math">\(\vvec_2\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#activity-eigen-intro-1-2-4-5-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item e"><a href="#activity-eigen-intro-1-2-4-5" title="Copy heading and permalink for Item e" aria-label="Copy heading and permalink for Item e">🔗</a></div>
+</li>
+<li id="activity-eigen-intro-1-2-4-6">
+<div class="para logical" id="activity-eigen-intro-1-2-4-6-1">
+<div class="para">Tuliskan vektor <span class="process-math">\(\xvec_2 = A\xvec_1\)</span> sebagai kombinasi linear dari <span class="process-math">\(\vvec_1\)</span> dan <span class="process-math">\(\vvec_2\text{.}\)</span> Kemudian tuliskan beberapa vektor berikutnya sebagai kombinasi linear dari <span class="process-math">\(\vvec_1\)</span> dan <span class="process-math">\(\vvec_2\text{:}\)</span>
+</div>
+<ol class="decimal ol-marker-5" id="activity-eigen-intro-1-2-4-6-1-6">
+<li id="activity-eigen-intro-1-2-4-6-1-6-1">
+<div class="para" id="activity-eigen-intro-1-2-4-6-1-6-1-1">
+<span class="process-math">\(\xvec_3 = A\xvec_2\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#activity-eigen-intro-1-2-4-6-1-6-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item f.1"><a href="#activity-eigen-intro-1-2-4-6-1-6-1" title="Copy heading and permalink for Item f.1" aria-label="Copy heading and permalink for Item f.1">🔗</a></div>
+</li>
+<li id="activity-eigen-intro-1-2-4-6-1-6-2">
+<div class="para" id="activity-eigen-intro-1-2-4-6-1-6-2-1">
+<span class="process-math">\(\xvec_4 = A\xvec_3\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#activity-eigen-intro-1-2-4-6-1-6-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item f.2"><a href="#activity-eigen-intro-1-2-4-6-1-6-2" title="Copy heading and permalink for Item f.2" aria-label="Copy heading and permalink for Item f.2">🔗</a></div>
+</li>
+<li id="activity-eigen-intro-1-2-4-6-1-6-3">
+<div class="para" id="activity-eigen-intro-1-2-4-6-1-6-3-1">
+<span class="process-math">\(\xvec_5 = A\xvec_4\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#activity-eigen-intro-1-2-4-6-1-6-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item f.3"><a href="#activity-eigen-intro-1-2-4-6-1-6-3" title="Copy heading and permalink for Item f.3" aria-label="Copy heading and permalink for Item f.3">🔗</a></div>
+</li>
+<li id="activity-eigen-intro-1-2-4-6-1-6-4">
+<div class="para" id="activity-eigen-intro-1-2-4-6-1-6-4-1">
+<span class="process-math">\(\xvec_6 = A\xvec_5\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#activity-eigen-intro-1-2-4-6-1-6-4-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item f.4"><a href="#activity-eigen-intro-1-2-4-6-1-6-4" title="Copy heading and permalink for Item f.4" aria-label="Copy heading and permalink for Item f.4">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#activity-eigen-intro-1-2-4-6-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item f"><a href="#activity-eigen-intro-1-2-4-6" title="Copy heading and permalink for Item f" aria-label="Copy heading and permalink for Item f">🔗</a></div>
+</li>
+<li id="activity-eigen-intro-1-2-4-7">
+<div class="para" id="activity-eigen-intro-1-2-4-7-1">Apa yang akan terjadi pada jumlah mobil di kedua lokasi setelah waktu yang sangat lama? Jelaskan bagaimana menuliskan <span class="process-math">\(\xvec_0\)</span> sebagai kombinasi linear dari vektor-vektor eigen membantu Anda menentukan perilaku jangka panjang.<div class="autopermalink" data-description="Paragraph"><a href="#activity-eigen-intro-1-2-4-7-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item g"><a href="#activity-eigen-intro-1-2-4-7" title="Copy heading and permalink for Item g" aria-label="Copy heading and permalink for Item g">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#activity-eigen-intro-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Activity 4.1.3"><a href="#activity-eigen-intro" title="Copy heading and permalink for Activity 4.1.3" aria-label="Copy heading and permalink for Activity 4.1.3">🔗</a></div></article><div class="para" id="subsec-eigen-use-12">Aktivitas ini penting dan memotivasi banyak pekerjaan kita dengan nilai eigen dan vektor eigen sehingga layak untuk ditinjau kembali untuk memastikan kita memiliki pemahaman yang jelas tentang konsep-konsepnya.<div class="autopermalink" data-description="Paragraph"><a href="#subsec-eigen-use-12" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="subsec-eigen-use-13">
+<div class="para">Pertama, kita menghitung</div>
+<div class="displaymath process-math" id="subsec-eigen-use-13-1">
+\begin{equation*}
+\begin{aligned}
+A\vvec_1 =
+\left[\begin{array}{rr}
+0.8 \amp 0.6 \\
+0.2 \amp 0.4 \\
+\end{array}\right]
+\twovec{3}{1}
+\amp {}={}
+\twovec{3}{1}
+= 1\vvec_1
+\\
+\\
+A\vvec_2 =
+\left[\begin{array}{rr}
+0.8 \amp 0.6 \\
+0.2 \amp 0.4 \\
+\end{array}\right]
+\twovec{-1}{1}
+\amp {}={}
+\twovec{-0.2}{0.2}
+= 0.2\vvec_2\text{.} \\
+\end{aligned}
+\end{equation*}
+</div>
+<div class="para">Ini menunjukkan bahwa <span class="process-math">\(\vvec_1\)</span> adalah vektor eigen dari <span class="process-math">\(A\)</span> dengan nilai eigen <span class="process-math">\(\lambda_1 = 1\)</span> dan <span class="process-math">\(\vvec_2\)</span> adalah vektor eigen dari <span class="process-math">\(A\)</span> dengan nilai eigen <span class="process-math">\(\lambda_2=0.2\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#subsec-eigen-use-13" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="subsec-eigen-use-14">
+<div class="para">Dengan linearitas perkalian matriks, kita memiliki</div>
+<div class="displaymath process-math" id="subsec-eigen-use-14-1">
+\begin{equation*}
+A(c_1\vvec_1 + c_2\vvec_2) = c_1\vvec_1 + 0.2c_2\vvec_2\text{.}
+\end{equation*}
+</div>
+<div class="para">Oleh karena itu, kita akan menuliskan vektor yang mendeskripsikan distribusi awal mobil <span class="process-math">\(\xvec_0=\ctwovec{1000}{0}\)</span> sebagai kombinasi linear dari <span class="process-math">\(\vvec_1\)</span> dan <span class="process-math">\(\vvec_2\text{;}\)</span> yaitu, <span class="process-math">\(\xvec_0 =
+c_1\vvec_2 + c_2 \vvec_2\text{.}\)</span> Untuk melakukan ini, kita membentuk matriks augmented dan mereduksi baris:</div>
+<div class="displaymath process-math" id="subsec-eigen-use-14-6">
+\begin{equation*}
+\left[\begin{array}{rr|r}
+\vvec_1 \amp \vvec_2 \amp \xvec_0
+\end{array}\right]
+=
+\left[\begin{array}{rr|r}
+3 \amp -1 \amp 1000 \\
+1 \amp 1 \amp 0 \\
+\end{array}\right]
+\sim
+\left[\begin{array}{rr|r}
+1 \amp 0 \amp 250 \\
+0 \amp 1 \amp -250 \\
+\end{array}\right]\text{.}
+\end{equation*}
+</div>
+<div class="para">Oleh karena itu, <span class="process-math">\(\xvec_0 = 250\vvec_1 -250\vvec_2\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#subsec-eigen-use-14" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="subsec-eigen-use-15">
+<div class="para">Untuk menentukan distribusi mobil pada hari-hari berikutnya, kita akan berulang kali mengalikan dengan <span class="process-math">\(A\text{.}\)</span> Kita menemukan bahwa</div>
+<div class="displaymath process-math" id="subsec-eigen-use-15-2">
+\begin{equation*}
+\begin{aligned}
+\xvec_1 = A\xvec_0 \amp {}={}
+A(250\vvec_1 - 250\vvec_2) = 250\vvec_1 - (0.2)250\vvec_2 \\
+\xvec_2 = A\xvec_1 \amp {}={}
+A(250\vvec_1 - (0.2)250\vvec_2) = 250\vvec_1 - (0.2)^2250\vvec_2 \\
+\xvec_3 = A\xvec_2 \amp {}={}
+A(250\vvec_1 - (0.2)^2250\vvec_2) = 250\vvec_1 - (0.2)^3250\vvec_2 \\
+\xvec_4 = A\xvec_3 \amp {}={}
+A(250\vvec_1 - (0.2)^3250\vvec_2) = 250\vvec_1 - (0.2)^4250\vvec_2 \\
+\xvec_5 = A\xvec_4 \amp {}={}
+A(250\vvec_1 - (0.2)^4250\vvec_2) = 250\vvec_1 - (0.2)^5250\vvec_2 \\
+\end{aligned}\text{.}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#subsec-eigen-use-15" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="subsec-eigen-use-16">
+<div class="para">Secara khusus, ini menunjukkan kepada kita bahwa</div>
+<div class="displaymath process-math" id="subsec-eigen-use-16-1">
+\begin{equation*}
+\xvec_5 = 250\vvec_1 - (0.2)^5250\vvec_2 =
+\twovec{250\cdot 3 - (0.2)^5250\cdot(-1)}
+{250\cdot 1 - (0.2)^5250\cdot 1}
+= \twovec{750.09}{249.92}\text{.}
+\end{equation*}
+</div>
+<div class="para">Memperhatikan pola, kita dapat menuliskan</div>
+<div class="displaymath process-math" id="subsec-eigen-use-16-2">
+\begin{equation*}
+\xvec_k = 250\vvec_1 - (0.2)^k250\vvec_2\text{.}
+\end{equation*}
+</div>
+<div class="para">Mengalikan bilangan dengan <span class="process-math">\(0.2\)</span> sama dengan mengambil 20% dari bilangan tersebut. Setiap hari berlalu, suku kedua dikalikan dengan <span class="process-math">\(0.2\)</span> sehingga koefisien dari <span class="process-math">\(\vvec_2\)</span> dalam ekspresi untuk <span class="process-math">\(\xvec_k\)</span> pada akhirnya akan menjadi sangat kecil. Kita oleh karena itu melihat bahwa distribusi mobil akan stabil di <span class="process-math">\(\xvec=250\vvec_1=\twovec{750}{250}\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#subsec-eigen-use-16" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-eigen-use-17">Perhatikan bagaimana pemahaman kita tentang vektor-vektor eigen dari matriks memungkinkan kita untuk mengganti perkalian matriks dengan operasi perkalian skalar yang lebih sederhana. Sebagai hasilnya, kita dapat melihat jauh ke masa depan tanpa harus berulang kali melakukan perkalian matriks.<div class="autopermalink" data-description="Paragraph"><a href="#subsec-eigen-use-17" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="subsec-eigen-use-18">Lebih lanjut, perhatikan bagaimana contoh ini bergantung pada fakta bahwa kita dapat mengekspresikan vektor awal <span class="process-math">\(\xvec_0\)</span> sebagai kombinasi linear dari vektor-vektor eigen. Untuk alasan ini, kita ingin, ketika diberikan matriks <span class="process-math">\(n\times n\text{,}\)</span> untuk dapat membuat basis dari <span class="process-math">\(\real^n\)</span> yang terdiri dari vektor-vektor eigennya. Kita akan sering kembali ke pertanyaan ini dalam bagian-bagian berikutnya.<div class="autopermalink" data-description="Paragraph"><a href="#subsec-eigen-use-18" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="question example-like" id="question-eigen-basis"><h4 class="heading">
+<span class="type">Question</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">4.1.8</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h4>
+<div class="para" id="question-eigen-basis-1-1">Jika <span class="process-math">\(A\)</span> adalah matriks <span class="process-math">\(n\times n\text{,}\)</span> dapatkah kita membentuk basis dari <span class="process-math">\(\real^n\)</span> yang terdiri dari vektor-vektor eigen dari <span class="process-math">\(A\text{?}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#question-eigen-basis-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Question 4.1.8"><a href="#question-eigen-basis" title="Copy heading and permalink for Question 4.1.8" aria-label="Copy heading and permalink for Question 4.1.8">🔗</a></div></article><div class="autopermalink" data-description="Subsection 4.1.2: Kegunaan Nilai Eigen dan Vektor Eigen"><a href="#subsec-eigen-use" title="Copy heading and permalink for Subsection 4.1.2: Kegunaan Nilai Eigen dan Vektor Eigen" aria-label="Copy heading and permalink for Subsection 4.1.2: Kegunaan Nilai Eigen dan Vektor Eigen">🔗</a></div></section><section class="subsection" id="sec-eigen-intro-5"><h3 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">4.1.3</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Ringkasan</span>
+</h3>
+<div class="para logical" id="sec-eigen-intro-5-2">
+<div class="para">Kita mendefinisikan vektor eigen dari matriks persegi <span class="process-math">\(A\)</span> sebagai vektor tak-nol <span class="process-math">\(\vvec\)</span> sedemikian sehingga <span class="process-math">\(A\vvec = \lambda\vvec\)</span> untuk beberapa skalar <span class="process-math">\(\lambda\text{,}\)</span> yang disebut nilai eigen yang terkait dengan <span class="process-math">\(\vvec\text{.}\)</span>
+</div>
+<ul class="disc" id="sec-eigen-intro-5-2-6">
+<li id="sec-eigen-intro-5-2-6-1">
+<div class="para" id="sec-eigen-intro-5-2-6-1-1">Jika <span class="process-math">\(\vvec\)</span> adalah vektor eigen, maka perkalian matriks dengan <span class="process-math">\(A\)</span> tereduksi menjadi operasi yang lebih sederhana yaitu perkalian skalar dengan <span class="process-math">\(\lambda\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-5-2-6-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item"><a href="#sec-eigen-intro-5-2-6-1" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+<li id="sec-eigen-intro-5-2-6-2">
+<div class="para" id="sec-eigen-intro-5-2-6-2-1">Kelipatan skalar dari vektor eigen juga merupakan vektor eigen. Bahkan, kita akan melihat bahwa vektor-vektor eigen yang terkait dengan nilai eigen <span class="process-math">\(\lambda\)</span> membentuk subruang.<div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-5-2-6-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item"><a href="#sec-eigen-intro-5-2-6-2" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+<li id="sec-eigen-intro-5-2-6-3">
+<div class="para" id="sec-eigen-intro-5-2-6-3-1">Jika kita dapat membentuk basis untuk <span class="process-math">\(\real^n\)</span> yang terdiri dari vektor-vektor eigen dari <span class="process-math">\(A\text{,}\)</span> maka <span class="process-math">\(A\)</span> adalah, dalam beberapa pengertian, ekuivalen dengan matriks diagonal.<div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-5-2-6-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item"><a href="#sec-eigen-intro-5-2-6-3" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+<li id="sec-eigen-intro-5-2-6-4">
+<div class="para" id="sec-eigen-intro-5-2-6-4-1">Menuliskan ulang vektor <span class="process-math">\(\xvec\)</span> sebagai kombinasi linear dari vektor-vektor eigen dari <span class="process-math">\(A\)</span> menyederhanakan proses berulang kali mengalikan <span class="process-math">\(\xvec\)</span> dengan <span class="process-math">\(A\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-5-2-6-4-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item"><a href="#sec-eigen-intro-5-2-6-4" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+</ul>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-5-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Subsection 4.1.3: Ringkasan"><a href="#sec-eigen-intro-5" title="Copy heading and permalink for Subsection 4.1.3: Ringkasan" aria-label="Copy heading and permalink for Subsection 4.1.3: Ringkasan">🔗</a></div></section><section class="exercises" id="sec-eigen-intro-6"><h3 class="heading hide-type">
+<span class="type">Exercises</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">4.1.4</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Exercises</span>
+</h3>
+<article class="exercise exercise-like" id="sec-eigen-intro-6-1"><h4 class="heading"><span class="codenumber">1<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4>
+<div class="para logical" id="sec-eigen-intro-6-1-1-1">
+<div class="para">Consider the matrix and vectors</div>
+<div class="displaymath process-math" id="sec-eigen-intro-6-1-1-1-1">
+\begin{equation*}
+A = \left[\begin{array}{rr}
+8 \amp -10 \\
+5 \amp -7 \\
+\end{array}\right],\qquad
+\vvec_1=\twovec{2}{1},~~~
+\vvec_2=\twovec{1}{1}\text{.}
+\end{equation*}
+</div>
+<ol class="lower-alpha ol-marker-1" id="sec-eigen-intro-6-1-1-1-2">
+<li id="sec-eigen-intro-6-1-1-1-2-1">
+<div class="para" id="sec-eigen-intro-6-1-1-1-2-1-1">Show that <span class="process-math">\(\vvec_1\)</span> and <span class="process-math">\(\vvec_2\)</span> are eigenvectors of <span class="process-math">\(A\)</span> and find their associated eigenvalues.<div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-6-1-1-1-2-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div id="sec-eigen-intro-6-1-1-1-2-1-2" class="ptx-sagecell sagecell-sage"><script type="text/x-sage">
+</script></div>
+<div class="autopermalink" data-description="Item 4.1.4.1.a"><a href="#sec-eigen-intro-6-1-1-1-2-1" title="Copy heading and permalink for Item 4.1.4.1.a" aria-label="Copy heading and permalink for Item 4.1.4.1.a">🔗</a></div>
+</li>
+<li id="sec-eigen-intro-6-1-1-1-2-2">
+<div class="para" id="sec-eigen-intro-6-1-1-1-2-2-1">Express the vector <span class="process-math">\(\xvec = \twovec{-4}{-1}\)</span> as a linear combination of <span class="process-math">\(\vvec_1\)</span> and <span class="process-math">\(\vvec_2\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-6-1-1-1-2-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 4.1.4.1.b"><a href="#sec-eigen-intro-6-1-1-1-2-2" title="Copy heading and permalink for Item 4.1.4.1.b" aria-label="Copy heading and permalink for Item 4.1.4.1.b">🔗</a></div>
+</li>
+<li id="sec-eigen-intro-6-1-1-1-2-3">
+<div class="para" id="sec-eigen-intro-6-1-1-1-2-3-1">Use this expression to compute <span class="process-math">\(A\xvec\text{,}\)</span> <span class="process-math">\(A^2\xvec\text{,}\)</span> and <span class="process-math">\(A^{-1}\xvec\)</span> as a linear combination of eigenvectors.<div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-6-1-1-1-2-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 4.1.4.1.c"><a href="#sec-eigen-intro-6-1-1-1-2-3" title="Copy heading and permalink for Item 4.1.4.1.c" aria-label="Copy heading and permalink for Item 4.1.4.1.c">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-6-1-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Exercise 4.1.4.1"><a href="#sec-eigen-intro-6-1" title="Copy heading and permalink for Exercise 4.1.4.1" aria-label="Copy heading and permalink for Exercise 4.1.4.1">🔗</a></div></article><article class="exercise exercise-like" id="sec-eigen-intro-6-2"><h4 class="heading"><span class="codenumber">2<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4>
+<div class="para logical" id="sec-eigen-intro-6-2-1-1">
+<div class="para">Consider the matrix and vectors</div>
+<div class="displaymath process-math" id="sec-eigen-intro-6-2-1-1-1">
+\begin{equation*}
+A = \left[\begin{array}{rrr}
+-5 \amp -2 \amp 2 \\
+24 \amp 14 \amp -10 \\
+21 \amp 14 \amp -10 \\
+\end{array}\right],\qquad
+\vvec_1=\threevec{1}{-2}{-1},
+\vvec_2=\threevec{2}{-3}{0},
+\vvec_3=\threevec{0}{-1}{-1}
+\end{equation*}
+</div>
+<ol class="lower-alpha ol-marker-1" id="sec-eigen-intro-6-2-1-1-2">
+<li id="sec-eigen-intro-6-2-1-1-2-1">
+<div class="para" id="sec-eigen-intro-6-2-1-1-2-1-1">Show that the vectors <span class="process-math">\(\vvec_1\text{,}\)</span> <span class="process-math">\(\vvec_2\text{,}\)</span> and <span class="process-math">\(\vvec_3\)</span> are eigenvectors of <span class="process-math">\(A\)</span> and find their associated eigenvalues.<div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-6-2-1-1-2-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div id="sec-eigen-intro-6-2-1-1-2-1-2" class="ptx-sagecell sagecell-sage"><script type="text/x-sage">
+</script></div>
+<div class="autopermalink" data-description="Item 4.1.4.2.a"><a href="#sec-eigen-intro-6-2-1-1-2-1" title="Copy heading and permalink for Item 4.1.4.2.a" aria-label="Copy heading and permalink for Item 4.1.4.2.a">🔗</a></div>
+</li>
+<li id="sec-eigen-intro-6-2-1-1-2-2">
+<div class="para" id="sec-eigen-intro-6-2-1-1-2-2-1">Express the vector <span class="process-math">\(\xvec = \threevec{0}{-3}{-4}\)</span> as a linear combination of the eigenvectors.<div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-6-2-1-1-2-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 4.1.4.2.b"><a href="#sec-eigen-intro-6-2-1-1-2-2" title="Copy heading and permalink for Item 4.1.4.2.b" aria-label="Copy heading and permalink for Item 4.1.4.2.b">🔗</a></div>
+</li>
+<li id="sec-eigen-intro-6-2-1-1-2-3">
+<div class="para" id="sec-eigen-intro-6-2-1-1-2-3-1">Use this expression to compute <span class="process-math">\(A\xvec\text{,}\)</span> <span class="process-math">\(A^2\xvec\text{,}\)</span> and <span class="process-math">\(A^{-1}\xvec\)</span> as a linear combination of eigenvectors.<div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-6-2-1-1-2-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 4.1.4.2.c"><a href="#sec-eigen-intro-6-2-1-1-2-3" title="Copy heading and permalink for Item 4.1.4.2.c" aria-label="Copy heading and permalink for Item 4.1.4.2.c">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-6-2-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Exercise 4.1.4.2"><a href="#sec-eigen-intro-6-2" title="Copy heading and permalink for Exercise 4.1.4.2" aria-label="Copy heading and permalink for Exercise 4.1.4.2">🔗</a></div></article><article class="exercise exercise-like" id="sec-eigen-intro-6-3"><h4 class="heading"><span class="codenumber">3<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4>
+<div class="para logical" id="sec-eigen-intro-6-3-1-1">
+<div class="para">Suppose that <span class="process-math">\(A\)</span> is an <span class="process-math">\(n\times n\)</span> matrix.</div>
+<ol class="lower-alpha ol-marker-1" id="sec-eigen-intro-6-3-1-1-3">
+<li id="sec-eigen-intro-6-3-1-1-3-1">
+<div class="para" id="sec-eigen-intro-6-3-1-1-3-1-1">Explain why <span class="process-math">\(\lambda = 0\)</span> is an eigenvalue of <span class="process-math">\(A\)</span> if and only if there is a nonzero solution to the homogeneous equation <span class="process-math">\(A\xvec = 0\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-6-3-1-1-3-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 4.1.4.3.a"><a href="#sec-eigen-intro-6-3-1-1-3-1" title="Copy heading and permalink for Item 4.1.4.3.a" aria-label="Copy heading and permalink for Item 4.1.4.3.a">🔗</a></div>
+</li>
+<li id="sec-eigen-intro-6-3-1-1-3-2">
+<div class="para" id="sec-eigen-intro-6-3-1-1-3-2-1">Explain why <span class="process-math">\(A\)</span> is not invertible if and only if <span class="process-math">\(\lambda=0\)</span> is an eigenvalue.<div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-6-3-1-1-3-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 4.1.4.3.b"><a href="#sec-eigen-intro-6-3-1-1-3-2" title="Copy heading and permalink for Item 4.1.4.3.b" aria-label="Copy heading and permalink for Item 4.1.4.3.b">🔗</a></div>
+</li>
+<li id="sec-eigen-intro-6-3-1-1-3-3">
+<div class="para" id="sec-eigen-intro-6-3-1-1-3-3-1">If <span class="process-math">\(\vvec\)</span> is an eigenvector of <span class="process-math">\(A\)</span> having associated eigenvalue <span class="process-math">\(\lambda\text{,}\)</span> explain why <span class="process-math">\(\vvec\)</span> is also an eigenvector of <span class="process-math">\(A^2\)</span> with associated eigenvalue <span class="process-math">\(\lambda^2\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-6-3-1-1-3-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 4.1.4.3.c"><a href="#sec-eigen-intro-6-3-1-1-3-3" title="Copy heading and permalink for Item 4.1.4.3.c" aria-label="Copy heading and permalink for Item 4.1.4.3.c">🔗</a></div>
+</li>
+<li id="sec-eigen-intro-6-3-1-1-3-4">
+<div class="para" id="sec-eigen-intro-6-3-1-1-3-4-1">If <span class="process-math">\(A\)</span> is invertible and <span class="process-math">\(\vvec\)</span> is eigenvector of <span class="process-math">\(A\)</span> having associated eigenvalue <span class="process-math">\(\lambda\text{,}\)</span> explain why <span class="process-math">\(\vvec\)</span> is also an eigenvector of <span class="process-math">\(A^{-1}\)</span> with associated eigenvalue <span class="process-math">\(\lambda^{-1}\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-6-3-1-1-3-4-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 4.1.4.3.d"><a href="#sec-eigen-intro-6-3-1-1-3-4" title="Copy heading and permalink for Item 4.1.4.3.d" aria-label="Copy heading and permalink for Item 4.1.4.3.d">🔗</a></div>
+</li>
+<li id="sec-eigen-intro-6-3-1-1-3-5">
+<div class="para" id="sec-eigen-intro-6-3-1-1-3-5-1">The matrix <span class="process-math">\(A=\
+\left[\begin{array}{rr}
+1 \amp 2 \\
+2 \amp 1 \\
+\end{array}\right]\)</span> has eigenvectors <span class="process-math">\(\vvec_1=\twovec{1}{1}\)</span> and <span class="process-math">\(\vvec_2=\twovec{-1}{1}\)</span> and associated eigenvalues <span class="process-math">\(\lambda_1
+= 3\)</span> and <span class="process-math">\(\lambda=-1\text{.}\)</span>  What are some eigenvectors and associated eigenvalues for <span class="process-math">\(A^5\text{?}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-6-3-1-1-3-5-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 4.1.4.3.e"><a href="#sec-eigen-intro-6-3-1-1-3-5" title="Copy heading and permalink for Item 4.1.4.3.e" aria-label="Copy heading and permalink for Item 4.1.4.3.e">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-6-3-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Exercise 4.1.4.3"><a href="#sec-eigen-intro-6-3" title="Copy heading and permalink for Exercise 4.1.4.3" aria-label="Copy heading and permalink for Exercise 4.1.4.3">🔗</a></div></article><article class="exercise exercise-like" id="sec-eigen-intro-6-4"><h4 class="heading"><span class="codenumber">4<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4>
+<div class="para" id="sec-eigen-intro-6-4-1-1">Suppose that <span class="process-math">\(A\)</span> is a matrix with eigenvectors <span class="process-math">\(\vvec_1\)</span> and <span class="process-math">\(\vvec_2\)</span> and eigenvalues <span class="process-math">\(\lambda_1 =
+-1\)</span> and <span class="process-math">\(\lambda_2=2\)</span> as shown in <a href="sec-eigen-intro.html#figure-eigen-exercise" class="xref" data-knowl="./knowl/xref/figure-eigen-exercise.html" data-reveal-label="Reveal" data-close-label="Close" title="Figure 4.1.9">Figure 4.1.9</a>.<div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-6-4-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <figure class="figure figure-like" id="figure-eigen-exercise"><div class="sidebyside"><div class="sbsrow" style="margin-left:27.5%;margin-right:27.5%;grid-template-columns:100%;column-gap:0%;"><div class="sbspanel sbspanel--top top" style=""><div class="image-box"><img src="external/images/ex-eigen-powers.svg" role="img" class="contained"></div></div></div></div>
+<figcaption><span class="type">Figure</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">4.1.9<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>The vectors <span class="process-math">\(\vvec_1\)</span> and <span class="process-math">\(\vvec_2\)</span> are eigenvectors of <span class="process-math">\(A\text{.}\)</span><div class="autopermalink" data-description="Figure 4.1.9"><a href="#figure-eigen-exercise" title="Copy heading and permalink for Figure 4.1.9" aria-label="Copy heading and permalink for Figure 4.1.9">🔗</a></div></figcaption></figure> <div class="para" id="sec-eigen-intro-6-4-1-3">Sketch the vectors <span class="process-math">\(A\xvec\text{,}\)</span> <span class="process-math">\(A^2\xvec\text{,}\)</span> and <span class="process-math">\(A^{-1}\xvec\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-6-4-1-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Exercise 4.1.4.4"><a href="#sec-eigen-intro-6-4" title="Copy heading and permalink for Exercise 4.1.4.4" aria-label="Copy heading and permalink for Exercise 4.1.4.4">🔗</a></div></article><article class="exercise exercise-like" id="sec-eigen-intro-6-5"><h4 class="heading"><span class="codenumber">5<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4>
+<div class="para logical" id="sec-eigen-intro-6-5-1-1">
+<div class="para">For the following matrices, find the eigenvectors and associated eigenvalues by thinking geometrically about the corresponding matrix transformation.</div>
+<ol class="lower-alpha ol-marker-1" id="sec-eigen-intro-6-5-1-1-1">
+<li id="sec-eigen-intro-6-5-1-1-1-1">
+<div class="para" id="sec-eigen-intro-6-5-1-1-1-1-1">
+<span class="process-math">\(\left[\begin{array}{rr}
+3 \amp 0 \\
+0 \amp 3 \\
+\end{array}\right]
+\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-6-5-1-1-1-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 4.1.4.5.a"><a href="#sec-eigen-intro-6-5-1-1-1-1" title="Copy heading and permalink for Item 4.1.4.5.a" aria-label="Copy heading and permalink for Item 4.1.4.5.a">🔗</a></div>
+</li>
+<li id="sec-eigen-intro-6-5-1-1-1-2">
+<div class="para" id="sec-eigen-intro-6-5-1-1-1-2-1">
+<span class="process-math">\(\left[\begin{array}{rr}
+-2 \amp 0 \\
+0 \amp 4 \\
+\end{array}\right]
+\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-6-5-1-1-1-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 4.1.4.5.b"><a href="#sec-eigen-intro-6-5-1-1-1-2" title="Copy heading and permalink for Item 4.1.4.5.b" aria-label="Copy heading and permalink for Item 4.1.4.5.b">🔗</a></div>
+</li>
+<li id="sec-eigen-intro-6-5-1-1-1-3">
+<div class="para" id="sec-eigen-intro-6-5-1-1-1-3-1">What are the eigenvectors and associated eigenvalues of the identity matrix?<div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-6-5-1-1-1-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 4.1.4.5.c"><a href="#sec-eigen-intro-6-5-1-1-1-3" title="Copy heading and permalink for Item 4.1.4.5.c" aria-label="Copy heading and permalink for Item 4.1.4.5.c">🔗</a></div>
+</li>
+<li id="sec-eigen-intro-6-5-1-1-1-4">
+<div class="para" id="sec-eigen-intro-6-5-1-1-1-4-1">What are the eigenvectors and associated eigenvalues of a diagonal matrix with distinct diagonal entries?<div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-6-5-1-1-1-4-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 4.1.4.5.d"><a href="#sec-eigen-intro-6-5-1-1-1-4" title="Copy heading and permalink for Item 4.1.4.5.d" aria-label="Copy heading and permalink for Item 4.1.4.5.d">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-6-5-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Exercise 4.1.4.5"><a href="#sec-eigen-intro-6-5" title="Copy heading and permalink for Exercise 4.1.4.5" aria-label="Copy heading and permalink for Exercise 4.1.4.5">🔗</a></div></article><article class="exercise exercise-like" id="sec-eigen-intro-6-6"><h4 class="heading"><span class="codenumber">6<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4>
+<div class="para logical" id="sec-eigen-intro-6-6-1-1">
+<div class="para">Suppose that <span class="process-math">\(A\)</span> is a <span class="process-math">\(2\times2\)</span> matrix having eigenvectors</div>
+<div class="displaymath process-math" id="sec-eigen-intro-6-6-1-1-3">
+\begin{equation*}
+\vvec_1=\twovec{2}{1}, \qquad
+\vvec_2=\twovec{-1}{2}
+\end{equation*}
+</div>
+<div class="para">and associated eigenvalues <span class="process-math">\(\lambda_1=2\)</span> and <span class="process-math">\(\lambda_2=-3\text{.}\)</span>
+</div>
+<ol class="lower-alpha ol-marker-1" id="sec-eigen-intro-6-6-1-1-6">
+<li id="sec-eigen-intro-6-6-1-1-6-1">
+<div class="para" id="sec-eigen-intro-6-6-1-1-6-1-1">If <span class="process-math">\(\xvec=\twovec{5}{0}\text{,}\)</span> find the vector <span class="process-math">\(A^4\xvec\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-6-6-1-1-6-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 4.1.4.6.a"><a href="#sec-eigen-intro-6-6-1-1-6-1" title="Copy heading and permalink for Item 4.1.4.6.a" aria-label="Copy heading and permalink for Item 4.1.4.6.a">🔗</a></div>
+</li>
+<li id="sec-eigen-intro-6-6-1-1-6-2">
+<div class="para" id="sec-eigen-intro-6-6-1-1-6-2-1">Find the vectors <span class="process-math">\(A\twovec10\)</span> and <span class="process-math">\(A\twovec01\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-6-6-1-1-6-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 4.1.4.6.b"><a href="#sec-eigen-intro-6-6-1-1-6-2" title="Copy heading and permalink for Item 4.1.4.6.b" aria-label="Copy heading and permalink for Item 4.1.4.6.b">🔗</a></div>
+</li>
+<li id="sec-eigen-intro-6-6-1-1-6-3">
+<div class="para" id="sec-eigen-intro-6-6-1-1-6-3-1">What is the matrix <span class="process-math">\(A\text{?}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-6-6-1-1-6-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 4.1.4.6.c"><a href="#sec-eigen-intro-6-6-1-1-6-3" title="Copy heading and permalink for Item 4.1.4.6.c" aria-label="Copy heading and permalink for Item 4.1.4.6.c">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-6-6-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Exercise 4.1.4.6"><a href="#sec-eigen-intro-6-6" title="Copy heading and permalink for Exercise 4.1.4.6" aria-label="Copy heading and permalink for Exercise 4.1.4.6">🔗</a></div></article><article class="exercise exercise-like" id="sec-eigen-intro-6-7"><h4 class="heading"><span class="codenumber">7<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4>
+<div class="para logical" id="sec-eigen-intro-6-7-1-1">
+<div class="para">Determine whether the following statements are true or false and provide a justification for your response.</div>
+<ol class="lower-alpha ol-marker-1" id="sec-eigen-intro-6-7-1-1-1">
+<li id="sec-eigen-intro-6-7-1-1-1-1">
+<div class="para" id="sec-eigen-intro-6-7-1-1-1-1-1">The eigenvalues of a diagonal matrix are equal to the entries on the diagonal.<div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-6-7-1-1-1-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 4.1.4.7.a"><a href="#sec-eigen-intro-6-7-1-1-1-1" title="Copy heading and permalink for Item 4.1.4.7.a" aria-label="Copy heading and permalink for Item 4.1.4.7.a">🔗</a></div>
+</li>
+<li id="sec-eigen-intro-6-7-1-1-1-2">
+<div class="para" id="sec-eigen-intro-6-7-1-1-1-2-1">If <span class="process-math">\(A\vvec=\lambda\vvec\text{,}\)</span> then <span class="process-math">\(A^2\vvec=\lambda\vvec\)</span> as well.<div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-6-7-1-1-1-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 4.1.4.7.b"><a href="#sec-eigen-intro-6-7-1-1-1-2" title="Copy heading and permalink for Item 4.1.4.7.b" aria-label="Copy heading and permalink for Item 4.1.4.7.b">🔗</a></div>
+</li>
+<li id="sec-eigen-intro-6-7-1-1-1-3">
+<div class="para" id="sec-eigen-intro-6-7-1-1-1-3-1">Every vector is an eigenvector of the identity matrix.<div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-6-7-1-1-1-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 4.1.4.7.c"><a href="#sec-eigen-intro-6-7-1-1-1-3" title="Copy heading and permalink for Item 4.1.4.7.c" aria-label="Copy heading and permalink for Item 4.1.4.7.c">🔗</a></div>
+</li>
+<li id="sec-eigen-intro-6-7-1-1-1-4">
+<div class="para" id="sec-eigen-intro-6-7-1-1-1-4-1">If <span class="process-math">\(\lambda=0\)</span> is an eigenvalue of <span class="process-math">\(A\text{,}\)</span> then <span class="process-math">\(A\)</span> is invertible.<div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-6-7-1-1-1-4-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 4.1.4.7.d"><a href="#sec-eigen-intro-6-7-1-1-1-4" title="Copy heading and permalink for Item 4.1.4.7.d" aria-label="Copy heading and permalink for Item 4.1.4.7.d">🔗</a></div>
+</li>
+<li id="sec-eigen-intro-6-7-1-1-1-5">
+<div class="para" id="sec-eigen-intro-6-7-1-1-1-5-1">For every <span class="process-math">\(n\times n\)</span> matrix <span class="process-math">\(A\text{,}\)</span> it is possible to find a basis of <span class="process-math">\(\real^n\)</span> consisting of eigenvectors of <span class="process-math">\(A\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-6-7-1-1-1-5-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 4.1.4.7.e"><a href="#sec-eigen-intro-6-7-1-1-1-5" title="Copy heading and permalink for Item 4.1.4.7.e" aria-label="Copy heading and permalink for Item 4.1.4.7.e">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-6-7-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Exercise 4.1.4.7"><a href="#sec-eigen-intro-6-7" title="Copy heading and permalink for Exercise 4.1.4.7" aria-label="Copy heading and permalink for Exercise 4.1.4.7">🔗</a></div></article><article class="exercise exercise-like" id="sec-eigen-intro-6-8"><h4 class="heading"><span class="codenumber">8<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4>
+<div class="para logical" id="sec-eigen-intro-6-8-1-1">
+<div class="para">Suppose that <span class="process-math">\(A\)</span> is an <span class="process-math">\(n\times n\)</span> matrix.</div>
+<ol class="lower-alpha ol-marker-1" id="sec-eigen-intro-6-8-1-1-3">
+<li id="sec-eigen-intro-6-8-1-1-3-1">
+<div class="para" id="sec-eigen-intro-6-8-1-1-3-1-1">Assuming that <span class="process-math">\(\vvec\)</span> is an eigenvector of <span class="process-math">\(A\)</span> whose associated eigenvalue is nonzero, explain why <span class="process-math">\(\vvec\)</span> is in <span class="process-math">\(\col(A)\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-6-8-1-1-3-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 4.1.4.8.a"><a href="#sec-eigen-intro-6-8-1-1-3-1" title="Copy heading and permalink for Item 4.1.4.8.a" aria-label="Copy heading and permalink for Item 4.1.4.8.a">🔗</a></div>
+</li>
+<li id="sec-eigen-intro-6-8-1-1-3-2">
+<div class="para" id="sec-eigen-intro-6-8-1-1-3-2-1">Assuming that <span class="process-math">\(\vvec\)</span> is an eigenvector of <span class="process-math">\(A\)</span> whose associated eigenvalue is zero, explain why <span class="process-math">\(\vvec\)</span> is in <span class="process-math">\(\nul(A)\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-6-8-1-1-3-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 4.1.4.8.b"><a href="#sec-eigen-intro-6-8-1-1-3-2" title="Copy heading and permalink for Item 4.1.4.8.b" aria-label="Copy heading and permalink for Item 4.1.4.8.b">🔗</a></div>
+</li>
+<li id="sec-eigen-intro-6-8-1-1-3-3">
+<div class="para logical" id="sec-eigen-intro-6-8-1-1-3-3-1">
+<div class="para">Consider the two special matrices below and find their eigenvectors and associated eigenvalues.</div>
+<div class="displaymath process-math" id="sec-eigen-intro-6-8-1-1-3-3-1-1">
+\begin{equation*}
+A = \left[\begin{array}{rrr}
+1 \amp 1 \amp 1 \\
+1 \amp 1 \amp 1 \\
+1 \amp 1 \amp 1 \\
+\end{array}\right],~~~
+B = 
+\left[\begin{array}{rrr}
+1 \amp 1 \amp 1 \\
+2 \amp 2 \amp 2 \\
+3 \amp 3 \amp 3 \\
+\end{array}\right].
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-6-8-1-1-3-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 4.1.4.8.c"><a href="#sec-eigen-intro-6-8-1-1-3-3" title="Copy heading and permalink for Item 4.1.4.8.c" aria-label="Copy heading and permalink for Item 4.1.4.8.c">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-6-8-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Exercise 4.1.4.8"><a href="#sec-eigen-intro-6-8" title="Copy heading and permalink for Exercise 4.1.4.8" aria-label="Copy heading and permalink for Exercise 4.1.4.8">🔗</a></div></article><article class="exercise exercise-like" id="sec-eigen-intro-6-9"><h4 class="heading"><span class="codenumber">9<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4>
+<div class="para logical" id="sec-eigen-intro-6-9-1-1">
+<div class="para">For each of the following matrix transformations, describe the eigenvalues and eigenvectors of the corresponding matrix <span class="process-math">\(A\text{.}\)</span>
+</div>
+<ol class="lower-alpha ol-marker-1" id="sec-eigen-intro-6-9-1-1-2">
+<li id="sec-eigen-intro-6-9-1-1-2-1">
+<div class="para" id="sec-eigen-intro-6-9-1-1-2-1-1">A reflection in <span class="process-math">\(\real^2\)</span> in the line <span class="process-math">\(y=x\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-6-9-1-1-2-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 4.1.4.9.a"><a href="#sec-eigen-intro-6-9-1-1-2-1" title="Copy heading and permalink for Item 4.1.4.9.a" aria-label="Copy heading and permalink for Item 4.1.4.9.a">🔗</a></div>
+</li>
+<li id="sec-eigen-intro-6-9-1-1-2-2">
+<div class="para" id="sec-eigen-intro-6-9-1-1-2-2-1">A <span class="process-math">\(180^\circ\)</span> rotation in <span class="process-math">\(\real^2\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-6-9-1-1-2-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 4.1.4.9.b"><a href="#sec-eigen-intro-6-9-1-1-2-2" title="Copy heading and permalink for Item 4.1.4.9.b" aria-label="Copy heading and permalink for Item 4.1.4.9.b">🔗</a></div>
+</li>
+<li id="sec-eigen-intro-6-9-1-1-2-3">
+<div class="para" id="sec-eigen-intro-6-9-1-1-2-3-1">A <span class="process-math">\(180^\circ\)</span> rotation in <span class="process-math">\(\real^3\)</span> about the <span class="process-math">\(y\)</span>-axis.<div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-6-9-1-1-2-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 4.1.4.9.c"><a href="#sec-eigen-intro-6-9-1-1-2-3" title="Copy heading and permalink for Item 4.1.4.9.c" aria-label="Copy heading and permalink for Item 4.1.4.9.c">🔗</a></div>
+</li>
+<li id="sec-eigen-intro-6-9-1-1-2-4">
+<div class="para" id="sec-eigen-intro-6-9-1-1-2-4-1">A <span class="process-math">\(90^\circ\)</span> rotation in <span class="process-math">\(\real^3\)</span> about the <span class="process-math">\(x\)</span>-axis.<div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-6-9-1-1-2-4-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 4.1.4.9.d"><a href="#sec-eigen-intro-6-9-1-1-2-4" title="Copy heading and permalink for Item 4.1.4.9.d" aria-label="Copy heading and permalink for Item 4.1.4.9.d">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-6-9-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Exercise 4.1.4.9"><a href="#sec-eigen-intro-6-9" title="Copy heading and permalink for Exercise 4.1.4.9" aria-label="Copy heading and permalink for Exercise 4.1.4.9">🔗</a></div></article><article class="exercise exercise-like" id="sec-eigen-intro-6-10"><h4 class="heading"><span class="codenumber">10<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4>
+<div class="para logical" id="sec-eigen-intro-6-10-1-1">
+<div class="para">Suppose we have two species, <span class="process-math">\(P\)</span> and <span class="process-math">\(Q\text{,}\)</span> where species <span class="process-math">\(P\)</span> preys on <span class="process-math">\(Q\text{.}\)</span>  Their populations, in millions, in year <span class="process-math">\(k\)</span> are denoted by <span class="process-math">\(P_k\)</span> and <span class="process-math">\(Q_k\)</span> and satisfy</div>
+<div class="displaymath process-math" id="sec-eigen-intro-6-10-1-1-8">
+\begin{equation*}
+\begin{aligned}
+P_{k+1} \amp {}={} 0.8P_k + 0.2Q_k \\
+Q_{k+1} \amp {}={} -0.3P_k + 1.5Q_k \\
+\end{aligned}\text{.}
+\end{equation*}
+</div>
+<div class="para">We will keep track of the populations in year <span class="process-math">\(k\)</span> using the vector <span class="process-math">\(\xvec_k=\twovec{P_k}{Q_k}\)</span> so that</div>
+<div class="displaymath process-math" id="sec-eigen-intro-6-10-1-1-11">
+\begin{equation*}
+\xvec_{k+1} = A\xvec_k =
+\left[\begin{array}{rr}
+0.8 \amp 0.2 \\
+-0.3 \amp 1.5 \\
+\end{array}\right]
+\xvec_k\text{.}
+\end{equation*}
+</div>
+<ol class="lower-alpha ol-marker-1" id="sec-eigen-intro-6-10-1-1-12">
+<li id="sec-eigen-intro-6-10-1-1-12-1">
+<div class="para" id="sec-eigen-intro-6-10-1-1-12-1-1">Show that <span class="process-math">\(\vvec_1=\twovec{1}{3}\)</span> and <span class="process-math">\(\vvec_2=\twovec{2}{1}\)</span> are eigenvectors of <span class="process-math">\(A\)</span> and find their associated eigenvalues.<div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-6-10-1-1-12-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 4.1.4.10.a"><a href="#sec-eigen-intro-6-10-1-1-12-1" title="Copy heading and permalink for Item 4.1.4.10.a" aria-label="Copy heading and permalink for Item 4.1.4.10.a">🔗</a></div>
+</li>
+<li id="sec-eigen-intro-6-10-1-1-12-2">
+<div class="para" id="sec-eigen-intro-6-10-1-1-12-2-1">Suppose that the initial populations are described by the vector <span class="process-math">\(\xvec_0 = \twovec{38}{44}\text{.}\)</span>  Express <span class="process-math">\(\xvec_0\)</span> as a linear combination of <span class="process-math">\(\vvec_1\)</span> and <span class="process-math">\(\vvec_2\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-6-10-1-1-12-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 4.1.4.10.b"><a href="#sec-eigen-intro-6-10-1-1-12-2" title="Copy heading and permalink for Item 4.1.4.10.b" aria-label="Copy heading and permalink for Item 4.1.4.10.b">🔗</a></div>
+</li>
+<li id="sec-eigen-intro-6-10-1-1-12-3">
+<div class="para" id="sec-eigen-intro-6-10-1-1-12-3-1">Find the populations after one year, two years, and three years by writing the vectors <span class="process-math">\(\xvec_1\text{,}\)</span> <span class="process-math">\(\xvec_2\text{,}\)</span> and <span class="process-math">\(\xvec_3\)</span> as linear combinations of <span class="process-math">\(\vvec_1\)</span> and <span class="process-math">\(\vvec_2\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-6-10-1-1-12-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 4.1.4.10.c"><a href="#sec-eigen-intro-6-10-1-1-12-3" title="Copy heading and permalink for Item 4.1.4.10.c" aria-label="Copy heading and permalink for Item 4.1.4.10.c">🔗</a></div>
+</li>
+<li id="sec-eigen-intro-6-10-1-1-12-4">
+<div class="para" id="sec-eigen-intro-6-10-1-1-12-4-1">What is the general form for <span class="process-math">\(\xvec_k\text{?}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-6-10-1-1-12-4-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 4.1.4.10.d"><a href="#sec-eigen-intro-6-10-1-1-12-4" title="Copy heading and permalink for Item 4.1.4.10.d" aria-label="Copy heading and permalink for Item 4.1.4.10.d">🔗</a></div>
+</li>
+<li id="sec-eigen-intro-6-10-1-1-12-5">
+<div class="para" id="sec-eigen-intro-6-10-1-1-12-5-1">After a very long time, what is the ratio of <span class="process-math">\(P_k\)</span> to <span class="process-math">\(Q_k\text{?}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-6-10-1-1-12-5-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 4.1.4.10.e"><a href="#sec-eigen-intro-6-10-1-1-12-5" title="Copy heading and permalink for Item 4.1.4.10.e" aria-label="Copy heading and permalink for Item 4.1.4.10.e">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#sec-eigen-intro-6-10-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Exercise 4.1.4.10"><a href="#sec-eigen-intro-6-10" title="Copy heading and permalink for Exercise 4.1.4.10" aria-label="Copy heading and permalink for Exercise 4.1.4.10">🔗</a></div></article><div class="autopermalink" data-description="Exercises 4.1.4"><a href="#sec-eigen-intro-6" title="Copy heading and permalink for Exercises 4.1.4" aria-label="Copy heading and permalink for Exercises 4.1.4">🔗</a></div></section><div class="autopermalink" data-description="Section 4.1: Pengenalan Nilai Eigen dan Vektor Eigen"><a href="#sec-eigen-intro" title="Copy heading and permalink for Section 4.1: Pengenalan Nilai Eigen dan Vektor Eigen" aria-label="Copy heading and permalink for Section 4.1: Pengenalan Nilai Eigen dan Vektor Eigen">🔗</a></div></section></div>
+<div id="ptx-content-footer" class="ptx-content-footer">
+<a class="previous-button button" href="chap4.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="sec-eigen-find.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
+</div></main>
+</div>
+<div id="ptx-page-footer" class="ptx-page-footer">
+<a class="pretext-link" href="https://pretextbook.org" title="PreTeXt"><div class="logo"><svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="338 3000 8772 6866" role="img"><title>PreTeXt logo</title><g style="stroke-width:.025in; stroke:currentColor; fill:none"><polyline points="472,3590 472,9732 " style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round; "></polyline><path style="stroke-width:126;stroke-linecap:butt;" d="M 4724,9448 A 4660 4660  0  0  1  8598  9259"></path><path style="stroke-width:174;stroke-linecap:butt;" d="M 4488,9685 A 4228 4228  0  0  0   472  9732"></path><path style="stroke-width:126;stroke-linecap:butt;" d="M 4724,3590 A 4241 4241  0  0  1  8598  3496"></path><path style="stroke-width:126;stroke-linecap:round;" d="M 850,3496  A 4241 4241  0  0  1  4724  3590"></path><path style="stroke-width:126;stroke-linecap:round;" d="M 850,9259  A 4507 4507  0  0  1  4724  9448"></path><polyline points="5385,4299 4062,8125" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8598,3496 8598,9259" style="stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="850,3496 850,9259" style="stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="4960,9685 4488,9685" style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="3070,4582 1889,6141 3070,7700" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="6418,4582 7600,6141 6418,7700" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8976,3590 8976,9732" style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><path style="stroke-width:174;stroke-linecap:butt;" d="M 4960,9685 A 4228 4228  0  0  1  8976  9732"></path></g></svg></div></a><a class="runestone-link" href="https://runestone.academy" title="Runestone Academy"><img class="logo" src="https://runestone.academy/runestone/static/images/RAIcon_cropped.png" alt="Runstone Academy logo"></a><a class="mathjax-link" href="https://www.mathjax.org" title="MathJax"><img class="logo" src="https://www.mathjax.org/badge/badge-square-2.png" alt="MathJax logo"></a>
+</div>
+</body>
+</html>
